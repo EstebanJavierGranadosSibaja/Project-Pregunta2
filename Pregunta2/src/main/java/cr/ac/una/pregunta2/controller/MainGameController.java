@@ -13,7 +13,7 @@ import javafx.fxml.Initializable;
  *
  * @author Matteo2K24
  */
-public class MainGameController implements Initializable {
+public class MainGameController extends Controller implements Initializable {
 
     /**
      * Initializes the controller class.
@@ -22,5 +22,10 @@ public class MainGameController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @Override
+    public void initialize() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }
