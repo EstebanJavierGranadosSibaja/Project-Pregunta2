@@ -8,18 +8,19 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-public class LoginController extends Controller implements Initializable {
+/**
+ * FXML Controller class
+ *
+ * @author Matteo2K24
+ */
+public class MainGameController implements Initializable {
 
+    /**
+     * Initializes the controller class.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
     }    
-
-    @Override
-    public void initialize() {
-    }
-
-
-
-
-
+    
 }
