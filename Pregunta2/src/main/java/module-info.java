@@ -8,7 +8,9 @@ module cr.ac.una.pregunta2 {
     
     // materialfx import
     requires MaterialFX;
-    
+    requires java.base;
+    requires java.logging;
+
     // base module info
     exports cr.ac.una.pregunta2; 
 }
