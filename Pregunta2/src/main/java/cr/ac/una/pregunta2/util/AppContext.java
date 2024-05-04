@@ -1,10 +1,10 @@
-package cr.ac.una.unaplanilla.util;
+package cr.ac.una.pregunta2.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
-import java.util.logging.Level;
+//import java.util.logging.Level;
 
 
 public class AppContext {

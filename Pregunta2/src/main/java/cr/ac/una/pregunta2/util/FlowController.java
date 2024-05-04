@@ -9,7 +9,7 @@ import cr.ac.una.pregunta2.App;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
+//import java.util.logging.Level;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -73,7 +73,7 @@ public class FlowController {
                         loaders.put(name, loader);
                     } catch (Exception ex) {
                         loader = null;
-                        java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Creando loader [" + name + "].", ex);
+                        //java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Creando loader [" + name + "].", ex);
                     }
                 }
             }
@@ -87,7 +87,8 @@ public class FlowController {
             MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
             this.mainStage.show();
         } catch (IOException ex) {
-            java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
+            //TODO: FIX THIS ERROR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+            //java.util.logging.Logger.getLogger(FlowController.class.getName()).log(Level.SEVERE, "Error inicializando la vista base.", ex);
         }
     }
 
