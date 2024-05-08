@@ -4,8 +4,12 @@
  */
 package cr.ac.una.preguntadospackage.controller;
 
+import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
@@ -15,6 +19,17 @@ import javafx.fxml.Initializable;
  */
 public class LoginController implements Initializable {
 
+    @FXML
+    private MFXTextField txtTag;
+    @FXML
+    private MFXTextField txtPassword;
+    @FXML
+    private MFXButton btnLogin;
+    @FXML
+    private MFXButton btnInfo;
+    @FXML
+    private MFXButton btnHelp;
+
     /**
      * Initializes the controller class.
      */
@@ -22,5 +37,17 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void onActionLogin(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionInfo(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionHelp(ActionEvent event) {
+    }
     
 }

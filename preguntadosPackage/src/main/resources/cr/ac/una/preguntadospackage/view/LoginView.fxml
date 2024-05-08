@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.LoginController">
-    
+<AnchorPane id="AnchorPane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.LoginController">
+   <children>
+      <VBox alignment="CENTER" fillWidth="false" layoutX="-7.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="530.0" prefWidth="420.0">
+               <children>
+                  <ImageView fitHeight="176.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/placeholder.png" />
+                     </image>
+                  </ImageView>
+                  <MFXTextField fx:id="txtTag" prefHeight="49.0" prefWidth="211.0" promptText="TAG DE USUARIO" />
+                  <MFXTextField fx:id="txtPassword" floatingText="CONTRASEǸA" prefHeight="49.0" prefWidth="205.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0" prefWidth="122.0" text="INICIAR SESIÓN" />
+                        <MFXButton fx:id="btnInfo" buttonType="RAISED" onAction="#onActionInfo" prefHeight="63.0" prefWidth="150.0" text="MÁS INFORMACIÓN" />
+                        <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="66.0" prefWidth="129.0" text="AYUDA" />
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="50.0" left="150.0" right="150.0" top="50.0" />
+               </VBox.margin>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>
