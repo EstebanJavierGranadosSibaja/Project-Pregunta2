@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /*
- 
     Dev notes:
 
     - Graphics:
@@ -17,8 +16,6 @@ import java.io.IOException;
     
     - User information
         * Max user tag lenght: 15 letters
-
-
 
  */
 
