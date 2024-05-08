@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.LoginController">
    <children>
-      <VBox alignment="CENTER" fillWidth="false" layoutX="-7.0" prefHeight="576.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-7.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="CENTER" fillWidth="false" layoutX="243.0" layoutY="128.0" prefHeight="452.0" prefWidth="176.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="530.0" prefWidth="420.0">
+            <VBox alignment="CENTER" prefHeight="480.0" prefWidth="327.0" spacing="25.0">
                <children>
                   <ImageView fitHeight="176.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -24,13 +24,13 @@
                   <MFXTextField fx:id="txtPassword" floatingText="CONTRASEA" prefHeight="49.0" prefWidth="205.0" />
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0" prefWidth="122.0" text="INICIAR SESIoN" />
-                        <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="66.0" prefWidth="129.0" text="AYUDA" />
+                        <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0" prefWidth="122.0" text="INICIAR SESION" />
+                        <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="66.0" prefWidth="164.0" text="AYUDA SOY IMBECIL" />
                      </children>
                   </HBox>
                </children>
                <VBox.margin>
-                  <Insets bottom="50.0" left="150.0" right="150.0" top="50.0" />
+                  <Insets />
                </VBox.margin>
             </VBox>
          </children>
