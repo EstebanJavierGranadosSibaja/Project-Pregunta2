@@ -6,7 +6,6 @@ package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,42 +17,27 @@ import javafx.fxml.Initializable;
  *
  * @author Matteo2K24
  */
-public class LoginController extends Controller implements Initializable {
+public class SettingsController extends Controller implements Initializable {
 
     @FXML
-    private MFXTextField txtTag;
-    @FXML
-    private MFXTextField txtPassword;
-    @FXML
-    private MFXButton btnLogin;
-    @FXML
-    private MFXButton btnHelp;
+    private MFXButton btnQuitSettings;
 
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    }
     
     @Override
     public void initialize() {
-    }
+    }    
 
     @FXML
-    private void onActionLogin(ActionEvent event) {
-        FlowController.getInstance().goMain();
+    private void onActionQuitSettings(ActionEvent event) {
         FlowController.getInstance().goView("MenuView");
-        getStage().close();
     }
+
     
-
-
-    @FXML
-    private void onActionHelp(ActionEvent event) {
-    }
-
     
 }

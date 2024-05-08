@@ -6,53 +6,55 @@ package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 
 /**
  * FXML Controller class
  *
  * @author Matteo2K24
  */
-public class LoginController extends Controller implements Initializable {
+public class GameParametersController extends Controller implements Initializable {
 
     @FXML
-    private MFXTextField txtTag;
+    private MFXButton btnStart;
     @FXML
-    private MFXTextField txtPassword;
+    private Label test;
     @FXML
-    private MFXButton btnLogin;
-    @FXML
-    private MFXButton btnHelp;
+    private MFXButton btnCancel;
 
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
     @Override
     public void initialize() {
     }
 
     @FXML
-    private void onActionLogin(ActionEvent event) {
-        FlowController.getInstance().goMain();
-        FlowController.getInstance().goView("MenuView");
-        getStage().close();
+    private void onActionStart(ActionEvent event) {
+        // Here all the texts inputs and checks should checked to see if they
+        // are correctly filled
+        
+        // Then configure the main player + the secondary local players
+        
+        FlowController.getInstance().goView("GameView");
     }
-    
-
 
     @FXML
-    private void onActionHelp(ActionEvent event) {
+    private void onActionCancel(ActionEvent event) {
+        // Here all the texts inputs and checks should be cleared
+        // boing, cleared!
+        
+        FlowController.getInstance().goView("MenuView");
     }
 
     

@@ -6,7 +6,6 @@ package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -18,42 +17,47 @@ import javafx.fxml.Initializable;
  *
  * @author Matteo2K24
  */
-public class LoginController extends Controller implements Initializable {
+public class MenuController extends Controller implements Initializable {
 
     @FXML
-    private MFXTextField txtTag;
+    private MFXButton btnPlayMultiplayer;
     @FXML
-    private MFXTextField txtPassword;
+    private MFXButton btnInfo;
     @FXML
-    private MFXButton btnLogin;
+    private MFXButton btnQuestionMaintenance;
     @FXML
-    private MFXButton btnHelp;
+    private MFXButton btnSettings;
 
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-    
+
     @Override
     public void initialize() {
     }
 
     @FXML
-    private void onActionLogin(ActionEvent event) {
-        FlowController.getInstance().goMain();
-        FlowController.getInstance().goView("MenuView");
-        getStage().close();
+    private void onActionPlayMultiplayer(ActionEvent event) {
+        FlowController.getInstance().goView("GameParametersView");
     }
-    
 
 
     @FXML
-    private void onActionHelp(ActionEvent event) {
+    private void onActionInfo(ActionEvent event) {
+        FlowController.getInstance().goView("InformationView");
     }
 
+    @FXML
+    private void onActionQuestionMaintenance(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionSettings(ActionEvent event) {
+        FlowController.getInstance().goView("SettingsView");
+    }
     
 }
