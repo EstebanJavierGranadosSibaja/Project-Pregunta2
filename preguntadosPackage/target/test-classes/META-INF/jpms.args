@@ -1,4 +1,0 @@
---patch-module
-cr.ac.una.preguntadospackage=_
---add-reads
-cr.ac.una.preguntadospackage=ALL-UNNAMED

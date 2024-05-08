@@ -21,11 +21,11 @@
                      </image>
                   </ImageView>
                   <MFXTextField fx:id="txtTag" prefHeight="49.0" prefWidth="211.0" promptText="TAG DE USUARIO" />
-                  <MFXTextField fx:id="txtPassword" floatingText="CONTRASEǸA" prefHeight="49.0" prefWidth="205.0" />
+                  <MFXTextField fx:id="txtPassword" floatingText="CONTRASEA" prefHeight="49.0" prefWidth="205.0" />
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0" prefWidth="122.0" text="INICIAR SESIÓN" />
-                        <MFXButton fx:id="btnInfo" buttonType="RAISED" onAction="#onActionInfo" prefHeight="63.0" prefWidth="150.0" text="MÁS INFORMACIÓN" />
+                        <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0" prefWidth="122.0" text="INICIAR SESIoN" />
+                        <MFXButton fx:id="btnInfo" buttonType="RAISED" onAction="#onActionInfo" prefHeight="63.0" prefWidth="150.0" text="MaS INFORMACIon" />
                         <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="66.0" prefWidth="129.0" text="AYUDA" />
                      </children>
                   </HBox>

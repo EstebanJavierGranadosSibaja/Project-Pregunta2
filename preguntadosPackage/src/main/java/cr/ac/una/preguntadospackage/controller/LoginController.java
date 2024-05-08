@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
  *
  * @author Matteo2K24
  */
-public class LoginController implements Initializable {
+public class LoginController extends Controller implements Initializable {
 
     @FXML
     private MFXTextField txtTag;
@@ -49,5 +49,9 @@ public class LoginController implements Initializable {
     @FXML
     private void onActionHelp(ActionEvent event) {
     }
-    
+
+    @Override
+    public void initialize() {
+
+    }
 }
