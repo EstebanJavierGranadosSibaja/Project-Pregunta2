@@ -2,8 +2,10 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
+<?import io.github.palexdev.materialfx.controls.MFXCircleToggleNode?>
 <?import io.github.palexdev.materialfx.controls.MFXSpinner?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -20,6 +22,18 @@
                         <Image url="@../resources/placeholder.png" />
                      </image>
                   </ImageView>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" selected="true" text="MODO FACIL">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Difficulty" />
+                           </toggleGroup>
+                        </MFXCircleToggleNode>
+                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" text="MODO" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
+                     </children>
+                  </HBox>
                   <HBox prefHeight="54.0" prefWidth="379.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="163.0" text="NUMERO DE JUGADORES" />
@@ -47,7 +61,7 @@
                   <HBox prefHeight="100.0" prefWidth="414.0">
                      <children>
                         <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="79.0" prefWidth="213.0" text="INICIAR JUEGO" />
-                        <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="83.0" prefWidth="206.0" text="CANCELAR Y VOLVER" />
+                        <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="85.0" prefWidth="191.0" text="CANCELAR Y VOLVER" />
                      </children>
                   </HBox>
                </children>

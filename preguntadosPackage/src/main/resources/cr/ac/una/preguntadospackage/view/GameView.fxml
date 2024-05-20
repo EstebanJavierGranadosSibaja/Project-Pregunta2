@@ -2,22 +2,43 @@
 
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.shape.Circle?>
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <children>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="231.0" />
+            <VBox prefHeight="100.0" prefWidth="741.0" />
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="222.0" />
+         </children>
+      </HBox>
       <StackPane prefHeight="150.0" prefWidth="200.0">
          <children>
-            <Circle fill="#691f9a" radius="229.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fill="#d491ff" radius="174.0" stroke="RED" strokeType="INSIDE" />
-            <ImageView fx:id="imgSpinner" fitHeight="159.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="422.0" fitWidth="422.0" pickOnBounds="true" preserveRatio="true" rotate="1.0">
+               <image>
+                  <Image url="@../resources/37dc0465273282305ba7d5ddb5f3ac35_t-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgSpinner" fitHeight="178.0" fitWidth="156.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../resources/Spinner.png" />
                </image>
             </ImageView>
          </children>
       </StackPane>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="342.0">
+               <children>
+                  <ImageView fitHeight="99.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="623.0" />
+            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="341.0" />
+         </children>
+      </HBox>
    </children>
 </VBox>

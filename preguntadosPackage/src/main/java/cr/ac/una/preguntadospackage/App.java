@@ -9,6 +9,9 @@ import java.io.IOException;
 /*
     Dev notes:
 
+    - Cats:
+        * 6
+
     - Graphics:
         * Max screen res: 1280x720
 
