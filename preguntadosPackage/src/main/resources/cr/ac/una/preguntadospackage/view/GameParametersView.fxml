@@ -17,27 +17,27 @@
          <children>
             <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="25.0">
                <children>
-                  <ImageView fitHeight="116.0" fitWidth="430.0" pickOnBounds="true">
+                  <ImageView fitHeight="143.0" fitWidth="491.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/placeholder.png" />
+                        <Image url="@../resources/Title.png" />
                      </image>
                   </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" selected="true" text="MODO FACIL">
+                        <MFXCircleToggleNode fx:id="toggleEasy" prefHeight="107.0" prefWidth="116.0" selected="true" text="MODO FACIL">
                            <toggleGroup>
                               <ToggleGroup fx:id="Difficulty" />
                            </toggleGroup>
                         </MFXCircleToggleNode>
-                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" text="MODO" toggleGroup="$Difficulty" />
-                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
-                        <MFXCircleToggleNode prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode fx:id="toggleMid" prefHeight="107.0" prefWidth="116.0" text="MODO" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode fx:id="toggleHard" prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode fx:id="toggleCritical" prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
                      </children>
                   </HBox>
                   <HBox prefHeight="54.0" prefWidth="379.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="163.0" text="NUMERO DE JUGADORES" />
-                        <MFXSpinner prefHeight="41.0" prefWidth="164.0" />
+                        <MFXSpinner fx:id="spinnerPlayers" prefHeight="41.0" prefWidth="164.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="54.0" prefWidth="379.0">
@@ -58,10 +58,10 @@
                         <MFXCheckbox prefHeight="55.0" prefWidth="184.0" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="414.0">
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="414.0" spacing="15.0">
                      <children>
                         <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="79.0" prefWidth="213.0" text="INICIAR JUEGO" />
-                        <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="85.0" prefWidth="191.0" text="CANCELAR Y VOLVER" />
+                        <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="78.0" prefWidth="158.0" text="CANCELAR Y VOLVER" />
                      </children>
                   </HBox>
                </children>

@@ -8,10 +8,14 @@ import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import io.github.palexdev.materialfx.controls.MFXCircleToggleNode;
+import io.github.palexdev.materialfx.controls.MFXSpinner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleGroup;
 
 /**
  * FXML Controller class
@@ -26,17 +30,32 @@ public class GameParametersController extends Controller implements Initializabl
     private Label test;
     @FXML
     private MFXButton btnCancel;
+    @FXML
+    private MFXCircleToggleNode toggleHard;
+    @FXML
+    private ToggleGroup Difficulty;
+    @FXML
+    private MFXCircleToggleNode toggleCritical;
+    @FXML
+    private MFXCircleToggleNode toggleMid;
+    @FXML
+    private MFXSpinner spinnerPlayers;
+    @FXML
+    private MFXCircleToggleNode toggleEasy;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // start the spinner with 1 player
+
+
     }    
 
     @Override
     public void initialize() {
+       
     }
 
     @FXML

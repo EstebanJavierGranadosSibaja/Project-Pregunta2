@@ -1,43 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #696878;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <children>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="586.0" prefWidth="1260.0">
          <children>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="231.0" />
-            <VBox prefHeight="100.0" prefWidth="741.0" />
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="222.0" />
-         </children>
-      </HBox>
-      <StackPane prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <ImageView fitHeight="422.0" fitWidth="422.0" pickOnBounds="true" preserveRatio="true" rotate="1.0">
-               <image>
-                  <Image url="@../resources/37dc0465273282305ba7d5ddb5f3ac35_t-removebg-preview.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imgSpinner" fitHeight="178.0" fitWidth="156.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../resources/Spinner.png" />
-               </image>
-            </ImageView>
-         </children>
-      </StackPane>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="342.0">
+            <VBox alignment="CENTER" prefHeight="586.0" prefWidth="255.0" spacing="150.0">
                <children>
-                  <ImageView fitHeight="99.0" fitWidth="108.0" pickOnBounds="true" preserveRatio="true" />
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 1" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 2" />
+                     </children>
+                  </HBox>
                </children>
             </VBox>
-            <VBox prefHeight="100.0" prefWidth="623.0" />
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="341.0" />
+            <StackPane prefHeight="541.0" prefWidth="630.0">
+               <children>
+                  <ImageView fitHeight="586.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                     <image>
+                        <Image url="@../resources/path1-5-1-9.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Glow level="0.44" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="387.0" fitWidth="377.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/path1-5-1-9.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Shadow height="25.0" radius="12.0" width="25.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="374.0" fitWidth="372.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Roullete.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <Shadow height="25.0" radius="12.0" width="25.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="367.0" fitWidth="382.0" pickOnBounds="true" preserveRatio="true" rotate="130.0">
+                     <image>
+                        <Image url="@../resources/Roullete.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="1.0" fitWidth="39.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/pngwing.com(1).png" />
+                     </image>
+                     <effect>
+                        <Shadow height="15.0" radius="7.0" width="15.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="134.0" fitWidth="134.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/pngwing.com(1).png" />
+                     </image>
+                     <effect>
+                        <Bloom threshold="0.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fx:id="imgSpinner" fitHeight="135.0" fitWidth="129.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/pngwing.com(1).png" />
+                     </image>
+                     <effect>
+                        <Bloom threshold="1.0" />
+                     </effect>
+                  </ImageView>
+               </children>
+            </StackPane>
+            <VBox alignment="CENTER" prefHeight="586.0" prefWidth="255.0" spacing="150.0">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 6" />
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: gray;">
+                     <children>
+                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 5" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="876.0" spacing="400.0">
+         <children>
+            <HBox prefHeight="100.0" prefWidth="252.0" style="-fx-background-color: gray;">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 3" />
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="261.0" style="-fx-background-color: gray;">
+               <children>
+                  <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 4" />
+               </children>
+            </HBox>
          </children>
       </HBox>
    </children>

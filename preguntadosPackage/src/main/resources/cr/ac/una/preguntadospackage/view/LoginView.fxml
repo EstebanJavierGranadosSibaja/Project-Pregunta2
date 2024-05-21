@@ -15,17 +15,17 @@
          <children>
             <VBox alignment="CENTER" prefHeight="480.0" prefWidth="327.0" spacing="25.0">
                <children>
-                  <ImageView fitHeight="176.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="249.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/placeholder.png" />
+                        <Image url="@../resources/Questionmark.png" />
                      </image>
                   </ImageView>
                   <MFXTextField fx:id="txtTag" prefHeight="49.0" prefWidth="211.0" promptText="TAG DE USUARIO" />
-                  <MFXTextField fx:id="txtPassword" floatingText="CONTRASEA" prefHeight="49.0" prefWidth="205.0" />
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <MFXTextField fx:id="txtPassword" prefHeight="49.0" prefWidth="205.0" promptText="COONTRA" />
+                  <HBox alignment="CENTER" prefHeight="58.0" prefWidth="344.0" spacing="15.0">
                      <children>
                         <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0" prefWidth="122.0" text="INICIAR SESION" />
-                        <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="66.0" prefWidth="164.0" text="AYUDA SOY IMBECIL" />
+                        <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="58.0" prefWidth="141.0" text="AYUDA SOY IMBECIL" />
                      </children>
                   </HBox>
                </children>

@@ -72,8 +72,8 @@ public class GameController extends Controller implements Initializable {
             double degrees = imgSpinner.getRotate() - 1800;
             System.out.println("Degrees: " + degrees);
 
-            // Calculate the category (there are 6 categories)
-            int category = (int) (degrees / 60) % 6;
+            // Calculate the category (there are 7 categories)
+            int category = (int) (degrees / 51.42);
             System.out.println("Category: " + category);
 
             // Make the system wait for 3 seconds

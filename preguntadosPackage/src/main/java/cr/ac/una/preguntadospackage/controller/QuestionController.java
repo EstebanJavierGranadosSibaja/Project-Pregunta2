@@ -89,6 +89,11 @@ public class QuestionController extends Controller implements Initializable {
 
                 lblCategory.setText("Arte");
                 break;
+
+            case 6:
+
+                lblCategory.setText("Crown");
+                break;
         }
     }
 
