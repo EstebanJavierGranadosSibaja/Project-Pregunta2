@@ -83,6 +83,7 @@ public class FlowController {
 
     public void goMain() {
         try {
+            this.mainStage.setResizable(false);
             this.mainStage.setScene(new Scene(FXMLLoader.load(App.class.getResource("view/PrincipalView.fxml"), this.idioma)));
             MFXThemeManager.addOn(this.mainStage.getScene(), Themes.DEFAULT, Themes.LEGACY);
             this.mainStage.show();
@@ -145,6 +146,12 @@ public class FlowController {
         // LOGO <><><><><><><><><><><><><><><><><><><><><>
         //stage.getIcons().add(new Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
         stage.setTitle(controller.getNombreVista());
+
+
+        // Disable the window resizing
+        stage.setResizable(false);
+
+
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -165,6 +172,11 @@ public class FlowController {
         Stage stage = new Stage();
         // LOGO <><><><><><><><><><><><><><><><><><><><><>
         //stage.getIcons().add(new Image("cr/ac/una/unaplanillaj21/resources/LogoUNArojo.png"));
+
+        // Disable the window resizing
+        stage.setResizable(resizable);
+
+
         stage.setTitle(controller.getNombreVista());
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {

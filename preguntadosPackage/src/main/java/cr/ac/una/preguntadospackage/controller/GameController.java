@@ -25,6 +25,8 @@ import static java.time.Duration.*;
  */
 public class GameController extends Controller implements Initializable {
 
+    Boolean hasSpinnerBeenClicked = false;
+
     @FXML
     private ImageView imgSpinner;
 
@@ -43,6 +45,16 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSpinner(MouseEvent event) {
+
+        if (hasSpinnerBeenClicked) {
+            return;
+        }
+
+        hasSpinnerBeenClicked = true;
+
+        // if already clicked disable the abilit to click again
+
+
         System.out.println("Spinner clicked");
 
         // Reset the rotation of the image to its original position
@@ -88,6 +100,7 @@ public class GameController extends Controller implements Initializable {
             questionController.setCategoryTheme(category);
 
             FlowController.getInstance().goView("QuestionView");
+
         });
     }
     
