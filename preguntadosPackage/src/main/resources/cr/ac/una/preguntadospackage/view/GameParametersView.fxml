@@ -5,6 +5,7 @@
 <?import io.github.palexdev.materialfx.controls.MFXCircleToggleNode?>
 <?import io.github.palexdev.materialfx.controls.MFXSpinner?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -34,10 +35,11 @@
                         <MFXCircleToggleNode fx:id="toggleCritical" prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
                      </children>
                   </HBox>
+                  <Spinner fx:id="nonMFXspinner" />
                   <HBox prefHeight="54.0" prefWidth="379.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="163.0" text="NUMERO DE JUGADORES" />
-                        <MFXSpinner fx:id="spinnerPlayers" prefHeight="41.0" prefWidth="164.0" />
+                        <MFXSpinner fx:id="spinnerPlayers" editable="true" prefHeight="41.0" prefWidth="164.0" />
                      </children>
                   </HBox>
                   <HBox prefHeight="54.0" prefWidth="379.0">

@@ -55,48 +55,56 @@ public class QuestionController extends Controller implements Initializable {
 
                 // TODO: Configure the buttons to show the answers
                 // and set the correct answer to the button
-                lblCategory.setText("Geografía");
+
+                lblCategory.setText("CIENCIA");
+
                 break;
             case 1:
+                lblCategory.setText("GEOGRAFIA");
 
 
 
 
 
-                lblCategory.setText("Ciencia");
                 break;
             case 2:
 
+                lblCategory.setText("CORONA");
 
 
 
-                lblCategory.setText("Historia");
                 break;
             case 3:
 
+                lblCategory.setText("ENTRETENIMIENTO");
 
 
 
-                lblCategory.setText("Deporte");
                 break;
             case 4:
 
+                lblCategory.setText("ARTE");
 
 
 
-                lblCategory.setText("Arte");
+
+
                 break;
             case 5:
 
+                lblCategory.setText("DEPORTE");
 
 
 
-                lblCategory.setText("Entretenimiento");
+
+
                 break;
 
             case 6:
 
-                lblCategory.setText("Crown");
+                lblCategory.setText("HISTORIA");
+
+
                 break;
         }
     }
@@ -106,28 +114,28 @@ public class QuestionController extends Controller implements Initializable {
     public void onActionRespuesta4(ActionEvent actionEvent) {
         // Debug message
         System.out.println("Respuesta 4");
-        gameController.hasSpinnerBeenClicked = false;
+
     }
 
     @FXML
     public void onActionRespuesta3(ActionEvent actionEvent) {
         // Debug message
         System.out.println("Respuesta 3");
-        gameController.hasSpinnerBeenClicked = false;
+
     }
 
     @FXML
     public void onActionRespuesta2(ActionEvent actionEvent) {
         // Debug message
         System.out.println("Respuesta 2");
-        gameController.hasSpinnerBeenClicked = false;
+
     }
 
     @FXML
     public void onActionRespuesta1(ActionEvent actionEvent) {
         // Debug message
         System.out.println("Respuesta 1 - \n>>>>>>>DEBUG: Return to the main menu and consider it as a correct answer");
-        gameController.hasSpinnerBeenClicked = false;
+
         // debug return to the main menu
         FlowController.getInstance().goView("GameView");
     }

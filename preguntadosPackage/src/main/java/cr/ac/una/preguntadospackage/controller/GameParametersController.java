@@ -8,13 +8,17 @@ import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Flow;
 
 import io.github.palexdev.materialfx.controls.MFXCircleToggleNode;
 import io.github.palexdev.materialfx.controls.MFXSpinner;
+import javafx.beans.property.ReadOnlyFloatWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ToggleGroup;
 
 /**
@@ -42,6 +46,8 @@ public class GameParametersController extends Controller implements Initializabl
     private MFXSpinner spinnerPlayers;
     @FXML
     private MFXCircleToggleNode toggleEasy;
+    @FXML
+    private Spinner nonMFXspinner;
 
     /**
      * Initializes the controller class.
@@ -49,6 +55,9 @@ public class GameParametersController extends Controller implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // start the spinner with 1 player
+        nonMFXspinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 1));
+
+
 
 
     }    
@@ -64,7 +73,11 @@ public class GameParametersController extends Controller implements Initializabl
         // are correctly filled
         
         // Then configure the main player + the secondary local players
-        
+
+        // create an instance of the game controller and pass the parameters
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+        gameController.setupPlayerCount((int) nonMFXspinner.getValue(), 1);
+
         FlowController.getInstance().goView("GameView");
     }
 
