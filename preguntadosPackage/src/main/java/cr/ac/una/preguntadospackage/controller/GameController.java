@@ -5,10 +5,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import javafx.animation.RotateTransition;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 
 public class GameController extends Controller implements Initializable {
@@ -16,8 +19,9 @@ public class GameController extends Controller implements Initializable {
     Boolean hasSpinnerBeenClicked = false;
     ArrayList<Integer> activePlayersList = new ArrayList<>();
     @FXML private HBox hboxInventory2, hboxInventory1, hboxInventory4, hboxInventory3, hboxInventory6, hboxInventory5;
-    @FXML private ImageView imgSportShadow, imgHistory, imgScience, imgArtShadow, imgEntertainment, imgScienceShadow, imgCrownShadow, imgEntertainmentShadow, imgHistoryShadow, imgGeographyShadow, imgArt, imgSport, imgGeography, imgCrown, imgPawnRedSlot4, imgPawnRedSlot2, imgPawnRedSlot3, imgPawnRedSlot1, imgPawnPurpleSlot2, imgPawnPurpleSlot1, imgPawnOrangeSlot4, imgPawnPurpleSlot4, imgPawnOrangeSlot3, imgPawnPurpleSlot3, imgPawnOrangeSlot2, imgPawnOrangeSlot1, imgPawnGreenSlot1, imgPawnGreenSlot3, imgPawnGreenSlot2, imgPawnGreenSlot4;
-    @FXML private ImageView imgSpinner;
+    @FXML private ImageView imgSportShadow, imgHistory, imgScience, imgArtShadow, imgEntertainment, imgScienceShadow, imgCrownShadow, imgEntertainmentShadow, imgHistoryShadow, imgGeographyShadow, imgArt, imgSport, imgGeography, imgCrown, imgPawnRedSlot4, imgPawnRedSlot2, imgPawnRedSlot3, imgPawnRedSlot1, imgPawnPurpleSlot2, imgPawnPurpleSlot1, imgPawnOrangeSlot4, imgPawnPurpleSlot4, imgPawnOrangeSlot3, imgPawnPurpleSlot3, imgPawnOrangeSlot2, imgPawnOrangeSlot1, imgPawnGreenSlot1, imgPawnGreenSlot3, imgPawnGreenSlot2, imgPawnGreenSlot4, imgSpinner, imgGreenPawnSelection, imgPurplePawnSelection, imgDisabledGreenPawn, imgDisabledRedPawn, imgDisabledOrangePawn, imgOrangePawnSelection, imgRedPawnSelection, imgDisabledPurplePawn;
+    @FXML private Label lblPlayerCurrentlySelecting;
+    @FXML private AnchorPane apSelectionScreen;
 
     public void setupPlayerCount(int playerCount, int helpAssistanceLevel) {
         switch(playerCount) {
@@ -27,6 +31,8 @@ public class GameController extends Controller implements Initializable {
             case 5: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory3.setVisible(true); hboxInventory4.setVisible(true); hboxInventory2.setVisible(true); break;
             case 6: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory3.setVisible(true); hboxInventory4.setVisible(true); hboxInventory5.setVisible(true); hboxInventory2.setVisible(true); break;
         }
+        disableNonAvaiblePawns(playerCount);
+        apSelectionScreen.setVisible(false);
     }
 
     @Override
@@ -37,6 +43,13 @@ public class GameController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+    }
+
+    public void disableNonAvaiblePawns(int playerCount) {
+        imgDisabledGreenPawn.setVisible(false);
+        imgDisabledOrangePawn.setVisible(false);
+        imgDisabledPurplePawn.setVisible(false);
+        imgDisabledRedPawn.setVisible(false);
     }
 
     public void playCategoryAnimation(int category) {
@@ -83,5 +96,25 @@ public class GameController extends Controller implements Initializable {
             hasSpinnerBeenClicked = false;
             hideCategoryAnimation();
         });
+    }
+
+    @FXML
+    public void onActionGreenPawnSelected(Event event) {
+        System.out.println("Green pawn selected");
+    }
+
+    @FXML
+    public void onActionOrangePawnSelected(Event event) {
+        System.out.println("Orange pawn selected");
+    }
+
+    @FXML
+    public void onActionPurplePawnSelected(Event event) {
+        System.out.println("Purple pawn selected");
+    }
+
+    @FXML
+    public void onActionRedPawnSelected(Event event) {
+        System.out.println("Red pawn selected");
     }
 }

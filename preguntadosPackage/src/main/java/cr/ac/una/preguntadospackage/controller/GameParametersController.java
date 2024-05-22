@@ -55,7 +55,7 @@ public class GameParametersController extends Controller implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // start the spinner with 1 player
-        nonMFXspinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 6, 1));
+        nonMFXspinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 6, 2));
 
 
 
