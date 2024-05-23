@@ -109,16 +109,25 @@ public class QuestionController extends Controller implements Initializable {
         }
     }
 
+    private void calculateAnswerResult(int questionNumber){
+        // TODO: Add the logic to check if the given question by the DB is correct
+
+        // for now just asume is correct and thats it
+        // TODO: make this more simple and non-parameter like
+        gameController.calculateNextPawnMovement(gameController.currentPlayer);
+    }
+
 
     @FXML
     public void onActionRespuesta4(ActionEvent actionEvent) {
-        // Debug message
+        calculateAnswerResult(4);
         System.out.println("Respuesta 4");
 
     }
 
     @FXML
     public void onActionRespuesta3(ActionEvent actionEvent) {
+        calculateAnswerResult(3);
         // Debug message
         System.out.println("Respuesta 3");
 
@@ -126,6 +135,7 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionRespuesta2(ActionEvent actionEvent) {
+        calculateAnswerResult(2);
         // Debug message
         System.out.println("Respuesta 2");
 
@@ -133,6 +143,7 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionRespuesta1(ActionEvent actionEvent) {
+        calculateAnswerResult(1);
         // Debug message
         System.out.println("Respuesta 1 - \n>>>>>>>DEBUG: Return to the main menu and consider it as a correct answer");
 

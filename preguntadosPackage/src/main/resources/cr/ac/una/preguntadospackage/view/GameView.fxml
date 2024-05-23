@@ -295,7 +295,7 @@
                            </effect>
                         </ImageView>
                         <Separator layoutX="40.0" layoutY="40.0" prefWidth="200.0" visible="false" />
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="11.0" layoutY="141.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;" visible="false">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="11.0" layoutY="141.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
                                  <children>
@@ -369,7 +369,7 @@
                                     </StackPane>
                                  </children>
                               </HBox>
-                              <Label fx:id="lblPlayerCurrentlySelecting" layoutX="200.0" layoutY="53.0" prefHeight="29.0" prefWidth="200.0" text="JUGADOR NUMERO" />
+                              <Label fx:id="lblPlayerCurrentlySelecting" layoutX="164.0" layoutY="20.0" prefHeight="62.0" prefWidth="308.0" text="JUGADOR NUMERO" />
                            </children>
                         </AnchorPane>
                      </children>

@@ -9,10 +9,31 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+
+    /*
+
+    TODO:
+
+        The game currently only support less than 4 players due to the lack of assets
+
+        The selector screen should be checked in the situation of loading the game from the DB.
+
+        General functionality bugcheck.
+
+
+     */
+
+
+
+
+
+
+
 
 public class GameController extends Controller implements Initializable {
 
@@ -23,9 +44,18 @@ public class GameController extends Controller implements Initializable {
     @FXML private Label lblPlayerCurrentlySelecting;
     @FXML private AnchorPane apSelectionScreen;
 
+    int playercount = 2;
+    int selectedPawns = 0;
+
+    int currentSelectingPlayer = 1;
+
+    // TODO: the selected player should be random
+    int currentPlayer = 1;
+
     // this method takes care of setting up the player count and the help assistance level
     // TODO: implement the help assistance level and initialize the inventory slots
     public void setupPlayerCount(int playerCount, int helpAssistanceLevel) {
+        this.playercount = playerCount;
         switch(playerCount) {
             case 2: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); break;
             case 3: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory4.setVisible(true); break;
@@ -37,11 +67,14 @@ public class GameController extends Controller implements Initializable {
         disableNonAvaiblePawns(playerCount);
 
         // TODO: for now just disable the Anchor Pane that shows the player selection screen
-        apSelectionScreen.setVisible(false);
+        //apSelectionScreen.setVisible(false);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        // call the pawnHasBeenSelected method to fix the load from DB selecting screen skip
+        pawnHasBeenSelected();
 
         // hide the non avaible inventory slots (the ones avaible will show up in the setupPlayerCount method)
         hideNonAvaibleInventorySlots();
@@ -57,6 +90,188 @@ public class GameController extends Controller implements Initializable {
 
     @Override
     public void initialize() {
+    }
+
+    public void calculateNextPawnMovement(int playerNumber){
+
+        // TODO: get the user pawn color to analize its current position
+        // asume its already stored in the next variable:
+        String pawnColorOfTheUser = "orange"; // the color should be based on the selected one
+        int pawnPositionOfTheUser = 1; // asume the pawn position was getted from the user
+        System.out.println("we are here");
+        switch (pawnColorOfTheUser){
+            case "red": {
+                System.out.println("ENTERED red");
+                // the pawn show be "moved" here
+                if(pawnPositionOfTheUser == 1){
+                    System.out.println("ENTERED RED POSITION 1");
+                    imgPawnRedSlot1.setVisible(false);
+                    imgPawnRedSlot2.setVisible(true);
+                    imgPawnRedSlot3.setVisible(false);
+                    imgPawnRedSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 2){
+                    imgPawnRedSlot1.setVisible(false);
+                    imgPawnRedSlot2.setVisible(false);
+                    imgPawnRedSlot3.setVisible(true);
+                    imgPawnRedSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 3){
+                    imgPawnRedSlot1.setVisible(false);
+                    imgPawnRedSlot2.setVisible(false);
+                    imgPawnRedSlot3.setVisible(false);
+                    imgPawnRedSlot4.setVisible(true);
+                } else {
+                    // by this point the user is completly dead or is going to win
+                    // TODO: calculate the thing when the user lands on the fourth point
+                }
+                break;
+            }
+            case "purple": {
+                // the pawn show be "moved" here
+                if(pawnPositionOfTheUser == 1){
+                    imgPawnPurpleSlot1.setVisible(false);
+                    imgPawnPurpleSlot2.setVisible(true);
+                    imgPawnPurpleSlot3.setVisible(false);
+                    imgPawnPurpleSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 2){
+                    imgPawnPurpleSlot1.setVisible(false);
+                    imgPawnPurpleSlot2.setVisible(false);
+                    imgPawnPurpleSlot3.setVisible(true);
+                    imgPawnPurpleSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 3){
+                    imgPawnPurpleSlot1.setVisible(false);
+                    imgPawnPurpleSlot2.setVisible(false);
+                    imgPawnPurpleSlot3.setVisible(false);
+                    imgPawnPurpleSlot4.setVisible(true);
+                } else {
+                    // by this point the user is completly dead or is going to win
+                    // TODO: calculate the thing when the user lands on the fourth point
+                }
+                break;
+            }
+            case "green": {
+                // the pawn show be "moved" here
+                if(pawnPositionOfTheUser == 1){
+                    imgPawnGreenSlot1.setVisible(false);
+                    imgPawnGreenSlot2.setVisible(true);
+                    imgPawnGreenSlot3.setVisible(false);
+                    imgPawnGreenSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 2){
+                    imgPawnGreenSlot1.setVisible(false);
+                    imgPawnGreenSlot2.setVisible(false);
+                    imgPawnGreenSlot3.setVisible(true);
+                    imgPawnGreenSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 3){
+                    imgPawnGreenSlot1.setVisible(false);
+                    imgPawnGreenSlot2.setVisible(false);
+                    imgPawnGreenSlot3.setVisible(false);
+                    imgPawnGreenSlot4.setVisible(true);
+                } else {
+                    // by this point the user is completly dead or is going to win
+                    // TODO: calculate the thing when the user lands on the fourth point
+                }
+                break;
+            }
+            case "orange": {
+                // the pawn show be "moved" here
+                if(pawnPositionOfTheUser == 1){
+                    imgPawnOrangeSlot1.setVisible(false);
+                    imgPawnOrangeSlot2.setVisible(true);
+                    imgPawnOrangeSlot3.setVisible(false);
+                    imgPawnOrangeSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 2){
+                    imgPawnOrangeSlot1.setVisible(false);
+                    imgPawnOrangeSlot2.setVisible(false);
+                    imgPawnOrangeSlot3.setVisible(true);
+                    imgPawnOrangeSlot4.setVisible(false);
+                }
+                else if(pawnPositionOfTheUser == 3){
+                    imgPawnOrangeSlot1.setVisible(false);
+                    imgPawnOrangeSlot2.setVisible(false);
+                    imgPawnOrangeSlot3.setVisible(false);
+                    imgPawnOrangeSlot4.setVisible(true);
+                } else {
+                    // by this point the user is completly dead or is going to win
+                    // TODO: calculate the thing when the user lands on the fourth point
+                }
+            }
+
+        }
+
+
+    }
+
+    private Image createImageWithCorrespondingCategory(String category){
+        // TODO: create the image based on its category by getting it from the resources
+        switch (category){
+            case "arte": {
+
+                break;
+            }
+            case "historia": {
+
+                break;
+            }
+            case "deporte": {
+
+                break;
+            }
+            case "geografia": {
+
+                break;
+            }
+        }
+        return null;
+    }
+
+    public void addCorrepondingCoinToPlayer(String category, int inventoryNumber){
+        // get the inventory number of the user here
+        // its this way because of the relay system we use to give the adaptive ilution to the user
+        switch(category){
+            case "arte": {
+                if(inventoryNumber == 1){
+                    // create the image here and save it into the corresponding inventory
+                    Image coin = createImageWithCorrespondingCategory("arte");
+                }
+                else if(inventoryNumber == 2){
+
+                }
+                else if(inventoryNumber == 3){
+
+                }
+                else if(inventoryNumber == 4){
+
+                }
+                else if(inventoryNumber == 5){
+
+                }
+                else if(inventoryNumber == 6) {
+
+                }
+            }
+            case "historia": {
+
+                break;
+            }
+            case "deporte": {
+
+                break;
+            }
+            case "geografia": {
+
+                break;
+            }
+
+
+
+
+        }
     }
 
     private void hideNonAvaibleInventorySlots() {
@@ -133,6 +348,7 @@ public class GameController extends Controller implements Initializable {
             // set the category theme
             questionController.setCategoryTheme(category);
 
+
             // go to the question view (it already has the question theme set)
             FlowController.getInstance().goView("QuestionView");
 
@@ -144,27 +360,101 @@ public class GameController extends Controller implements Initializable {
         });
     }
 
+    private void pawnHasBeenSelected(){
+        // if the selected pawns are equal to the player count then hide the anchor pane selector screen
+        if(selectedPawns == playercount){
+            apSelectionScreen.setVisible(false);
+        }
+
+        // to improve the UI make the current player number be shown on the label
+        lblPlayerCurrentlySelecting.setText("CURRENT SELECTING PLAYER:" + currentSelectingPlayer);
+    }
+
     // this method takes care of showing the player that is currently selecting a pawn
     @FXML
     public void onActionGreenPawnSelected(Event event) {
         System.out.println("Green pawn selected");
+        // asign the correponding pawn to the user here
+        // TODO: assign the pawn to the user object
+
+        // increase the selected pawns amount
+        selectedPawns++;
+
+        // increase the count of the current selecting player
+        currentSelectingPlayer++;
+
+        // check if we are finished
+        pawnHasBeenSelected();
+
+        // disable the green selector pawn and enable the non-avaible black pawn to show it as disabled
+        imgGreenPawnSelection.setVisible(false);
+        imgDisabledGreenPawn.setVisible(true);
     }
 
     // this method takes care of showing the player that is currently selecting a pawn
     @FXML
     public void onActionOrangePawnSelected(Event event) {
         System.out.println("Orange pawn selected");
+
+        // asign the correponding pawn to the user here
+        // TODO: assign the pawn to the user object
+
+        // increase the selected pawns amount
+        selectedPawns++;
+
+        // increase the count of the current selecting player
+        currentSelectingPlayer++;
+
+        // check if we are finished
+        pawnHasBeenSelected();
+
+
+        // disable the orange selector pawn and enable the non-avaible black pawn to show it as disabled
+        imgOrangePawnSelection.setVisible(false);
+        imgDisabledOrangePawn.setVisible(true);
     }
 
     // this method takes care of showing the player that is currently selecting a pawn
     @FXML
     public void onActionPurplePawnSelected(Event event) {
         System.out.println("Purple pawn selected");
+
+        // asign the correponding pawn to the user here
+        // TODO: assign the pawn to the user object
+
+        // increase the selected pawns amount
+        selectedPawns++;
+
+        // increase the count of the current selecting player
+        currentSelectingPlayer++;
+
+        // check if we are finished
+        pawnHasBeenSelected();
+
+        // disable the green selector pawn and enable the non-avaible black pawn to show it as disabled
+        imgPurplePawnSelection.setVisible(false);
+        imgDisabledPurplePawn.setVisible(true);
     }
 
     // this method takes care of showing the player that is currently selecting a pawn
     @FXML
     public void onActionRedPawnSelected(Event event) {
         System.out.println("Red pawn selected");
+
+        // asign the correponding pawn to the user here
+        // TODO: assign the pawn to the user object
+
+        // increase the selected pawns amount
+        selectedPawns++;
+
+        // increase the count of the current selecting player
+        currentSelectingPlayer++;
+
+        // check if we are finished
+        pawnHasBeenSelected();
+
+        // disable the green selector pawn and enable the non-avaible black pawn to show it as disabled
+        imgRedPawnSelection.setVisible(false);
+        imgDisabledRedPawn.setVisible(true);
     }
 }
