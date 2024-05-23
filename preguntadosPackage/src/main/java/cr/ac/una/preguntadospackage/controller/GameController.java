@@ -47,6 +47,12 @@ public class GameController extends Controller implements Initializable {
         hideNonAvaibleInventorySlots();
         // hide the category animations and its shadows
         hideCategoryAnimation();
+        // for now hide all the pawns and just show the number 1 of each color
+        imgPawnGreenSlot1.setVisible(true); imgPawnOrangeSlot1.setVisible(true); imgPawnPurpleSlot1.setVisible(true); imgPawnRedSlot1.setVisible(true);
+        imgPawnGreenSlot2.setVisible(false); imgPawnOrangeSlot2.setVisible(false); imgPawnPurpleSlot2.setVisible(false); imgPawnRedSlot2.setVisible(false);
+        imgPawnGreenSlot3.setVisible(false); imgPawnOrangeSlot3.setVisible(false); imgPawnPurpleSlot3.setVisible(false); imgPawnRedSlot3.setVisible(false);
+        imgPawnGreenSlot4.setVisible(false); imgPawnOrangeSlot4.setVisible(false); imgPawnPurpleSlot4.setVisible(false); imgPawnRedSlot4.setVisible(false);
+
     }
 
     @Override
