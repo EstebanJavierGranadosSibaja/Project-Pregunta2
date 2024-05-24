@@ -22,10 +22,7 @@ import jakarta.persistence.Version;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
-/**
- *
- * @author esteb
- */
+
 @Entity
 @Table (name = "preg_categorias")
 @NamedQueries({
