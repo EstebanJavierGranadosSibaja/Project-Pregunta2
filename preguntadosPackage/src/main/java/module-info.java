@@ -4,9 +4,9 @@ module cr.ac.una.preguntadospackage {
     requires javafx.fxml;
     requires javafx.graphics;
     requires java.logging;
-    
     requires MaterialFX;
     requires java.base;
+    requires jakarta.persistence;
 
     opens cr.ac.una.preguntadospackage to javafx.fxml;
     opens cr.ac.una.preguntadospackage.controller to javafx.fxml;
