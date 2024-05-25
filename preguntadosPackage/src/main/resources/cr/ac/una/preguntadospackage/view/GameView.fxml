@@ -31,7 +31,7 @@
                         <Image url="@../resources/RainbowCircle.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="661.0" fitWidth="661.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="661.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/PlayingBorder.png" />
                      </image>
@@ -48,6 +48,14 @@
                      </effect>
                   </ImageView>
                   <Separator prefWidth="200.0" visible="false" />
+                  <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/Roullete.png" />
+                     </image>
+                     <effect>
+                        <Shadow height="30.0" radius="14.5" width="30.0" />
+                     </effect>
+                  </ImageView>
                   <ImageView fx:id="imgSpinner" fitHeight="323.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
                      <image>
                         <Image url="@../resources/Roullete.png" />
@@ -157,6 +165,9 @@
                            <image>
                               <Image url="@../resources/RainbowCircle.png" />
                            </image>
+                           <effect>
+                              <Shadow height="26.0" radius="12.5" width="26.0" />
+                           </effect>
                         </ImageView>
                         <ImageView fitHeight="100.0" fitWidth="132.0" layoutX="394.0" layoutY="295.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -318,11 +329,11 @@
                               <Image url="@../resources/OrangeCoin.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="11.0" layoutY="141.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;" visible="false">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="114.0" layoutY="190.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;">
                            <children>
                               <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
                                  <children>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                    <StackPane prefHeight="90.0" prefWidth="0.0">
                                        <children>
                                           <ImageView fx:id="imgGreenPawnSelection" fitHeight="90.0" fitWidth="102.0" onMouseClicked="#onActionGreenPawnSelected" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -339,7 +350,7 @@
                                           </ImageView>
                                        </children>
                                     </StackPane>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                    <StackPane prefHeight="90.0" prefWidth="32.0">
                                        <children>
                                           <ImageView fx:id="imgRedPawnSelection" fitHeight="90.0" fitWidth="102.0" onMouseClicked="#onActionRedPawnSelected" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -356,7 +367,7 @@
                                           </ImageView>
                                        </children>
                                     </StackPane>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                    <StackPane prefHeight="90.0" prefWidth="55.0">
                                        <children>
                                           <ImageView fx:id="imgOrangePawnSelection" fitHeight="90.0" fitWidth="102.0" onMouseClicked="#onActionOrangePawnSelected" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -373,7 +384,7 @@
                                           </ImageView>
                                        </children>
                                     </StackPane>
-                                    <StackPane prefHeight="150.0" prefWidth="200.0">
+                                    <StackPane prefHeight="90.0" prefWidth="26.0">
                                        <children>
                                           <ImageView fx:id="imgPurplePawnSelection" fitHeight="90.0" fitWidth="102.0" onMouseClicked="#onActionPurplePawnSelected" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -390,16 +401,45 @@
                                           </ImageView>
                                        </children>
                                     </StackPane>
+                                    <StackPane prefHeight="90.0" prefWidth="21.0">
+                                       <children>
+                                          <ImageView fx:id="imgPinkPawnSelection" fitHeight="90.0" fitWidth="102.0" onMouseClicked="#onActionPinkPawnSelected" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../resources/PawnPink.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="imgDisabledPinkPawn" fitHeight="90.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../resources/PawnGreen.png" />
+                                             </image>
+                                             <effect>
+                                                <Shadow height="16.61" radius="7.4375" width="15.14" />
+                                             </effect>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
+                                    <StackPane prefHeight="90.0" prefWidth="21.0">
+                                       <children>
+                                          <ImageView fx:id="imgBluePawnSelection" fitHeight="90.0" fitWidth="102.0" onMouseClicked="#onActionBluePawnSelected" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../resources/PawnBlue.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="imgDisabledBluePawn" fitHeight="90.0" fitWidth="102.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../resources/PawnGreen.png" />
+                                             </image>
+                                             <effect>
+                                                <Shadow height="16.61" radius="7.4375" width="15.14" />
+                                             </effect>
+                                          </ImageView>
+                                       </children>
+                                    </StackPane>
                                  </children>
                               </HBox>
                               <Label fx:id="lblPlayerCurrentlySelecting" layoutX="164.0" layoutY="20.0" prefHeight="62.0" prefWidth="308.0" text="JUGADOR NUMERO" />
                            </children>
                         </AnchorPane>
-                        <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="434.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/PRUEBA%20DE%20QUE%20LA%20CAMARA%20SERVIA.jpg" />
-                           </image>
-                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>

@@ -67,6 +67,14 @@ public class GameController extends Controller implements Initializable {
     private ImageView imgPawnPinkSlot3;
     @FXML
     private ImageView imgPawnPinkSlot4;
+    @FXML
+    private ImageView imgDisabledPinkPawn;
+    @FXML
+    private ImageView imgBluePawnSelection;
+    @FXML
+    private ImageView imgPinkPawnSelection;
+    @FXML
+    private ImageView imgDisabledBluePawn;
 
     // this method takes care of setting up the player count and the help assistance level
     // TODO: implement the help assistance level and initialize the inventory slots
@@ -297,6 +305,8 @@ public class GameController extends Controller implements Initializable {
         imgDisabledOrangePawn.setVisible(false);
         imgDisabledPurplePawn.setVisible(false);
         imgDisabledRedPawn.setVisible(false);
+        imgDisabledPinkPawn.setVisible(false);
+        imgDisabledBluePawn.setVisible(false);
     }
 
     // this method takes care of showing the player that is currently selecting a pawn
@@ -469,5 +479,45 @@ public class GameController extends Controller implements Initializable {
         // disable the green selector pawn and enable the non-avaible black pawn to show it as disabled
         imgRedPawnSelection.setVisible(false);
         imgDisabledRedPawn.setVisible(true);
+    }
+
+    @FXML
+    public void onActionPinkPawnSelected(Event event) {
+        System.out.println("Pink pawn selected");
+
+        // asign the correponding pawn to the user here
+
+        // increase the selected pawns amount
+        selectedPawns++;
+
+        // increase the count of the current selecting player
+        currentSelectingPlayer++;
+
+        // check if we are finished
+        pawnHasBeenSelected();
+
+        // disable the pink selector pawn and enable the non-avaible black pawn to show it as disabled
+        imgPinkPawnSelection.setVisible(false);
+        imgDisabledPinkPawn.setVisible(true);
+    }
+
+    @FXML
+    public void onActionBluePawnSelected(Event event) {
+        System.out.println("Blue pawn selected");
+
+        // asign the correponding pawn to the user here
+
+        // increase the selected pawns amount
+        selectedPawns++;
+
+        // increase the count of the current selecting player
+        currentSelectingPlayer++;
+
+        // check if we are finished
+        pawnHasBeenSelected();
+
+        // disable the blue selector pawn and enable the non-avaible black pawn to show it as disabled
+        imgBluePawnSelection.setVisible(false);
+        imgDisabledBluePawn.setVisible(true);
     }
 }
