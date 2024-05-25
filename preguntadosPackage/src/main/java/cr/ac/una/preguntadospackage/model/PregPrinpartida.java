@@ -9,51 +9,72 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Id;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 
 /**
- *
- * @author esteb
+ * Author: esteb
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "preg_prinpartida")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.pparId = :pparId"),
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findByPparModoJuego", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoJuego = :pparModoJuego"),
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findByPparTiempoTotal", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTotal = :pparTiempoTotal"),
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findByPparTiempoTranscurrido", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTranscurrido = :pparTiempoTranscurrido"),
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findByPparCantidadRondas", query = "SELECT p FROM PregPrinpartida p WHERE p.pparCantidadRondas = :pparCantidadRondas"),
-    @javax.persistence.NamedQuery(name = "PregPrinpartida.findByPparEstadoPartida", query = "SELECT p FROM PregPrinpartida p WHERE p.pparEstadoPartida = :pparEstadoPartida")})
+@Entity
+@Table(name = "preg_prinpartida")
+@NamedQueries({
+        @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
+        @NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.pparId = :pparId"),
+        @NamedQuery(name = "PregPrinpartida.findByPparModoJuego", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoJuego = :pparModoJuego"),
+        @NamedQuery(name = "PregPrinpartida.findByPparTiempoTotal", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTotal = :pparTiempoTotal"),
+        @NamedQuery(name = "PregPrinpartida.findByPparTiempoTranscurrido", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTranscurrido = :pparTiempoTranscurrido"),
+        @NamedQuery(name = "PregPrinpartida.findByPparCantidadRondas", query = "SELECT p FROM PregPrinpartida p WHERE p.pparCantidadRondas = :pparCantidadRondas"),
+        @NamedQuery(name = "PregPrinpartida.findByPparEstadoPartida", query = "SELECT p FROM PregPrinpartida p WHERE p.pparEstadoPartida = :pparEstadoPartida")
+})
 public class PregPrinpartida implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "ppar_id")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "ppar_id")
     private BigDecimal pparId;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "ppar_modo_juego")
+
+    @Basic(optional = false)
+    @Column(name = "ppar_modo_juego")
     private Character pparModoJuego;
-    @javax.persistence.Column(name = "ppar_tiempo_total")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.TIMESTAMP)
+
+    @Column(name = "ppar_tiempo_total")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date pparTiempoTotal;
-    @javax.persistence.Column(name = "ppar_tiempo_transcurrido")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.TIMESTAMP)
+
+    @Column(name = "ppar_tiempo_transcurrido")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date pparTiempoTranscurrido;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "ppar_cantidad_rondas")
+
+    @Basic(optional = false)
+    @Column(name = "ppar_cantidad_rondas")
     private BigInteger pparCantidadRondas;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "ppar_estado_partida")
+
+    @Basic(optional = false)
+    @Column(name = "ppar_estado_partida")
     private Character pparEstadoPartida;
-    @javax.persistence.JoinTable(name = "preg_interpparpre", joinColumns = {
-        @javax.persistence.JoinColumn(name = "ppar_id", referencedColumnName = "ppar_id")}, inverseJoinColumns = {
-        @javax.persistence.JoinColumn(name = "pre_id", referencedColumnName = "pre_id")})
-    @javax.persistence.ManyToMany
+
+    @JoinTable(name = "preg_interpparpre", joinColumns = {
+            @JoinColumn(name = "ppar_id", referencedColumnName = "ppar_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "pre_id", referencedColumnName = "pre_id")})
+    @ManyToMany
     private List<PregPreguntas> pregPreguntasList;
-    @javax.persistence.OneToMany(mappedBy = "pparId")
-    private List<PregJugpartidas> pregJugpartidasList;
+
+    // TODO: Check this @Esteban
+    //@OneToMany(mappedBy = "pparId")
+    //private List<PregJugpartidas> pregJugpartidasList;
 
     public PregPrinpartida() {
     }
@@ -125,13 +146,15 @@ public class PregPrinpartida implements Serializable {
         this.pregPreguntasList = pregPreguntasList;
     }
 
-    public List<PregJugpartidas> getPregJugpartidasList() {
-        return pregJugpartidasList;
-    }
+    // TODO: Check this @Esteban
+    //public List<PregJugpartidas> getPregJugpartidasList() {
+       // return pregJugpartidasList;
+    //}
 
-    public void setPregJugpartidasList(List<PregJugpartidas> pregJugpartidasList) {
-        this.pregJugpartidasList = pregJugpartidasList;
-    }
+    // TODO: Check this @Esteban
+    //public void setPregJugpartidasList(List<PregJugpartidas> pregJugpartidasList) {
+        //this.pregJugpartidasList = pregJugpartidasList;
+    //}
 
     @Override
     public int hashCode() {
@@ -157,5 +180,4 @@ public class PregPrinpartida implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregPrinpartida[ pparId=" + pparId + " ]";
     }
-    
 }

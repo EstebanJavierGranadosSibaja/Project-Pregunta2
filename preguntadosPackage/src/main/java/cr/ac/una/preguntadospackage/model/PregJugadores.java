@@ -1,43 +1,59 @@
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Id;
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
 /**
- *
- * @author esteb
+ * Author: esteb
  */
 @Entity
-@javax.persistence.Table(name = "preg_jugadores")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "PregJugadores.findAll", query = "SELECT p FROM PregJugadores p"),
-    @javax.persistence.NamedQuery(name = "PregJugadores.findByJugId", query = "SELECT p FROM PregJugadores p WHERE p.jugId = :jugId"),
-    @javax.persistence.NamedQuery(name = "PregJugadores.findByJugNombre", query = "SELECT p FROM PregJugadores p WHERE p.jugNombre = :jugNombre"),
-    @javax.persistence.NamedQuery(name = "PregJugadores.findByJugPartidasGanadas", query = "SELECT p FROM PregJugadores p WHERE p.jugPartidasGanadas = :jugPartidasGanadas")})
+@Table(name = "preg_jugadores")
+@NamedQueries({
+        @NamedQuery(name = "PregJugadores.findAll", query = "SELECT p FROM PregJugadores p"),
+        @NamedQuery(name = "PregJugadores.findByJugId", query = "SELECT p FROM PregJugadores p WHERE p.jugId = :jugId"),
+        @NamedQuery(name = "PregJugadores.findByJugNombre", query = "SELECT p FROM PregJugadores p WHERE p.jugNombre = :jugNombre"),
+        @NamedQuery(name = "PregJugadores.findByJugPartidasGanadas", query = "SELECT p FROM PregJugadores p WHERE p.jugPartidasGanadas = :jugPartidasGanadas")
+})
 public class PregJugadores implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jug_id")
+    @Basic(optional = false)
+    @Column(name = "jug_id")
     private BigDecimal jugId;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jug_nombre")
+
+    @Basic(optional = false)
+    @Column(name = "jug_nombre")
     private String jugNombre;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jug_partidas_ganadas")
+
+    @Basic(optional = false)
+    @Column(name = "jug_partidas_ganadas")
     private BigInteger jugPartidasGanadas;
-    @javax.persistence.JoinTable(name = "preg_interjugpre", joinColumns = {
-        @javax.persistence.JoinColumn(name = "jug_id", referencedColumnName = "jug_id")}, inverseJoinColumns = {
-        @javax.persistence.JoinColumn(name = "pre_id", referencedColumnName = "pre_id")})
-    @javax.persistence.ManyToMany
+
+    @JoinTable(name = "preg_interjugpre", joinColumns = {
+            @JoinColumn(name = "jug_id", referencedColumnName = "jug_id")}, inverseJoinColumns = {
+            @JoinColumn(name = "pre_id", referencedColumnName = "pre_id")})
+    @ManyToMany
     private List<PregPreguntas> pregPreguntasList;
-    @javax.persistence.OneToMany(mappedBy = "jugId")
-    private List<PregJugpartidas> pregJugpartidasList;
+
+
+    // TODO: Check this @Esteban
+    //@OneToMany(mappedBy = "jugId")
+    //private List<PregJugpartidas> pregJugpartidasList;
 
     public PregJugadores() {
     }
@@ -84,13 +100,15 @@ public class PregJugadores implements Serializable {
         this.pregPreguntasList = pregPreguntasList;
     }
 
-    public List<PregJugpartidas> getPregJugpartidasList() {
-        return pregJugpartidasList;
-    }
+    // TODO: Check this @Esteban
+    //public List<PregJugpartidas> getPregJugpartidasList() {
+        //return pregJugpartidasList;
+    //}
 
-    public void setPregJugpartidasList(List<PregJugpartidas> pregJugpartidasList) {
-        this.pregJugpartidasList = pregJugpartidasList;
-    }
+    // TODO: Check this @Esteban
+    //public void setPregJugpartidasList(List<PregJugpartidas> pregJugpartidasList) {
+        //this.pregJugpartidasList = pregJugpartidasList;
+    //}
 
     @Override
     public int hashCode() {
@@ -116,5 +134,4 @@ public class PregJugadores implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugadores[ jugId=" + jugId + " ]";
     }
-    
 }

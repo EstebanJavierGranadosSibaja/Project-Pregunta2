@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.SepiaTone?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,34 +14,41 @@
 
 <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #a094b3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <children>
-      <HBox alignment="CENTER" prefHeight="586.0" prefWidth="1260.0">
+      <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0">
          <children>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="586.0" prefWidth="255.0" spacing="150.0">
+            <StackPane prefHeight="668.0" prefWidth="888.0">
                <children>
-                  <HBox fx:id="hboxInventory1" alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8e74b5; -fx-background-radius: 40;">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 1" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="hboxInventory2" alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8e74b5; -fx-background-radius: 40;">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 2" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <StackPane prefHeight="541.0" prefWidth="630.0">
-               <children>
-                  <ImageView fitHeight="571.0" fitWidth="571.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="678.0" fitWidth="678.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/RainbowCircle.png" />
+                     </image>
+                     <effect>
+                        <Shadow height="30.0" radius="14.5" width="30.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="668.0" fitWidth="668.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/RainbowCircle.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="661.0" fitWidth="661.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../resources/PlayingBorder.png" />
+                     </image>
+                     <effect>
+                        <Bloom threshold="0.0" />
+                     </effect>
+                  </ImageView>
+                  <ImageView fitHeight="499.0" fitWidth="499.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/path1-5-1-9.png" />
                      </image>
                      <effect>
-                        <SepiaTone level="0.68" />
+                        <ColorAdjust brightness="-0.39" contrast="0.15" hue="-1.0" saturation="-1.0" />
                      </effect>
                   </ImageView>
                   <Separator prefWidth="200.0" visible="false" />
-                  <ImageView fx:id="imgSpinner" fitHeight="370.0" fitWidth="375.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
+                  <ImageView fx:id="imgSpinner" fitHeight="323.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
                      <image>
                         <Image url="@../resources/Roullete.png" />
                      </image>
@@ -144,158 +151,174 @@
                         <Image url="@../resources/Corona.png" />
                      </image>
                   </ImageView>
-                  <AnchorPane prefHeight="586.0" prefWidth="889.0">
+                  <AnchorPane prefHeight="638.0" prefWidth="822.0">
                      <children>
-                        <ImageView fitHeight="139.0" fitWidth="139.0" layoutX="261.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="94.0" fitWidth="98.0" layoutX="397.0" layoutY="298.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/pngwing.com(1).png" />
+                              <Image url="@../resources/RainbowCircle.png" />
                            </image>
-                           <effect>
-                              <Bloom threshold="0.0" />
-                           </effect>
                         </ImageView>
-                        <ImageView fitHeight="135.0" fitWidth="129.0" layoutX="266.0" layoutY="229.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="100.0" fitWidth="132.0" layoutX="394.0" layoutY="295.0" onMouseClicked="#onActionSpinner" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/pngwing.com(1).png" />
                            </image>
-                           <effect>
-                              <Bloom threshold="1.0" />
-                           </effect>
                         </ImageView>
                         <Separator prefWidth="200.0" visible="false" />
-                        <ImageView fx:id="imgPawnOrangeSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="200.0" layoutY="441.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnOrangeSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="336.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnOrange.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnOrangeSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="261.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnOrangeSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="382.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnOrange.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnOrangeSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="321.0" layoutY="464.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnOrangeSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="434.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnOrange.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnOrangeSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="372.0" layoutY="449.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnOrangeSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="484.0" layoutY="443.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnOrange.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
                         <Separator layoutX="10.0" layoutY="10.0" prefWidth="200.0" visible="false" />
-                        <ImageView fx:id="imgPawnGreenSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="74.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnGreenSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="219.0" layoutY="291.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnGreen.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnGreenSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="74.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnGreenSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="230.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnGreen.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnGreenSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="101.0" layoutY="369.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnGreenSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="254.0" layoutY="386.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnGreen.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnGreenSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="138.0" layoutY="413.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnGreenSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="288.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnGreen.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
                         <Separator layoutX="20.0" layoutY="20.0" prefWidth="200.0" visible="false" />
-                        <ImageView fx:id="imgPawnPurpleSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="160.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnPurpleSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="287.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnPurple.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnPurpleSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="121.0" layoutY="101.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnPurpleSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="253.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnPurple.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnPurpleSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="81.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnPurpleSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="234.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnPurple.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnPurpleSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="64.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnPurpleSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="220.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnPurple.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
                         <Separator layoutX="30.0" layoutY="30.0" prefWidth="200.0" visible="false" />
-                        <ImageView fx:id="imgPawnRedSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="378.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnRedSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="484.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnRed.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnRedSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="323.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnRedSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="438.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnRed.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnRedSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="273.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnRedSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="389.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnRed.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
-                        <ImageView fx:id="imgPawnRedSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="210.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgPawnRedSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="336.0" layoutY="91.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/PawnRed.png" />
                            </image>
-                           <effect>
-                              <Bloom />
-                           </effect>
                         </ImageView>
                         <Separator layoutX="40.0" layoutY="40.0" prefWidth="200.0" visible="false" />
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="11.0" layoutY="141.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;">
+                        <ImageView fx:id="imgPawnBlueSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="602.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnBlue.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPawnBlueSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="592.0" layoutY="194.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnBlue.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPawnBlueSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="568.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnBlue.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPawnBlueSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="526.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnBlue.png" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutX="50.0" layoutY="50.0" prefWidth="200.0" visible="false" />
+                        <ImageView fx:id="imgPawnPinkSlot1" fitHeight="100.0" fitWidth="80.0" layoutX="526.0" layoutY="423.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnPink.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPawnPinkSlot2" fitHeight="100.0" fitWidth="80.0" layoutX="568.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnPink.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPawnPinkSlot3" fitHeight="100.0" fitWidth="80.0" layoutX="592.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnPink.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgPawnPinkSlot4" fitHeight="100.0" fitWidth="80.0" layoutX="602.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PawnPink.png" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutX="60.0" layoutY="60.0" prefWidth="200.0" visible="false" />
+                        <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="150.0" layoutY="356.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/BlueCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="156.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PinkCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="173.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PinkCoin.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="-0.61" contrast="-0.59" saturation="-1.0" />
+                           </effect>
+                        </ImageView>
+                        <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="203.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/GreenCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="240.0" layoutY="533.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/OrangeCoin.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="11.0" layoutY="141.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;" visible="false">
                            <children>
                               <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
                                  <children>
@@ -372,38 +395,15 @@
                               <Label fx:id="lblPlayerCurrentlySelecting" layoutX="164.0" layoutY="20.0" prefHeight="62.0" prefWidth="308.0" text="JUGADOR NUMERO" />
                            </children>
                         </AnchorPane>
+                        <ImageView fitHeight="35.0" fitWidth="31.0" layoutX="434.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PRUEBA%20DE%20QUE%20LA%20CAMARA%20SERVIA.jpg" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
             </StackPane>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="586.0" prefWidth="255.0" spacing="150.0">
-               <children>
-                  <HBox fx:id="hboxInventory6" alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8e74b5; -fx-background-radius: 40;">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 6" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="hboxInventory5" alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8e74b5; -fx-background-radius: 40;">
-                     <children>
-                        <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 5" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="876.0" spacing="200.0">
-         <children>
-            <HBox fx:id="hboxInventory3" alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8e74b5; -fx-background-radius: 40;">
-               <children>
-                  <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 3" />
-               </children>
-            </HBox>
-            <HBox fx:id="hboxInventory4" alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #8e74b5; -fx-background-radius: 40;">
-               <children>
-                  <Label prefHeight="29.0" prefWidth="100.0" text="INVENTARIO 4" />
-               </children>
-            </HBox>
          </children>
       </HBox>
    </children>

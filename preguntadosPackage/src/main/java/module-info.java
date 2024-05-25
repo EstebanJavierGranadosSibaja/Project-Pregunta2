@@ -8,9 +8,10 @@ module cr.ac.una.preguntadospackage {
     requires java.base;
     requires jakarta.persistence;
 
-    opens cr.ac.una.preguntadospackage to javafx.fxml;
-    opens cr.ac.una.preguntadospackage.controller to javafx.fxml;
-
+    opens cr.ac.una.preguntadospackage to javafx.fxml, jakarta.persistence;
+    opens cr.ac.una.preguntadospackage.controller to javafx.fxml, jakarta.persistence;
+    opens cr.ac.una.preguntadospackage.model to jakarta.persistence;
+    
     exports cr.ac.una.preguntadospackage;
     
 }

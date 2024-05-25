@@ -7,38 +7,43 @@ package cr.ac.una.preguntadospackage.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import jakarta.persistence.*;
 
 /**
- *
- * @author esteb
+ * Author: esteb
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "preg_respuestas")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "PregRespuestas.findAll", query = "SELECT p FROM PregRespuestas p"),
-    @javax.persistence.NamedQuery(name = "PregRespuestas.findByResId", query = "SELECT p FROM PregRespuestas p WHERE p.resId = :resId"),
-    @javax.persistence.NamedQuery(name = "PregRespuestas.findByResRespuesta", query = "SELECT p FROM PregRespuestas p WHERE p.resRespuesta = :resRespuesta"),
-    @javax.persistence.NamedQuery(name = "PregRespuestas.findByResEsCorrecta", query = "SELECT p FROM PregRespuestas p WHERE p.resEsCorrecta = :resEsCorrecta"),
-    @javax.persistence.NamedQuery(name = "PregRespuestas.findByResCantidadSeleccionada", query = "SELECT p FROM PregRespuestas p WHERE p.resCantidadSeleccionada = :resCantidadSeleccionada")})
+@Entity
+@Table(name = "preg_respuestas")
+@NamedQueries({
+        @NamedQuery(name = "PregRespuestas.findAll", query = "SELECT p FROM PregRespuestas p"),
+        @NamedQuery(name = "PregRespuestas.findByResId", query = "SELECT p FROM PregRespuestas p WHERE p.resId = :resId"),
+        @NamedQuery(name = "PregRespuestas.findByResRespuesta", query = "SELECT p FROM PregRespuestas p WHERE p.resRespuesta = :resRespuesta"),
+        @NamedQuery(name = "PregRespuestas.findByResEsCorrecta", query = "SELECT p FROM PregRespuestas p WHERE p.resEsCorrecta = :resEsCorrecta"),
+        @NamedQuery(name = "PregRespuestas.findByResCantidadSeleccionada", query = "SELECT p FROM PregRespuestas p WHERE p.resCantidadSeleccionada = :resCantidadSeleccionada")
+})
 public class PregRespuestas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "res_id")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "res_id")
     private BigDecimal resId;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "res_respuesta")
+
+    @Basic(optional = false)
+    @Column(name = "res_respuesta")
     private String resRespuesta;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "res_es_correcta")
+
+    @Basic(optional = false)
+    @Column(name = "res_es_correcta")
     private Character resEsCorrecta;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "res_cantidad_seleccionada")
+
+    @Basic(optional = false)
+    @Column(name = "res_cantidad_seleccionada")
     private BigInteger resCantidadSeleccionada;
-    @javax.persistence.JoinColumn(name = "pre_id", referencedColumnName = "pre_id")
-    @javax.persistence.ManyToOne
+
+    @JoinColumn(name = "pre_id", referencedColumnName = "pre_id")
+    @ManyToOne
     private PregPreguntas preId;
 
     public PregRespuestas() {
@@ -119,5 +124,4 @@ public class PregRespuestas implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregRespuestas[ resId=" + resId + " ]";
     }
-    
 }

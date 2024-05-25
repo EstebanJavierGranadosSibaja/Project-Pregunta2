@@ -39,7 +39,7 @@ public class GameController extends Controller implements Initializable {
 
     Boolean hasSpinnerBeenClicked = false;
     ArrayList<Integer> activePlayersList = new ArrayList<>();
-    @FXML private HBox hboxInventory2, hboxInventory1, hboxInventory4, hboxInventory3, hboxInventory6, hboxInventory5;
+
     @FXML private ImageView imgSportShadow, imgHistory, imgScience, imgArtShadow, imgEntertainment, imgScienceShadow, imgCrownShadow, imgEntertainmentShadow, imgHistoryShadow, imgGeographyShadow, imgArt, imgSport, imgGeography, imgCrown, imgPawnRedSlot4, imgPawnRedSlot2, imgPawnRedSlot3, imgPawnRedSlot1, imgPawnPurpleSlot2, imgPawnPurpleSlot1, imgPawnOrangeSlot4, imgPawnPurpleSlot4, imgPawnOrangeSlot3, imgPawnPurpleSlot3, imgPawnOrangeSlot2, imgPawnOrangeSlot1, imgPawnGreenSlot1, imgPawnGreenSlot3, imgPawnGreenSlot2, imgPawnGreenSlot4, imgSpinner, imgGreenPawnSelection, imgPurplePawnSelection, imgDisabledGreenPawn, imgDisabledRedPawn, imgDisabledOrangePawn, imgOrangePawnSelection, imgRedPawnSelection, imgDisabledPurplePawn;
     @FXML private Label lblPlayerCurrentlySelecting;
     @FXML private AnchorPane apSelectionScreen;
@@ -51,18 +51,28 @@ public class GameController extends Controller implements Initializable {
 
     // TODO: the selected player should be random
     int currentPlayer = 1;
+    @FXML
+    private ImageView imgPawnBlueSlot3;
+    @FXML
+    private ImageView imgPawnBlueSlot4;
+    @FXML
+    private ImageView imgPawnBlueSlot1;
+    @FXML
+    private ImageView imgPawnBlueSlot2;
+    @FXML
+    private ImageView imgPawnPinkSlot1;
+    @FXML
+    private ImageView imgPawnPinkSlot2;
+    @FXML
+    private ImageView imgPawnPinkSlot3;
+    @FXML
+    private ImageView imgPawnPinkSlot4;
 
     // this method takes care of setting up the player count and the help assistance level
     // TODO: implement the help assistance level and initialize the inventory slots
     public void setupPlayerCount(int playerCount, int helpAssistanceLevel) {
         this.playercount = playerCount;
-        switch(playerCount) {
-            case 2: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); break;
-            case 3: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory4.setVisible(true); break;
-            case 4: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory3.setVisible(true); hboxInventory4.setVisible(true); break;
-            case 5: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory3.setVisible(true); hboxInventory4.setVisible(true); hboxInventory2.setVisible(true); break;
-            case 6: hboxInventory1.setVisible(true); hboxInventory6.setVisible(true); hboxInventory3.setVisible(true); hboxInventory4.setVisible(true); hboxInventory5.setVisible(true); hboxInventory2.setVisible(true); break;
-        }
+
         // disale the non avaible pawns (they will and can show up in the future, its just a method to disable them for now)
         disableNonAvaiblePawns(playerCount);
 
@@ -85,6 +95,10 @@ public class GameController extends Controller implements Initializable {
         imgPawnGreenSlot2.setVisible(false); imgPawnOrangeSlot2.setVisible(false); imgPawnPurpleSlot2.setVisible(false); imgPawnRedSlot2.setVisible(false);
         imgPawnGreenSlot3.setVisible(false); imgPawnOrangeSlot3.setVisible(false); imgPawnPurpleSlot3.setVisible(false); imgPawnRedSlot3.setVisible(false);
         imgPawnGreenSlot4.setVisible(false); imgPawnOrangeSlot4.setVisible(false); imgPawnPurpleSlot4.setVisible(false); imgPawnRedSlot4.setVisible(false);
+        imgPawnBlueSlot1.setVisible(true); imgPawnBlueSlot2.setVisible(false); imgPawnBlueSlot3.setVisible(false); imgPawnBlueSlot4.setVisible(false);
+        imgPawnPinkSlot1.setVisible(true); imgPawnPinkSlot2.setVisible(false); imgPawnPinkSlot3.setVisible(false); imgPawnPinkSlot4.setVisible(false);
+
+
 
     }
 
@@ -275,7 +289,6 @@ public class GameController extends Controller implements Initializable {
     }
 
     private void hideNonAvaibleInventorySlots() {
-        hboxInventory1.setVisible(false); hboxInventory2.setVisible(false); hboxInventory3.setVisible(false); hboxInventory4.setVisible(false); hboxInventory5.setVisible(false); hboxInventory6.setVisible(false);
     }
 
     // this method takes care of disabling the pawns that are not avaible (this disables the dark pawns the represent the disabled or already selected pawns)

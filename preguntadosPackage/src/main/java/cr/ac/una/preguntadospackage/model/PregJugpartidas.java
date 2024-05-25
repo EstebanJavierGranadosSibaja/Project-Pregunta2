@@ -1,81 +1,103 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.preguntadospackage.model;
 
+import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
+import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
- *
- * @author esteb
+ * Entity representing player-partida associations in the Preguntados game.
+ * Author: esteb
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "preg_jugpartidas")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findAll", query = "SELECT p FROM PregJugpartidas p"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparId", query = "SELECT p FROM PregJugpartidas p WHERE p.jparId = :jparId"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparPosicionSector", query = "SELECT p FROM PregJugpartidas p WHERE p.jparPosicionSector = :jparPosicionSector"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparPosicionCasilla", query = "SELECT p FROM PregJugpartidas p WHERE p.jparPosicionCasilla = :jparPosicionCasilla"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparCantidadAyudas", query = "SELECT p FROM PregJugpartidas p WHERE p.jparCantidadAyudas = :jparCantidadAyudas"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparDobleAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparDobleAyuda = :jparDobleAyuda"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparPasarAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparPasarAyuda = :jparPasarAyuda"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparBombaAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparBombaAyuda = :jparBombaAyuda"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparExtraAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparExtraAyuda = :jparExtraAyuda"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparCantidadFichas", query = "SELECT p FROM PregJugpartidas p WHERE p.jparCantidadFichas = :jparCantidadFichas"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparFichaArte", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaArte = :jparFichaArte"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparFichaHistoria", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaHistoria = :jparFichaHistoria"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparFichaGeografia", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaGeografia = :jparFichaGeografia"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparFichaCiencias", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaCiencias = :jparFichaCiencias"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparFichaEntretenimiento", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaEntretenimiento = :jparFichaEntretenimiento"),
-    @javax.persistence.NamedQuery(name = "PregJugpartidas.findByJparFichaDeporte", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaDeporte = :jparFichaDeporte")})
+@Entity
+@Table(name = "preg_jugpartidas")
+@NamedQueries({
+        @NamedQuery(name = "PregJugpartidas.findAll", query = "SELECT p FROM PregJugpartidas p"),
+        @NamedQuery(name = "PregJugpartidas.findByJparId", query = "SELECT p FROM PregJugpartidas p WHERE p.jparId = :jparId"),
+        @NamedQuery(name = "PregJugpartidas.findByJparPosicionSector", query = "SELECT p FROM PregJugpartidas p WHERE p.jparPosicionSector = :jparPosicionSector"),
+        @NamedQuery(name = "PregJugpartidas.findByJparPosicionCasilla", query = "SELECT p FROM PregJugpartidas p WHERE p.jparPosicionCasilla = :jparPosicionCasilla"),
+        @NamedQuery(name = "PregJugpartidas.findByJparCantidadAyudas", query = "SELECT p FROM PregJugpartidas p WHERE p.jparCantidadAyudas = :jparCantidadAyudas"),
+        @NamedQuery(name = "PregJugpartidas.findByJparDobleAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparDobleAyuda = :jparDobleAyuda"),
+        @NamedQuery(name = "PregJugpartidas.findByJparPasarAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparPasarAyuda = :jparPasarAyuda"),
+        @NamedQuery(name = "PregJugpartidas.findByJparBombaAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparBombaAyuda = :jparBombaAyuda"),
+        @NamedQuery(name = "PregJugpartidas.findByJparExtraAyuda", query = "SELECT p FROM PregJugpartidas p WHERE p.jparExtraAyuda = :jparExtraAyuda"),
+        @NamedQuery(name = "PregJugpartidas.findByJparCantidadFichas", query = "SELECT p FROM PregJugpartidas p WHERE p.jparCantidadFichas = :jparCantidadFichas"),
+        @NamedQuery(name = "PregJugpartidas.findByJparFichaArte", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaArte = :jparFichaArte"),
+        @NamedQuery(name = "PregJugpartidas.findByJparFichaHistoria", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaHistoria = :jparFichaHistoria"),
+        @NamedQuery(name = "PregJugpartidas.findByJparFichaGeografia", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaGeografia = :jparFichaGeografia"),
+        @NamedQuery(name = "PregJugpartidas.findByJparFichaCiencias", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaCiencias = :jparFichaCiencias"),
+        @NamedQuery(name = "PregJugpartidas.findByJparFichaEntretenimiento", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaEntretenimiento = :jparFichaEntretenimiento"),
+        @NamedQuery(name = "PregJugpartidas.findByJparFichaDeporte", query = "SELECT p FROM PregJugpartidas p WHERE p.jparFichaDeporte = :jparFichaDeporte")
+})
 public class PregJugpartidas implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @javax.persistence.Id
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jpar_id")
+
+    @Id
+    @Basic(optional = false)
+    @Column(name = "jpar_id")
     private BigDecimal jparId;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jpar_posicion_sector")
+
+    @Basic(optional = false)
+    @Column(name = "jpar_posicion_sector")
     private BigInteger jparPosicionSector;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jpar_posicion_casilla")
+
+    @Basic(optional = false)
+    @Column(name = "jpar_posicion_casilla")
     private BigInteger jparPosicionCasilla;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jpar_cantidad_ayudas")
+
+    @Basic(optional = false)
+    @Column(name = "jpar_cantidad_ayudas")
     private BigInteger jparCantidadAyudas;
-    @javax.persistence.Column(name = "jpar_doble_ayuda")
+
+    @Column(name = "jpar_doble_ayuda")
     private Character jparDobleAyuda;
-    @javax.persistence.Column(name = "jpar_pasar_ayuda")
+
+    @Column(name = "jpar_pasar_ayuda")
     private Character jparPasarAyuda;
-    @javax.persistence.Column(name = "jpar_bomba_ayuda")
+
+    @Column(name = "jpar_bomba_ayuda")
     private Character jparBombaAyuda;
-    @javax.persistence.Column(name = "jpar_extra_ayuda")
+
+    @Column(name = "jpar_extra_ayuda")
     private Character jparExtraAyuda;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "jpar_cantidad_fichas")
+
+    @Basic(optional = false)
+    @Column(name = "jpar_cantidad_fichas")
     private BigInteger jparCantidadFichas;
-    @javax.persistence.Column(name = "jpar_ficha_arte")
+
+    @Column(name = "jpar_ficha_arte")
     private Character jparFichaArte;
-    @javax.persistence.Column(name = "jpar_ficha_historia")
+
+    @Column(name = "jpar_ficha_historia")
     private Character jparFichaHistoria;
-    @javax.persistence.Column(name = "jpar_ficha_geografia")
+
+    @Column(name = "jpar_ficha_geografia")
     private Character jparFichaGeografia;
-    @javax.persistence.Column(name = "jpar_ficha_ciencias")
+
+    @Column(name = "jpar_ficha_ciencias")
     private Character jparFichaCiencias;
-    @javax.persistence.Column(name = "jpar_ficha_entretenimiento")
+
+    @Column(name = "jpar_ficha_entretenimiento")
     private Character jparFichaEntretenimiento;
-    @javax.persistence.Column(name = "jpar_ficha_deporte")
+
+    @Column(name = "jpar_ficha_deporte")
     private Character jparFichaDeporte;
-    @javax.persistence.JoinColumn(name = "jug_id", referencedColumnName = "jug_id")
-    @javax.persistence.ManyToOne
+
+    @JoinColumn(name = "jug_id", referencedColumnName = "jug_id")
+    @ManyToOne
     private PregJugadores jugId;
-    @javax.persistence.JoinColumn(name = "ppar_id", referencedColumnName = "ppar_id")
-    @javax.persistence.ManyToOne
+
+    @JoinColumn(name = "ppar_id", referencedColumnName = "ppar_id")
+    @ManyToOne
     private PregPrinpartida pparId;
 
     public PregJugpartidas() {
@@ -238,20 +260,15 @@ public class PregJugpartidas implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof PregJugpartidas)) {
             return false;
         }
         PregJugpartidas other = (PregJugpartidas) object;
-        if ((this.jparId == null && other.jparId != null) || (this.jparId != null && !this.jparId.equals(other.jparId))) {
-            return false;
-        }
-        return true;
+        return (this.jparId != null || other.jparId == null) && (this.jparId == null || this.jparId.equals(other.jparId));
     }
 
     @Override
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugpartidas[ jparId=" + jparId + " ]";
     }
-    
 }
