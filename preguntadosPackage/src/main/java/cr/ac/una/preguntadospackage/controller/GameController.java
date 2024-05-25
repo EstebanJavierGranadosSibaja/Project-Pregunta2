@@ -1,7 +1,6 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import javafx.animation.RotateTransition;
@@ -16,7 +15,6 @@ import javafx.scene.layout.AnchorPane;
 public class GameController extends Controller implements Initializable {
 
     private Boolean hasSpinnerBeenClicked = false;
-    private ArrayList<Integer> activePlayersList = new ArrayList<>();
     private int playerCount = 2;
     private int selectedPawns = 0;
     private int currentSelectingPlayer = 1;
@@ -56,13 +54,15 @@ public class GameController extends Controller implements Initializable {
         pawnHasBeenSelected();
         hideNonAvailableInventorySlots();
         hideCategoryAnimation();
-        resetPawnVisibility();
+        resetPawnVisibility(); // TODO: this should be called when the game starts but overwritten by the player's previous progress saved in the database
     }
 
     @Override
     public void initialize() {}
 
+    //
     public void setupPlayerCount(int playerCount, int helpAssistanceLevel) {
+        // TODO: Implement the logic for setting up the player count and the help assistance level
         this.playerCount = playerCount;
         disableNonAvailablePawns(playerCount);
     }
@@ -134,38 +134,54 @@ public class GameController extends Controller implements Initializable {
         imgSport.setVisible(false); imgSportShadow.setVisible(false);
     }
 
+    // this method is called when the spinner is clicked
+    // it has a random degree and depending on the degree it selects a category
+    // then it plays the category animation and goes to the question view
+    // it also has anti-spam protection
     @FXML
     public void onActionSpinner(MouseEvent event) {
+        // Anti-spam protection
         if (hasSpinnerBeenClicked) return;
-
+        // The spinner has been clicked
         hasSpinnerBeenClicked = true;
 
+        // Set the spinner to rotate
+        // 27 because the spinner is not perfectly centered as it should be from the image
         imgSpinner.setRotate(27);
+        // Random degree
         double randomDegrees = Math.random() * 360;
+        // Category selection based on the random degree
         int category = (int) Math.floor(randomDegrees / 51.4);
-
+        // create the rotate transition object (it receives the duration and the node to rotate)
         RotateTransition rt = new RotateTransition(javafx.util.Duration.seconds(4.5), imgSpinner);
+        // set the degree to rotate
         rt.setByAngle(randomDegrees + 3600);
+        // play the animation
         rt.play();
-
+        // play the category animation
         playCategoryAnimation(category);
-
+        // set the event to be executed when the animation finishes
         rt.setOnFinished(e -> {
+            // pause the thread for 2.5 seconds to show the category animation before going to the question view
             try {
                 Thread.sleep(2500);
             } catch (InterruptedException ex) {
                 System.out.println("Error pausing thread: " + ex.getMessage());
             }
-
+            // get a reference to the question controller
             QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
+            // set the category theme
             questionController.setCategoryTheme(category);
+            // go to the question view (by this point the category animation has already been shown and the theme has been set)
             FlowController.getInstance().goView("QuestionView");
-
+            // reset the spinner (the user is already in the question view)
             hasSpinnerBeenClicked = false;
+            // just hide the category animation assets
             hideCategoryAnimation();
         });
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     private void pawnHasBeenSelected() {
         if (selectedPawns == playerCount) {
             apSelectionScreen.setVisible(false);
@@ -173,36 +189,43 @@ public class GameController extends Controller implements Initializable {
         lblPlayerCurrentlySelecting.setText("CURRENT SELECTING PLAYER: " + currentSelectingPlayer);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionGreenPawnSelected(Event event) {
         handlePawnSelection(imgGreenPawnSelection, imgDisabledGreenPawn);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionOrangePawnSelected(Event event) {
         handlePawnSelection(imgOrangePawnSelection, imgDisabledOrangePawn);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionPurplePawnSelected(Event event) {
         handlePawnSelection(imgPurplePawnSelection, imgDisabledPurplePawn);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionRedPawnSelected(Event event) {
         handlePawnSelection(imgRedPawnSelection, imgDisabledRedPawn);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionPinkPawnSelected(Event event) {
         handlePawnSelection(imgPinkPawnSelection, imgDisabledPinkPawn);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionBluePawnSelected(Event event) {
         handlePawnSelection(imgBluePawnSelection, imgDisabledBluePawn);
     }
 
+    // this method is called when the player selects a pawn in the selection screen
     private void handlePawnSelection(ImageView pawnSelection, ImageView disabledPawn) {
         selectedPawns++;
         currentSelectingPlayer++;
@@ -210,6 +233,7 @@ public class GameController extends Controller implements Initializable {
         pawnSelection.setVisible(false);
         disabledPawn.setVisible(true);
     }
+
 
     private void resetPawnVisibility() {
         imgPawnGreenSlot1.setVisible(true); imgPawnOrangeSlot1.setVisible(true); imgPawnPurpleSlot1.setVisible(true); imgPawnRedSlot1.setVisible(true);
