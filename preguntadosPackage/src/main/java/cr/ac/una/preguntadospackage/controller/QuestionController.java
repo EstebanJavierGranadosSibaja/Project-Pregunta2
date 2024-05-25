@@ -147,6 +147,9 @@ public class QuestionController extends Controller implements Initializable {
         // Debug message
         System.out.println("Respuesta 1 - \n>>>>>>>DEBUG: Return to the main menu and consider it as a correct answer");
 
+        // Move the orange pawn
+        gameController.calculateNextPawnMovement(4); // Assuming 4 is the player number for the orange pawn
+
         // debug return to the main menu
         FlowController.getInstance().goView("GameView");
     }
