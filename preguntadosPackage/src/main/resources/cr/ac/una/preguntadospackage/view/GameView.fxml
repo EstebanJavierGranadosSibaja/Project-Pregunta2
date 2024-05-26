@@ -30,6 +30,9 @@
                      <image>
                         <Image url="@../resources/RainbowCircle.png" />
                      </image>
+                     <effect>
+                        <Bloom />
+                     </effect>
                   </ImageView>
                   <ImageView fitHeight="661.0" fitWidth="830.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -311,13 +314,10 @@
                               <Image url="@../resources/PinkCoin.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="173.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="47.0" fitWidth="61.0" layoutX="173.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/PinkCoin.png" />
+                              <Image url="@../resources/NonAviableCoin.png" />
                            </image>
-                           <effect>
-                              <ColorAdjust brightness="-0.61" contrast="-0.59" saturation="-1.0" />
-                           </effect>
                         </ImageView>
                         <ImageView fitHeight="47.0" fitWidth="68.0" layoutX="203.0" layoutY="491.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -329,7 +329,7 @@
                               <Image url="@../resources/OrangeCoin.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="114.0" layoutY="190.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="114.0" layoutY="190.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;" visible="false">
                            <children>
                               <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
                                  <children>
