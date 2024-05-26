@@ -12,9 +12,9 @@ public class PregCategoriasDto  implements Serializable {
     private Boolean modificado;
 
     public PregCategoriasDto() {
-        this.id = new SimpleStringProperty();
-        this.cantidadRespondidas = new SimpleStringProperty();
-        this.cantidadAciertos = new SimpleStringProperty();
+        this.id = new SimpleStringProperty("");
+        this.cantidadRespondidas = new SimpleStringProperty("");
+        this.cantidadAciertos = new SimpleStringProperty("");
         this.modificado = false; 
     }
 

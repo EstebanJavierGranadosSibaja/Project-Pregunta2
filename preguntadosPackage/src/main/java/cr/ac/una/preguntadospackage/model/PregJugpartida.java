@@ -19,8 +19,7 @@ import java.math.BigInteger;
 
 @Entity
 @Table(name = "PREG_JUGPARTIDA")
-@NamedQueries({
-    /*@NamedQuery(name = "PregJugpartida.findAll", query = "SELECT p FROM PregJugpartida p"),
+@NamedQueries({ /*@NamedQuery(name = "PregJugpartida.findAll", query = "SELECT p FROM PregJugpartida p"),
     @NamedQuery(name = "PregJugpartida.findByJparId", query = "SELECT p FROM PregJugpartida p WHERE p.jparId = :jparId"),
     @NamedQuery(name = "PregJugpartida.findByJparPosicionSector", query = "SELECT p FROM PregJugpartida p WHERE p.jparPosicionSector = :jparPosicionSector"),
     @NamedQuery(name = "PregJugpartida.findByJparPosicionCasilla", query = "SELECT p FROM PregJugpartida p WHERE p.jparPosicionCasilla = :jparPosicionCasilla"),
@@ -35,8 +34,7 @@ import java.math.BigInteger;
     @NamedQuery(name = "PregJugpartida.findByJparFichaGeografia", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaGeografia = :jparFichaGeografia"),
     @NamedQuery(name = "PregJugpartida.findByJparFichaCiencias", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaCiencias = :jparFichaCiencias"),
     @NamedQuery(name = "PregJugpartida.findByJparFichaEntretenimiento", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaEntretenimiento = :jparFichaEntretenimiento"),
-    @NamedQuery(name = "PregJugpartida.findByJparFichaDeporte", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaDeporte = :jparFichaDeporte")*/
-})
+    @NamedQuery(name = "PregJugpartida.findByJparFichaDeporte", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaDeporte = :jparFichaDeporte")*/})
 public class PregJugpartida implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -70,21 +68,29 @@ public class PregJugpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "JPAR_CANTIDAD_FICHAS")
     private Integer cantidadFichas;
+    @Basic(optional = false)
     @Column(name = "JPAR_FICHA_ARTE")
     private String fichaArte;
+    @Basic(optional = false)
     @Column(name = "JPAR_FICHA_HISTORIA")
     private String fichaHistoria;
+    @Basic(optional = false)
     @Column(name = "JPAR_FICHA_GEOGRAFIA")
     private String fichaGeografia;
+    @Basic(optional = false)
     @Column(name = "JPAR_FICHA_CIENCIAS")
     private String fichaCiencias;
+    @Basic(optional = false)
     @Column(name = "JPAR_FICHA_ENTRETENIMIENTO")
     private String fichaEntretenimiento;
+    @Basic(optional = false)
     @Column(name = "JPAR_FICHA_DEPORTE")
     private String fichaDeporte;
+    @Basic(optional = false)
     @JoinColumn(name = "JUG_ID", referencedColumnName = "JUG_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private PregJugadores jugId;
+    @Basic(optional = false)
     @JoinColumn(name = "PPAR_ID", referencedColumnName = "PPAR_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private PregPrinpartida pparId;
@@ -94,9 +100,9 @@ public class PregJugpartida implements Serializable {
 
     public PregJugpartida(PregJugpartidaDto pregJugpartidaDto) {
         this.id = pregJugpartidaDto.getId();
-         Actualizar(pregJugpartidaDto);
+        Actualizar(pregJugpartidaDto);
     }
-    
+
     public void Actualizar(PregJugpartidaDto pregJugpartidaDto) {
         this.posicionSector = pregJugpartidaDto.getPosicionSector();
         this.posicionCasilla = pregJugpartidaDto.getPosicionCasilla();
@@ -274,5 +280,5 @@ public class PregJugpartida implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugpartida[ jparId=" + id + " ]";
     }
-    
+
 }

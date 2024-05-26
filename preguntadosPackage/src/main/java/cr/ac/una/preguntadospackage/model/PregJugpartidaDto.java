@@ -1,12 +1,6 @@
 package cr.ac.una.preguntadospackage.model;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
 
 public class PregJugpartidaDto implements Serializable {
 

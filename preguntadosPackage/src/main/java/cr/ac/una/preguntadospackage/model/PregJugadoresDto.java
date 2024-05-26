@@ -18,12 +18,12 @@ public class PregJugadoresDto implements Serializable {
 //    private List<PregJugpartida> jugpartidaList;
 
     public PregJugadoresDto() {
-        this.id = new SimpleStringProperty();
-        this.nombre = new SimpleStringProperty();
-        this.partidasJugadas = new SimpleStringProperty();
-        this.partidasGanadas = new SimpleStringProperty();
-        this.cantidadRespuestasGeneral = new SimpleStringProperty();
-        this.cantidadAcertadasGeneral = new SimpleStringProperty();
+        this.id = new SimpleStringProperty("");
+        this.nombre = new SimpleStringProperty("");
+        this.partidasJugadas = new SimpleStringProperty("");
+        this.partidasGanadas = new SimpleStringProperty("");
+        this.cantidadRespuestasGeneral = new SimpleStringProperty("");
+        this.cantidadAcertadasGeneral = new SimpleStringProperty("");
         this.modificado = false;
     }
 

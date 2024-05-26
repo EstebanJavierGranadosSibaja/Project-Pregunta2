@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
@@ -30,8 +26,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "PREG_PRINPARTIDA")
-@NamedQueries({
-//    @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
+@NamedQueries({ //    @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
 //    @NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.pparId = :pparId"),
 //    @NamedQuery(name = "PregPrinpartida.findByPparModoJuego", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoJuego = :pparModoJuego"),
 //    @NamedQuery(name = "PregPrinpartida.findByPparModoDuelo", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoDuelo = :pparModoDuelo"),
@@ -84,18 +79,20 @@ public class PregPrinpartida implements Serializable {
     public PregPrinpartida() {
     }
 
-    public PregPrinpartida(Long pparId) {
-        this.id = pparId;
+    public PregPrinpartida(PregPrinpartidaDto pregPrinpartidaDto) {
+        this.id = pregPrinpartidaDto.getId();
+        Actualizar(pregPrinpartidaDto);
     }
 
-    public PregPrinpartida(Long pparId, String pparModoJuego, String pparModoDuelo, Long pparCantidadRondas, String pparEstadoPartida, Long pparCantidadJugadores, Long pparSectorActivo) {
-        this.id = pparId;
-        this.modoJuego = pparModoJuego;
-        this.modoDuelo = pparModoDuelo;
-        this.cantidadRondas = pparCantidadRondas;
-        this.estadoPartida = pparEstadoPartida;
-        this.cantidadJugadores = pparCantidadJugadores;
-        this.sectorActivo = pparSectorActivo;
+    public void Actualizar(PregPrinpartidaDto pregPrinpartidaDto) {
+        this.modoJuego = pregPrinpartidaDto.getModoJuego();
+        this.modoDuelo = pregPrinpartidaDto.getModoDuelo();
+        this.tiempoTotal = pregPrinpartidaDto.getTiempoTotal();
+        this.tiempoTrancurrido = pregPrinpartidaDto.getTiempoTrancurrido();
+        this.cantidadRondas = pregPrinpartidaDto.getCantidadRondas();
+        this.estadoPartida = pregPrinpartidaDto.getEstadoPartida();
+        this.cantidadJugadores = pregPrinpartidaDto.getCantidadJugadores();
+        this.sectorActivo = pregPrinpartidaDto.getSectorActivo();
     }
 
     public Long getId() {

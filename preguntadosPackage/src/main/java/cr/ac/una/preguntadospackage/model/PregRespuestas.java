@@ -14,26 +14,18 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_RESPUESTAS")
-@NamedQueries({
-    @NamedQuery(name = "PregRespuestas.findAll", query = "SELECT p FROM PregRespuestas p"),
+@NamedQueries({ /*@NamedQuery(name = "PregRespuestas.findAll", query = "SELECT p FROM PregRespuestas p"),
     @NamedQuery(name = "PregRespuestas.findByRespId", query = "SELECT p FROM PregRespuestas p WHERE p.respId = :respId"),
     @NamedQuery(name = "PregRespuestas.findByRespTextoRespuesta", query = "SELECT p FROM PregRespuestas p WHERE p.respTextoRespuesta = :respTextoRespuesta"),
     @NamedQuery(name = "PregRespuestas.findByRespEsCorrecta", query = "SELECT p FROM PregRespuestas p WHERE p.respEsCorrecta = :respEsCorrecta"),
     @NamedQuery(name = "PregRespuestas.findByResCantidadSelecionada", query = "SELECT p FROM PregRespuestas p WHERE p.resCantidadSelecionada = :resCantidadSelecionada"),
-    @NamedQuery(name = "PregRespuestas.findByVersion", query = "SELECT p FROM PregRespuestas p WHERE p.version = :version")})
+    @NamedQuery(name = "PregRespuestas.findByVersion", query = "SELECT p FROM PregRespuestas p WHERE p.version = :version")*/})
 public class PregRespuestas implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -42,19 +34,19 @@ public class PregRespuestas implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "RESP_ID")
-    private BigDecimal respId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "RESP_TEXTO_RESPUESTA")
-    private String respTextoRespuesta;
+    private String textoRespuesta;
     @Basic(optional = false)
     @Column(name = "RESP_ES_CORRECTA")
-    private String respEsCorrecta;
+    private String esCorrecta;
     @Basic(optional = false)
-    @Column(name = "RES_CANTIDAD_SELECIONADA")
-    private BigInteger resCantidadSelecionada;
+    @Column(name = "RESP_CANTIDAD_SELECIONADA")
+    private Long cantidadSelecionada;
     @Basic(optional = false)
-    @Column(name = "VERSION")
-    private BigInteger version;
+    @Column(name = "RESP_VERSION")
+    private Long version;
     @JoinColumn(name = "PRE_ID", referencedColumnName = "PRE_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private PregPreguntas preId;
@@ -62,55 +54,59 @@ public class PregRespuestas implements Serializable {
     public PregRespuestas() {
     }
 
-    public PregRespuestas(BigDecimal respId) {
-        this.respId = respId;
+    public PregRespuestas(PregRespuestasDto pregRespuestasDto) {
+        this.id = pregRespuestasDto.getId();
+        Actualizar(pregRespuestasDto);
     }
 
-    public PregRespuestas(BigDecimal respId, String respTextoRespuesta, String respEsCorrecta, BigInteger resCantidadSelecionada, BigInteger version) {
-        this.respId = respId;
-        this.respTextoRespuesta = respTextoRespuesta;
-        this.respEsCorrecta = respEsCorrecta;
-        this.resCantidadSelecionada = resCantidadSelecionada;
-        this.version = version;
+    public void Actualizar(PregRespuestasDto pregRespuestasDto) {
+        this.textoRespuesta = pregRespuestasDto.getTextoRespuesta();
+        this.esCorrecta = pregRespuestasDto.getEsCorrecta();
+        this.cantidadSelecionada = pregRespuestasDto.getCantidadSelecionada();
+        this.version = pregRespuestasDto.getVersion();
     }
 
-    public BigDecimal getRespId() {
-        return respId;
+    public PregRespuestas(Long respId) {
+        this.id = respId;
     }
 
-    public void setRespId(BigDecimal respId) {
-        this.respId = respId;
+    public Long getId() {
+        return id;
     }
 
-    public String getRespTextoRespuesta() {
-        return respTextoRespuesta;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setRespTextoRespuesta(String respTextoRespuesta) {
-        this.respTextoRespuesta = respTextoRespuesta;
+    public String getTextoRespuesta() {
+        return textoRespuesta;
     }
 
-    public String getRespEsCorrecta() {
-        return respEsCorrecta;
+    public void setTextoRespuesta(String textoRespuesta) {
+        this.textoRespuesta = textoRespuesta;
     }
 
-    public void setRespEsCorrecta(String respEsCorrecta) {
-        this.respEsCorrecta = respEsCorrecta;
+    public String getEsCorrecta() {
+        return esCorrecta;
     }
 
-    public BigInteger getResCantidadSelecionada() {
-        return resCantidadSelecionada;
+    public void setEsCorrecta(String esCorrecta) {
+        this.esCorrecta = esCorrecta;
     }
 
-    public void setResCantidadSelecionada(BigInteger resCantidadSelecionada) {
-        this.resCantidadSelecionada = resCantidadSelecionada;
+    public Long getCantidadSelecionada() {
+        return cantidadSelecionada;
     }
 
-    public BigInteger getVersion() {
+    public void setCantidadSelecionada(Long cantidadSelecionada) {
+        this.cantidadSelecionada = cantidadSelecionada;
+    }
+
+    public Long getVersion() {
         return version;
     }
 
-    public void setVersion(BigInteger version) {
+    public void setVersion(Long version) {
         this.version = version;
     }
 
@@ -125,7 +121,7 @@ public class PregRespuestas implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (respId != null ? respId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -136,7 +132,7 @@ public class PregRespuestas implements Serializable {
             return false;
         }
         PregRespuestas other = (PregRespuestas) object;
-        if ((this.respId == null && other.respId != null) || (this.respId != null && !this.respId.equals(other.respId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -144,7 +140,7 @@ public class PregRespuestas implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregRespuestas[ respId=" + respId + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregRespuestas[ respId=" + id + " ]";
     }
-    
+
 }
