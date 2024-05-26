@@ -1,7 +1,6 @@
 package cr.ac.una.preguntadospackage.model;
 
 import java.io.Serializable;
-import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 
 public class PregPreguntasDto implements Serializable {

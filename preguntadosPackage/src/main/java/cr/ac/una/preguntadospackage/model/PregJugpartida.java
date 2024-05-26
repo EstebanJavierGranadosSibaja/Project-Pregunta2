@@ -10,12 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
-import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 @Entity
 @Table(name = "PREG_JUGPARTIDA")
@@ -50,6 +47,9 @@ public class PregJugpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "JPAR_POSICION_CASILLA")
     private Integer posicionCasilla;
+    @Basic(optional = false)
+    @Column(name = "JPAR_COLOR_PEON")
+    private String colorPeon;
     @Basic(optional = false)
     @Column(name = "JPAR_CANTIDAD_AYUDAS")
     private Integer cantidadAyudas;
@@ -144,6 +144,14 @@ public class PregJugpartida implements Serializable {
         this.posicionCasilla = posicionCasilla;
     }
 
+    public String getColorPeon() {
+        return colorPeon;
+    }
+
+    public void setColorPeon(String colorPeon) {
+        this.colorPeon = colorPeon;
+    }
+    
     public Integer getCantidadAyudas() {
         return cantidadAyudas;
     }

@@ -8,6 +8,7 @@ public class PregJugpartidaDto implements Serializable {
     private Long id;
     private Integer posicionSector;
     private Integer posicionCasilla;
+    private String colorPeon;
     private Integer cantidadAyudas;
     private String dobleAyuda;
     private String pasarAyuda;
@@ -33,6 +34,7 @@ public class PregJugpartidaDto implements Serializable {
         this.id = pregJugpartida.getId();
         this.posicionSector = pregJugpartida.getPosicionSector();
         this.posicionCasilla = pregJugpartida.getPosicionCasilla();
+        this.colorPeon = pregJugpartida.getColorPeon();
         this.cantidadAyudas = pregJugpartida.getCantidadAyudas();
         this.dobleAyuda = pregJugpartida.getDobleAyuda();
         this.pasarAyuda = pregJugpartida.getPasarAyuda();
@@ -74,6 +76,14 @@ public class PregJugpartidaDto implements Serializable {
         this.posicionCasilla = posicionCasilla;
     }
 
+    public String getColorPeon() {
+        return colorPeon;
+    }
+
+    public void setColorPeon(String colorPeon) {
+        this.colorPeon = colorPeon;
+    }
+    
     public Integer getCantidadAyudas() {
         return cantidadAyudas;
     }
