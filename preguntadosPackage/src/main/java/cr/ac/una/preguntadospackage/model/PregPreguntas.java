@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
@@ -24,10 +21,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_PREGUNTAS")
 @NamedQueries({
@@ -46,25 +39,25 @@ public class PregPreguntas implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "PRE_ID")
-    private BigDecimal preId;
+    private BigDecimal id;
     @Basic(optional = false)
     @Column(name = "PRE_TEXTO_PREGUNTA")
-    private String preTextoPregunta;
+    private String textoPregunta;
     @Basic(optional = false)
     @Column(name = "PRE_CANTIDAD_RESPUESTAS")
-    private BigInteger preCantidadRespuestas;
+    private BigInteger cantidadRespuestas;
     @Basic(optional = false)
     @Column(name = "PRE_CANTIDAD_ACIERTOS")
-    private BigInteger preCantidadAciertos;
+    private BigInteger cantidadAciertos;
     @Basic(optional = false)
     @Column(name = "PRE_ESTADO")
-    private String preEstado;
+    private String estado;
     @Basic(optional = false)
     @Column(name = "VERSION")
     private BigInteger version;
-    @ManyToMany(mappedBy = "pregPreguntasList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "preguntasList", fetch = FetchType.LAZY)
     private List<PregPrinpartida> pregPrinpartidaList;
-    @ManyToMany(mappedBy = "pregPreguntasList", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "preguntasList", fetch = FetchType.LAZY)
     private List<PregJugadores> pregJugadoresList;
     @OneToMany(mappedBy = "preId", fetch = FetchType.LAZY)
     private List<PregRespuestas> pregRespuestasList;
@@ -76,56 +69,56 @@ public class PregPreguntas implements Serializable {
     }
 
     public PregPreguntas(BigDecimal preId) {
-        this.preId = preId;
+        this.id = preId;
     }
 
     public PregPreguntas(BigDecimal preId, String preTextoPregunta, BigInteger preCantidadRespuestas, BigInteger preCantidadAciertos, String preEstado, BigInteger version) {
-        this.preId = preId;
-        this.preTextoPregunta = preTextoPregunta;
-        this.preCantidadRespuestas = preCantidadRespuestas;
-        this.preCantidadAciertos = preCantidadAciertos;
-        this.preEstado = preEstado;
+        this.id = preId;
+        this.textoPregunta = preTextoPregunta;
+        this.cantidadRespuestas = preCantidadRespuestas;
+        this.cantidadAciertos = preCantidadAciertos;
+        this.estado = preEstado;
         this.version = version;
     }
 
-    public BigDecimal getPreId() {
-        return preId;
+    public BigDecimal getId() {
+        return id;
     }
 
-    public void setPreId(BigDecimal preId) {
-        this.preId = preId;
+    public void setId(BigDecimal id) {
+        this.id = id;
     }
 
-    public String getPreTextoPregunta() {
-        return preTextoPregunta;
+    public String getTextoPregunta() {
+        return textoPregunta;
     }
 
-    public void setPreTextoPregunta(String preTextoPregunta) {
-        this.preTextoPregunta = preTextoPregunta;
+    public void setTextoPregunta(String textoPregunta) {
+        this.textoPregunta = textoPregunta;
     }
 
-    public BigInteger getPreCantidadRespuestas() {
-        return preCantidadRespuestas;
+    public BigInteger getCantidadRespuestas() {
+        return cantidadRespuestas;
     }
 
-    public void setPreCantidadRespuestas(BigInteger preCantidadRespuestas) {
-        this.preCantidadRespuestas = preCantidadRespuestas;
+    public void setCantidadRespuestas(BigInteger cantidadRespuestas) {
+        this.cantidadRespuestas = cantidadRespuestas;
     }
 
-    public BigInteger getPreCantidadAciertos() {
-        return preCantidadAciertos;
+    public BigInteger getCantidadAciertos() {
+        return cantidadAciertos;
     }
 
-    public void setPreCantidadAciertos(BigInteger preCantidadAciertos) {
-        this.preCantidadAciertos = preCantidadAciertos;
+    public void setCantidadAciertos(BigInteger cantidadAciertos) {
+        this.cantidadAciertos = cantidadAciertos;
     }
 
-    public String getPreEstado() {
-        return preEstado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setPreEstado(String preEstado) {
-        this.preEstado = preEstado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     public BigInteger getVersion() {
@@ -171,7 +164,7 @@ public class PregPreguntas implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (preId != null ? preId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -182,7 +175,7 @@ public class PregPreguntas implements Serializable {
             return false;
         }
         PregPreguntas other = (PregPreguntas) object;
-        if ((this.preId == null && other.preId != null) || (this.preId != null && !this.preId.equals(other.preId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -190,7 +183,7 @@ public class PregPreguntas implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregPreguntas[ preId=" + preId + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregPreguntas[ preId=" + id + " ]";
     }
 
 }

@@ -20,8 +20,6 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -46,127 +44,127 @@ public class PregJugadores implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "JUG_ID")
-    private BigDecimal jugId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "JUG_NOMBRE")
-    private String jugNombre;
+    private String nombre;
     @Basic(optional = false)
     @Column(name = "JUG_PARTIDAS_JUGADAS")
-    private BigInteger jugPartidasJugadas;
+    private Long partidasJugadas;
     @Basic(optional = false)
     @Column(name = "JUG_PARTIDAS_GANADAS")
-    private BigInteger jugPartidasGanadas;
+    private Long partidasGanadas;
     @Basic(optional = false)
     @Column(name = "JUG_CANTIDAD_RESPUESTAS_GENERAL")
-    private BigInteger jugCantidadRespuestasGeneral;
+    private Long cantidadRespuestasGeneral;
     @Basic(optional = false)
     @Column(name = "JUG_CANTIDAD_ACERTADAS_GENERAL")
-    private BigInteger jugCantidadAcertadasGeneral;
+    private Long cantidadAcertadasGeneral;
     @JoinTable(name = "PREG_CATEGORIASJUGADOR", joinColumns = {
         @JoinColumn(name = "CXJ_IDJUG", referencedColumnName = "JUG_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "CXJ_IDCAT", referencedColumnName = "CAT_ID")})
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<PregCategorias> pregCategoriasList;
+    private List<PregCategorias> categoriasList;
     @JoinTable(name = "PREG_PREGUNTASJUGADOR", joinColumns = {
         @JoinColumn(name = "PXJ_IDJUG", referencedColumnName = "JUG_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "PXJ_IDPRE", referencedColumnName = "PRE_ID")})
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<PregPreguntas> pregPreguntasList;
+    private List<PregPreguntas> preguntasList;
     @OneToMany(mappedBy = "jugId", fetch = FetchType.LAZY)
-    private List<PregJugpartida> pregJugpartidaList;
+    private List<PregJugpartida> jugpartidaList;
 
     public PregJugadores() {
     }
 
-    public PregJugadores(BigDecimal jugId) {
-        this.jugId = jugId;
+    public PregJugadores(PregJugadoresDto pregJugadoresDto) {
+        this.id = pregJugadoresDto.getId();
+         Actualizar(pregJugadoresDto);
+    }
+    
+    public void Actualizar(PregJugadoresDto pregJugadoresDto) {
+        this.nombre = pregJugadoresDto.getNombre();
+        this.partidasJugadas = pregJugadoresDto.getPartidasJugadas();
+        this.partidasGanadas = pregJugadoresDto.getPartidasGanadas();
+        this.cantidadRespuestasGeneral = pregJugadoresDto.getCantidadRespuestasGeneral();
+        this.cantidadAcertadasGeneral = pregJugadoresDto.getCantidadAcertadasGeneral();
     }
 
-    public PregJugadores(BigDecimal jugId, String jugNombre, BigInteger jugPartidasJugadas, BigInteger jugPartidasGanadas, BigInteger jugCantidadRespuestasGeneral, BigInteger jugCantidadAcertadasGeneral) {
-        this.jugId = jugId;
-        this.jugNombre = jugNombre;
-        this.jugPartidasJugadas = jugPartidasJugadas;
-        this.jugPartidasGanadas = jugPartidasGanadas;
-        this.jugCantidadRespuestasGeneral = jugCantidadRespuestasGeneral;
-        this.jugCantidadAcertadasGeneral = jugCantidadAcertadasGeneral;
+    public Long getId() {
+        return id;
     }
 
-    public BigDecimal getJugId() {
-        return jugId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setJugId(BigDecimal jugId) {
-        this.jugId = jugId;
+    public String getNombre() {
+        return nombre;
     }
 
-    public String getJugNombre() {
-        return jugNombre;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public void setJugNombre(String jugNombre) {
-        this.jugNombre = jugNombre;
+    public Long getPartidasJugadas() {
+        return partidasJugadas;
     }
 
-    public BigInteger getJugPartidasJugadas() {
-        return jugPartidasJugadas;
+    public void setPartidasJugadas(Long partidasJugadas) {
+        this.partidasJugadas = partidasJugadas;
     }
 
-    public void setJugPartidasJugadas(BigInteger jugPartidasJugadas) {
-        this.jugPartidasJugadas = jugPartidasJugadas;
+    public Long getPartidasGanadas() {
+        return partidasGanadas;
     }
 
-    public BigInteger getJugPartidasGanadas() {
-        return jugPartidasGanadas;
+    public void setPartidasGanadas(Long partidasGanadas) {
+        this.partidasGanadas = partidasGanadas;
     }
 
-    public void setJugPartidasGanadas(BigInteger jugPartidasGanadas) {
-        this.jugPartidasGanadas = jugPartidasGanadas;
+    public Long getCantidadRespuestasGeneral() {
+        return cantidadRespuestasGeneral;
     }
 
-    public BigInteger getJugCantidadRespuestasGeneral() {
-        return jugCantidadRespuestasGeneral;
+    public void setCantidadRespuestasGeneral(Long cantidadRespuestasGeneral) {
+        this.cantidadRespuestasGeneral = cantidadRespuestasGeneral;
     }
 
-    public void setJugCantidadRespuestasGeneral(BigInteger jugCantidadRespuestasGeneral) {
-        this.jugCantidadRespuestasGeneral = jugCantidadRespuestasGeneral;
+    public Long getCantidadAcertadasGeneral() {
+        return cantidadAcertadasGeneral;
     }
 
-    public BigInteger getJugCantidadAcertadasGeneral() {
-        return jugCantidadAcertadasGeneral;
+    public void setCantidadAcertadasGeneral(Long cantidadAcertadasGeneral) {
+        this.cantidadAcertadasGeneral = cantidadAcertadasGeneral;
     }
 
-    public void setJugCantidadAcertadasGeneral(BigInteger jugCantidadAcertadasGeneral) {
-        this.jugCantidadAcertadasGeneral = jugCantidadAcertadasGeneral;
+    public List<PregCategorias> getCategoriasList() {
+        return categoriasList;
     }
 
-    public List<PregCategorias> getPregCategoriasList() {
-        return pregCategoriasList;
+    public void setCategoriasList(List<PregCategorias> categoriasList) {
+        this.categoriasList = categoriasList;
     }
 
-    public void setPregCategoriasList(List<PregCategorias> pregCategoriasList) {
-        this.pregCategoriasList = pregCategoriasList;
+    public List<PregPreguntas> getPreguntasList() {
+        return preguntasList;
     }
 
-    public List<PregPreguntas> getPregPreguntasList() {
-        return pregPreguntasList;
+    public void setPreguntasList(List<PregPreguntas> preguntasList) {
+        this.preguntasList = preguntasList;
     }
 
-    public void setPregPreguntasList(List<PregPreguntas> pregPreguntasList) {
-        this.pregPreguntasList = pregPreguntasList;
+    public List<PregJugpartida> getJugpartidaList() {
+        return jugpartidaList;
     }
 
-    public List<PregJugpartida> getPregJugpartidaList() {
-        return pregJugpartidaList;
-    }
-
-    public void setPregJugpartidaList(List<PregJugpartida> pregJugpartidaList) {
-        this.pregJugpartidaList = pregJugpartidaList;
+    public void setJugpartidaList(List<PregJugpartida> jugpartidaList) {
+        this.jugpartidaList = jugpartidaList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (jugId != null ? jugId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -177,7 +175,7 @@ public class PregJugadores implements Serializable {
             return false;
         }
         PregJugadores other = (PregJugadores) object;
-        if ((this.jugId == null && other.jugId != null) || (this.jugId != null && !this.jugId.equals(other.jugId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -185,7 +183,7 @@ public class PregJugadores implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregJugadores[ jugId=" + jugId + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregJugadores[ jugId=" + id + " ]";
     }
-    
+
 }

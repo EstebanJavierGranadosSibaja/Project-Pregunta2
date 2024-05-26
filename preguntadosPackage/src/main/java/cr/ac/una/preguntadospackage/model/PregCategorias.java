@@ -25,85 +25,90 @@ import java.util.List;
 @Entity
 @Table(name = "PREG_CATEGORIAS")
 @NamedQueries({
-    @NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
+    /*@NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
     @NamedQuery(name = "PregCategorias.findByCatId", query = "SELECT p FROM PregCategorias p WHERE p.catId = :catId"),
     @NamedQuery(name = "PregCategorias.findByCatCantidadRespondidas", query = "SELECT p FROM PregCategorias p WHERE p.catCantidadRespondidas = :catCantidadRespondidas"),
-    @NamedQuery(name = "PregCategorias.findByCatCantidadAciertos", query = "SELECT p FROM PregCategorias p WHERE p.catCantidadAciertos = :catCantidadAciertos")})
+    @NamedQuery(name = "PregCategorias.findByCatCantidadAciertos", query = "SELECT p FROM PregCategorias p WHERE p.catCantidadAciertos = :catCantidadAciertos")*/
+})
 public class PregCategorias implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "CAT_ID")
-    private String catId;
+    private String id;
     @Basic(optional = false)
     @Column(name = "CAT_CANTIDAD_RESPONDIDAS")
-    private BigInteger catCantidadRespondidas;
+    private Long cantidadRespondidas;
     @Basic(optional = false)
     @Column(name = "CAT_CANTIDAD_ACIERTOS")
-    private BigInteger catCantidadAciertos;
-    @ManyToMany(mappedBy = "pregCategoriasList", fetch = FetchType.LAZY)
-    private List<PregJugadores> pregJugadoresList;
+    private Long cantidadAciertos;
+    @ManyToMany(mappedBy = "categoriasList", fetch = FetchType.LAZY)
+    private List<PregJugadores> jugadoresList;
     @OneToMany(mappedBy = "catId", fetch = FetchType.LAZY)
-    private List<PregPreguntas> pregPreguntasList;
+    private List<PregPreguntas> preguntasList;
 
     public PregCategorias() {
     }
+    
+    public PregCategorias(PregCategoriasDto pregCategoriasDto) {
+        this.id = pregCategoriasDto.getId();
+         Actualizar(pregCategoriasDto);
+    }
+    
+    public void Actualizar(PregCategoriasDto pregCategoriasDto) {
+       this.cantidadAciertos = pregCategoriasDto.getCantidadAciertos();
+       this.cantidadRespondidas = pregCategoriasDto.getCantidadRespondidas();
+    }
 
     public PregCategorias(String catId) {
-        this.catId = catId;
+        this.id = catId;
     }
 
-    public PregCategorias(String catId, BigInteger catCantidadRespondidas, BigInteger catCantidadAciertos) {
-        this.catId = catId;
-        this.catCantidadRespondidas = catCantidadRespondidas;
-        this.catCantidadAciertos = catCantidadAciertos;
+    public String getId() {
+        return id;
     }
 
-    public String getCatId() {
-        return catId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setCatId(String catId) {
-        this.catId = catId;
+    public Long getCantidadRespondidas() {
+        return cantidadRespondidas;
     }
 
-    public BigInteger getCatCantidadRespondidas() {
-        return catCantidadRespondidas;
+    public void setCantidadRespondidas(Long cantidadRespondidas) {
+        this.cantidadRespondidas = cantidadRespondidas;
     }
 
-    public void setCatCantidadRespondidas(BigInteger catCantidadRespondidas) {
-        this.catCantidadRespondidas = catCantidadRespondidas;
+    public Long getCantidadAciertos() {
+        return cantidadAciertos;
     }
 
-    public BigInteger getCatCantidadAciertos() {
-        return catCantidadAciertos;
+    public void setCantidadAciertos(Long cantidadAciertos) {
+        this.cantidadAciertos = cantidadAciertos;
     }
 
-    public void setCatCantidadAciertos(BigInteger catCantidadAciertos) {
-        this.catCantidadAciertos = catCantidadAciertos;
+    public List<PregJugadores> getJugadoresList() {
+        return jugadoresList;
     }
 
-    public List<PregJugadores> getPregJugadoresList() {
-        return pregJugadoresList;
+    public void setJugadoresList(List<PregJugadores> jugadoresList) {
+        this.jugadoresList = jugadoresList;
     }
 
-    public void setPregJugadoresList(List<PregJugadores> pregJugadoresList) {
-        this.pregJugadoresList = pregJugadoresList;
+    public List<PregPreguntas> getPreguntasList() {
+        return preguntasList;
     }
 
-    public List<PregPreguntas> getPregPreguntasList() {
-        return pregPreguntasList;
-    }
-
-    public void setPregPreguntasList(List<PregPreguntas> pregPreguntasList) {
-        this.pregPreguntasList = pregPreguntasList;
+    public void setPreguntasList(List<PregPreguntas> preguntasList) {
+        this.preguntasList = preguntasList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (catId != null ? catId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -114,7 +119,7 @@ public class PregCategorias implements Serializable {
             return false;
         }
         PregCategorias other = (PregCategorias) object;
-        if ((this.catId == null && other.catId != null) || (this.catId != null && !this.catId.equals(other.catId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -122,7 +127,7 @@ public class PregCategorias implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregCategorias[ catId=" + catId + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregCategorias[ catId=" + id + " ]";
     }
     
 }

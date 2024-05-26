@@ -24,26 +24,24 @@ import jakarta.persistence.TemporalType;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_PRINPARTIDA")
 @NamedQueries({
-    @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
-    @NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.pparId = :pparId"),
-    @NamedQuery(name = "PregPrinpartida.findByPparModoJuego", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoJuego = :pparModoJuego"),
-    @NamedQuery(name = "PregPrinpartida.findByPparModoDuelo", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoDuelo = :pparModoDuelo"),
-    @NamedQuery(name = "PregPrinpartida.findByPparTiempoTotal", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTotal = :pparTiempoTotal"),
-    @NamedQuery(name = "PregPrinpartida.findByPparTiempoTranscurrido", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTranscurrido = :pparTiempoTranscurrido"),
-    @NamedQuery(name = "PregPrinpartida.findByPparCantidadRondas", query = "SELECT p FROM PregPrinpartida p WHERE p.pparCantidadRondas = :pparCantidadRondas"),
-    @NamedQuery(name = "PregPrinpartida.findByPparEstadoPartida", query = "SELECT p FROM PregPrinpartida p WHERE p.pparEstadoPartida = :pparEstadoPartida"),
-    @NamedQuery(name = "PregPrinpartida.findByPparCantidadJugadores", query = "SELECT p FROM PregPrinpartida p WHERE p.pparCantidadJugadores = :pparCantidadJugadores"),
-    @NamedQuery(name = "PregPrinpartida.findByPparSectorActivo", query = "SELECT p FROM PregPrinpartida p WHERE p.pparSectorActivo = :pparSectorActivo")})
+//    @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.pparId = :pparId"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparModoJuego", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoJuego = :pparModoJuego"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparModoDuelo", query = "SELECT p FROM PregPrinpartida p WHERE p.pparModoDuelo = :pparModoDuelo"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparTiempoTotal", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTotal = :pparTiempoTotal"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparTiempoTranscurrido", query = "SELECT p FROM PregPrinpartida p WHERE p.pparTiempoTranscurrido = :pparTiempoTranscurrido"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparCantidadRondas", query = "SELECT p FROM PregPrinpartida p WHERE p.pparCantidadRondas = :pparCantidadRondas"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparEstadoPartida", query = "SELECT p FROM PregPrinpartida p WHERE p.pparEstadoPartida = :pparEstadoPartida"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparCantidadJugadores", query = "SELECT p FROM PregPrinpartida p WHERE p.pparCantidadJugadores = :pparCantidadJugadores"),
+//    @NamedQuery(name = "PregPrinpartida.findByPparSectorActivo", query = "SELECT p FROM PregPrinpartida p WHERE p.pparSectorActivo = :pparSectorActivo")
+})
 public class PregPrinpartida implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,148 +50,146 @@ public class PregPrinpartida implements Serializable {
     @Id
     @Basic(optional = false)
     @Column(name = "PPAR_ID")
-    private BigDecimal pparId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "PPAR_MODO_JUEGO")
-    private String pparModoJuego;
+    private String modoJuego;
     @Basic(optional = false)
     @Column(name = "PPAR_MODO_DUELO")
-    private String pparModoDuelo;
+    private String modoDuelo;
     @Column(name = "PPAR_TIEMPO_TOTAL")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date pparTiempoTotal;
+    private LocalDate tiempoTotal;
     @Column(name = "PPAR_TIEMPO_TRANSCURRIDO")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date pparTiempoTranscurrido;
+    private LocalDate tiempoTrancurrido;
     @Basic(optional = false)
     @Column(name = "PPAR_CANTIDAD_RONDAS")
-    private BigInteger pparCantidadRondas;
+    private Long cantidadRondas;
     @Basic(optional = false)
     @Column(name = "PPAR_ESTADO_PARTIDA")
-    private String pparEstadoPartida;
+    private String estadoPartida;
     @Basic(optional = false)
     @Column(name = "PPAR_CANTIDAD_JUGADORES")
-    private BigInteger pparCantidadJugadores;
+    private Long cantidadJugadores;
     @Basic(optional = false)
     @Column(name = "PPAR_SECTOR_ACTIVO")
-    private BigInteger pparSectorActivo;
+    private Long sectorActivo;
     @JoinTable(name = "PREG_PREGUNTASPARTIDA", joinColumns = {
         @JoinColumn(name = "PXP_IDPPAR", referencedColumnName = "PPAR_ID")}, inverseJoinColumns = {
         @JoinColumn(name = "PXP_IDPRE", referencedColumnName = "PRE_ID")})
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<PregPreguntas> pregPreguntasList;
+    private List<PregPreguntas> preguntasList;
     @OneToMany(mappedBy = "pparId", fetch = FetchType.LAZY)
-    private List<PregJugpartida> pregJugpartidaList;
+    private List<PregJugpartida> jugpartidaList;
 
     public PregPrinpartida() {
     }
 
-    public PregPrinpartida(BigDecimal pparId) {
-        this.pparId = pparId;
+    public PregPrinpartida(Long pparId) {
+        this.id = pparId;
     }
 
-    public PregPrinpartida(BigDecimal pparId, String pparModoJuego, String pparModoDuelo, BigInteger pparCantidadRondas, String pparEstadoPartida, BigInteger pparCantidadJugadores, BigInteger pparSectorActivo) {
-        this.pparId = pparId;
-        this.pparModoJuego = pparModoJuego;
-        this.pparModoDuelo = pparModoDuelo;
-        this.pparCantidadRondas = pparCantidadRondas;
-        this.pparEstadoPartida = pparEstadoPartida;
-        this.pparCantidadJugadores = pparCantidadJugadores;
-        this.pparSectorActivo = pparSectorActivo;
+    public PregPrinpartida(Long pparId, String pparModoJuego, String pparModoDuelo, Long pparCantidadRondas, String pparEstadoPartida, Long pparCantidadJugadores, Long pparSectorActivo) {
+        this.id = pparId;
+        this.modoJuego = pparModoJuego;
+        this.modoDuelo = pparModoDuelo;
+        this.cantidadRondas = pparCantidadRondas;
+        this.estadoPartida = pparEstadoPartida;
+        this.cantidadJugadores = pparCantidadJugadores;
+        this.sectorActivo = pparSectorActivo;
     }
 
-    public BigDecimal getPparId() {
-        return pparId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPparId(BigDecimal pparId) {
-        this.pparId = pparId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPparModoJuego() {
-        return pparModoJuego;
+    public String getModoJuego() {
+        return modoJuego;
     }
 
-    public void setPparModoJuego(String pparModoJuego) {
-        this.pparModoJuego = pparModoJuego;
+    public void setModoJuego(String modoJuego) {
+        this.modoJuego = modoJuego;
     }
 
-    public String getPparModoDuelo() {
-        return pparModoDuelo;
+    public String getModoDuelo() {
+        return modoDuelo;
     }
 
-    public void setPparModoDuelo(String pparModoDuelo) {
-        this.pparModoDuelo = pparModoDuelo;
+    public void setModoDuelo(String modoDuelo) {
+        this.modoDuelo = modoDuelo;
     }
 
-    public Date getPparTiempoTotal() {
-        return pparTiempoTotal;
+    public LocalDate getTiempoTotal() {
+        return tiempoTotal;
     }
 
-    public void setPparTiempoTotal(Date pparTiempoTotal) {
-        this.pparTiempoTotal = pparTiempoTotal;
+    public void setTiempoTotal(LocalDate tiempoTotal) {
+        this.tiempoTotal = tiempoTotal;
     }
 
-    public Date getPparTiempoTranscurrido() {
-        return pparTiempoTranscurrido;
+    public LocalDate getTiempoTrancurrido() {
+        return tiempoTrancurrido;
     }
 
-    public void setPparTiempoTranscurrido(Date pparTiempoTranscurrido) {
-        this.pparTiempoTranscurrido = pparTiempoTranscurrido;
+    public void setTiempoTrancurrido(LocalDate tiempoTrancurrido) {
+        this.tiempoTrancurrido = tiempoTrancurrido;
     }
 
-    public BigInteger getPparCantidadRondas() {
-        return pparCantidadRondas;
+    public Long getCantidadRondas() {
+        return cantidadRondas;
     }
 
-    public void setPparCantidadRondas(BigInteger pparCantidadRondas) {
-        this.pparCantidadRondas = pparCantidadRondas;
+    public void setCantidadRondas(Long cantidadRondas) {
+        this.cantidadRondas = cantidadRondas;
     }
 
-    public String getPparEstadoPartida() {
-        return pparEstadoPartida;
+    public String getEstadoPartida() {
+        return estadoPartida;
     }
 
-    public void setPparEstadoPartida(String pparEstadoPartida) {
-        this.pparEstadoPartida = pparEstadoPartida;
+    public void setEstadoPartida(String estadoPartida) {
+        this.estadoPartida = estadoPartida;
     }
 
-    public BigInteger getPparCantidadJugadores() {
-        return pparCantidadJugadores;
+    public Long getCantidadJugadores() {
+        return cantidadJugadores;
     }
 
-    public void setPparCantidadJugadores(BigInteger pparCantidadJugadores) {
-        this.pparCantidadJugadores = pparCantidadJugadores;
+    public void setCantidadJugadores(Long cantidadJugadores) {
+        this.cantidadJugadores = cantidadJugadores;
     }
 
-    public BigInteger getPparSectorActivo() {
-        return pparSectorActivo;
+    public Long getSectorActivo() {
+        return sectorActivo;
     }
 
-    public void setPparSectorActivo(BigInteger pparSectorActivo) {
-        this.pparSectorActivo = pparSectorActivo;
+    public void setSectorActivo(Long sectorActivo) {
+        this.sectorActivo = sectorActivo;
     }
 
-    public List<PregPreguntas> getPregPreguntasList() {
-        return pregPreguntasList;
+    public List<PregPreguntas> getPreguntasList() {
+        return preguntasList;
     }
 
-    public void setPregPreguntasList(List<PregPreguntas> pregPreguntasList) {
-        this.pregPreguntasList = pregPreguntasList;
+    public void setPreguntasList(List<PregPreguntas> preguntasList) {
+        this.preguntasList = preguntasList;
     }
 
-    public List<PregJugpartida> getPregJugpartidaList() {
-        return pregJugpartidaList;
+    public List<PregJugpartida> getJugpartidaList() {
+        return jugpartidaList;
     }
 
-    public void setPregJugpartidaList(List<PregJugpartida> pregJugpartidaList) {
-        this.pregJugpartidaList = pregJugpartidaList;
+    public void setJugpartidaList(List<PregJugpartida> jugpartidaList) {
+        this.jugpartidaList = jugpartidaList;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pparId != null ? pparId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -204,7 +200,7 @@ public class PregPrinpartida implements Serializable {
             return false;
         }
         PregPrinpartida other = (PregPrinpartida) object;
-        if ((this.pparId == null && other.pparId != null) || (this.pparId != null && !this.pparId.equals(other.pparId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -212,7 +208,7 @@ public class PregPrinpartida implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregPrinpartida[ pparId=" + pparId + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregPrinpartida[ pparId=" + id + " ]";
     }
 
 }
