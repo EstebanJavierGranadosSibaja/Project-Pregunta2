@@ -10,7 +10,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.effect.Bloom;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -289,7 +288,7 @@ public class GameController extends Controller implements Initializable {
         ImageView[] sectorPawns = getPawnsBySector(sector);
         Image pawnImage = getPawnImageByColor(color);
 
-        if (sectorPawns != null && pawnImage != null) {
+        if (sectorPawns != null) {
             setPawnImages(sectorPawns, pawnImage);
         }
     }

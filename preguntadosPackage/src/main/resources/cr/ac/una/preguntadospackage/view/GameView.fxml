@@ -51,15 +51,7 @@
                      </effect>
                   </ImageView>
                   <Separator prefWidth="200.0" visible="false" />
-                  <ImageView fitHeight="325.0" fitWidth="325.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/Roullete.png" />
-                     </image>
-                     <effect>
-                        <Shadow height="30.0" radius="14.5" width="30.0" />
-                     </effect>
-                  </ImageView>
-                  <ImageView fx:id="imgSpinner" fitHeight="323.0" fitWidth="323.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
+                  <ImageView fx:id="imgSpinner" fitHeight="355.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
                      <image>
                         <Image url="@../resources/Roullete.png" />
                      </image>
@@ -108,9 +100,9 @@
                   </ImageView>
                   <AnchorPane prefHeight="638.0" prefWidth="822.0">
                      <children>
-                        <ImageView fitHeight="100.0" fitWidth="132.0" layoutX="394.0" layoutY="295.0" onMouseClicked="#onActionSpinRoulette" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="394.0" layoutY="289.0" onMouseClicked="#onActionSpinRoulette" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../resources/pngwing.com(1).png" />
+                              <Image url="@../resources/spinner.png" />
                            </image>
                         </ImageView>
                         <ImageView fx:id="imgSector4Pawn1" fitHeight="100.0" fitWidth="80.0" layoutX="336.0" layoutY="450.0" pickOnBounds="true" preserveRatio="true">
@@ -776,7 +768,7 @@
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="124.0" layoutY="200.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: white;">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="124.0" layoutY="200.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: purple;">
                            <children>
                               <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
                                  <children>
