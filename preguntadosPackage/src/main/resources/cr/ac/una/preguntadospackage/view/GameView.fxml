@@ -498,7 +498,7 @@
                                     <Image url="@../resources/GreenCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector2SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleGreenCoin.png" />
                                  </image>
@@ -512,7 +512,7 @@
                                     <Image url="@../resources/RedCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector2ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleleRedCoin.png" />
                                  </image>
@@ -526,7 +526,7 @@
                                     <Image url="@../resources/BlueCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector2GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleBlueCoin.png" />
                                  </image>
@@ -540,7 +540,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector2SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -554,7 +554,7 @@
                                     <Image url="@../resources/YellowCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector2HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleYellowCoin.png" />
                                  </image>
@@ -568,7 +568,7 @@
                                     <Image url="@../resources/PinkCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector2EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaiblePinkCoin.png" />
                                  </image>
@@ -583,7 +583,7 @@
                                     <Image url="@../resources/RedCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleleRedCoin.png" />
                                  </image>
@@ -597,7 +597,7 @@
                                     <Image url="@../resources/BlueCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleBlueCoin.png" />
                                  </image>
@@ -611,7 +611,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1SportsBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -625,7 +625,7 @@
                                     <Image url="@../resources/YellowCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleYellowCoin.png" />
                                  </image>
@@ -639,7 +639,7 @@
                                     <Image url="@../resources/PinkCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaiblePinkCoin.png" />
                                  </image>
@@ -653,7 +653,7 @@
                                     <Image url="@../resources/GreenCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleGreenCoin.png" />
                                  </image>
@@ -751,7 +751,7 @@
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector2" fitHeight="325.0" fitWidth="210.0" layoutX="574.0" layoutY="92.0" onMouseClicked="#onActionSector2" onMouseEntered="#onHoverSector2" onMouseExited="#onNotHoverSector2" pickOnBounds="true" preserveRatio="true" rotate="-60.9">
+                        <ImageView fx:id="imgSelectorSector2" fitHeight="325.0" fitWidth="210.0" layoutX="574.0" layoutY="92.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="-60.9">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>

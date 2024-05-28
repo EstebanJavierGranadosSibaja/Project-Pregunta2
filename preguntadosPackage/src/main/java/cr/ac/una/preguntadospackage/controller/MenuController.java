@@ -41,9 +41,7 @@ public class MenuController extends Controller implements Initializable {
     }
 
     @FXML
-    private void onActionPlayMultiplayer(ActionEvent event) {
-        FlowController.getInstance().goView("GameParametersView");
-    }
+    private void onActionPlayMultiplayer(ActionEvent event) { FlowController.getInstance().goView("GameParametersView"); }
 
 
     @FXML

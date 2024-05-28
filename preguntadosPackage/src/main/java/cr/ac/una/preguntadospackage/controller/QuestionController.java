@@ -33,79 +33,20 @@ public class QuestionController extends Controller implements Initializable {
     @FXML
     private Label lblCategory;
 
-    private int category;
+    private String category;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-
     }    
 
     @Override
     public void initialize() {
     }
 
-
-    public void setCategoryTheme(int category) {
+    public void setCategoryTheme(String category) {
         this.category = category;
-        switch(category){
-            case 0:
-                // TODO: Get from the database the questions for the category "Historia"
-                // and set the question and answers in the labels
-
-                // TODO: Configure the buttons to show the answers
-                // and set the correct answer to the button
-
-                lblCategory.setText("CIENCIA");
-
-                break;
-            case 1:
-                lblCategory.setText("GEOGRAFIA");
-
-
-
-
-
-                break;
-            case 2:
-
-                lblCategory.setText("CORONA");
-
-
-
-                break;
-            case 3:
-
-                lblCategory.setText("ENTRETENIMIENTO");
-
-
-
-                break;
-            case 4:
-
-                lblCategory.setText("ARTE");
-
-
-
-
-
-                break;
-            case 5:
-
-                lblCategory.setText("DEPORTE");
-
-
-
-
-
-                break;
-
-            case 6:
-
-                lblCategory.setText("HISTORIA");
-
-
-                break;
+        lblCategory.setText(category.toUpperCase());
+        switch(category) {
         }
     }
 
@@ -116,40 +57,33 @@ public class QuestionController extends Controller implements Initializable {
         // TODO: make this more simple and non-parameter like
     }
 
-
-    @FXML
-    public void onActionRespuesta4(ActionEvent actionEvent) {
-        calculateAnswerResult(4);
-        System.out.println("Respuesta 4");
-
-    }
-
-    @FXML
-    public void onActionRespuesta3(ActionEvent actionEvent) {
-        calculateAnswerResult(3);
-        // Debug message
-        System.out.println("Respuesta 3");
-
-    }
-
-    @FXML
-    public void onActionRespuesta2(ActionEvent actionEvent) {
-        calculateAnswerResult(2);
-        // Debug message
-        System.out.println("Respuesta 2");
-
-    }
-
     @FXML
     public void onActionRespuesta1(ActionEvent actionEvent) {
         calculateAnswerResult(1);
-        // Debug message
-        System.out.println("Respuesta 1 - \n>>>>>>>DEBUG: Return to the main menu and consider it as a correct answer");
 
-        // Move the orange pawn
-        gameController.calculateNextPawnMovement(4); // Assuming 4 is the player number for the orange pawn
+        // TODO: SHOULD BE MANAGED WITH ID INSTEAD OF HARDCODED VALUE
+        gameController.showCoin(category, gameController.players[gameController.currentSelectingPlayer -1].getPosicionSector());
+
+        // TODO: SHOULD BEDONE MODIFYING THE DATABASE
+        if(gameController.currentSelectingPlayer == gameController.playerCount) gameController.currentSelectingPlayer = 0;
+
+        gameController.currentSelectingPlayer++;
 
         // debug return to the main menu
         FlowController.getInstance().goView("GameView");
     }
+
+    @FXML
+    public void onActionRespuesta2(ActionEvent actionEvent) { calculateAnswerResult(2); }
+
+    @FXML
+    public void onActionRespuesta3(ActionEvent actionEvent) { calculateAnswerResult(3); }
+
+    @FXML
+    public void onActionRespuesta4(ActionEvent actionEvent) { calculateAnswerResult(4); }
+
+
+
+
+
 }
