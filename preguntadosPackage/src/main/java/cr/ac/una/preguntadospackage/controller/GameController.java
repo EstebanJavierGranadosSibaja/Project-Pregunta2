@@ -3,55 +3,53 @@ package cr.ac.una.preguntadospackage.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.soundUtils;
 import javafx.animation.RotateTransition;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.effect.Bloom;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import cr.ac.una.preguntadospackage.model.*;
 
 public class GameController extends Controller implements Initializable {
 
-    private Boolean hasSpinnerBeenClicked = false;
-    private int playerCount = 2;
-    private int selectedPawns = 0;
-    private int currentSelectingPlayer = 1;
-    public int currentPlayer = 1; // TODO: the selected player should be random
-
-    @FXML private ImageView
-            // Category Images
-            imgSportShadow, imgHistory, imgScience, imgArtShadow, imgEntertainment, imgScienceShadow,
-            imgCrownShadow, imgEntertainmentShadow, imgHistoryShadow, imgGeographyShadow, imgArt, imgSport,
-            imgGeography, imgCrown,
-
-            // Pawn Slot Images
-            imgPawnRedSlot1, imgPawnRedSlot2, imgPawnRedSlot3, imgPawnRedSlot4,
-            imgPawnPurpleSlot1, imgPawnPurpleSlot2, imgPawnPurpleSlot3, imgPawnPurpleSlot4,
-            imgPawnOrangeSlot1, imgPawnOrangeSlot2, imgPawnOrangeSlot3, imgPawnOrangeSlot4,
-            imgPawnGreenSlot1, imgPawnGreenSlot2, imgPawnGreenSlot3, imgPawnGreenSlot4,
-            imgPawnBlueSlot1, imgPawnBlueSlot2, imgPawnBlueSlot3, imgPawnBlueSlot4,
-            imgPawnPinkSlot1, imgPawnPinkSlot2, imgPawnPinkSlot3, imgPawnPinkSlot4,
-
-            // Pawn Selection Images
-            imgGreenPawnSelection, imgOrangePawnSelection, imgPurplePawnSelection, imgRedPawnSelection,
-            imgBluePawnSelection, imgPinkPawnSelection,
-
-            // Disabled Pawn Images
-            imgDisabledGreenPawn, imgDisabledOrangePawn, imgDisabledPurplePawn, imgDisabledRedPawn,
-            imgDisabledBluePawn, imgDisabledPinkPawn,
-
-            // Other Elements
-            imgSpinner;
+    private int playerCount = 2; // default value as 2 is the minimum amount of players
+    private int selectedSectors = 0;
+    private int currentSelectingPlayer = 1; // the player that is currently selecting a pawn (1-6)
 
     @FXML private Label lblPlayerCurrentlySelecting;
     @FXML private AnchorPane apSelectionScreen;
 
+    // for now create the 6 players as DTOs
+    PregJugpartidaDto[] players = new PregJugpartidaDto[6];
+
+    @FXML private ImageView
+            imgDisabledPinkPawn, imgSector2Pawn2, imgSector2Pawn1, imgSector2Pawn4, imgSector2Pawn3,
+            imgPurplePawnSelection, imgSector6Pawn2, imgSector6Pawn1, imgDisabledBluePawn, imgSector6Pawn4,
+            imgSector6Pawn3, imgSport, imgBluePawnSelection, imgSector3Pawn4, imgSector3Pawn2, imgSector3Pawn3,
+            imgDisabledOrangePawn, imgSector5Pawn1, imgOrangePawnSelection, imgSector5Pawn2, imgSector5Pawn3,
+            imgRedPawnSelection, imgCrown, imgDisabledPurplePawn, imgSelectorSector5, imgSelectorSector4,
+            imgSelectorSector6, imgSector4Pawn2, imgSelectorSector1, imgGreenPawnSelection, imgSector4Pawn1,
+            imgSelectorSector3, imgSelectorSector2, imgPinkPawnSelection, imgSpinner, imgSector5Pawn4,
+            imgDisabledGreenPawn, imgSector3Pawn1, imgDisabledRedPawn, imgGeography, imgEntertainment,
+            imgSector1Pawn4, imgSector4Pawn4, imgSector4Pawn3, imgArt, imgSector1Pawn1, imgSector1Pawn2,
+            imgSector1Pawn3, imgHistory, imgScience;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        pawnHasBeenSelected();
+
+        // for now initialize the players (DEBUG)
+        for (int i = 0; i < 6; i++) {
+            players[i] = new PregJugpartidaDto();
+        }
+
+        CheckIfAllThePawnsHaveBeenSelected();
+        hideAllPawns();
         hideNonAvailableInventorySlots();
         hideCategoryAnimation();
         resetPawnVisibility(); // TODO: this should be called when the game starts but overwritten by the player's previous progress saved in the database
@@ -67,36 +65,34 @@ public class GameController extends Controller implements Initializable {
         disableNonAvailablePawns(playerCount);
     }
 
-    public void calculateNextPawnMovement(int playerNumber) {
-        String pawnColorOfTheUser = "orange"; // This should be based on the selected one (TODO)
-        int pawnPositionOfTheUser = 1; // Assume the pawn position was retrieved from the user (TODO)
+    private void showCoin(String coinCategory, int inventoryNumber) {
+        // based on the coin color, enable it in the player's inventory
+        // this could be made by just changing the coin image into the colored one
+    }
 
-        switch (pawnColorOfTheUser) {
+    private void hideAllPawns() {
+        imgSector1Pawn1.setVisible(false);imgSector1Pawn2.setVisible(false);imgSector1Pawn3.setVisible(false);imgSector1Pawn4.setVisible(false);
+        imgSector2Pawn1.setVisible(false);imgSector2Pawn2.setVisible(false);imgSector2Pawn3.setVisible(false);imgSector2Pawn4.setVisible(false);
+        imgSector3Pawn1.setVisible(false);imgSector3Pawn2.setVisible(false);imgSector3Pawn3.setVisible(false);imgSector3Pawn4.setVisible(false);
+        imgSector4Pawn1.setVisible(false);imgSector4Pawn2.setVisible(false);imgSector4Pawn3.setVisible(false);imgSector4Pawn4.setVisible(false);
+        imgSector5Pawn1.setVisible(false);imgSector5Pawn2.setVisible(false);imgSector5Pawn3.setVisible(false);imgSector5Pawn4.setVisible(false);
+        imgSector6Pawn1.setVisible(false);imgSector6Pawn2.setVisible(false);imgSector6Pawn3.setVisible(false);imgSector6Pawn4.setVisible(false);
+    }
+
+    public void calculateNextPawnMovement(int playerNumber) {
+        switch ("") {
             case "red":
-                movePawn(imgPawnRedSlot1, imgPawnRedSlot2, imgPawnRedSlot3, imgPawnRedSlot4, pawnPositionOfTheUser);
                 break;
             case "purple":
-                movePawn(imgPawnPurpleSlot1, imgPawnPurpleSlot2, imgPawnPurpleSlot3, imgPawnPurpleSlot4, pawnPositionOfTheUser);
+
                 break;
             case "green":
-                movePawn(imgPawnGreenSlot1, imgPawnGreenSlot2, imgPawnGreenSlot3, imgPawnGreenSlot4, pawnPositionOfTheUser);
+
                 break;
             case "orange":
-                movePawn(imgPawnOrangeSlot1, imgPawnOrangeSlot2, imgPawnOrangeSlot3, imgPawnOrangeSlot4, pawnPositionOfTheUser);
+
                 break;
         }
-    }
-
-    private void movePawn(ImageView slot1, ImageView slot2, ImageView slot3, ImageView slot4, int position) {
-        // + 1 because the idea is to show the next slot (1-based index) and make the previous one invisible, making the illusion of movement
-        slot1.setVisible(position + 1 == 1); // This is always false because the position always starts at 1, so 1 + 1 is always 2 and so on
-        slot2.setVisible(position + 1 == 2);
-        slot3.setVisible(position + 1 == 3);
-        slot4.setVisible(position + 1 == 4);
-    }
-
-    public void addCorrespondingCoinToPlayer(String category, int inventoryNumber) {
-        // TODO: hide the gray coin from the inventory and  show the colored coin in the player's inventory depending on the category
     }
 
     private void hideNonAvailableInventorySlots() {
@@ -104,7 +100,7 @@ public class GameController extends Controller implements Initializable {
         // this method should make all the coins gray for the non playing players
     }
 
-    // this method hides all the pawns that are not available(just for initial setup)
+    // this method hides all the pawns that are not available (just for initial setup)
     public void disableNonAvailablePawns(int playerCount) {
         imgDisabledGreenPawn.setVisible(false);
         imgDisabledOrangePawn.setVisible(false);
@@ -114,133 +110,353 @@ public class GameController extends Controller implements Initializable {
         imgDisabledBluePawn.setVisible(false);
     }
 
-    // this method shows the category animation depending on the category
-    // TODO: make it actually animate and not only show the image
-    public void playCategoryAnimation(int category) {
-        switch (category) {
-            case 0: imgScience.setVisible(true); imgScienceShadow.setVisible(true); break;
-            case 1: imgGeography.setVisible(true); imgGeographyShadow.setVisible(true); break;
-            case 2: imgCrown.setVisible(true); imgCrownShadow.setVisible(true); break;
-            case 3: imgEntertainment.setVisible(true); imgEntertainmentShadow.setVisible(true); break;
-            case 4: imgArt.setVisible(true); imgArtShadow.setVisible(true); break;
-            case 5: imgSport.setVisible(true); imgSportShadow.setVisible(true); break;
-        }
-    }
-
-    private void hideCategoryAnimation() {
-        imgArt.setVisible(false); imgArtShadow.setVisible(false); imgCrown.setVisible(false); imgCrownShadow.setVisible(false);
-        imgEntertainment.setVisible(false); imgEntertainmentShadow.setVisible(false); imgGeography.setVisible(false); imgGeographyShadow.setVisible(false);
-        imgHistory.setVisible(false); imgHistoryShadow.setVisible(false); imgScience.setVisible(false); imgScienceShadow.setVisible(false);
-        imgSport.setVisible(false); imgSportShadow.setVisible(false);
-    }
-
-    // this method is called when the spinner is clicked
-    // it has a random degree and depending on the degree it selects a category
-    // then it plays the category animation and goes to the question view
-    // it also has anti-spam protection
+    private Boolean hasSpinnerBeenClicked = false;
     @FXML
-    public void onActionSpinner(MouseEvent event) {
-        // Anti-spam protection
+    public void onActionSpinRoulette(MouseEvent event) {
         if (hasSpinnerBeenClicked) return;
-        // The spinner has been clicked
-        hasSpinnerBeenClicked = true;
 
-        // Set the spinner to rotate
-        // 27 because the spinner is not perfectly centered as it should be from the image
+        soundUtils.getInstance().playSound("roulleteClick");
+
+        hasSpinnerBeenClicked = true;
         imgSpinner.setRotate(27);
-        // Random degree
+
         double randomDegrees = Math.random() * 360;
-        // Category selection based on the random degree
         int category = (int) Math.floor(randomDegrees / 51.4);
-        // create the rotate transition object (it receives the duration and the node to rotate)
+
         RotateTransition rt = new RotateTransition(javafx.util.Duration.seconds(4.5), imgSpinner);
-        // set the degree to rotate
         rt.setByAngle(randomDegrees + 3600);
-        // play the animation
         rt.play();
-        // play the category animation
+
         playCategoryAnimation(category);
-        // set the event to be executed when the animation finishes
+
         rt.setOnFinished(e -> {
-            // pause the thread for 2.5 seconds to show the category animation before going to the question view
             try {
                 Thread.sleep(2500);
             } catch (InterruptedException ex) {
                 System.out.println("Error pausing thread: " + ex.getMessage());
             }
-            // get a reference to the question controller
+
+            soundUtils.getInstance().playSound("question");
+
             QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
-            // set the category theme
             questionController.setCategoryTheme(category);
-            // go to the question view (by this point the category animation has already been shown and the theme has been set)
             FlowController.getInstance().goView("QuestionView");
-            // reset the spinner (the user is already in the question view)
+
             hasSpinnerBeenClicked = false;
-            // just hide the category animation assets
             hideCategoryAnimation();
         });
     }
 
-    // this method is called when the player selects a pawn in the selection screen
-    private void pawnHasBeenSelected() {
-        if (selectedPawns == playerCount) {
-            apSelectionScreen.setVisible(false);
+    // this method shows the category animation depending on the category
+    // TODO: make it actually animate and not only show the image
+    public void playCategoryAnimation(int category) {
+        switch (category) {
+            case 0:
+                imgScience.setVisible(true);
+                break;
+            case 1:
+                imgGeography.setVisible(true);
+
+                break;
+            case 2:
+                imgCrown.setVisible(true);
+
+                break;
+            case 3:
+                imgEntertainment.setVisible(true);
+
+                break;
+            case 4:
+                imgArt.setVisible(true);
+
+                break;
+            case 5:
+                imgSport.setVisible(true);
+
+                break;
         }
-        lblPlayerCurrentlySelecting.setText("CURRENT SELECTING PLAYER: " + currentSelectingPlayer);
+    }
+
+    private void hideCategoryAnimation() {
+        imgArt.setVisible(false);
+        imgCrown.setVisible(false);
+        imgEntertainment.setVisible(false);
+        imgGeography.setVisible(false);
+        imgHistory.setVisible(false);
+        imgScience.setVisible(false);
+        imgSport.setVisible(false);
+    }
+
+    private Image getPawnImageByColor(String color) {
+        switch (color) {
+            case "green": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnGreen.png").toString());
+            case "orange": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnOrange.png").toString());
+            case "purple": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnPurple.png").toString());
+            case "red": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnRed.png").toString());
+            case "pink": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnPink.png").toString());
+            case "blue": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnBlue.png").toString());
+            default: return null; // this should never happen (programmer logic be like)
+        }
+    }
+
+    public String getColorByImageId(String imageId) {
+        switch (imageId) {
+            case "imgGreenPawnSelection":
+                return "green";
+            case "imgOrangePawnSelection":
+                return "orange";
+            case "imgPurplePawnSelection":
+                return "purple";
+            case "imgRedPawnSelection":
+                return "red";
+            case "imgPinkPawnSelection":
+                return "pink";
+            case "imgBluePawnSelection":
+                return "blue";
+            default:
+                return "";
+        }
     }
 
     // this method is called when the player selects a pawn in the selection screen
+    private void CheckIfAllThePawnsHaveBeenSelected() {
+        if (currentSelectingPlayer - 1 == playerCount) {
+            apSelectionScreen.setVisible(false);
+            currentSelectingPlayer = 1;
+        }
+    }
+
+    private void setPawnImages(ImageView[] pawns, Image pawnImage) {
+        for (ImageView pawn: pawns) {
+            pawn.setImage(pawnImage);
+        }
+    }
+
+    private void setPawnsWithColorOnSector(int sector, String color) {
+        ImageView[] sectorPawns = getPawnsBySector(sector);
+        Image pawnImage = getPawnImageByColor(color);
+
+        if (sectorPawns != null && pawnImage != null) {
+            setPawnImages(sectorPawns, pawnImage);
+        }
+    }
+
+    private ImageView[] getPawnsBySector(int sector) {
+        switch (sector) {
+            case 1:
+                return new ImageView[] {
+                        imgSector1Pawn1,
+                        imgSector1Pawn2,
+                        imgSector1Pawn3,
+                        imgSector1Pawn4
+                };
+            case 2:
+                return new ImageView[] {
+                        imgSector2Pawn1,
+                        imgSector2Pawn2,
+                        imgSector2Pawn3,
+                        imgSector2Pawn4
+                };
+            case 3:
+                return new ImageView[] {
+                        imgSector3Pawn1,
+                        imgSector3Pawn2,
+                        imgSector3Pawn3,
+                        imgSector3Pawn4
+                };
+            case 4:
+                return new ImageView[] {
+                        imgSector4Pawn1,
+                        imgSector4Pawn2,
+                        imgSector4Pawn3,
+                        imgSector4Pawn4
+                };
+            case 5:
+                return new ImageView[] {
+                        imgSector5Pawn1,
+                        imgSector5Pawn2,
+                        imgSector5Pawn3,
+                        imgSector5Pawn4
+                };
+            case 6:
+                return new ImageView[] {
+                        imgSector6Pawn1,
+                        imgSector6Pawn2,
+                        imgSector6Pawn3,
+                        imgSector6Pawn4
+                };
+            default:
+                return null;
+        }
+    }
+
+    private void visuallyInitializePawns() {
+        for (int i = 0; i < playerCount; i++) {
+            // show the first pawn of the player
+            switch (players[i].getPosicionSector()) {
+                case 1: {
+                    imgSector1Pawn1.setVisible(true);
+                    break;
+                }
+                case 2: {
+                    imgSector2Pawn1.setVisible(true);
+                    break;
+                }
+                case 3: {
+                    imgSector3Pawn1.setVisible(true);
+                    break;
+                }
+                case 4: {
+                    imgSector4Pawn1.setVisible(true);
+                    break;
+                }
+                case 5: {
+                    imgSector5Pawn1.setVisible(true);
+                    break;
+                }
+                case 6: {
+                    imgSector6Pawn1.setVisible(true);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void CheckIfAllTheSectorsHaveBeenSelected() {
+        if (selectedSectors == playerCount) {
+            // hide all the sector selectors
+            imgSelectorSector1.setVisible(false);
+            imgSelectorSector2.setVisible(false);
+            imgSelectorSector3.setVisible(false);
+            imgSelectorSector4.setVisible(false);
+            imgSelectorSector5.setVisible(false);
+            imgSelectorSector6.setVisible(false);
+
+            // cycle through the players and show their assigned sector and color saved
+            for (int i = 0; i < playerCount; i++) {
+                setPawnsWithColorOnSector(players[i].getPosicionSector(), players[i].getColorPeon());
+            }
+            visuallyInitializePawns();
+
+            // cycle through the players and show their assigned sector and color saved (DEBUG)
+            for (PregJugpartidaDto player: players) {
+                System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon() + "IGNORAR SI ES -1");
+            }
+        }
+    }
+
     @FXML
     public void onActionGreenPawnSelected(Event event) {
-        handlePawnSelection(imgGreenPawnSelection, imgDisabledGreenPawn);
+        soundUtils.getInstance().playSound("click");
+        handlePawnSelection(imgGreenPawnSelection);
     }
 
-    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionOrangePawnSelected(Event event) {
-        handlePawnSelection(imgOrangePawnSelection, imgDisabledOrangePawn);
+        soundUtils.getInstance().playSound("click");
+        handlePawnSelection(imgOrangePawnSelection);
     }
 
-    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionPurplePawnSelected(Event event) {
-        handlePawnSelection(imgPurplePawnSelection, imgDisabledPurplePawn);
+        soundUtils.getInstance().playSound("click");
+        handlePawnSelection(imgPurplePawnSelection);
     }
 
-    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionRedPawnSelected(Event event) {
-        handlePawnSelection(imgRedPawnSelection, imgDisabledRedPawn);
+        soundUtils.getInstance().playSound("click");
+        handlePawnSelection(imgRedPawnSelection);
     }
 
-    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionPinkPawnSelected(Event event) {
-        handlePawnSelection(imgPinkPawnSelection, imgDisabledPinkPawn);
+        soundUtils.getInstance().playSound("click");
+        handlePawnSelection(imgPinkPawnSelection);
     }
 
-    // this method is called when the player selects a pawn in the selection screen
     @FXML
     public void onActionBluePawnSelected(Event event) {
-        handlePawnSelection(imgBluePawnSelection, imgDisabledBluePawn);
+        soundUtils.getInstance().playSound("click");
+        handlePawnSelection(imgBluePawnSelection);
     }
 
     // this method is called when the player selects a pawn in the selection screen
-    private void handlePawnSelection(ImageView pawnSelection, ImageView disabledPawn) {
-        selectedPawns++;
-        currentSelectingPlayer++;
-        pawnHasBeenSelected();
+    private void handlePawnSelection(ImageView pawnSelection) {
         pawnSelection.setVisible(false);
-        disabledPawn.setVisible(true);
+
+        players[currentSelectingPlayer - 1].setColorPeon(getColorByImageId(pawnSelection.getId()));
+        currentSelectingPlayer++;
+        lblPlayerCurrentlySelecting.setText("Player " + currentSelectingPlayer);
+
+        CheckIfAllThePawnsHaveBeenSelected(); // checks if all the pawns have been selected, TODO: Rename this method
     }
 
+    private void resetPawnVisibility() {}
 
-    private void resetPawnVisibility() {
-        imgPawnGreenSlot1.setVisible(true); imgPawnOrangeSlot1.setVisible(true); imgPawnPurpleSlot1.setVisible(true); imgPawnRedSlot1.setVisible(true);
-        imgPawnGreenSlot2.setVisible(false); imgPawnOrangeSlot2.setVisible(false); imgPawnPurpleSlot2.setVisible(false); imgPawnRedSlot2.setVisible(false);
-        imgPawnGreenSlot3.setVisible(false); imgPawnOrangeSlot3.setVisible(false); imgPawnPurpleSlot3.setVisible(false); imgPawnRedSlot3.setVisible(false);
-        imgPawnGreenSlot4.setVisible(false); imgPawnOrangeSlot4.setVisible(false); imgPawnPurpleSlot4.setVisible(false); imgPawnRedSlot4.setVisible(false);
-        imgPawnBlueSlot1.setVisible(true); imgPawnBlueSlot2.setVisible(false); imgPawnBlueSlot3.setVisible(false); imgPawnBlueSlot4.setVisible(false);
-        imgPawnPinkSlot1.setVisible(true); imgPawnPinkSlot2.setVisible(false); imgPawnPinkSlot3.setVisible(false); imgPawnPinkSlot4.setVisible(false);
+    @FXML
+    public void onActionSector4(Event event) {
+        players[currentSelectingPlayer - 1].setPosicionSector(4);
+        imgSelectorSector4.setVisible(false);
+        currentSelectingPlayer++;
+        selectedSectors++;
+        CheckIfAllTheSectorsHaveBeenSelected();
     }
+
+    @FXML
+    public void onActionSector3(Event event) {
+        players[currentSelectingPlayer - 1].setPosicionSector(3);
+        imgSelectorSector3.setVisible(false);
+        currentSelectingPlayer++;
+        selectedSectors++;
+        CheckIfAllTheSectorsHaveBeenSelected();
+    }
+
+    @FXML
+    public void onActionSector6(Event event) {
+        players[currentSelectingPlayer - 1].setPosicionSector(6);
+        imgSelectorSector6.setVisible(false);
+        currentSelectingPlayer++;
+        selectedSectors++;
+        CheckIfAllTheSectorsHaveBeenSelected();
+    }
+
+    @FXML
+    public void onActionSector5(Event event) {
+        players[currentSelectingPlayer - 1].setPosicionSector(5);
+        imgSelectorSector5.setVisible(false);
+        currentSelectingPlayer++;
+        selectedSectors++;
+        CheckIfAllTheSectorsHaveBeenSelected();
+    }
+
+    @FXML
+    public void onActionSector2(Event event) {
+        players[currentSelectingPlayer - 1].setPosicionSector(2);
+        imgSelectorSector2.setVisible(false);
+        currentSelectingPlayer++;
+        selectedSectors++;
+        CheckIfAllTheSectorsHaveBeenSelected();
+    }
+
+    @FXML
+    public void onActionSector1(Event event) {
+        players[currentSelectingPlayer - 1].setPosicionSector(1);
+        imgSelectorSector1.setVisible(false);
+        currentSelectingPlayer++;
+        selectedSectors++;
+        CheckIfAllTheSectorsHaveBeenSelected();
+    }
+
+    // TODO: Assign a css tag and make the hover effect in the css file instead of here, so that way I dont have to repeat the same code for each sector
+    @FXML
+    public void onHoverSector2(Event event) {
+        imgSelectorSector2.setEffect(new Bloom());
+    }
+
+    @FXML
+    public void onNotHoverSector2(Event event) {
+        imgSelectorSector2.setEffect(null);
+    }
+
 }

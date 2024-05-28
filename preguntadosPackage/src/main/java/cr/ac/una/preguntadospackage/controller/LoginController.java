@@ -5,6 +5,7 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import java.net.URL;
@@ -44,6 +45,9 @@ public class LoginController extends Controller implements Initializable {
 
     @FXML
     private void onActionLogin(ActionEvent event) {
+        // play a sound
+        soundUtils.getInstance().playSound("click");
+
         FlowController.getInstance().goMain();
         FlowController.getInstance().goView("MenuView");
         getStage().close();

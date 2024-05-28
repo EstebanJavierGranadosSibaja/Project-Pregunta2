@@ -114,7 +114,6 @@ public class QuestionController extends Controller implements Initializable {
 
         // for now just asume is correct and thats it
         // TODO: make this more simple and non-parameter like
-        gameController.calculateNextPawnMovement(gameController.currentPlayer);
     }
 
 

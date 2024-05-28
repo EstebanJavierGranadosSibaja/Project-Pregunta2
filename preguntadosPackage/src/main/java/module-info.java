@@ -7,6 +7,7 @@ module cr.ac.una.preguntadospackage {
     requires MaterialFX;
     requires java.base;
     requires jakarta.persistence;
+    requires javafx.media;
 
     opens cr.ac.una.preguntadospackage to javafx.fxml, jakarta.persistence;
     opens cr.ac.una.preguntadospackage.controller to javafx.fxml, jakarta.persistence;
