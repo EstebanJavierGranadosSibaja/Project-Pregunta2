@@ -85,6 +85,7 @@ public class GameController extends Controller implements Initializable {
     }
 
     // ROULLETE LOGIC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
     private Boolean hasSpinnerBeenClicked = false;
     @FXML
     public void onActionSpinRoulette(MouseEvent event) {
@@ -201,6 +202,32 @@ public class GameController extends Controller implements Initializable {
                         break;
                 } break;
             }
+        }
+    }
+
+    public void movePawnForward(int sector, int player) {
+        ImageView[] sectorPawns = getPawnsBySector(sector);
+        if (sectorPawns != null) {
+            for (ImageView pawn: sectorPawns) {
+                if (pawn.isVisible()) {
+                    pawn.setVisible(false);
+                    break;
+                }
+            }
+            sectorPawns[player].setVisible(true);
+        }
+    }
+
+    public void movePawnBackward(int sector, int player) {
+        ImageView[] sectorPawns = getPawnsBySector(sector);
+        if (sectorPawns != null) {
+            for (int i = sectorPawns.length - 1; i >= 0; i--) {
+                if (sectorPawns[i].isVisible()) {
+                    sectorPawns[i].setVisible(false);
+                    break;
+                }
+            }
+            sectorPawns[player].setVisible(true);
         }
     }
 
@@ -370,6 +397,11 @@ public class GameController extends Controller implements Initializable {
 
             // cycle through the players and show their assigned sector and color saved (DEBUG)
             for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon() + "IGNORAR SI ES -1");
+
+            // assign the first casilla for each player
+            for (int i = 0; i < playerCount; i++) {
+                players[i].setPosicionCasilla(1);
+            }
 
             // reset the selected sectors, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database
             currentSelectingPlayer = 1;

@@ -47,7 +47,6 @@ public class LoginController extends Controller implements Initializable {
     private void onActionLogin(ActionEvent event) {
         // play a sound
         soundUtils.getInstance().playSound("click");
-
         FlowController.getInstance().goMain();
         FlowController.getInstance().goView("MenuView");
         getStage().close();

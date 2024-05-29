@@ -1,5 +1,6 @@
 package cr.ac.una.preguntadospackage.controller;
 
+import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
@@ -35,8 +36,28 @@ public class QuestionController extends Controller implements Initializable {
 
     private String category;
 
+    /**
+     * Initializes the controller class.
+     */
+
+    private PregRespuestasDto respuestas[] = new PregRespuestasDto[4];
+
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        // initialize the array
+        for(int i = 0; i < 4; i++){
+            respuestas[i] = new PregRespuestasDto();
+        }
+
+        // for now configure it so the first one is correct always
+        respuestas[0].setEsCorrecta("V");
+        respuestas[1].setEsCorrecta("F");
+        respuestas[2].setEsCorrecta("F");
+        respuestas[3].setEsCorrecta("F");
     }    
 
     @Override
@@ -51,27 +72,31 @@ public class QuestionController extends Controller implements Initializable {
     }
 
     private void calculateAnswerResult(int questionNumber){
-        // TODO: Add the logic to check if the given question by the DB is correct
+        // print the current selecting player
+        System.out.println("Player " + gameController.currentSelectingPlayer + " selected answer " + questionNumber);
 
-        // for now just asume is correct and thats it
-        // TODO: make this more simple and non-parameter like
-    }
-
-    @FXML
-    public void onActionRespuesta1(ActionEvent actionEvent) {
-        calculateAnswerResult(1);
-
-        // TODO: SHOULD BE MANAGED WITH ID INSTEAD OF HARDCODED VALUE
-        gameController.showCoin(category, gameController.players[gameController.currentSelectingPlayer -1].getPosicionSector());
-
-        // TODO: SHOULD BEDONE MODIFYING THE DATABASE
+        if(respuestas[questionNumber - 1].getEsCorrecta().equals("V")){
+            // print the player current sector and casilla
+            System.out.println("Player " + gameController.currentSelectingPlayer + " is in sector " + gameController.players[gameController.currentSelectingPlayer - 1].getPosicionSector() + " and casilla " + gameController.players[gameController.currentSelectingPlayer - 1].getPosicionCasilla());
+            gameController.movePawnForward(gameController.players[gameController.currentSelectingPlayer - 1].getPosicionSector(), gameController.players[gameController.currentSelectingPlayer - 1].getPosicionCasilla());
+            gameController.showCoin(category, gameController.players[gameController.currentSelectingPlayer - 1].getPosicionSector());
+            gameController.players[gameController.currentSelectingPlayer - 1].setPosicionCasilla(gameController.players[gameController.currentSelectingPlayer - 1].getPosicionCasilla() + 1);
+        } else {
+            // the logic for the wrong answer goes here
+        }
+        // anyway we need to move to the next player
         if(gameController.currentSelectingPlayer == gameController.playerCount) gameController.currentSelectingPlayer = 0;
-
         gameController.currentSelectingPlayer++;
+
+        // print the current selecting player after the ++
+        System.out.println("Player " + gameController.currentSelectingPlayer + " is selecting the next answer");
 
         // debug return to the main menu
         FlowController.getInstance().goView("GameView");
     }
+
+    @FXML
+    public void onActionRespuesta1(ActionEvent actionEvent) { calculateAnswerResult(1); }
 
     @FXML
     public void onActionRespuesta2(ActionEvent actionEvent) { calculateAnswerResult(2); }
