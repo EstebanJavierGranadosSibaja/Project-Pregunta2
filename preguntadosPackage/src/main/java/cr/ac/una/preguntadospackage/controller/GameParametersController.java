@@ -11,15 +11,13 @@ import java.util.ResourceBundle;
 import java.util.concurrent.Flow;
 
 import io.github.palexdev.materialfx.controls.MFXCircleToggleNode;
+import io.github.palexdev.materialfx.controls.MFXSlider;
 import io.github.palexdev.materialfx.controls.MFXSpinner;
 import javafx.beans.property.ReadOnlyFloatWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.Spinner;
-import javafx.scene.control.SpinnerValueFactory;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 
 /**
  * FXML Controller class
@@ -39,15 +37,19 @@ public class GameParametersController extends Controller implements Initializabl
     @FXML
     private ToggleGroup Difficulty;
     @FXML
-    private MFXCircleToggleNode toggleCritical;
-    @FXML
     private MFXCircleToggleNode toggleMid;
-    @FXML
-    private MFXSpinner spinnerPlayers;
     @FXML
     private MFXCircleToggleNode toggleEasy;
     @FXML
     private Spinner nonMFXspinner;
+    @FXML
+    private ToggleGroup Difficulty1;
+    @FXML
+    private MFXCircleToggleNode toggleHard1;
+    @FXML
+    private Label lblGameTime;
+    @FXML
+    private MFXSlider sldrGameTime;
 
     /**
      * Initializes the controller class.
@@ -56,10 +58,6 @@ public class GameParametersController extends Controller implements Initializabl
     public void initialize(URL url, ResourceBundle rb) {
         // start the spinner with 1 player
         nonMFXspinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 6, 2));
-
-
-
-
     }    
 
     @Override

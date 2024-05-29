@@ -22,53 +22,62 @@ public class GameController extends Controller implements Initializable {
     private int selectedSectors = 0;
     public int currentSelectingPlayer = 1; // the player that is currently selecting a pawn (1-6)
 
-    @FXML private Label lblPlayerCurrentlySelecting;
+    @FXML public Label lblPlayerCurrentlySelecting, lblCurrentPlayerTurn;
     @FXML private AnchorPane apSelectionScreen;
 
     // for now create the 6 players as DTOs
     public PregJugpartidaDto[] players = new PregJugpartidaDto[6];
 
     @FXML private ImageView
-            imgDisabledPinkPawn, imgSector2Pawn2, imgSector2Pawn1, imgSector2Pawn4, imgSector2Pawn3,
-            imgPurplePawnSelection, imgSector6Pawn2, imgSector6Pawn1, imgDisabledBluePawn, imgSector6Pawn4,
-            imgSector6Pawn3, imgSport, imgBluePawnSelection, imgSector3Pawn4, imgSector3Pawn2, imgSector3Pawn3,
-            imgDisabledOrangePawn, imgSector5Pawn1, imgOrangePawnSelection, imgSector5Pawn2, imgSector5Pawn3,
-            imgRedPawnSelection, imgCrown, imgDisabledPurplePawn, imgSelectorSector5, imgSelectorSector4,
-            imgSelectorSector6, imgSector4Pawn2, imgSelectorSector1, imgGreenPawnSelection, imgSector4Pawn1,
-            imgSelectorSector3, imgSelectorSector2, imgPinkPawnSelection, imgSpinner, imgSector5Pawn4,
-            imgDisabledGreenPawn, imgSector3Pawn1, imgDisabledRedPawn, imgGeography, imgEntertainment,
-            imgSector1Pawn4, imgSector4Pawn4, imgSector4Pawn3, imgArt, imgSector1Pawn1, imgSector1Pawn2,
-            imgSector1Pawn3, imgHistory, imgScience;
-    @FXML
-    private ImageView imgSector2ArtBlocker;
-    @FXML
-    private ImageView imgSector1ArtBlocker;
-    @FXML
-    private ImageView imgSector2SciencieBlocker;
-    @FXML
-    private ImageView imgSector1SciencieBlocker;
-    @FXML
-    private ImageView imgSector1GeographyBlocker;
-    @FXML
-    private ImageView imgSector2EntertainmentBlocker;
-    @FXML
-    private ImageView imgSector2SportBlocker;
-    @FXML
-    private ImageView imgSector2HistoryBlocker;
-    @FXML
-    private ImageView imgSector1EntertainmentBlocker;
-    @FXML
-    private ImageView imgSector2GeographyBlocker;
-    @FXML
-    private ImageView imgSector1SportsBlocker;
-    @FXML
-    private ImageView imgSector1HistoryBlocker;
+            imgDisabledPinkPawn, imgSector2Pawn2, imgSector2Pawn1, imgSector2Pawn4, imgSector2Pawn3, imgPurplePawnSelection, imgSector6Pawn2, imgSector6Pawn1, imgDisabledBluePawn, imgSector6Pawn4, imgSector6Pawn3, imgSport, imgBluePawnSelection, imgSector3Pawn4, imgSector3Pawn2, imgSector3Pawn3, imgDisabledOrangePawn, imgSector5Pawn1, imgOrangePawnSelection, imgSector5Pawn2, imgSector5Pawn3,
+            imgRedPawnSelection, imgCrown, imgDisabledPurplePawn, imgSelectorSector5, imgSelectorSector4, imgSelectorSector6, imgSector4Pawn2, imgSelectorSector1, imgGreenPawnSelection, imgSector4Pawn1, imgSelectorSector3, imgSelectorSector2, imgPinkPawnSelection, imgSpinner, imgSector5Pawn4, imgDisabledGreenPawn, imgSector3Pawn1, imgDisabledRedPawn, imgGeography, imgEntertainment,
+            imgSector1Pawn4, imgSector4Pawn4, imgSector4Pawn3, imgArt, imgSector1Pawn1, imgSector1Pawn2, imgSector1Pawn3, imgHistory, imgScience, imgSector2ArtBlocker, imgSector1ArtBlocker, imgSector2SciencieBlocker, imgSector1SciencieBlocker, imgSector1GeographyBlocker, imgSector2EntertainmentBlocker, imgSector2SportBlocker, imgSector2HistoryBlocker, imgSector2GeographyBlocker, imgSector1HistoryBlocker, imgSector1EntertainmentBlocker, imgSector5EntertainmentBlocker,
+            imgSector3GeographyBlocker, imgSector6GeographyBlocker, imgSector5SciencieBlocker, imgSector4EntertainmentBlocker, imgSector4HistoryBlocker, imgSector6ArtBlocker, imgSector3ArtBlocker, imgSector4GeographyBlocker, imgSector3SciencieBlocker, imgSector3EntertainmentBlocker, imgSector3HistoryBlocker, imgSector4SciencieBlocker, imgSector3SportBlocker, imgSector4ArtBlocker, imgSector6HistoryBlocker, imgSector5GeographyBlocker,
+            imgSector6SciencieBlocker, imgSector6EntertainmentBlocker, imgSector4SportBlocker, imgSector5HistoryBlocker, imgSector5ArtBlocker, imgSector5SportBlocker, imgSector6SportBlocker, imgSector1SportBlocker;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // for now initialize the players (DEBUG)
+
+        // for now initialize the partida (DEBUG) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+        PregPrinpartidaDto partida = new PregPrinpartidaDto();
+
+        /*partida.setId((long) 1); // TODO
+        partida.setModificado(null);
+        partida.setModoDuelo(null);
+        partida.setModoJuego(null);
+        partida.setCantidadJugadores(null);
+        partida.setCantidadRondas(null);
+        partida.setEstadoPartida(null);
+        partida.setModificado(null);
+        partida.setSectorActivo(null);
+        partida.setTiempoTotal(null);
+        partida.setTiempoTrancurrido(null);
+        partida.setPreguntasList(null);
+        partida.setJugpartidaList(null);
+         */
+
+        // for now initialize the players (DEBUG) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
         for (int i = 0; i < 6; i++) {
             players[i] = new PregJugpartidaDto();
+            //players[i].setId((long) i); //TODO
+            players[i].setPosicionSector(null);
+            players[i].setPosicionCasilla(null);
+            players[i].setColorPeon(null);
+            players[i].setCantidadAyudas(null);
+            players[i].setDobleAyuda(null);
+            players[i].setPasarAyuda(null);
+            players[i].setBombaAyuda(null);
+            players[i].setExtraAyuda(null);
+            players[i].setCantidadFichas(null);
+            players[i].setFichaArte(null);
+            players[i].setFichaHistoria(null);
+            players[i].setFichaGeografia(null);
+            players[i].setFichaCiencias(null);
+            players[i].setFichaEntretenimiento(null);
+            players[i].setFichaDeporte(null);
+            players[i].setJugId(null);
+            players[i].setPparId(null);
+            players[i].setModificado(null);
         }
         CheckIfAllThePawnsHaveBeenSelected();
         hideAllPawns();
@@ -85,7 +94,6 @@ public class GameController extends Controller implements Initializable {
     }
 
     // ROULLETE LOGIC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
     private Boolean hasSpinnerBeenClicked = false;
     @FXML
     public void onActionSpinRoulette(MouseEvent event) {
@@ -114,6 +122,7 @@ public class GameController extends Controller implements Initializable {
 
             // get the question controller instance and set the category theme
             QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
+            assert getCategoryNameByNumber(numberOfCategory) != null;
             questionController.setCategoryTheme(getCategoryNameByNumber(numberOfCategory));
 
             FlowController.getInstance().goView("QuestionView");
@@ -124,82 +133,46 @@ public class GameController extends Controller implements Initializable {
     public void showCoin(String coinCategory, int inventoryNumber) {
         switch(coinCategory) {
             case "sciencie": {
+                players[currentSelectingPlayer - 1].setFichaCiencias("A");
                 switch (inventoryNumber) {
-                    case 1: imgSector1SciencieBlocker.setVisible(false); break;
-                    case 2: imgSector2SciencieBlocker.setVisible(false); break;
-                    case 3: //imgSector3SciencieBlocker.setVisible(false); // TODO
-                        break;
-                    case 4://imgSector4SciencieBlocker.setVisible(false); // TODO
-                        break;
-                    case 5: //imgSector5SciencieBlocker.setVisible(false); // TODO
-                        break;
-                    case 6: //imgSector6SciencieBlocker.setVisible(false); // TODO
-                        break;
+                    case 1: imgSector1SciencieBlocker.setVisible(false); break; case 2: imgSector2SciencieBlocker.setVisible(false); break;
+                    case 3: imgSector3SciencieBlocker.setVisible(false); break; case 4: imgSector4SciencieBlocker.setVisible(false); break;
+                    case 5: imgSector5SciencieBlocker.setVisible(false); break; case 6: imgSector6SciencieBlocker.setVisible(false); break;
                 } break;
             } case "sports": {
+                players[currentSelectingPlayer - 1].setFichaDeporte("A");
                 switch(inventoryNumber) {
-                    case 1: imgSector1SportsBlocker.setVisible(false); break;
-                    case 2: imgSector2SportBlocker.setVisible(false); break;
-                    case 3://imgSector3SportsBlocker.setVisible(false); // TODO
-                        break;
-                    case 4://imgSector4SportsBlocker.setVisible(false); // TODO
-                        break;
-                    case 5: //imgSector5SportsBlocker.setVisible(false); // TODO
-                        break;
-                    case 6: //imgSector6SportsBlocker.setVisible(false); // TODO
-                        break;
+                    case 1: imgSector1SportBlocker.setVisible(false); break; case 2: imgSector2SportBlocker.setVisible(false); break;
+                    case 3: imgSector3SportBlocker.setVisible(false); break; case 4: imgSector4SportBlocker.setVisible(false); break;
+                    case 5: imgSector5SportBlocker.setVisible(false); break; case 6: imgSector6SportBlocker.setVisible(false); break;
                 } break;
             } case "history": {
+                players[currentSelectingPlayer - 1].setFichaHistoria("A");
                 switch(inventoryNumber) {
-                    case 1: imgSector1HistoryBlocker.setVisible(false); break;
-                    case 2: imgSector2HistoryBlocker.setVisible(false); break;
-                    case 3: //imgSector3HistoryBlocker.setVisible(false); // TODO
-                        break;
-                    case 4: //imgSector4HistoryBlocker.setVisible(false); // TODO
-                        break;
-                    case 5: //imgSector5HistoryBlocker.setVisible(false); // TODO
-                        break;
-                    case 6: //imgSector6HistoryBlocker.setVisible(false); // TODO
-                        break;
+                    case 1: imgSector1HistoryBlocker.setVisible(false); break; case 2: imgSector2HistoryBlocker.setVisible(false); break;
+                    case 3: imgSector3HistoryBlocker.setVisible(false); break; case 4: imgSector4HistoryBlocker.setVisible(false); break;
+                    case 5: imgSector5HistoryBlocker.setVisible(false); break; case 6: imgSector6HistoryBlocker.setVisible(false); break;
                 } break;
             } case "art": {
+                players[currentSelectingPlayer - 1].setFichaArte("A");
                 switch(inventoryNumber) {
-                    case 1: imgSector1ArtBlocker.setVisible(false); break;
-                    case 2: imgSector2ArtBlocker.setVisible(false); break;
-                    case 3://imgSector3ArtBlocker.setVisible(false); // TODO
-                        break;
-                    case 4: //imgSector4ArtBlocker.setVisible(false); // TODO
-                        break;
-                    case 5: //imgSector5ArtBlocker.setVisible(false); // TODO
-                        break;
-                    case 6: //imgSector6ArtBlocker.setVisible(false); // TODO
-                        break;
+                    case 1: imgSector1ArtBlocker.setVisible(false); break; case 2: imgSector2ArtBlocker.setVisible(false); break;
+                    case 3: imgSector3ArtBlocker.setVisible(false); break; case 4: imgSector4ArtBlocker.setVisible(false); break;
+                    case 5: imgSector5ArtBlocker.setVisible(false); break; case 6: imgSector6ArtBlocker.setVisible(false); break;
                 } break;
             } case "entertainment": {
+                players[currentSelectingPlayer - 1].setFichaEntretenimiento("A");
                 switch(inventoryNumber) {
-                    case 1: imgSector1EntertainmentBlocker.setVisible(false); break;
-                    case 2: imgSector2EntertainmentBlocker.setVisible(false); break;
-                    case 3: //imgSector3EntertainmentBlocker.setVisible(false); // TODO
-                        break;
-                    case 4: //imgSector4EntertainmentBlocker.setVisible(false); // TODO
-                        break;
-                    case 5: //imgSector5EntertainmentBlocker.setVisible(false); // TODO
-                        break;
-                    case 6: //imgSector6EntertainmentBlocker.setVisible(false); // TODO
-                        break;
+                    case 1: imgSector1EntertainmentBlocker.setVisible(false); break; case 2: imgSector2EntertainmentBlocker.setVisible(false); break;
+                    case 3: imgSector3EntertainmentBlocker.setVisible(false); break; case 4: imgSector4EntertainmentBlocker.setVisible(false); break;
+                    case 5: imgSector5EntertainmentBlocker.setVisible(false); break; case 6: imgSector6EntertainmentBlocker.setVisible(false); break;
                 } break;
             } case "geography": {
+                players[currentSelectingPlayer - 1].setFichaGeografia("A");
                 switch(inventoryNumber) {
-                    case 1: imgSector1GeographyBlocker.setVisible(false); break;
-                    case 2: imgSector2GeographyBlocker.setVisible(false); break;
-                    case 3: //imgSector3GeographyBlocker.setVisible(false); // TODO
-                        break;
-                    case 4: //imgSector4GeographyBlocker.setVisible(false); // TODO
-                        break;
-                    case 5: //imgSector5GeographyBlocker.setVisible(false); // TODO
-                        break;
-                    case 6: //imgSector6GeographyBlocker.setVisible(false); // TODO
-                        break;
+                    case 1: imgSector1GeographyBlocker.setVisible(false); break; case 2: imgSector2GeographyBlocker.setVisible(false); break;
+                    case 3: imgSector3GeographyBlocker.setVisible(false); break; case 4: imgSector4GeographyBlocker.setVisible(false); break;
+                    case 5: imgSector5GeographyBlocker.setVisible(false); break; case 6: imgSector6GeographyBlocker.setVisible(false); break;
                 } break;
             }
         }
@@ -215,7 +188,9 @@ public class GameController extends Controller implements Initializable {
                 }
             }
             sectorPawns[player].setVisible(true);
-        }
+            // TODO: what could happen when the player reaches the last casilla?
+            players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() + 1);
+        } else throw new IllegalArgumentException("Invalid sector");
     }
 
     public void movePawnBackward(int sector, int player) {
@@ -228,40 +203,21 @@ public class GameController extends Controller implements Initializable {
                 }
             }
             sectorPawns[player].setVisible(true);
-        }
+            players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() - 1);
+        } else throw new IllegalArgumentException("Invalid sector");
     }
 
     // TODO: make it actually animate and not only show the image
     public void playCategoryAnimation(int category) {
         switch (category) {
-            case 0:
-                imgScience.setVisible(true);
-                break;
-            case 1:
-                imgGeography.setVisible(true);
-                break;
-            case 2:
-                imgCrown.setVisible(true);
-                break;
-            case 3:
-                imgEntertainment.setVisible(true);
-                break;
-            case 4:
-                imgArt.setVisible(true);
-                break;
-            case 5:
-                imgSport.setVisible(true);
-                break;
-
-            case 6:
-                imgHistory.setVisible(true);
-                break;
+            case 0: imgScience.setVisible(true); break;
+            case 1: imgGeography.setVisible(true); break;
+            case 2: imgCrown.setVisible(true); break;
+            case 3: imgEntertainment.setVisible(true); break;
+            case 4: imgArt.setVisible(true); break;
+            case 5: imgSport.setVisible(true); break;
+            case 6: imgHistory.setVisible(true); break;
         }
-    }
-
-    private void hideCategoryAnimation() {
-        imgArt.setVisible(false);imgCrown.setVisible(false);imgEntertainment.setVisible(false);imgGeography.setVisible(false);
-        imgHistory.setVisible(false);imgScience.setVisible(false);imgSport.setVisible(false);
     }
 
     private Image getPawnImageByColor(String color) {
@@ -298,8 +254,9 @@ public class GameController extends Controller implements Initializable {
 
     // this method is called when the player selects a pawn in the selection screen
     private void handlePawnSelection(ImageView selectedPawn) {
-        selectedPawn.setVisible(false);
         players[currentSelectingPlayer - 1].setColorPeon(getColorByImageId(selectedPawn.getId()));
+
+        selectedPawn.setVisible(false);
         currentSelectingPlayer++;
         lblPlayerCurrentlySelecting.setText("Player " + currentSelectingPlayer);
         CheckIfAllThePawnsHaveBeenSelected(); // checks if all the pawns have been selected, TODO: Rename this method
@@ -315,57 +272,49 @@ public class GameController extends Controller implements Initializable {
         ImageView[] sectorPawns = getPawnsBySector(sector);
         Image pawnImage = getPawnImageByColor(color);
 
-        if (sectorPawns != null) {
-            setPawnImages(sectorPawns, pawnImage);
-        }
+        if (sectorPawns != null) setPawnImages(sectorPawns, pawnImage);
+        else throw new IllegalArgumentException("Invalid sector");
     }
 
     private ImageView[] getPawnsBySector(int sector) {
         switch (sector) {
-            case 1:
-                return new ImageView[] {
+            case 1: return new ImageView[] {
                         imgSector1Pawn1,
                         imgSector1Pawn2,
                         imgSector1Pawn3,
                         imgSector1Pawn4
                 };
-            case 2:
-                return new ImageView[] {
+            case 2: return new ImageView[] {
                         imgSector2Pawn1,
                         imgSector2Pawn2,
                         imgSector2Pawn3,
                         imgSector2Pawn4
                 };
-            case 3:
-                return new ImageView[] {
+            case 3: return new ImageView[] {
                         imgSector3Pawn1,
                         imgSector3Pawn2,
                         imgSector3Pawn3,
                         imgSector3Pawn4
                 };
-            case 4:
-                return new ImageView[] {
+            case 4: return new ImageView[] {
                         imgSector4Pawn1,
                         imgSector4Pawn2,
                         imgSector4Pawn3,
                         imgSector4Pawn4
                 };
-            case 5:
-                return new ImageView[] {
+            case 5: return new ImageView[] {
                         imgSector5Pawn1,
                         imgSector5Pawn2,
                         imgSector5Pawn3,
                         imgSector5Pawn4
                 };
-            case 6:
-                return new ImageView[] {
+            case 6: return new ImageView[] {
                         imgSector6Pawn1,
                         imgSector6Pawn2,
                         imgSector6Pawn3,
                         imgSector6Pawn4
                 };
-            default:
-                return null;
+            default: return null; // invalid sector
         }
     }
 
@@ -395,16 +344,21 @@ public class GameController extends Controller implements Initializable {
 
             loadPawnPositions(); // TODO: this should be called when the game starts but overwritten by the player's previous progress saved in the database
 
-            // cycle through the players and show their assigned sector and color saved (DEBUG)
-            for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon() + "IGNORAR SI ES -1");
 
-            // assign the first casilla for each player
+
+            // cycle through the players and show their assigned sector and color saved (DEBUG)
+            for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon());
+
+            // assign the first casilla for each player, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database
             for (int i = 0; i < playerCount; i++) {
                 players[i].setPosicionCasilla(1);
             }
 
             // reset the selected sectors, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database
             currentSelectingPlayer = 1;
+
+            // just to initialize the first player's turn
+            lblCurrentPlayerTurn.setText("TURNO DEL JUGADOR: " + currentSelectingPlayer);
         }
     }
 
@@ -499,35 +453,30 @@ public class GameController extends Controller implements Initializable {
     }
 
     private void hideAllPawns() {
-        imgSector1Pawn1.setVisible(false);imgSector1Pawn2.setVisible(false);imgSector1Pawn3.setVisible(false);imgSector1Pawn4.setVisible(false);
-        imgSector2Pawn1.setVisible(false);imgSector2Pawn2.setVisible(false);imgSector2Pawn3.setVisible(false);imgSector2Pawn4.setVisible(false);
-        imgSector3Pawn1.setVisible(false);imgSector3Pawn2.setVisible(false);imgSector3Pawn3.setVisible(false);imgSector3Pawn4.setVisible(false);
-        imgSector4Pawn1.setVisible(false);imgSector4Pawn2.setVisible(false);imgSector4Pawn3.setVisible(false);imgSector4Pawn4.setVisible(false);
-        imgSector5Pawn1.setVisible(false);imgSector5Pawn2.setVisible(false);imgSector5Pawn3.setVisible(false);imgSector5Pawn4.setVisible(false);
-        imgSector6Pawn1.setVisible(false);imgSector6Pawn2.setVisible(false);imgSector6Pawn3.setVisible(false);imgSector6Pawn4.setVisible(false);
+        imgSector1Pawn1.setVisible(false);imgSector1Pawn2.setVisible(false);imgSector1Pawn3.setVisible(false);imgSector1Pawn4.setVisible(false);imgSector2Pawn1.setVisible(false);imgSector2Pawn2.setVisible(false);imgSector2Pawn3.setVisible(false);imgSector2Pawn4.setVisible(false);
+        imgSector3Pawn1.setVisible(false);imgSector3Pawn2.setVisible(false);imgSector3Pawn3.setVisible(false);imgSector3Pawn4.setVisible(false);imgSector4Pawn1.setVisible(false);imgSector4Pawn2.setVisible(false);imgSector4Pawn3.setVisible(false);imgSector4Pawn4.setVisible(false);
+        imgSector5Pawn1.setVisible(false);imgSector5Pawn2.setVisible(false);imgSector5Pawn3.setVisible(false);imgSector5Pawn4.setVisible(false);imgSector6Pawn1.setVisible(false);imgSector6Pawn2.setVisible(false);imgSector6Pawn3.setVisible(false);imgSector6Pawn4.setVisible(false);
     }
 
     private String getCategoryNameByNumber(int category) {
         switch (category) {
-            case 0: return "sciencie";
-            case 1: return "geography";
-            case 2: return "crown";
-            case 3: return "entertainment";
-            case 4: return "art";
-            case 5: return "sports";
-            case 6: return "history";
-            default: return "";
+            case 0: return "sciencie"; case 1: return "geography";
+            case 2: return "crown"; case 3: return "entertainment";
+            case 4: return "art"; case 5: return "sports";
+            case 6: return "history"; default: return null;
         }
     }
 
     // this method hides all the pawns that are not available (just for initial setup)
     public void disableNonAvailablePawns(int playerCount) {
-        imgDisabledGreenPawn.setVisible(false);
-        imgDisabledOrangePawn.setVisible(false);
-        imgDisabledPurplePawn.setVisible(false);
-        imgDisabledRedPawn.setVisible(false);
-        imgDisabledPinkPawn.setVisible(false);
-        imgDisabledBluePawn.setVisible(false);
+        imgDisabledGreenPawn.setVisible(false);imgDisabledOrangePawn.setVisible(false);
+        imgDisabledPurplePawn.setVisible(false);imgDisabledRedPawn.setVisible(false);
+        imgDisabledPinkPawn.setVisible(false);imgDisabledBluePawn.setVisible(false);
+    }
+
+    private void hideCategoryAnimation() {
+        imgArt.setVisible(false);imgCrown.setVisible(false);imgEntertainment.setVisible(false);imgGeography.setVisible(false);
+        imgHistory.setVisible(false);imgScience.setVisible(false);imgSport.setVisible(false);
     }
 
 }

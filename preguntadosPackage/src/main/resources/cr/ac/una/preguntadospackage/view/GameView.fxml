@@ -17,6 +17,11 @@
    <children>
       <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0">
          <children>
+            <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="260.0">
+               <children>
+                  <Label fx:id="lblCurrentPlayerTurn" prefHeight="79.0" prefWidth="175.0" text="TURNO DEL JUGADOR:" />
+               </children>
+            </VBox>
             <StackPane minHeight="668.0" minWidth="888.0" prefHeight="668.0" prefWidth="888.0">
                <children>
                   <ImageView fitHeight="586.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true">
@@ -27,7 +32,7 @@
                         <Bloom />
                      </effect>
                   </ImageView>
-                  <ImageView fitHeight="579.0" fitWidth="579.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="575.0" fitWidth="575.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/PlayingBorder.png" />
                      </image>
@@ -300,7 +305,7 @@
                                     <Image url="@../resources/GreenCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector5SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleGreenCoin.png" />
                                  </image>
@@ -314,7 +319,7 @@
                                     <Image url="@../resources/RedCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector5ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleleRedCoin.png" />
                                  </image>
@@ -328,7 +333,7 @@
                                     <Image url="@../resources/BlueCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector5GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleBlueCoin.png" />
                                  </image>
@@ -342,7 +347,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector5SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -356,7 +361,7 @@
                                     <Image url="@../resources/YellowCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector5HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleYellowCoin.png" />
                                  </image>
@@ -370,7 +375,7 @@
                                     <Image url="@../resources/PinkCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector5EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaiblePinkCoin.png" />
                                  </image>
@@ -385,7 +390,7 @@
                                     <Image url="@../resources/GreenCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector4SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleGreenCoin.png" />
                                  </image>
@@ -399,7 +404,7 @@
                                     <Image url="@../resources/RedCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector4ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleleRedCoin.png" />
                                  </image>
@@ -413,7 +418,7 @@
                                     <Image url="@../resources/BlueCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector4GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleBlueCoin.png" />
                                  </image>
@@ -427,7 +432,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector4SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -441,7 +446,7 @@
                                     <Image url="@../resources/YellowCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector4HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleYellowCoin.png" />
                                  </image>
@@ -455,7 +460,7 @@
                                     <Image url="@../resources/PinkCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector4EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaiblePinkCoin.png" />
                                  </image>
@@ -470,7 +475,7 @@
                                     <Image url="@../resources/GreenCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector3SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleGreenCoin.png" />
                                  </image>
@@ -484,7 +489,7 @@
                                     <Image url="@../resources/RedCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector3ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleleRedCoin.png" />
                                  </image>
@@ -498,7 +503,7 @@
                                     <Image url="@../resources/BlueCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector3GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleBlueCoin.png" />
                                  </image>
@@ -512,7 +517,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector3SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -526,7 +531,7 @@
                                     <Image url="@../resources/YellowCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector3HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleYellowCoin.png" />
                                  </image>
@@ -540,7 +545,7 @@
                                     <Image url="@../resources/PinkCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector3EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaiblePinkCoin.png" />
                                  </image>
@@ -548,7 +553,7 @@
                            </children>
                         </StackPane>
                         <Separator layoutX="80.0" layoutY="80.0" prefWidth="200.0" visible="false" />
-                        <StackPane layoutX="605.0" layoutY="104.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="565.0" layoutY="124.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -562,7 +567,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="644.0" layoutY="138.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="595.0" layoutY="153.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -576,7 +581,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="667.0" layoutY="172.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="623.0" layoutY="182.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -590,7 +595,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="680.0" layoutY="210.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="642.0" layoutY="217.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -604,7 +609,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="694.0" layoutY="251.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="660.0" layoutY="253.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -618,7 +623,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="703.0" layoutY="291.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="670.0" layoutY="291.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -668,7 +673,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fx:id="imgSector1SportsBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector1SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -725,7 +730,7 @@
                                     <Image url="@../resources/GreenCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector6SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleGreenCoin.png" />
                                  </image>
@@ -739,7 +744,7 @@
                                     <Image url="@../resources/RedCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector6ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleleRedCoin.png" />
                                  </image>
@@ -753,7 +758,7 @@
                                     <Image url="@../resources/BlueCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector6GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleBlueCoin.png" />
                                  </image>
@@ -767,7 +772,7 @@
                                     <Image url="@../resources/OrangeCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector6SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleOrangeCoin.png" />
                                  </image>
@@ -781,7 +786,7 @@
                                     <Image url="@../resources/YellowCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector6HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaibleYellowCoin.png" />
                                  </image>
@@ -795,7 +800,7 @@
                                     <Image url="@../resources/PinkCoin.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imgSector6EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../resources/NonAvaiblePinkCoin.png" />
                                  </image>
@@ -803,37 +808,37 @@
                            </children>
                         </StackPane>
                         <Separator layoutX="70.0" layoutY="70.0" prefWidth="200.0" visible="false" />
-                        <ImageView fx:id="imgSelectorSector1" fitHeight="159.0" fitWidth="120.0" layoutX="379.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="-116.6" visible="false">
+                        <ImageView fx:id="imgSelectorSector1" fitHeight="159.0" fitWidth="120.0" layoutX="379.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="-116.6">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector2" fitHeight="325.0" fitWidth="210.0" layoutX="574.0" layoutY="92.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="-60.9" visible="false">
+                        <ImageView fx:id="imgSelectorSector2" fitHeight="325.0" fitWidth="210.0" layoutX="574.0" layoutY="92.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="-60.9">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector3" fitHeight="325.0" fitWidth="210.0" layoutX="565.0" layoutY="353.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" visible="false">
+                        <ImageView fx:id="imgSelectorSector3" fitHeight="325.0" fitWidth="210.0" layoutX="565.0" layoutY="353.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector5" fitHeight="325.0" fitWidth="210.0" layoutX="114.0" layoutY="334.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true" rotate="118.6" visible="false">
+                        <ImageView fx:id="imgSelectorSector5" fitHeight="325.0" fitWidth="210.0" layoutX="114.0" layoutY="334.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true" rotate="118.6">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector6" fitHeight="325.0" fitWidth="210.0" layoutX="125.0" layoutY="61.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
+                        <ImageView fx:id="imgSelectorSector6" fitHeight="325.0" fitWidth="210.0" layoutX="125.0" layoutY="61.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector4" fitHeight="190.0" fitWidth="210.0" layoutX="375.0" layoutY="495.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="76.0" visible="false">
+                        <ImageView fx:id="imgSelectorSector4" fitHeight="190.0" fitWidth="210.0" layoutX="375.0" layoutY="495.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="76.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="124.0" layoutY="200.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: purple;" visible="false">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="124.0" layoutY="200.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: purple;">
                            <children>
                               <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
                                  <children>
@@ -944,6 +949,11 @@
                               <Label fx:id="lblPlayerCurrentlySelecting" layoutX="164.0" layoutY="20.0" prefHeight="62.0" prefWidth="308.0" text="JUGADOR NUMERO" />
                            </children>
                         </AnchorPane>
+                        <ImageView fitHeight="150.0" fitWidth="121.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/TiroExtra.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>

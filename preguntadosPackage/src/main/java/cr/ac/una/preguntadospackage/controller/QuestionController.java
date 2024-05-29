@@ -89,7 +89,7 @@ public class QuestionController extends Controller implements Initializable {
         gameController.currentSelectingPlayer++;
 
         // print the current selecting player after the ++
-        System.out.println("Player " + gameController.currentSelectingPlayer + " is selecting the next answer");
+        gameController.lblCurrentPlayerTurn.setText("TURNO DEL JUGADOR: " + gameController.currentSelectingPlayer);
 
         // debug return to the main menu
         FlowController.getInstance().goView("GameView");

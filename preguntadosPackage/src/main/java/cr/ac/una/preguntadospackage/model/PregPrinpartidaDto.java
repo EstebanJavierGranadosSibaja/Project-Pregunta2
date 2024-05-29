@@ -2,6 +2,8 @@ package cr.ac.una.preguntadospackage.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
+
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,8 +22,8 @@ public class PregPrinpartidaDto implements Serializable {
     public SimpleStringProperty cantidadJugadores;
     public SimpleStringProperty sectorActivo;
     private Boolean modificado;
-//    private List<PregPreguntas> preguntasList;
-//    private List<PregJugpartida> jugpartidaList;
+    private List<PregPreguntas> preguntasList;
+    private List<PregJugpartida> jugpartidaList;
 
     public PregPrinpartidaDto() {
         this.id = new SimpleStringProperty("");

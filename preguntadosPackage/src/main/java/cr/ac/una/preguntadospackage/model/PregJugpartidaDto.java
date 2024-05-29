@@ -7,9 +7,9 @@ public class PregJugpartidaDto implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
 
-    private Integer posicionSector = -1; // THIS IS TEMPORAL, IS ABOUT TO BE IMPLEMENTED IN THE DB LATER
-    private Integer posicionCasilla = -1; // THIS IS TEMPORAL, IS ABOUT TO BE IMPLEMENTED IN THE DB LATER
-    private String colorPeon = ""; // THIS IS TEMPORAL, IS ABOUT TO BE IMPLEMENTED IN THE DB LATER
+    private Integer posicionSector;  // THIS IS TEMPORAL, IS ABOUT TO BE IMPLEMENTED IN THE DB LATER
+    private Integer posicionCasilla;  // THIS IS TEMPORAL, IS ABOUT TO BE IMPLEMENTED IN THE DB LATER
+    private String colorPeon;  // THIS IS TEMPORAL, IS ABOUT TO BE IMPLEMENTED IN THE DB LATER
 
     private Integer cantidadAyudas;
     private String dobleAyuda;

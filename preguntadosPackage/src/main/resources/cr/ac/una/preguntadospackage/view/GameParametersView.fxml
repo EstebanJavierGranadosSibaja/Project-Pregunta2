@@ -3,7 +3,8 @@
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXCheckbox?>
 <?import io.github.palexdev.materialfx.controls.MFXCircleToggleNode?>
-<?import io.github.palexdev.materialfx.controls.MFXSpinner?>
+<?import io.github.palexdev.materialfx.controls.MFXSlider?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -25,27 +26,35 @@
                   </ImageView>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <MFXCircleToggleNode fx:id="toggleEasy" prefHeight="107.0" prefWidth="116.0" selected="true" text="MODO FACIL">
+                        <MFXCircleToggleNode fx:id="toggleEasy" prefHeight="107.0" prefWidth="116.0" selected="true" text="FACIL">
                            <toggleGroup>
                               <ToggleGroup fx:id="Difficulty" />
                            </toggleGroup>
                         </MFXCircleToggleNode>
-                        <MFXCircleToggleNode fx:id="toggleMid" prefHeight="107.0" prefWidth="116.0" text="MODO" toggleGroup="$Difficulty" />
-                        <MFXCircleToggleNode fx:id="toggleHard" prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
-                        <MFXCircleToggleNode fx:id="toggleCritical" prefHeight="107.0" prefWidth="116.0" text="MODO FACIL" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode fx:id="toggleMid" prefHeight="107.0" prefWidth="116.0" text="MEDIO" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode fx:id="toggleHard" prefHeight="107.0" prefWidth="116.0" text="DIFICIL" toggleGroup="$Difficulty" />
+                        <MFXCircleToggleNode fx:id="toggleHard1" prefHeight="107.0" prefWidth="116.0" text="DUELO">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Difficulty1" />
+                           </toggleGroup>
+                        </MFXCircleToggleNode>
                      </children>
                   </HBox>
-                  <Spinner fx:id="nonMFXspinner" />
                   <HBox prefHeight="54.0" prefWidth="379.0">
                      <children>
                         <Label prefHeight="49.0" prefWidth="163.0" text="NUMERO DE JUGADORES" />
-                        <MFXSpinner fx:id="spinnerPlayers" editable="true" prefHeight="41.0" prefWidth="164.0" />
+                        <Spinner fx:id="nonMFXspinner" prefHeight="66.0" prefWidth="201.0">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Spinner>
                      </children>
                   </HBox>
-                  <HBox prefHeight="54.0" prefWidth="379.0">
+                  <HBox alignment="CENTER" prefHeight="54.0" prefWidth="379.0">
                      <children>
-                        <Label fx:id="test" prefHeight="49.0" prefWidth="163.0" text="ALGUN AJUSTE" />
-                        <MFXCheckbox prefHeight="55.0" prefWidth="184.0" />
+                        <Label fx:id="test" prefHeight="49.0" prefWidth="163.0" text="TIEMPO LIMITE" />
+                        <MFXSlider fx:id="sldrGameTime" max="45.0" min="5.0" prefHeight="27.0" prefWidth="149.0" value="5.0" />
+                        <Label fx:id="lblGameTime" prefHeight="68.0" prefWidth="70.0" text=" " />
                      </children>
                   </HBox>
                   <HBox prefHeight="54.0" prefWidth="379.0">
@@ -63,7 +72,7 @@
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="414.0" spacing="15.0">
                      <children>
                         <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="79.0" prefWidth="213.0" text="INICIAR JUEGO" />
-                        <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="78.0" prefWidth="158.0" text="CANCELAR Y VOLVER" />
+                        <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="78.0" prefWidth="196.0" text="CANCELAR Y VOLVER" />
                      </children>
                   </HBox>
                </children>
