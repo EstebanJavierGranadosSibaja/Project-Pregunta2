@@ -26,7 +26,7 @@ public class GameController extends Controller implements Initializable {
     @FXML private AnchorPane apSelectionScreen;
 
     // for now create the 6 players as DTOs
-    public PregJugpartidaDto[] players = new PregJugpartidaDto[6];
+    //public PregJugpartidaDto[] players = new PregJugpartidaDto[6];
 
     @FXML private ImageView
             imgDisabledPinkPawn, imgSector2Pawn2, imgSector2Pawn1, imgSector2Pawn4, imgSector2Pawn3, imgPurplePawnSelection, imgSector6Pawn2, imgSector6Pawn1, imgDisabledBluePawn, imgSector6Pawn4, imgSector6Pawn3, imgSport, imgBluePawnSelection, imgSector3Pawn4, imgSector3Pawn2, imgSector3Pawn3, imgDisabledOrangePawn, imgSector5Pawn1, imgOrangePawnSelection, imgSector5Pawn2, imgSector5Pawn3,
@@ -39,7 +39,7 @@ public class GameController extends Controller implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         // for now initialize the partida (DEBUG) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        PregPrinpartidaDto partida = new PregPrinpartidaDto();
+        //PregPrinpartidaDto partida = new PregPrinpartidaDto();
 
         /*partida.setId((long) 1); // TODO
         partida.setModificado(null);
@@ -57,28 +57,28 @@ public class GameController extends Controller implements Initializable {
          */
 
         // for now initialize the players (DEBUG) <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-        for (int i = 0; i < 6; i++) {
-            players[i] = new PregJugpartidaDto();
-            //players[i].setId((long) i); //TODO
-            players[i].setPosicionSector(null);
-            players[i].setPosicionCasilla(null);
-            players[i].setColorPeon(null);
-            players[i].setCantidadAyudas(null);
-            players[i].setDobleAyuda(null);
-            players[i].setPasarAyuda(null);
-            players[i].setBombaAyuda(null);
-            players[i].setExtraAyuda(null);
-            players[i].setCantidadFichas(null);
-            players[i].setFichaArte(null);
-            players[i].setFichaHistoria(null);
-            players[i].setFichaGeografia(null);
-            players[i].setFichaCiencias(null);
-            players[i].setFichaEntretenimiento(null);
-            players[i].setFichaDeporte(null);
-            players[i].setJugId(null);
-            players[i].setPparId(null);
-            players[i].setModificado(null);
-        }
+//        for (int i = 0; i < 6; i++) {
+//            players[i] = new PregJugpartidaDto();
+//            //players[i].setId((long) i); //TODO
+//            players[i].setPosicionSector(null);
+//            players[i].setPosicionCasilla(null);
+//            players[i].setColorPeon(null);
+//            players[i].setCantidadAyudas(null);
+//            players[i].setDobleAyuda(null);
+//            players[i].setPasarAyuda(null);
+//            players[i].setBombaAyuda(null);
+//            players[i].setExtraAyuda(null);
+//            players[i].setCantidadFichas(null);
+//            players[i].setFichaArte(null);
+//            players[i].setFichaHistoria(null);
+//            players[i].setFichaGeografia(null);
+//            players[i].setFichaCiencias(null);
+//            players[i].setFichaEntretenimiento(null);
+//            players[i].setFichaDeporte(null);
+//            players[i].setJugId(null);
+//            players[i].setPparId(null);
+//            players[i].setModificado(null);
+//        }
         CheckIfAllThePawnsHaveBeenSelected();
         hideAllPawns();
         hideCategoryAnimation();
@@ -133,42 +133,42 @@ public class GameController extends Controller implements Initializable {
     public void showCoin(String coinCategory, int inventoryNumber) {
         switch(coinCategory) {
             case "sciencie": {
-                players[currentSelectingPlayer - 1].setFichaCiencias("A");
+                //players[currentSelectingPlayer - 1].setFichaCiencias("A");
                 switch (inventoryNumber) {
                     case 1: imgSector1SciencieBlocker.setVisible(false); break; case 2: imgSector2SciencieBlocker.setVisible(false); break;
                     case 3: imgSector3SciencieBlocker.setVisible(false); break; case 4: imgSector4SciencieBlocker.setVisible(false); break;
                     case 5: imgSector5SciencieBlocker.setVisible(false); break; case 6: imgSector6SciencieBlocker.setVisible(false); break;
                 } break;
             } case "sports": {
-                players[currentSelectingPlayer - 1].setFichaDeporte("A");
+                //players[currentSelectingPlayer - 1].setFichaDeporte("A");
                 switch(inventoryNumber) {
                     case 1: imgSector1SportBlocker.setVisible(false); break; case 2: imgSector2SportBlocker.setVisible(false); break;
                     case 3: imgSector3SportBlocker.setVisible(false); break; case 4: imgSector4SportBlocker.setVisible(false); break;
                     case 5: imgSector5SportBlocker.setVisible(false); break; case 6: imgSector6SportBlocker.setVisible(false); break;
                 } break;
             } case "history": {
-                players[currentSelectingPlayer - 1].setFichaHistoria("A");
+               // players[currentSelectingPlayer - 1].setFichaHistoria("A");
                 switch(inventoryNumber) {
                     case 1: imgSector1HistoryBlocker.setVisible(false); break; case 2: imgSector2HistoryBlocker.setVisible(false); break;
                     case 3: imgSector3HistoryBlocker.setVisible(false); break; case 4: imgSector4HistoryBlocker.setVisible(false); break;
                     case 5: imgSector5HistoryBlocker.setVisible(false); break; case 6: imgSector6HistoryBlocker.setVisible(false); break;
                 } break;
             } case "art": {
-                players[currentSelectingPlayer - 1].setFichaArte("A");
+                //players[currentSelectingPlayer - 1].setFichaArte("A");
                 switch(inventoryNumber) {
                     case 1: imgSector1ArtBlocker.setVisible(false); break; case 2: imgSector2ArtBlocker.setVisible(false); break;
                     case 3: imgSector3ArtBlocker.setVisible(false); break; case 4: imgSector4ArtBlocker.setVisible(false); break;
                     case 5: imgSector5ArtBlocker.setVisible(false); break; case 6: imgSector6ArtBlocker.setVisible(false); break;
                 } break;
             } case "entertainment": {
-                players[currentSelectingPlayer - 1].setFichaEntretenimiento("A");
+                //players[currentSelectingPlayer - 1].setFichaEntretenimiento("A");
                 switch(inventoryNumber) {
                     case 1: imgSector1EntertainmentBlocker.setVisible(false); break; case 2: imgSector2EntertainmentBlocker.setVisible(false); break;
                     case 3: imgSector3EntertainmentBlocker.setVisible(false); break; case 4: imgSector4EntertainmentBlocker.setVisible(false); break;
                     case 5: imgSector5EntertainmentBlocker.setVisible(false); break; case 6: imgSector6EntertainmentBlocker.setVisible(false); break;
                 } break;
             } case "geography": {
-                players[currentSelectingPlayer - 1].setFichaGeografia("A");
+                //players[currentSelectingPlayer - 1].setFichaGeografia("A");
                 switch(inventoryNumber) {
                     case 1: imgSector1GeographyBlocker.setVisible(false); break; case 2: imgSector2GeographyBlocker.setVisible(false); break;
                     case 3: imgSector3GeographyBlocker.setVisible(false); break; case 4: imgSector4GeographyBlocker.setVisible(false); break;
@@ -189,7 +189,7 @@ public class GameController extends Controller implements Initializable {
             }
             sectorPawns[player].setVisible(true);
             // TODO: what could happen when the player reaches the last casilla?
-            players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() + 1);
+            //players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() + 1);
         } else throw new IllegalArgumentException("Invalid sector");
     }
 
@@ -203,7 +203,7 @@ public class GameController extends Controller implements Initializable {
                 }
             }
             sectorPawns[player].setVisible(true);
-            players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() - 1);
+            //players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() - 1);
         } else throw new IllegalArgumentException("Invalid sector");
     }
 
@@ -254,7 +254,7 @@ public class GameController extends Controller implements Initializable {
 
     // this method is called when the player selects a pawn in the selection screen
     private void handlePawnSelection(ImageView selectedPawn) {
-        players[currentSelectingPlayer - 1].setColorPeon(getColorByImageId(selectedPawn.getId()));
+        //players[currentSelectingPlayer - 1].setColorPeon(getColorByImageId(selectedPawn.getId()));
 
         selectedPawn.setVisible(false);
         currentSelectingPlayer++;
@@ -322,7 +322,7 @@ public class GameController extends Controller implements Initializable {
     private void loadPawnPositions() {
         for (int i = 0; i < playerCount; i++) {
             // show the first pawn of the player
-            switch (players[i].getPosicionSector()) {
+            switch (/*players[i].getPosicionSector()*/ 1) {
                 case 1: imgSector1Pawn1.setVisible(true); break;
                 case 2: imgSector2Pawn1.setVisible(true); break;
                 case 3: imgSector3Pawn1.setVisible(true); break;
@@ -340,19 +340,19 @@ public class GameController extends Controller implements Initializable {
             imgSelectorSector4.setVisible(false);imgSelectorSector5.setVisible(false);imgSelectorSector6.setVisible(false);
 
             // cycle through the players and show their assigned sector and color saved (DEBUG)
-            for (int i = 0; i < playerCount; i++) setPawnsBySelectedColor(players[i].getPosicionSector(), players[i].getColorPeon());
+            //for (int i = 0; i < playerCount; i++) setPawnsBySelectedColor(players[i].getPosicionSector(), players[i].getColorPeon());
 
             loadPawnPositions(); // TODO: this should be called when the game starts but overwritten by the player's previous progress saved in the database
 
 
 
             // cycle through the players and show their assigned sector and color saved (DEBUG)
-            for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon());
+            //for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon());
 
             // assign the first casilla for each player, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database
-            for (int i = 0; i < playerCount; i++) {
-                players[i].setPosicionCasilla(1);
-            }
+//            for (int i = 0; i < playerCount; i++) {
+//                players[i].setPosicionCasilla(1);
+//            }
 
             // reset the selected sectors, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database
             currentSelectingPlayer = 1;
@@ -400,7 +400,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector4(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector(4);
+        //players[currentSelectingPlayer - 1].setPosicionSector(4);
         imgSelectorSector4.setVisible(false);
         currentSelectingPlayer++;
         selectedSectors++;
@@ -409,7 +409,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector3(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector(3);
+        //players[currentSelectingPlayer - 1].setPosicionSector(3);
         imgSelectorSector3.setVisible(false);
         currentSelectingPlayer++;
         selectedSectors++;
@@ -418,7 +418,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector6(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector(6);
+        //players[currentSelectingPlayer - 1].setPosicionSector(6);
         imgSelectorSector6.setVisible(false);
         currentSelectingPlayer++;
         selectedSectors++;
@@ -427,7 +427,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector5(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector(5);
+        //players[currentSelectingPlayer - 1].setPosicionSector(5);
         imgSelectorSector5.setVisible(false);
         currentSelectingPlayer++;
         selectedSectors++;
@@ -436,7 +436,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector2(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector(2);
+        //players[currentSelectingPlayer - 1].setPosicionSector(2);
         imgSelectorSector2.setVisible(false);
         currentSelectingPlayer++;
         selectedSectors++;
@@ -445,7 +445,7 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector1(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector(1);
+        //players[currentSelectingPlayer - 1].setPosicionSector(1);
         imgSelectorSector1.setVisible(false);
         currentSelectingPlayer++;
         selectedSectors++;

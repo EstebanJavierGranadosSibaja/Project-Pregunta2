@@ -8,106 +8,106 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
+/**
+ *
+ * @author esteb
+ */
 @Entity
 @Table(name = "PREG_RESPUESTAS")
-@NamedQueries({ /*@NamedQuery(name = "PregRespuestas.findAll", query = "SELECT p FROM PregRespuestas p"),
+@NamedQueries({
+    @NamedQuery(name = "PregRespuestas.findAll", query = "SELECT p FROM PregRespuestas p"),
     @NamedQuery(name = "PregRespuestas.findByRespId", query = "SELECT p FROM PregRespuestas p WHERE p.respId = :respId"),
     @NamedQuery(name = "PregRespuestas.findByRespTextoRespuesta", query = "SELECT p FROM PregRespuestas p WHERE p.respTextoRespuesta = :respTextoRespuesta"),
     @NamedQuery(name = "PregRespuestas.findByRespEsCorrecta", query = "SELECT p FROM PregRespuestas p WHERE p.respEsCorrecta = :respEsCorrecta"),
     @NamedQuery(name = "PregRespuestas.findByResCantidadSelecionada", query = "SELECT p FROM PregRespuestas p WHERE p.resCantidadSelecionada = :resCantidadSelecionada"),
-    @NamedQuery(name = "PregRespuestas.findByVersion", query = "SELECT p FROM PregRespuestas p WHERE p.version = :version")*/})
+    @NamedQuery(name = "PregRespuestas.findByRespVersion", query = "SELECT p FROM PregRespuestas p WHERE p.respVersion = :respVersion")})
 public class PregRespuestas implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @SequenceGenerator(name = "PREG_RESPUESTAS_ID_GENERATOR", sequenceName = "PREG_RESPUESTAS_SEQ01", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PREG_RESPUESTAS_ID_GENERATOR")
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @Column(name = "RESP_ID")
-    private Long id;
+    private BigDecimal respId;
     @Basic(optional = false)
     @Column(name = "RESP_TEXTO_RESPUESTA")
-    private String textoRespuesta;
+    private String respTextoRespuesta;
     @Basic(optional = false)
     @Column(name = "RESP_ES_CORRECTA")
-    private String esCorrecta;
+    private String respEsCorrecta;
     @Basic(optional = false)
-    @Column(name = "RESP_CANTIDAD_SELECIONADA")
-    private Long cantidadSelecionada;
+    @Column(name = "RES_CANTIDAD_SELECIONADA")
+    private BigInteger resCantidadSelecionada;
     @Basic(optional = false)
     @Column(name = "RESP_VERSION")
-    private Long version;
+    private BigInteger respVersion;
     @JoinColumn(name = "PRE_ID", referencedColumnName = "PRE_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private PregPreguntas preId;
 
     public PregRespuestas() {
     }
 
-    public PregRespuestas(PregRespuestasDto pregRespuestasDto) {
-        this.id = pregRespuestasDto.getId();
-        Actualizar(pregRespuestasDto);
+    public PregRespuestas(BigDecimal respId) {
+        this.respId = respId;
     }
 
-    public void Actualizar(PregRespuestasDto pregRespuestasDto) {
-        this.textoRespuesta = pregRespuestasDto.getTextoRespuesta();
-        this.esCorrecta = pregRespuestasDto.getEsCorrecta();
-        this.cantidadSelecionada = pregRespuestasDto.getCantidadSelecionada();
-        this.version = pregRespuestasDto.getVersion();
+    public PregRespuestas(BigDecimal respId, String respTextoRespuesta, String respEsCorrecta, BigInteger resCantidadSelecionada, BigInteger respVersion) {
+        this.respId = respId;
+        this.respTextoRespuesta = respTextoRespuesta;
+        this.respEsCorrecta = respEsCorrecta;
+        this.resCantidadSelecionada = resCantidadSelecionada;
+        this.respVersion = respVersion;
     }
 
-    public PregRespuestas(Long respId) {
-        this.id = respId;
+    public BigDecimal getRespId() {
+        return respId;
     }
 
-    public Long getId() {
-        return id;
+    public void setRespId(BigDecimal respId) {
+        this.respId = respId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public String getRespTextoRespuesta() {
+        return respTextoRespuesta;
     }
 
-    public String getTextoRespuesta() {
-        return textoRespuesta;
+    public void setRespTextoRespuesta(String respTextoRespuesta) {
+        this.respTextoRespuesta = respTextoRespuesta;
     }
 
-    public void setTextoRespuesta(String textoRespuesta) {
-        this.textoRespuesta = textoRespuesta;
+    public String getRespEsCorrecta() {
+        return respEsCorrecta;
     }
 
-    public String getEsCorrecta() {
-        return esCorrecta;
+    public void setRespEsCorrecta(String respEsCorrecta) {
+        this.respEsCorrecta = respEsCorrecta;
     }
 
-    public void setEsCorrecta(String esCorrecta) {
-        this.esCorrecta = esCorrecta;
+    public BigInteger getResCantidadSelecionada() {
+        return resCantidadSelecionada;
     }
 
-    public Long getCantidadSelecionada() {
-        return cantidadSelecionada;
+    public void setResCantidadSelecionada(BigInteger resCantidadSelecionada) {
+        this.resCantidadSelecionada = resCantidadSelecionada;
     }
 
-    public void setCantidadSelecionada(Long cantidadSelecionada) {
-        this.cantidadSelecionada = cantidadSelecionada;
+    public BigInteger getRespVersion() {
+        return respVersion;
     }
 
-    public Long getVersion() {
-        return version;
-    }
-
-    public void setVersion(Long version) {
-        this.version = version;
+    public void setRespVersion(BigInteger respVersion) {
+        this.respVersion = respVersion;
     }
 
     public PregPreguntas getPreId() {
@@ -121,7 +121,7 @@ public class PregRespuestas implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (respId != null ? respId.hashCode() : 0);
         return hash;
     }
 
@@ -132,7 +132,7 @@ public class PregRespuestas implements Serializable {
             return false;
         }
         PregRespuestas other = (PregRespuestas) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.respId == null && other.respId != null) || (this.respId != null && !this.respId.equals(other.respId))) {
             return false;
         }
         return true;
@@ -140,7 +140,7 @@ public class PregRespuestas implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregRespuestas[ respId=" + id + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregRespuestas[ respId=" + respId + " ]";
     }
-
+    
 }

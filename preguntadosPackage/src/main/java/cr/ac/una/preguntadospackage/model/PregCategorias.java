@@ -1,98 +1,118 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.NamedQueries;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ *
+ * @author esteb
+ */
 @Entity
 @Table(name = "PREG_CATEGORIAS")
 @NamedQueries({
-    /*@NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
+    @NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
     @NamedQuery(name = "PregCategorias.findByCatId", query = "SELECT p FROM PregCategorias p WHERE p.catId = :catId"),
-    @NamedQuery(name = "PregCategorias.findByCatCantidadRespondidas", query = "SELECT p FROM PregCategorias p WHERE p.catCantidadRespondidas = :catCantidadRespondidas"),
-    @NamedQuery(name = "PregCategorias.findByCatCantidadAciertos", query = "SELECT p FROM PregCategorias p WHERE p.catCantidadAciertos = :catCantidadAciertos")*/
-})
+    @NamedQuery(name = "PregCategorias.findByCatCategoria", query = "SELECT p FROM PregCategorias p WHERE p.catCategoria = :catCategoria"),
+    @NamedQuery(name = "PregCategorias.findByCatEstado", query = "SELECT p FROM PregCategorias p WHERE p.catEstado = :catEstado"),
+    @NamedQuery(name = "PregCategorias.findByCatVersion", query = "SELECT p FROM PregCategorias p WHERE p.catVersion = :catVersion")})
 public class PregCategorias implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @Column(name = "CAT_ID")
-    private String id;
+    private Long id;
     @Basic(optional = false)
-    @Column(name = "CAT_CANTIDAD_RESPONDIDAS")
-    private Long cantidadRespondidas;
+    @Column(name = "CAT_CATEGORIA")
+    private String categoria;
     @Basic(optional = false)
-    @Column(name = "CAT_CANTIDAD_ACIERTOS")
-    private Long cantidadAciertos;
-    @ManyToMany(mappedBy = "categoriasList", fetch = FetchType.LAZY)
-    private List<PregJugadores> jugadoresList;
-    @OneToMany(mappedBy = "catId", fetch = FetchType.LAZY)
-    private List<PregPreguntas> preguntasList;
+    @Column(name = "CAT_ESTADO")
+    private String estado;
+    @Version
+    @Column(name = "CAT_VERSION")
+    private Long version;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pregCategorias", fetch = FetchType.LAZY)
+    private List<PregCategoriasjugador> pregCategoriasjugadorList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)
+    private List<PregPreguntas> pregPreguntasList;
 
+    
     public PregCategorias() {
     }
-    
+
     public PregCategorias(PregCategoriasDto pregCategoriasDto) {
         this.id = pregCategoriasDto.getId();
-         Actualizar(pregCategoriasDto);
+        Actualizar(pregCategoriasDto);
     }
-    
+
     public void Actualizar(PregCategoriasDto pregCategoriasDto) {
-       this.cantidadAciertos = pregCategoriasDto.getCantidadAciertos();
-       this.cantidadRespondidas = pregCategoriasDto.getCantidadRespondidas();
+        this.categoria = pregCategoriasDto.getCategoria();
+        this.estado = pregCategoriasDto.getEstado();
+        this.version = pregCategoriasDto.getVersion();
     }
 
-    public PregCategorias(String catId) {
-        this.id = catId;
-    }
-
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(Long catId) {
+        this.id = catId;
     }
 
-    public Long getCantidadRespondidas() {
-        return cantidadRespondidas;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setCantidadRespondidas(Long cantidadRespondidas) {
-        this.cantidadRespondidas = cantidadRespondidas;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
-    public Long getCantidadAciertos() {
-        return cantidadAciertos;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setCantidadAciertos(Long cantidadAciertos) {
-        this.cantidadAciertos = cantidadAciertos;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public List<PregJugadores> getJugadoresList() {
-        return jugadoresList;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setJugadoresList(List<PregJugadores> jugadoresList) {
-        this.jugadoresList = jugadoresList;
+    public void setVersion(Long catVersion) {
+        this.version = catVersion;
     }
 
-    public List<PregPreguntas> getPreguntasList() {
-        return preguntasList;
+    public List<PregCategoriasjugador> getPregCategoriasjugadorList() {
+        return pregCategoriasjugadorList;
     }
 
-    public void setPreguntasList(List<PregPreguntas> preguntasList) {
-        this.preguntasList = preguntasList;
+    public void setPregCategoriasjugadorList(List<PregCategoriasjugador> pregCategoriasjugadorList) {
+        this.pregCategoriasjugadorList = pregCategoriasjugadorList;
+    }
+
+    public List<PregPreguntas> getPregPreguntasList() {
+        return pregPreguntasList;
+    }
+
+    public void setPregPreguntasList(List<PregPreguntas> pregPreguntasList) {
+        this.pregPreguntasList = pregPreguntasList;
     }
 
     @Override

@@ -1,26 +1,38 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.NamedQuery;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 
+/**
+ *
+ * @author esteb
+ */
 @Entity
 @Table(name = "PREG_JUGPARTIDA")
-@NamedQueries({ /*@NamedQuery(name = "PregJugpartida.findAll", query = "SELECT p FROM PregJugpartida p"),
+@NamedQueries({
+    @NamedQuery(name = "PregJugpartida.findAll", query = "SELECT p FROM PregJugpartida p"),
     @NamedQuery(name = "PregJugpartida.findByJparId", query = "SELECT p FROM PregJugpartida p WHERE p.jparId = :jparId"),
+    @NamedQuery(name = "PregJugpartida.findByJparNombreJugador", query = "SELECT p FROM PregJugpartida p WHERE p.jparNombreJugador = :jparNombreJugador"),
     @NamedQuery(name = "PregJugpartida.findByJparPosicionSector", query = "SELECT p FROM PregJugpartida p WHERE p.jparPosicionSector = :jparPosicionSector"),
+    @NamedQuery(name = "PregJugpartida.findByJparColorPeon", query = "SELECT p FROM PregJugpartida p WHERE p.jparColorPeon = :jparColorPeon"),
     @NamedQuery(name = "PregJugpartida.findByJparPosicionCasilla", query = "SELECT p FROM PregJugpartida p WHERE p.jparPosicionCasilla = :jparPosicionCasilla"),
-    @NamedQuery(name = "PregJugpartida.findByJparCantidadAyudas", query = "SELECT p FROM PregJugpartida p WHERE p.jparCantidadAyudas = :jparCantidadAyudas"),
+    @NamedQuery(name = "PregJugpartida.findByJparCantidadAyudasTotal", query = "SELECT p FROM PregJugpartida p WHERE p.jparCantidadAyudasTotal = :jparCantidadAyudasTotal"),
+    @NamedQuery(name = "PregJugpartida.findByJparCantidadAyudasUsadas", query = "SELECT p FROM PregJugpartida p WHERE p.jparCantidadAyudasUsadas = :jparCantidadAyudasUsadas"),
     @NamedQuery(name = "PregJugpartida.findByJparDobleAyuda", query = "SELECT p FROM PregJugpartida p WHERE p.jparDobleAyuda = :jparDobleAyuda"),
     @NamedQuery(name = "PregJugpartida.findByJparPasarAyuda", query = "SELECT p FROM PregJugpartida p WHERE p.jparPasarAyuda = :jparPasarAyuda"),
     @NamedQuery(name = "PregJugpartida.findByJparBombaAyuda", query = "SELECT p FROM PregJugpartida p WHERE p.jparBombaAyuda = :jparBombaAyuda"),
@@ -31,221 +43,256 @@ import java.io.Serializable;
     @NamedQuery(name = "PregJugpartida.findByJparFichaGeografia", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaGeografia = :jparFichaGeografia"),
     @NamedQuery(name = "PregJugpartida.findByJparFichaCiencias", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaCiencias = :jparFichaCiencias"),
     @NamedQuery(name = "PregJugpartida.findByJparFichaEntretenimiento", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaEntretenimiento = :jparFichaEntretenimiento"),
-    @NamedQuery(name = "PregJugpartida.findByJparFichaDeporte", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaDeporte = :jparFichaDeporte")*/})
+    @NamedQuery(name = "PregJugpartida.findByJparFichaDeporte", query = "SELECT p FROM PregJugpartida p WHERE p.jparFichaDeporte = :jparFichaDeporte"),
+    @NamedQuery(name = "PregJugpartida.findByJparVersion", query = "SELECT p FROM PregJugpartida p WHERE p.jparVersion = :jparVersion")})
 public class PregJugpartida implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @SequenceGenerator(name = "PREG_JUGPARTIDA_ID_GENERATOR", sequenceName = "PREG_JUGPARTIDA_SEQ01", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PREG_JUGPARTIDA_ID_GENERATOR")
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Id
     @Basic(optional = false)
     @Column(name = "JPAR_ID")
-    private Long id;
+    private BigDecimal jparId;
+    @Basic(optional = false)
+    @Column(name = "JPAR_NOMBRE_JUGADOR")
+    private String jparNombreJugador;
     @Basic(optional = false)
     @Column(name = "JPAR_POSICION_SECTOR")
-    private Integer posicionSector;
-    @Basic(optional = false)
-    @Column(name = "JPAR_POSICION_CASILLA")
-    private Integer posicionCasilla;
+    private BigInteger jparPosicionSector;
     @Basic(optional = false)
     @Column(name = "JPAR_COLOR_PEON")
-    private String colorPeon;
+    private String jparColorPeon;
     @Basic(optional = false)
-    @Column(name = "JPAR_CANTIDAD_AYUDAS")
-    private Integer cantidadAyudas;
+    @Column(name = "JPAR_POSICION_CASILLA")
+    private BigInteger jparPosicionCasilla;
+    @Basic(optional = false)
+    @Column(name = "JPAR_CANTIDAD_AYUDAS_TOTAL")
+    private BigInteger jparCantidadAyudasTotal;
+    @Basic(optional = false)
+    @Column(name = "JPAR_CANTIDAD_AYUDAS_USADAS")
+    private BigInteger jparCantidadAyudasUsadas;
     @Basic(optional = false)
     @Column(name = "JPAR_DOBLE_AYUDA")
-    private String dobleAyuda;
+    private String jparDobleAyuda;
     @Basic(optional = false)
     @Column(name = "JPAR_PASAR_AYUDA")
-    private String pasarAyuda;
+    private String jparPasarAyuda;
     @Basic(optional = false)
     @Column(name = "JPAR_BOMBA_AYUDA")
-    private String bombaAyuda;
+    private String jparBombaAyuda;
     @Basic(optional = false)
     @Column(name = "JPAR_EXTRA_AYUDA")
-    private String extraAyuda;
+    private String jparExtraAyuda;
     @Basic(optional = false)
     @Column(name = "JPAR_CANTIDAD_FICHAS")
-    private Integer cantidadFichas;
+    private BigInteger jparCantidadFichas;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_ARTE")
-    private String fichaArte;
+    private String jparFichaArte;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_HISTORIA")
-    private String fichaHistoria;
+    private String jparFichaHistoria;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_GEOGRAFIA")
-    private String fichaGeografia;
+    private String jparFichaGeografia;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_CIENCIAS")
-    private String fichaCiencias;
+    private String jparFichaCiencias;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_ENTRETENIMIENTO")
-    private String fichaEntretenimiento;
+    private String jparFichaEntretenimiento;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_DEPORTE")
-    private String fichaDeporte;
+    private String jparFichaDeporte;
     @Basic(optional = false)
+    @Column(name = "JPAR_VERSION")
+    private BigInteger jparVersion;
     @JoinColumn(name = "JUG_ID", referencedColumnName = "JUG_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private PregJugadores jugId;
-    @Basic(optional = false)
     @JoinColumn(name = "PPAR_ID", referencedColumnName = "PPAR_ID")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private PregPrinpartida pparId;
 
     public PregJugpartida() {
     }
 
-    public PregJugpartida(PregJugpartidaDto pregJugpartidaDto) {
-        this.id = pregJugpartidaDto.getId();
-        Actualizar(pregJugpartidaDto);
+    public PregJugpartida(BigDecimal jparId) {
+        this.jparId = jparId;
     }
 
-    public void Actualizar(PregJugpartidaDto pregJugpartidaDto) {
-        this.posicionSector = pregJugpartidaDto.getPosicionSector();
-        this.posicionCasilla = pregJugpartidaDto.getPosicionCasilla();
-        this.cantidadAyudas = pregJugpartidaDto.getCantidadAyudas();
-        this.dobleAyuda = pregJugpartidaDto.getDobleAyuda();
-        this.pasarAyuda = pregJugpartidaDto.getPasarAyuda();
-        this.bombaAyuda = pregJugpartidaDto.getBombaAyuda();
-        this.extraAyuda = pregJugpartidaDto.getExtraAyuda();
-        this.cantidadFichas = pregJugpartidaDto.getCantidadFichas();
-        this.fichaArte = pregJugpartidaDto.getFichaArte();
-        this.fichaHistoria = pregJugpartidaDto.getFichaHistoria();
-        this.fichaGeografia = pregJugpartidaDto.getFichaGeografia();
-        this.fichaCiencias = pregJugpartidaDto.getFichaCiencias();
-        this.fichaEntretenimiento = pregJugpartidaDto.getFichaEntretenimiento();
-        this.fichaDeporte = pregJugpartidaDto.getFichaDeporte();
+    public PregJugpartida(BigDecimal jparId, String jparNombreJugador, BigInteger jparPosicionSector, String jparColorPeon, BigInteger jparPosicionCasilla, BigInteger jparCantidadAyudasTotal, BigInteger jparCantidadAyudasUsadas, String jparDobleAyuda, String jparPasarAyuda, String jparBombaAyuda, String jparExtraAyuda, BigInteger jparCantidadFichas, String jparFichaArte, String jparFichaHistoria, String jparFichaGeografia, String jparFichaCiencias, String jparFichaEntretenimiento, String jparFichaDeporte, BigInteger jparVersion) {
+        this.jparId = jparId;
+        this.jparNombreJugador = jparNombreJugador;
+        this.jparPosicionSector = jparPosicionSector;
+        this.jparColorPeon = jparColorPeon;
+        this.jparPosicionCasilla = jparPosicionCasilla;
+        this.jparCantidadAyudasTotal = jparCantidadAyudasTotal;
+        this.jparCantidadAyudasUsadas = jparCantidadAyudasUsadas;
+        this.jparDobleAyuda = jparDobleAyuda;
+        this.jparPasarAyuda = jparPasarAyuda;
+        this.jparBombaAyuda = jparBombaAyuda;
+        this.jparExtraAyuda = jparExtraAyuda;
+        this.jparCantidadFichas = jparCantidadFichas;
+        this.jparFichaArte = jparFichaArte;
+        this.jparFichaHistoria = jparFichaHistoria;
+        this.jparFichaGeografia = jparFichaGeografia;
+        this.jparFichaCiencias = jparFichaCiencias;
+        this.jparFichaEntretenimiento = jparFichaEntretenimiento;
+        this.jparFichaDeporte = jparFichaDeporte;
+        this.jparVersion = jparVersion;
     }
 
-    public Long getId() {
-        return id;
+    public BigDecimal getJparId() {
+        return jparId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setJparId(BigDecimal jparId) {
+        this.jparId = jparId;
     }
 
-    public Integer getPosicionSector() {
-        return posicionSector;
+    public String getJparNombreJugador() {
+        return jparNombreJugador;
     }
 
-    public void setPosicionSector(Integer posicionSector) {
-        this.posicionSector = posicionSector;
+    public void setJparNombreJugador(String jparNombreJugador) {
+        this.jparNombreJugador = jparNombreJugador;
     }
 
-    public Integer getPosicionCasilla() {
-        return posicionCasilla;
+    public BigInteger getJparPosicionSector() {
+        return jparPosicionSector;
     }
 
-    public void setPosicionCasilla(Integer posicionCasilla) {
-        this.posicionCasilla = posicionCasilla;
+    public void setJparPosicionSector(BigInteger jparPosicionSector) {
+        this.jparPosicionSector = jparPosicionSector;
     }
 
-    public String getColorPeon() {
-        return colorPeon;
+    public String getJparColorPeon() {
+        return jparColorPeon;
     }
 
-    public void setColorPeon(String colorPeon) {
-        this.colorPeon = colorPeon;
-    }
-    
-    public Integer getCantidadAyudas() {
-        return cantidadAyudas;
+    public void setJparColorPeon(String jparColorPeon) {
+        this.jparColorPeon = jparColorPeon;
     }
 
-    public void setCantidadAyudas(Integer cantidadAyudas) {
-        this.cantidadAyudas = cantidadAyudas;
+    public BigInteger getJparPosicionCasilla() {
+        return jparPosicionCasilla;
     }
 
-    public String getDobleAyuda() {
-        return dobleAyuda;
+    public void setJparPosicionCasilla(BigInteger jparPosicionCasilla) {
+        this.jparPosicionCasilla = jparPosicionCasilla;
     }
 
-    public void setDobleAyuda(String dobleAyuda) {
-        this.dobleAyuda = dobleAyuda;
+    public BigInteger getJparCantidadAyudasTotal() {
+        return jparCantidadAyudasTotal;
     }
 
-    public String getPasarAyuda() {
-        return pasarAyuda;
+    public void setJparCantidadAyudasTotal(BigInteger jparCantidadAyudasTotal) {
+        this.jparCantidadAyudasTotal = jparCantidadAyudasTotal;
     }
 
-    public void setPasarAyuda(String pasarAyuda) {
-        this.pasarAyuda = pasarAyuda;
+    public BigInteger getJparCantidadAyudasUsadas() {
+        return jparCantidadAyudasUsadas;
     }
 
-    public String getBombaAyuda() {
-        return bombaAyuda;
+    public void setJparCantidadAyudasUsadas(BigInteger jparCantidadAyudasUsadas) {
+        this.jparCantidadAyudasUsadas = jparCantidadAyudasUsadas;
     }
 
-    public void setBombaAyuda(String bombaAyuda) {
-        this.bombaAyuda = bombaAyuda;
+    public String getJparDobleAyuda() {
+        return jparDobleAyuda;
     }
 
-    public String getExtraAyuda() {
-        return extraAyuda;
+    public void setJparDobleAyuda(String jparDobleAyuda) {
+        this.jparDobleAyuda = jparDobleAyuda;
     }
 
-    public void setExtraAyuda(String extraAyuda) {
-        this.extraAyuda = extraAyuda;
+    public String getJparPasarAyuda() {
+        return jparPasarAyuda;
     }
 
-    public Integer getCantidadFichas() {
-        return cantidadFichas;
+    public void setJparPasarAyuda(String jparPasarAyuda) {
+        this.jparPasarAyuda = jparPasarAyuda;
     }
 
-    public void setCantidadFichas(Integer cantidadFichas) {
-        this.cantidadFichas = cantidadFichas;
+    public String getJparBombaAyuda() {
+        return jparBombaAyuda;
     }
 
-    public String getFichaArte() {
-        return fichaArte;
+    public void setJparBombaAyuda(String jparBombaAyuda) {
+        this.jparBombaAyuda = jparBombaAyuda;
     }
 
-    public void setFichaArte(String fichaArte) {
-        this.fichaArte = fichaArte;
+    public String getJparExtraAyuda() {
+        return jparExtraAyuda;
     }
 
-    public String getFichaHistoria() {
-        return fichaHistoria;
+    public void setJparExtraAyuda(String jparExtraAyuda) {
+        this.jparExtraAyuda = jparExtraAyuda;
     }
 
-    public void setFichaHistoria(String fichaHistoria) {
-        this.fichaHistoria = fichaHistoria;
+    public BigInteger getJparCantidadFichas() {
+        return jparCantidadFichas;
     }
 
-    public String getFichaGeografia() {
-        return fichaGeografia;
+    public void setJparCantidadFichas(BigInteger jparCantidadFichas) {
+        this.jparCantidadFichas = jparCantidadFichas;
     }
 
-    public void setFichaGeografia(String fichaGeografia) {
-        this.fichaGeografia = fichaGeografia;
+    public String getJparFichaArte() {
+        return jparFichaArte;
     }
 
-    public String getFichaCiencias() {
-        return fichaCiencias;
+    public void setJparFichaArte(String jparFichaArte) {
+        this.jparFichaArte = jparFichaArte;
     }
 
-    public void setFichaCiencias(String fichaCiencias) {
-        this.fichaCiencias = fichaCiencias;
+    public String getJparFichaHistoria() {
+        return jparFichaHistoria;
     }
 
-    public String getFichaEntretenimiento() {
-        return fichaEntretenimiento;
+    public void setJparFichaHistoria(String jparFichaHistoria) {
+        this.jparFichaHistoria = jparFichaHistoria;
     }
 
-    public void setFichaEntretenimiento(String fichaEntretenimiento) {
-        this.fichaEntretenimiento = fichaEntretenimiento;
+    public String getJparFichaGeografia() {
+        return jparFichaGeografia;
     }
 
-    public String getFichaDeporte() {
-        return fichaDeporte;
+    public void setJparFichaGeografia(String jparFichaGeografia) {
+        this.jparFichaGeografia = jparFichaGeografia;
     }
 
-    public void setFichaDeporte(String fichaDeporte) {
-        this.fichaDeporte = fichaDeporte;
+    public String getJparFichaCiencias() {
+        return jparFichaCiencias;
+    }
+
+    public void setJparFichaCiencias(String jparFichaCiencias) {
+        this.jparFichaCiencias = jparFichaCiencias;
+    }
+
+    public String getJparFichaEntretenimiento() {
+        return jparFichaEntretenimiento;
+    }
+
+    public void setJparFichaEntretenimiento(String jparFichaEntretenimiento) {
+        this.jparFichaEntretenimiento = jparFichaEntretenimiento;
+    }
+
+    public String getJparFichaDeporte() {
+        return jparFichaDeporte;
+    }
+
+    public void setJparFichaDeporte(String jparFichaDeporte) {
+        this.jparFichaDeporte = jparFichaDeporte;
+    }
+
+    public BigInteger getJparVersion() {
+        return jparVersion;
+    }
+
+    public void setJparVersion(BigInteger jparVersion) {
+        this.jparVersion = jparVersion;
     }
 
     public PregJugadores getJugId() {
@@ -267,7 +314,7 @@ public class PregJugpartida implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (jparId != null ? jparId.hashCode() : 0);
         return hash;
     }
 
@@ -278,7 +325,7 @@ public class PregJugpartida implements Serializable {
             return false;
         }
         PregJugpartida other = (PregJugpartida) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.jparId == null && other.jparId != null) || (this.jparId != null && !this.jparId.equals(other.jparId))) {
             return false;
         }
         return true;
@@ -286,7 +333,7 @@ public class PregJugpartida implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregJugpartida[ jparId=" + id + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregJugpartida[ jparId=" + jparId + " ]";
     }
-
+    
 }

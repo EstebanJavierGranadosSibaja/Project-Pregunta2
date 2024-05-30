@@ -1,80 +1,95 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package cr.ac.una.preguntadospackage.model;
 
 import java.io.Serializable;
+import java.util.List;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class PregCategoriasDto  implements Serializable {
+public class PregCategoriasDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+
     public SimpleStringProperty id;
-    public SimpleStringProperty cantidadRespondidas;
-    public SimpleStringProperty cantidadAciertos;
+    public SimpleStringProperty categoria;
+    public SimpleBooleanProperty estado;
+    private Long version;
+    private List<PregCategoriasjugador> pregCategoriasjugadorList;
+    private List<PregPreguntas> pregPreguntasList;
     private Boolean modificado;
 
+    
     public PregCategoriasDto() {
         this.id = new SimpleStringProperty("");
-        this.cantidadRespondidas = new SimpleStringProperty("");
-        this.cantidadAciertos = new SimpleStringProperty("");
-        this.modificado = false; 
+        this.categoria = new SimpleStringProperty("");
+        this.estado = new SimpleBooleanProperty(true);
+
+        this.modificado = false;
     }
 
     public PregCategoriasDto(PregCategorias pregCategorias) {
         this();
-        this.id.set(pregCategorias.getId());
-        this.cantidadRespondidas.set(pregCategorias.getCantidadRespondidas().toString());
-        this.cantidadAciertos.set(pregCategorias.getCantidadAciertos().toString());
+        this.id.set(pregCategorias.getId().toString());
+        this.categoria.set(pregCategorias.getCategoria());
+        this.estado.set(pregCategorias.getEstado().equals("S"));
+        this.version = pregCategorias.getVersion();
     }
 
-    public String getId() {
-        if (this.id.get() != null && !this.id.get().isBlank()) {
-            return id.toString();
+    public Long getId() {
+          if (this.id.get() != null && !this.id.get().isBlank()) {
+            return Long.valueOf(this.id.get());
         }
         return null;
     }
 
-    public void setId(String id) {
-        this.id.set(id);
+    public void setId(Long id) {
+        this.id.set(id.toString());
     }
 
-    public Long getCantidadRespondidas() {
-        return Long.valueOf(cantidadRespondidas.get());
+    public String getCategoria() {
+        return categoria.get();
     }
 
-    public void setCantidadRespondidas(Long cantidadRespondidas) {
-        this.cantidadRespondidas.set(cantidadRespondidas.toString());
+    public void setCategoria(String categoria) {
+        this.categoria.set(categoria);
     }
 
-    public Long getCantidadAciertos() {
-        return Long.valueOf(cantidadAciertos.get());
+    public String getEstado() {
+        return estado.get() ? "A" : "I";
     }
 
-    public void setCantidadAciertos(Long cantidadAciertos) {
-        this.cantidadAciertos.set(cantidadAciertos.toString());
-    }
-    
-    public Boolean getModificado() {
-        return modificado;
+    public void setEstado(String estado) {
+        this.estado.set(estado.equalsIgnoreCase("A"));
     }
 
-    public void setModificado(Boolean modificado) {
-        this.modificado = modificado;
+    public Long getVersion() {
+        return version;
     }
 
-//    public List<PregJugadores> getJugadoresList() {
-//        return jugadoresList;
-//    }
-//
-//    public void setJugadoresList(List<PregJugadores> jugadoresList) {
-//        this.jugadoresList = jugadoresList;
-//    }
-//
-//    public List<PregPreguntas> getPreguntasList() {
-//        return preguntasList;
-//    }
-//
-//    public void setPreguntasList(List<PregPreguntas> preguntasList) {
-//        this.preguntasList = preguntasList;
-//    }
+    public void setVersion(Long version) {
+        this.version = version;
+    }
+
+    public List<PregCategoriasjugador> getPregCategoriasjugadorList() {
+        return pregCategoriasjugadorList;
+    }
+
+    public void setPregCategoriasjugadorList(List<PregCategoriasjugador> pregCategoriasjugadorList) {
+        this.pregCategoriasjugadorList = pregCategoriasjugadorList;
+    }
+
+    public List<PregPreguntas> getPregPreguntasList() {
+        return pregPreguntasList;
+    }
+
+    public void setPregPreguntasList(List<PregPreguntas> pregPreguntasList) {
+        this.pregPreguntasList = pregPreguntasList;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
