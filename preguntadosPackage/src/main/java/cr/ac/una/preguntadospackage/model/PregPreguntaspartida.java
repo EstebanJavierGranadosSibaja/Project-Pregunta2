@@ -6,16 +6,19 @@ package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
 /**
  *
@@ -25,77 +28,76 @@ import java.math.BigInteger;
 @Table(name = "PREG_PREGUNTASPARTIDA")
 @NamedQueries({
     @NamedQuery(name = "PregPreguntaspartida.findAll", query = "SELECT p FROM PregPreguntaspartida p"),
-    @NamedQuery(name = "PregPreguntaspartida.findByPrpaId", query = "SELECT p FROM PregPreguntaspartida p WHERE p.pregPreguntaspartidaPK.prpaId = :prpaId"),
-    @NamedQuery(name = "PregPreguntaspartida.findByPrpaEstadoRespondida", query = "SELECT p FROM PregPreguntaspartida p WHERE p.prpaEstadoRespondida = :prpaEstadoRespondida"),
-    @NamedQuery(name = "PregPreguntaspartida.findByPxpIdpre", query = "SELECT p FROM PregPreguntaspartida p WHERE p.pregPreguntaspartidaPK.pxpIdpre = :pxpIdpre"),
-    @NamedQuery(name = "PregPreguntaspartida.findByPxpIdppar", query = "SELECT p FROM PregPreguntaspartida p WHERE p.pregPreguntaspartidaPK.pxpIdppar = :pxpIdppar")})
+    @NamedQuery(name = "PregPreguntaspartida.findByPrpaId", query = "SELECT p FROM PregPreguntaspartida p WHERE p.prpaId = :prpaId"),
+    @NamedQuery(name = "PregPreguntaspartida.findByPrpaEstadoRespondida", query = "SELECT p FROM PregPreguntaspartida p WHERE p.prpaEstadoRespondida = :prpaEstadoRespondida")})
 public class PregPreguntaspartida implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected PregPreguntaspartidaPK pregPreguntaspartidaPK;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @SequenceGenerator(name = "PREG_PREGUNTASPARTIDA_TGR01", sequenceName = "PREG_PREGUNTASPARTIDA_SEQ01", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PREG_PREGUNTASPARTIDA_TGR01")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "PRPA_ID")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "PRPA_ESTADO_RESPONDIDA")
-    private String prpaEstadoRespondida;
-    @JoinColumn(name = "PXP_IDPRE", referencedColumnName = "PRE_ID", insertable = false, updatable = false)
+    private String estadoRespondida;
+    @JoinColumn(name = "PRE_ID", referencedColumnName = "PRE_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregPreguntas pregPreguntas;
-    @JoinColumn(name = "PXP_IDPPAR", referencedColumnName = "PPAR_ID", insertable = false, updatable = false)
+    private PregPreguntas preId;
+    @JoinColumn(name = "PPAR_ID", referencedColumnName = "PPAR_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregPrinpartida pregPrinpartida;
+    private PregPrinpartida pparId;
 
     public PregPreguntaspartida() {
     }
 
-    public PregPreguntaspartida(PregPreguntaspartidaPK pregPreguntaspartidaPK) {
-        this.pregPreguntaspartidaPK = pregPreguntaspartidaPK;
+    public PregPreguntaspartida(PregPreguntaspartidaDto pregPreguntaspartidaDto) {
+        this.id = pregPreguntaspartidaDto.getId();
+        Actualizar(pregPreguntaspartidaDto);
     }
 
-    public PregPreguntaspartida(PregPreguntaspartidaPK pregPreguntaspartidaPK, String prpaEstadoRespondida) {
-        this.pregPreguntaspartidaPK = pregPreguntaspartidaPK;
-        this.prpaEstadoRespondida = prpaEstadoRespondida;
+    public void Actualizar(PregPreguntaspartidaDto pregPreguntaspartidaDto) {
+        this.estadoRespondida = pregPreguntaspartidaDto.getEstadoRespondida();
     }
 
-    public PregPreguntaspartida(BigInteger prpaId, BigInteger pxpIdpre, BigInteger pxpIdppar) {
-        this.pregPreguntaspartidaPK = new PregPreguntaspartidaPK(prpaId, pxpIdpre, pxpIdppar);
+    public Long getId() {
+        return id;
     }
 
-    public PregPreguntaspartidaPK getPregPreguntaspartidaPK() {
-        return pregPreguntaspartidaPK;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPregPreguntaspartidaPK(PregPreguntaspartidaPK pregPreguntaspartidaPK) {
-        this.pregPreguntaspartidaPK = pregPreguntaspartidaPK;
+    public String getEstadoRespondida() {
+        return estadoRespondida;
     }
 
-    public String getPrpaEstadoRespondida() {
-        return prpaEstadoRespondida;
+    public void setEstadoRespondida(String estadoRespondida) {
+        this.estadoRespondida = estadoRespondida;
     }
 
-    public void setPrpaEstadoRespondida(String prpaEstadoRespondida) {
-        this.prpaEstadoRespondida = prpaEstadoRespondida;
+    public PregPreguntas getPreId() {
+        return preId;
     }
 
-    public PregPreguntas getPregPreguntas() {
-        return pregPreguntas;
+    public void setPreId(PregPreguntas preId) {
+        this.preId = preId;
     }
 
-    public void setPregPreguntas(PregPreguntas pregPreguntas) {
-        this.pregPreguntas = pregPreguntas;
+    public PregPrinpartida getPparId() {
+        return pparId;
     }
 
-    public PregPrinpartida getPregPrinpartida() {
-        return pregPrinpartida;
-    }
-
-    public void setPregPrinpartida(PregPrinpartida pregPrinpartida) {
-        this.pregPrinpartida = pregPrinpartida;
+    public void setPparId(PregPrinpartida pparId) {
+        this.pparId = pparId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pregPreguntaspartidaPK != null ? pregPreguntaspartidaPK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -106,7 +108,7 @@ public class PregPreguntaspartida implements Serializable {
             return false;
         }
         PregPreguntaspartida other = (PregPreguntaspartida) object;
-        if ((this.pregPreguntaspartidaPK == null && other.pregPreguntaspartidaPK != null) || (this.pregPreguntaspartidaPK != null && !this.pregPreguntaspartidaPK.equals(other.pregPreguntaspartidaPK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -114,7 +116,7 @@ public class PregPreguntaspartida implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregPreguntaspartida[ pregPreguntaspartidaPK=" + pregPreguntaspartidaPK + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregPreguntaspartida[ prpaId=" + id + " ]";
     }
     
 }

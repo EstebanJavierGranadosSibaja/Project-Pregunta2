@@ -9,13 +9,17 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -26,14 +30,16 @@ import java.util.List;
 @Table(name = "PREG_CATEGORIAS")
 @NamedQueries({
     @NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
-    @NamedQuery(name = "PregCategorias.findByCatId", query = "SELECT p FROM PregCategorias p WHERE p.catId = :catId"),
-    @NamedQuery(name = "PregCategorias.findByCatCategoria", query = "SELECT p FROM PregCategorias p WHERE p.catCategoria = :catCategoria"),
-    @NamedQuery(name = "PregCategorias.findByCatEstado", query = "SELECT p FROM PregCategorias p WHERE p.catEstado = :catEstado"),
-    @NamedQuery(name = "PregCategorias.findByCatVersion", query = "SELECT p FROM PregCategorias p WHERE p.catVersion = :catVersion")})
+    @NamedQuery(name = "PregCategorias.findByCatId", query = "SELECT p FROM PregCategorias p WHERE p.id = :id"),
+    @NamedQuery(name = "PregCategorias.findByCatCategoria", query = "SELECT p FROM PregCategorias p WHERE p.categoria = :categoria"),
+    @NamedQuery(name = "PregCategorias.findByCatEstado", query = "SELECT p FROM PregCategorias p WHERE p.estado = :estado"),
+    @NamedQuery(name = "PregCategorias.findByCatVersion", query = "SELECT p FROM PregCategorias p WHERE p.version = :version")})
 public class PregCategorias implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @SequenceGenerator(name = "PREG_CATEGORIAS_TGR01", sequenceName = "PREG_CATEGORIAS_SEQ01", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PREG_CATEGORIAS_TGR01")
     @Id
     @Basic(optional = false)
     @Column(name = "CAT_ID")
@@ -95,8 +101,8 @@ public class PregCategorias implements Serializable {
         return version;
     }
 
-    public void setVersion(Long catVersion) {
-        this.version = catVersion;
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     public List<PregCategoriasjugador> getPregCategoriasjugadorList() {
@@ -139,5 +145,4 @@ public class PregCategorias implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregCategorias[ catId=" + id + " ]";
     }
-    
 }

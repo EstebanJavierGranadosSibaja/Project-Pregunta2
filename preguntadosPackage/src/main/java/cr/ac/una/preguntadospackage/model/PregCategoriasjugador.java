@@ -6,15 +6,19 @@ package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 /**
@@ -25,90 +29,89 @@ import java.math.BigInteger;
 @Table(name = "PREG_CATEGORIASJUGADOR")
 @NamedQueries({
     @NamedQuery(name = "PregCategoriasjugador.findAll", query = "SELECT p FROM PregCategoriasjugador p"),
-    @NamedQuery(name = "PregCategoriasjugador.findByCajuId", query = "SELECT p FROM PregCategoriasjugador p WHERE p.pregCategoriasjugadorPK.cajuId = :cajuId"),
-    @NamedQuery(name = "PregCategoriasjugador.findByCajuCantidadRespuestas", query = "SELECT p FROM PregCategoriasjugador p WHERE p.cajuCantidadRespuestas = :cajuCantidadRespuestas"),
-    @NamedQuery(name = "PregCategoriasjugador.findByCajuCantidadAcertada", query = "SELECT p FROM PregCategoriasjugador p WHERE p.cajuCantidadAcertada = :cajuCantidadAcertada"),
-    @NamedQuery(name = "PregCategoriasjugador.findByCxjIdjug", query = "SELECT p FROM PregCategoriasjugador p WHERE p.pregCategoriasjugadorPK.cxjIdjug = :cxjIdjug"),
-    @NamedQuery(name = "PregCategoriasjugador.findByCxjIdcat", query = "SELECT p FROM PregCategoriasjugador p WHERE p.pregCategoriasjugadorPK.cxjIdcat = :cxjIdcat")})
+    @NamedQuery(name = "PregCategoriasjugador.findByCajuId", query = "SELECT p FROM PregCategoriasjugador p WHERE p.id = :id"),
+    @NamedQuery(name = "PregCategoriasjugador.findByCajuCantidadRespuestas", query = "SELECT p FROM PregCategoriasjugador p WHERE p.cantidadRespuestas = :cantidadRespuestas"),
+    @NamedQuery(name = "PregCategoriasjugador.findByCajuCantidadAcertada", query = "SELECT p FROM PregCategoriasjugador p WHERE p.cantidadAcertada = :cantidadAcertada")})
 public class PregCategoriasjugador implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @EmbeddedId
-    protected PregCategoriasjugadorPK pregCategoriasjugadorPK;
+    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @SequenceGenerator(name = "PREG_CATEGORIASJUGADOR_TGR01", sequenceName = "PREG_CATEGORIASJUGADOR_SEQ01", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PREG_CATEGORIASJUGADOR_TGR01")
+    @Id
+    @Basic(optional = false)
+    @Column(name = "CAJU_ID")
+    private Long id;
     @Basic(optional = false)
     @Column(name = "CAJU_CANTIDAD_RESPUESTAS")
-    private BigInteger cajuCantidadRespuestas;
+    private Long cantidadRespuestas;
     @Basic(optional = false)
     @Column(name = "CAJU_CANTIDAD_ACERTADA")
-    private BigInteger cajuCantidadAcertada;
-    @JoinColumn(name = "CXJ_IDCAT", referencedColumnName = "CAT_ID", insertable = false, updatable = false)
+    private Long cantidadAcertada;
+    @JoinColumn(name = "CAT_ID", referencedColumnName = "CAT_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregCategorias pregCategorias;
-    @JoinColumn(name = "CXJ_IDJUG", referencedColumnName = "JUG_ID", insertable = false, updatable = false)
+    private PregCategorias catId;
+    @JoinColumn(name = "JUG_ID", referencedColumnName = "JUG_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregJugadores pregJugadores;
+    private PregJugadores jugId;
 
-    public PregCategoriasjugador() {
+   public PregCategoriasjugador() {
     }
 
-    public PregCategoriasjugador(PregCategoriasjugadorPK pregCategoriasjugadorPK) {
-        this.pregCategoriasjugadorPK = pregCategoriasjugadorPK;
+    public PregCategoriasjugador(PregCategoriasjugadorDto pregCategoriasjugadorDto) {
+        this.id = pregCategoriasjugadorDto.getId();
+        Actualizar(pregCategoriasjugadorDto);
     }
 
-    public PregCategoriasjugador(PregCategoriasjugadorPK pregCategoriasjugadorPK, BigInteger cajuCantidadRespuestas, BigInteger cajuCantidadAcertada) {
-        this.pregCategoriasjugadorPK = pregCategoriasjugadorPK;
-        this.cajuCantidadRespuestas = cajuCantidadRespuestas;
-        this.cajuCantidadAcertada = cajuCantidadAcertada;
+    public void Actualizar(PregCategoriasjugadorDto pregCategoriasjugadorDto) {
+        this.cantidadRespuestas = pregCategoriasjugadorDto.getCantidadRespuestas();
+        this.cantidadAcertada = pregCategoriasjugadorDto.getCantidadAcertada();
     }
 
-    public PregCategoriasjugador(BigInteger cajuId, BigInteger cxjIdjug, BigInteger cxjIdcat) {
-        this.pregCategoriasjugadorPK = new PregCategoriasjugadorPK(cajuId, cxjIdjug, cxjIdcat);
+    public Long getId() {
+        return id;
     }
 
-    public PregCategoriasjugadorPK getPregCategoriasjugadorPK() {
-        return pregCategoriasjugadorPK;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPregCategoriasjugadorPK(PregCategoriasjugadorPK pregCategoriasjugadorPK) {
-        this.pregCategoriasjugadorPK = pregCategoriasjugadorPK;
+    public Long getCantidadRespuestas() {
+        return cantidadRespuestas;
     }
 
-    public BigInteger getCajuCantidadRespuestas() {
-        return cajuCantidadRespuestas;
+    public void setCantidadRespuestas(Long cantidadRespuestas) {
+        this.cantidadRespuestas = cantidadRespuestas;
     }
 
-    public void setCajuCantidadRespuestas(BigInteger cajuCantidadRespuestas) {
-        this.cajuCantidadRespuestas = cajuCantidadRespuestas;
+    public Long getCantidadAcertada() {
+        return cantidadAcertada;
     }
 
-    public BigInteger getCajuCantidadAcertada() {
-        return cajuCantidadAcertada;
+    public void setCantidadAcertada(Long cantidadAcertada) {
+        this.cantidadAcertada = cantidadAcertada;
     }
 
-    public void setCajuCantidadAcertada(BigInteger cajuCantidadAcertada) {
-        this.cajuCantidadAcertada = cajuCantidadAcertada;
+    public PregCategorias getCatId() {
+        return catId;
     }
 
-    public PregCategorias getPregCategorias() {
-        return pregCategorias;
+    public void setCatId(PregCategorias catId) {
+        this.catId = catId;
     }
 
-    public void setPregCategorias(PregCategorias pregCategorias) {
-        this.pregCategorias = pregCategorias;
+    public PregJugadores getJugId() {
+        return jugId;
     }
 
-    public PregJugadores getPregJugadores() {
-        return pregJugadores;
-    }
-
-    public void setPregJugadores(PregJugadores pregJugadores) {
-        this.pregJugadores = pregJugadores;
+    public void setJugId(PregJugadores jugId) {
+        this.jugId = jugId;
     }
 
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (pregCategoriasjugadorPK != null ? pregCategoriasjugadorPK.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -119,7 +122,7 @@ public class PregCategoriasjugador implements Serializable {
             return false;
         }
         PregCategoriasjugador other = (PregCategoriasjugador) object;
-        if ((this.pregCategoriasjugadorPK == null && other.pregCategoriasjugadorPK != null) || (this.pregCategoriasjugadorPK != null && !this.pregCategoriasjugadorPK.equals(other.pregCategoriasjugadorPK))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -127,7 +130,7 @@ public class PregCategoriasjugador implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregCategoriasjugador[ pregCategoriasjugadorPK=" + pregCategoriasjugadorPK + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregCategoriasjugador[ cajuId=" + id + " ]";
     }
     
 }

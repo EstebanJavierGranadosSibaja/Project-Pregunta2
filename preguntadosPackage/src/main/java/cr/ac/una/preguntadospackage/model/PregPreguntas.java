@@ -9,13 +9,17 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -29,36 +33,38 @@ import java.util.List;
 @Table(name = "PREG_PREGUNTAS")
 @NamedQueries({
     @NamedQuery(name = "PregPreguntas.findAll", query = "SELECT p FROM PregPreguntas p"),
-    @NamedQuery(name = "PregPreguntas.findByPreId", query = "SELECT p FROM PregPreguntas p WHERE p.preId = :preId"),
-    @NamedQuery(name = "PregPreguntas.findByPreTextoPregunta", query = "SELECT p FROM PregPreguntas p WHERE p.preTextoPregunta = :preTextoPregunta"),
-    @NamedQuery(name = "PregPreguntas.findByPreCantidadRespuestas", query = "SELECT p FROM PregPreguntas p WHERE p.preCantidadRespuestas = :preCantidadRespuestas"),
-    @NamedQuery(name = "PregPreguntas.findByPreCantidadAciertos", query = "SELECT p FROM PregPreguntas p WHERE p.preCantidadAciertos = :preCantidadAciertos"),
-    @NamedQuery(name = "PregPreguntas.findByPreEstado", query = "SELECT p FROM PregPreguntas p WHERE p.preEstado = :preEstado"),
-    @NamedQuery(name = "PregPreguntas.findByPreVersion", query = "SELECT p FROM PregPreguntas p WHERE p.preVersion = :preVersion")})
+    @NamedQuery(name = "PregPreguntas.findByPreId", query = "SELECT p FROM PregPreguntas p WHERE p.id = :id"),
+    @NamedQuery(name = "PregPreguntas.findByPreTextoPregunta", query = "SELECT p FROM PregPreguntas p WHERE p.textoPregunta = :textoPregunta"),
+    @NamedQuery(name = "PregPreguntas.findByPreCantidadRespuestas", query = "SELECT p FROM PregPreguntas p WHERE p.cantidadRespuestas = :cantidadRespuestas"),
+    @NamedQuery(name = "PregPreguntas.findByPreCantidadAciertos", query = "SELECT p FROM PregPreguntas p WHERE p.cantidadAciertos = :cantidadAciertos"),
+    @NamedQuery(name = "PregPreguntas.findByPreEstado", query = "SELECT p FROM PregPreguntas p WHERE p.estado = :estado"),
+    @NamedQuery(name = "PregPreguntas.findByPreVersion", query = "SELECT p FROM PregPreguntas p WHERE p.version = :version")})
 public class PregPreguntas implements Serializable {
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    @SequenceGenerator(name = "PREG_PREGUNTAS_TGR01", sequenceName = "PREG_PREGUNTAS_SEQ01", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PREG_PREGUNTAS_TGR01")
     @Id
     @Basic(optional = false)
     @Column(name = "PRE_ID")
-    private BigDecimal preId;
+    private Long id;
     @Basic(optional = false)
     @Column(name = "PRE_TEXTO_PREGUNTA")
-    private String preTextoPregunta;
+    private String textoPregunta;
     @Basic(optional = false)
     @Column(name = "PRE_CANTIDAD_RESPUESTAS")
-    private BigInteger preCantidadRespuestas;
+    private Long cantidadRespuestas;
     @Basic(optional = false)
     @Column(name = "PRE_CANTIDAD_ACIERTOS")
-    private BigInteger preCantidadAciertos;
+    private Long cantidadAciertos;
     @Basic(optional = false)
     @Column(name = "PRE_ESTADO")
-    private String preEstado;
-    @Basic(optional = false)
+    private String estado;
+    @Version
     @Column(name = "PRE_VERSION")
-    private BigInteger preVersion;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pregPreguntas", fetch = FetchType.LAZY)
+    private Long version;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "preId", fetch = FetchType.LAZY)
     private List<PregPreguntaspartida> pregPreguntaspartidaList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "preId", fetch = FetchType.LAZY)
     private List<PregRespuestas> pregRespuestasList;
@@ -69,65 +75,65 @@ public class PregPreguntas implements Serializable {
     public PregPreguntas() {
     }
 
-    public PregPreguntas(BigDecimal preId) {
-        this.preId = preId;
+    public PregPreguntas(PregPreguntasDto pregPreguntasDto) {
+        this.id = pregPreguntasDto.getId();
+        Actualizar(pregPreguntasDto);
     }
 
-    public PregPreguntas(BigDecimal preId, String preTextoPregunta, BigInteger preCantidadRespuestas, BigInteger preCantidadAciertos, String preEstado, BigInteger preVersion) {
-        this.preId = preId;
-        this.preTextoPregunta = preTextoPregunta;
-        this.preCantidadRespuestas = preCantidadRespuestas;
-        this.preCantidadAciertos = preCantidadAciertos;
-        this.preEstado = preEstado;
-        this.preVersion = preVersion;
+    public void Actualizar(PregPreguntasDto pregPreguntasDto) {
+        this.textoPregunta = pregPreguntasDto.getTextoPregunta();
+        this.cantidadRespuestas = pregPreguntasDto.getCantidadRespuestas();
+        this.cantidadAciertos = pregPreguntasDto.getCantidadAciertos();
+        this.estado = pregPreguntasDto.getEstado();
+        this.version = pregPreguntasDto.getVersion();
     }
 
-    public BigDecimal getPreId() {
-        return preId;
+    public Long getId() {
+        return id;
     }
 
-    public void setPreId(BigDecimal preId) {
-        this.preId = preId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getPreTextoPregunta() {
-        return preTextoPregunta;
+    public String getTextoPregunta() {
+        return textoPregunta;
     }
 
-    public void setPreTextoPregunta(String preTextoPregunta) {
-        this.preTextoPregunta = preTextoPregunta;
+    public void setTextoPregunta(String textoPregunta) {
+        this.textoPregunta = textoPregunta;
     }
 
-    public BigInteger getPreCantidadRespuestas() {
-        return preCantidadRespuestas;
+    public Long getCantidadRespuestas() {
+        return cantidadRespuestas;
     }
 
-    public void setPreCantidadRespuestas(BigInteger preCantidadRespuestas) {
-        this.preCantidadRespuestas = preCantidadRespuestas;
+    public void setCantidadRespuestas(Long cantidadRespuestas) {
+        this.cantidadRespuestas = cantidadRespuestas;
     }
 
-    public BigInteger getPreCantidadAciertos() {
-        return preCantidadAciertos;
+    public Long getCantidadAciertos() {
+        return cantidadAciertos;
     }
 
-    public void setPreCantidadAciertos(BigInteger preCantidadAciertos) {
-        this.preCantidadAciertos = preCantidadAciertos;
+    public void setCantidadAciertos(Long cantidadAciertos) {
+        this.cantidadAciertos = cantidadAciertos;
     }
 
-    public String getPreEstado() {
-        return preEstado;
+    public String getEstado() {
+        return estado;
     }
 
-    public void setPreEstado(String preEstado) {
-        this.preEstado = preEstado;
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
-    public BigInteger getPreVersion() {
-        return preVersion;
+    public Long getVersion() {
+        return version;
     }
 
-    public void setPreVersion(BigInteger preVersion) {
-        this.preVersion = preVersion;
+    public void setVersion(Long version) {
+        this.version = version;
     }
 
     public List<PregPreguntaspartida> getPregPreguntaspartidaList() {
@@ -157,7 +163,7 @@ public class PregPreguntas implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (preId != null ? preId.hashCode() : 0);
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
@@ -168,7 +174,7 @@ public class PregPreguntas implements Serializable {
             return false;
         }
         PregPreguntas other = (PregPreguntas) object;
-        if ((this.preId == null && other.preId != null) || (this.preId != null && !this.preId.equals(other.preId))) {
+        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
@@ -176,7 +182,7 @@ public class PregPreguntas implements Serializable {
 
     @Override
     public String toString() {
-        return "cr.ac.una.preguntadospackage.model.PregPreguntas[ preId=" + preId + " ]";
+        return "cr.ac.una.preguntadospackage.model.PregPreguntas[ preId=" + id + " ]";
     }
     
 }
