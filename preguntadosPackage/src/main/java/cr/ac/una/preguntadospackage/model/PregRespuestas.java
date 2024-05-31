@@ -19,13 +19,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_RESPUESTAS")
 @NamedQueries({
@@ -57,9 +51,9 @@ public class PregRespuestas implements Serializable {
     @Version
     @Column(name = "RESP_VERSION")
     private Long version;
-    @JoinColumn(name = "PRE_ID", referencedColumnName = "PRE_ID")
+    @JoinColumn(name = "RESP_IDPRE", referencedColumnName = "PRE_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregPreguntas preId;
+    private PregPreguntas respIdpre;
 
     public PregRespuestas() {
     }
@@ -116,12 +110,12 @@ public class PregRespuestas implements Serializable {
         this.version = version;
     }
 
-    public PregPreguntas getPreId() {
-        return preId;
+    public PregPreguntas getRespIdpre() {
+        return respIdpre;
     }
 
-    public void setPreId(PregPreguntas preId) {
-        this.preId = preId;
+    public void setRespIdpre(PregPreguntas respIdpre) {
+        this.respIdpre = respIdpre;
     }
 
     @Override
@@ -148,5 +142,4 @@ public class PregRespuestas implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregRespuestas[ respId=" + id + " ]";
     }
-
 }

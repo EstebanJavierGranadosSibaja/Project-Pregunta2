@@ -48,12 +48,12 @@ public class PregCategoriasjugador implements Serializable {
     @Basic(optional = false)
     @Column(name = "CAJU_CANTIDAD_ACERTADA")
     private Long cantidadAcertada;
-    @JoinColumn(name = "CAT_ID", referencedColumnName = "CAT_ID")
+    @JoinColumn(name = "CAJU_IDCAT", referencedColumnName = "CAT_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregCategorias catId;
-    @JoinColumn(name = "JUG_ID", referencedColumnName = "JUG_ID")
+    private PregCategorias cajuIdcat;
+    @JoinColumn(name = "CAJU_IDJUG", referencedColumnName = "JUG_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregJugadores jugId;
+    private PregJugadores cajuIdjug;
 
    public PregCategoriasjugador() {
     }
@@ -92,20 +92,20 @@ public class PregCategoriasjugador implements Serializable {
         this.cantidadAcertada = cantidadAcertada;
     }
 
-    public PregCategorias getCatId() {
-        return catId;
+    public PregCategorias getCajuIdCat() {
+        return cajuIdcat;
     }
 
-    public void setCatId(PregCategorias catId) {
-        this.catId = catId;
+    public void setCajuIdCat(PregCategorias cajuIdcat) {
+        this.cajuIdcat = cajuIdcat;
     }
 
-    public PregJugadores getJugId() {
-        return jugId;
+    public PregJugadores getCajuIdjug() {
+        return cajuIdjug;
     }
 
-    public void setJugId(PregJugadores jugId) {
-        this.jugId = jugId;
+    public void setCajuIdjug(PregJugadores cajuIdjug) {
+        this.cajuIdjug = cajuIdjug;
     }
 
     @Override
@@ -132,5 +132,4 @@ public class PregCategoriasjugador implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregCategoriasjugador[ cajuId=" + id + " ]";
     }
-    
 }

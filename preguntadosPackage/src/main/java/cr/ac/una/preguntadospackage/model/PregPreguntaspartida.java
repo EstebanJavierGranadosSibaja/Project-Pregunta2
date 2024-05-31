@@ -20,10 +20,6 @@ import jakarta.persistence.Table;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_PREGUNTASPARTIDA")
 @NamedQueries({
@@ -43,12 +39,13 @@ public class PregPreguntaspartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "PRPA_ESTADO_RESPONDIDA")
     private String estadoRespondida;
-    @JoinColumn(name = "PRE_ID", referencedColumnName = "PRE_ID")
+    @JoinColumn(name = "PRPA_IDPRE", referencedColumnName = "PRE_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregPreguntas preId;
-    @JoinColumn(name = "PPAR_ID", referencedColumnName = "PPAR_ID")
+    private PregPreguntas prpaIdpre;
+    @JoinColumn(name = "PPAR_IDPPAR", referencedColumnName = "PPAR_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregPrinpartida pparId;
+    private PregPrinpartida prpaIdppar;
+    
 
     public PregPreguntaspartida() {
     }
@@ -78,20 +75,20 @@ public class PregPreguntaspartida implements Serializable {
         this.estadoRespondida = estadoRespondida;
     }
 
-    public PregPreguntas getPreId() {
-        return preId;
+    public PregPreguntas getPrpaIdPre() {
+        return prpaIdpre;
     }
 
-    public void setPreId(PregPreguntas preId) {
-        this.preId = preId;
+    public void setPrpaIdPre(PregPreguntas prpaIdpre) {
+        this.prpaIdpre = prpaIdpre;
     }
 
-    public PregPrinpartida getPparId() {
-        return pparId;
+    public PregPrinpartida getPrpaIdPpar() {
+        return prpaIdppar;
     }
 
-    public void setPparId(PregPrinpartida pparId) {
-        this.pparId = pparId;
+    public void setPrpaIdPpar(PregPrinpartida prpaIdppar) {
+        this.prpaIdppar = prpaIdppar;
     }
 
     @Override
@@ -118,5 +115,4 @@ public class PregPreguntaspartida implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregPreguntaspartida[ prpaId=" + id + " ]";
     }
-    
 }

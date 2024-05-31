@@ -35,8 +35,8 @@ public class PregJugadoresDto implements Serializable {
         this.nombre.set(pregJugadores.getNombre());
         this.partidasJugadas.set(pregJugadores.getPartidasJugadas().toString());
         this.partidasGanadas.set(pregJugadores.getPartidasGanadas().toString());
-        this.cantidasRespuestasGeneral.set(pregJugadores.getCantidasRespuestasGeneral().toString());
-        this.cantidasAcertadasGeneral.set(pregJugadores.getCantidasAcertadasGeneral().toString());
+        this.cantidasRespuestasGeneral.set(pregJugadores.getCantidadRespuestasGeneral().toString());
+        this.cantidasAcertadasGeneral.set(pregJugadores.getCantidadAcertadasGeneral().toString());
         this.version = pregJugadores.getVersion();
     }
 

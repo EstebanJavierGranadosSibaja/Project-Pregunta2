@@ -17,15 +17,10 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Version;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_JUGADORES")
 @NamedQueries({
@@ -58,17 +53,17 @@ public class PregJugadores implements Serializable {
     private Long partidasGanadas;
     @Basic(optional = false)
     @Column(name = "JUG_CANTIDAD_RESPUESTAS_GENERAL")
-    private Long cantidasRespuestasGeneral;
+    private Long cantidadRespuestasGeneral;
     @Basic(optional = false)
     @Column(name = "JUG_CANTIDAD_ACERTADAS_GENERAL")
-    private Long cantidasAcertadasGeneral;
-    @Basic(optional = false)
+    private Long cantidadAcertadasGeneral;
+    @Version
     @Column(name = "JUG_VERSION")
     private Long version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jugId", fetch = FetchType.LAZY)
-    private List<PregCategoriasjugador> pregCategoriasjugadorList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jugId", fetch = FetchType.LAZY)
-    private List<PregJugpartida> pregJugpartidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cajuIdjug", fetch = FetchType.LAZY)
+    private List<PregCategoriasjugador> categoriasjugadorList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jparIdjug", fetch = FetchType.LAZY)
+    private List<PregJugpartida> jugpartidaList;
 
     public PregJugadores() {
     }
@@ -82,8 +77,8 @@ public class PregJugadores implements Serializable {
         this.nombre = pregJugadoresDto.getNombre();
         this.partidasGanadas = pregJugadoresDto.getPartidasGanadas();
         this.partidasJugadas = pregJugadoresDto.getPartidasJugadas();
-        this.cantidasRespuestasGeneral = pregJugadoresDto.getCantidasRespuestasGeneral();
-        this.cantidasAcertadasGeneral = pregJugadoresDto.getCantidasAcertadasGeneral();
+        this.cantidadRespuestasGeneral = pregJugadoresDto.getCantidasRespuestasGeneral();
+        this.cantidadAcertadasGeneral = pregJugadoresDto.getCantidasAcertadasGeneral();
         this.version = pregJugadoresDto.getVersion();
     }
 
@@ -119,20 +114,20 @@ public class PregJugadores implements Serializable {
         this.partidasGanadas = partidasGanadas;
     }
 
-    public Long getCantidasRespuestasGeneral() {
-        return cantidasRespuestasGeneral;
+    public Long getCantidadRespuestasGeneral() {
+        return cantidadRespuestasGeneral;
     }
 
-    public void setCantidasRespuestasGeneral(Long cantidasRespuestasGeneral) {
-        this.cantidasRespuestasGeneral = cantidasRespuestasGeneral;
+    public void setCantidadRespuestasGeneral(Long cantidasRespuestasGeneral) {
+        this.cantidadRespuestasGeneral = cantidasRespuestasGeneral;
     }
 
-    public Long getCantidasAcertadasGeneral() {
-        return cantidasAcertadasGeneral;
+    public Long getCantidadAcertadasGeneral() {
+        return cantidadAcertadasGeneral;
     }
 
-    public void setCantidasAcertadasGeneral(Long cantidasAcertadasGeneral) {
-        this.cantidasAcertadasGeneral = cantidasAcertadasGeneral;
+    public void setCantidadAcertadasGeneral(Long cantidasAcertadasGeneral) {
+        this.cantidadAcertadasGeneral = cantidasAcertadasGeneral;
     }
 
     public Long getVersion() {
@@ -143,20 +138,20 @@ public class PregJugadores implements Serializable {
         this.version = version;
     }
 
-    public List<PregCategoriasjugador> getPregCategoriasjugadorList() {
-        return pregCategoriasjugadorList;
+    public List<PregCategoriasjugador> getCategoriasjugadorList() {
+        return categoriasjugadorList;
     }
 
-    public void setPregCategoriasjugadorList(List<PregCategoriasjugador> pregCategoriasjugadorList) {
-        this.pregCategoriasjugadorList = pregCategoriasjugadorList;
+    public void setCategoriasjugadorList(List<PregCategoriasjugador> categoriasjugadorList) {
+        this.categoriasjugadorList = categoriasjugadorList;
     }
 
-    public List<PregJugpartida> getPregJugpartidaList() {
-        return pregJugpartidaList;
+    public List<PregJugpartida> getJugpartidaList() {
+        return jugpartidaList;
     }
 
-    public void setPregJugpartidaList(List<PregJugpartida> pregJugpartidaList) {
-        this.pregJugpartidaList = pregJugpartidaList;
+    public void setPregJugpartidaList(List<PregJugpartida> jugpartidaList) {
+        this.jugpartidaList = jugpartidaList;
     }
 
     @Override
@@ -183,5 +178,5 @@ public class PregJugadores implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugadores[ jugId=" + id + " ]";
     }
-    
+
 }

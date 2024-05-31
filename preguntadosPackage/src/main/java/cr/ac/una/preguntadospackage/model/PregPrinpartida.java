@@ -17,20 +17,11 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_PRINPARTIDA")
 @NamedQueries({
@@ -61,6 +52,9 @@ public class PregPrinpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "PPAR_MODO_DUELO")
     private String modoDuelo;
+    @Basic(optional = false)
+    @Column(name = "PPAR_ESTADO_PARTIDA")
+    private String estadoPartida;
     @Column(name = "PPAR_TIEMPO_TOTAL")
     private LocalDate tiempoTotal;
     @Column(name = "PPAR_TIEMPO_TRANSCURRIDO")
@@ -68,9 +62,6 @@ public class PregPrinpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "PPAR_CANTIDAD_RONDAS")
     private Long cantidadRondas;
-    @Basic(optional = false)
-    @Column(name = "PPAR_ESTADO_PARTIDA")
-    private String estadoPartida;
     @Basic(optional = false)
     @Column(name = "PPAR_CANTIDAD_JUGADORES")
     private Long cantidadJugadores;
@@ -80,10 +71,10 @@ public class PregPrinpartida implements Serializable {
     @Version
     @Column(name = "PPAR_VERSION")
     private Long version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pparId", fetch = FetchType.LAZY)
-    private List<PregPreguntaspartida> pregPreguntaspartidaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pparId", fetch = FetchType.LAZY)
-    private List<PregJugpartida> pregJugpartidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prpaIdppar", fetch = FetchType.LAZY)
+    private List<PregPreguntaspartida> preguntaspartidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "jparIdppar", fetch = FetchType.LAZY)
+    private List<PregJugpartida> jugpartidaList;
 
     public PregPrinpartida() {
     }
@@ -185,20 +176,20 @@ public class PregPrinpartida implements Serializable {
         this.version = version;
     }
 
-    public List<PregPreguntaspartida> getPregPreguntaspartidaList() {
-        return pregPreguntaspartidaList;
+    public List<PregPreguntaspartida> getPreguntaspartidaList() {
+        return preguntaspartidaList;
     }
 
-    public void setPregPreguntaspartidaList(List<PregPreguntaspartida> pregPreguntaspartidaList) {
-        this.pregPreguntaspartidaList = pregPreguntaspartidaList;
+    public void setPreguntaspartidaList(List<PregPreguntaspartida> preguntaspartidaList) {
+        this.preguntaspartidaList = preguntaspartidaList;
     }
 
     public List<PregJugpartida> getPregJugpartidaList() {
-        return pregJugpartidaList;
+        return jugpartidaList;
     }
 
-    public void setPregJugpartidaList(List<PregJugpartida> pregJugpartidaList) {
-        this.pregJugpartidaList = pregJugpartidaList;
+    public void setJugpartidaList(List<PregJugpartida> jugpartidaList) {
+        this.jugpartidaList = jugpartidaList;
     }
 
     @Override

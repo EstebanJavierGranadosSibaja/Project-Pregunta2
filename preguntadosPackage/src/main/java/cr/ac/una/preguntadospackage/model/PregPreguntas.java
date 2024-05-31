@@ -21,14 +21,8 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.List;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_PREGUNTAS")
 @NamedQueries({
@@ -53,24 +47,24 @@ public class PregPreguntas implements Serializable {
     @Column(name = "PRE_TEXTO_PREGUNTA")
     private String textoPregunta;
     @Basic(optional = false)
+    @Column(name = "PRE_ESTADO")
+    private String estado;
+    @Basic(optional = false)
     @Column(name = "PRE_CANTIDAD_RESPUESTAS")
     private Long cantidadRespuestas;
     @Basic(optional = false)
     @Column(name = "PRE_CANTIDAD_ACIERTOS")
     private Long cantidadAciertos;
-    @Basic(optional = false)
-    @Column(name = "PRE_ESTADO")
-    private String estado;
     @Version
     @Column(name = "PRE_VERSION")
     private Long version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "preId", fetch = FetchType.LAZY)
-    private List<PregPreguntaspartida> pregPreguntaspartidaList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "preId", fetch = FetchType.LAZY)
-    private List<PregRespuestas> pregRespuestasList;
-    @JoinColumn(name = "CAT_ID", referencedColumnName = "CAT_ID")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "prpaIdpre", fetch = FetchType.LAZY)
+    private List<PregPreguntaspartida> preguntaspartidaList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "respIdpre", fetch = FetchType.LAZY)
+    private List<PregRespuestas> respuestasList;
+    @JoinColumn(name = "PRE_IDCAT", referencedColumnName = "CAT_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregCategorias catId;
+    private PregCategorias preIdcat;
 
     public PregPreguntas() {
     }
@@ -136,28 +130,28 @@ public class PregPreguntas implements Serializable {
         this.version = version;
     }
 
-    public List<PregPreguntaspartida> getPregPreguntaspartidaList() {
-        return pregPreguntaspartidaList;
+    public List<PregPreguntaspartida> getPreguntaspartidaList() {
+        return preguntaspartidaList;
     }
 
-    public void setPregPreguntaspartidaList(List<PregPreguntaspartida> pregPreguntaspartidaList) {
-        this.pregPreguntaspartidaList = pregPreguntaspartidaList;
+    public void setPregPreguntaspartidaList(List<PregPreguntaspartida> preguntaspartidaList) {
+        this.preguntaspartidaList = preguntaspartidaList;
     }
 
-    public List<PregRespuestas> getPregRespuestasList() {
-        return pregRespuestasList;
+    public List<PregRespuestas> getRespuestasList() {
+        return respuestasList;
     }
 
-    public void setPregRespuestasList(List<PregRespuestas> pregRespuestasList) {
-        this.pregRespuestasList = pregRespuestasList;
+    public void setPregRespuestasList(List<PregRespuestas> respuestasList) {
+        this.respuestasList = respuestasList;
     }
 
-    public PregCategorias getCatId() {
-        return catId;
+    public PregCategorias getPreIdcat() {
+        return preIdcat;
     }
 
-    public void setCatId(PregCategorias catId) {
-        this.catId = catId;
+    public void setPreIdcat(PregCategorias preIdcat) {
+        this.preIdcat = preIdcat;
     }
 
     @Override
@@ -184,5 +178,4 @@ public class PregPreguntas implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregPreguntas[ preId=" + id + " ]";
     }
-    
 }

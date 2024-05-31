@@ -22,10 +22,6 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_CATEGORIAS")
 @NamedQueries({
@@ -53,12 +49,11 @@ public class PregCategorias implements Serializable {
     @Version
     @Column(name = "CAT_VERSION")
     private Long version;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pregCategorias", fetch = FetchType.LAZY)
-    private List<PregCategoriasjugador> pregCategoriasjugadorList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id", fetch = FetchType.LAZY)
-    private List<PregPreguntas> pregPreguntasList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "cajuIdcat", fetch = FetchType.LAZY)
+    private List<PregCategoriasjugador> categoriasjugadorList;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "preIdcat", fetch = FetchType.LAZY)
+    private List<PregPreguntas> preguntasList;
 
-    
     public PregCategorias() {
     }
 
@@ -105,20 +100,20 @@ public class PregCategorias implements Serializable {
         this.version = version;
     }
 
-    public List<PregCategoriasjugador> getPregCategoriasjugadorList() {
-        return pregCategoriasjugadorList;
+    public List<PregCategoriasjugador> getCategoriasjugadorList() {
+        return categoriasjugadorList;
     }
 
-    public void setPregCategoriasjugadorList(List<PregCategoriasjugador> pregCategoriasjugadorList) {
-        this.pregCategoriasjugadorList = pregCategoriasjugadorList;
+    public void setCategoriasjugadorList(List<PregCategoriasjugador> categoriasjugadorList) {
+        this.categoriasjugadorList = categoriasjugadorList;
     }
 
     public List<PregPreguntas> getPregPreguntasList() {
-        return pregPreguntasList;
+        return preguntasList;
     }
 
-    public void setPregPreguntasList(List<PregPreguntas> pregPreguntasList) {
-        this.pregPreguntasList = pregPreguntasList;
+    public void setPreguntasList(List<PregPreguntas> preguntasList) {
+        this.preguntasList = preguntasList;
     }
 
     @Override
@@ -145,4 +140,5 @@ public class PregCategorias implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregCategorias[ catId=" + id + " ]";
     }
+
 }

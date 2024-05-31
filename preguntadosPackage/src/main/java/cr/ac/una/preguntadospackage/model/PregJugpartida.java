@@ -20,10 +20,6 @@ import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_JUGPARTIDA")
 @NamedQueries({
@@ -61,11 +57,11 @@ public class PregJugpartida implements Serializable {
     @Column(name = "JPAR_NOMBRE_JUGADOR")
     private String nombreJugador;
     @Basic(optional = false)
-    @Column(name = "JPAR_POSICION_SECTOR")
-    private Long posicionSector;
-    @Basic(optional = false)
     @Column(name = "JPAR_COLOR_PEON")
     private String colorPeon;
+    @Basic(optional = false)
+    @Column(name = "JPAR_POSICION_SECTOR")
+    private Long posicionSector;
     @Basic(optional = false)
     @Column(name = "JPAR_POSICION_CASILLA")
     private Long posicionCasilla;
@@ -111,12 +107,12 @@ public class PregJugpartida implements Serializable {
     @Version
     @Column(name = "JPAR_VERSION")
     private Long version;
-    @JoinColumn(name = "JUG_ID", referencedColumnName = "JUG_ID")
+    @JoinColumn(name = "JPAR_IDJUG", referencedColumnName = "JUG_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregJugadores jugId;
-    @JoinColumn(name = "PPAR_ID", referencedColumnName = "PPAR_ID")
+    private PregJugadores jparIdjug;
+    @JoinColumn(name = "JPAR_IDPPAR", referencedColumnName = "PPAR_ID")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    private PregPrinpartida pparId;
+    private PregPrinpartida jparIdppar;
 
     public PregJugpartida() {
     }
@@ -299,20 +295,20 @@ public class PregJugpartida implements Serializable {
         this.version = version;
     }
 
-    public PregJugadores getJugId() {
-        return jugId;
+    public PregJugadores getJparIdjug() {
+        return jparIdjug;
     }
 
-    public void setJugId(PregJugadores jugId) {
-        this.jugId = jugId;
+    public void setJparIdJug(PregJugadores jparIdjug) {
+        this.jparIdjug = jparIdjug;
     }
 
-    public PregPrinpartida getPparId() {
-        return pparId;
+    public PregPrinpartida getJparIdPpar() {
+        return jparIdppar;
     }
 
-    public void setPparId(PregPrinpartida pparId) {
-        this.pparId = pparId;
+    public void setJparIdPpar(PregPrinpartida jparIdppar) {
+        this.jparIdppar = jparIdppar;
     }
 
     @Override
@@ -339,5 +335,5 @@ public class PregJugpartida implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugpartida[ jparId=" + id + " ]";
     }
-    
+
 }
