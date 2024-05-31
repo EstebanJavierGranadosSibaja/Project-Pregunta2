@@ -8,12 +8,12 @@ public class PregJugadoresDto implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private SimpleStringProperty id;
-    private SimpleStringProperty nombre;
-    private SimpleStringProperty partidasJugadas;
-    private SimpleStringProperty partidasGanadas;
-    private SimpleStringProperty cantidasRespuestasGeneral;
-    private SimpleStringProperty cantidasAcertadasGeneral;
+    public SimpleStringProperty id;
+    public SimpleStringProperty nombre;
+    public SimpleStringProperty partidasJugadas;
+    public SimpleStringProperty partidasGanadas;
+    public SimpleStringProperty cantidasRespuestasGeneral;
+    public SimpleStringProperty cantidasAcertadasGeneral;
     private Long version;
     private Boolean modificado;
     private List<PregCategoriasjugador> pregCategoriasjugadorList;

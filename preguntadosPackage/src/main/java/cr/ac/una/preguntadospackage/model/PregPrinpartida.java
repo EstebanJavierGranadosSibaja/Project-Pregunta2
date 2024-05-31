@@ -23,6 +23,7 @@ import jakarta.persistence.Version;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -61,9 +62,9 @@ public class PregPrinpartida implements Serializable {
     @Column(name = "PPAR_MODO_DUELO")
     private String modoDuelo;
     @Column(name = "PPAR_TIEMPO_TOTAL")
-    private Date tiempoTotal;
+    private LocalDate tiempoTotal;
     @Column(name = "PPAR_TIEMPO_TRANSCURRIDO")
-    private Date tiempoTranscurrido;
+    private LocalDate tiempoTranscurrido;
     @Basic(optional = false)
     @Column(name = "PPAR_CANTIDAD_RONDAS")
     private Long cantidadRondas;
@@ -128,19 +129,19 @@ public class PregPrinpartida implements Serializable {
         this.modoDuelo = modoDuelo;
     }
 
-    public Date getTiempoTotal() {
+    public LocalDate getTiempoTotal() {
         return tiempoTotal;
     }
 
-    public void setTiempoTotal(Date tiempoTotal) {
+    public void setTiempoTotal(LocalDate tiempoTotal) {
         this.tiempoTotal = tiempoTotal;
     }
 
-    public Date getTiempoTranscurrido() {
+    public LocalDate getTiempoTranscurrido() {
         return tiempoTranscurrido;
     }
 
-    public void setTiempoTranscurrido(Date tiempoTranscurrido) {
+    public void setTiempoTranscurrido(LocalDate tiempoTranscurrido) {
         this.tiempoTranscurrido = tiempoTranscurrido;
     }
 
