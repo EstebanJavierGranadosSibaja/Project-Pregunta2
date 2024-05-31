@@ -347,6 +347,9 @@ public class GameController extends Controller implements Initializable {
 
 
             // cycle through the players and show their assigned sector and color saved (DEBUG)
+            for(int i = 0; i < playerCount; i++){
+                //pla
+            }
             //for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon());
 
             // assign the first casilla for each player, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database

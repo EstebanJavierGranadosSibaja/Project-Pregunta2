@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
@@ -9,30 +10,30 @@
 
 <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.MenuController">
    <children>
-      <StackPane prefHeight="150.0" prefWidth="200.0">
+      <StackPane prefHeight="538.0" prefWidth="1280.0">
          <children>
-            <ImageView fitHeight="726.0" fitWidth="1281.0" pickOnBounds="true" preserveRatio="true" />
-            <HBox alignment="CENTER" prefHeight="676.0" prefWidth="1280.0" spacing="100.0">
+            <VBox alignment="CENTER" prefHeight="707.0" prefWidth="1281.0">
                <children>
-                  <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="25.0">
-                     <children>
-                        <ImageView fitHeight="158.0" fitWidth="370.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/Title.png" />
-                           </image>
-                        </ImageView>
-                        <MFXButton fx:id="btnPlayMultiplayer" buttonType="RAISED" onAction="#onActionPlayMultiplayer" prefHeight="92.0" prefWidth="360.0" text="JUGAR" />
-                        <MFXButton fx:id="btnSettings" buttonType="RAISED" onAction="#onActionSettings" prefHeight="92.0" prefWidth="360.0" text="AJUSTES" />
-                        <MFXButton fx:id="btnInfo" buttonType="RAISED" onAction="#onActionInfo" prefHeight="100.0" prefWidth="364.0" text="MAS INFORMACION" />
-                     </children>
-                  </VBox>
-                  <ImageView fitHeight="520.0" fitWidth="456.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="336.0" fitWidth="556.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../resources/Character.png" />
+                        <Image url="@../resources/Title.png" />
                      </image>
                   </ImageView>
+                  <HBox alignment="CENTER" prefHeight="711.0" prefWidth="1131.0" spacing="100.0">
+                     <children>
+                        <MFXButton fx:id="btnSettings" buttonType="RAISED" onAction="#onActionSettings" prefHeight="92.0" prefWidth="360.0" text="AJUSTES" />
+                        <MFXButton fx:id="btnPlayMultiplayer" buttonType="RAISED" onAction="#onActionPlayMultiplayer" prefHeight="92.0" prefWidth="360.0" text="JUGAR" />
+                        <MFXButton fx:id="btnInfo" buttonType="RAISED" onAction="#onActionInfo" prefHeight="100.0" prefWidth="364.0" text="MAS INFORMACION" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="75.0" right="75.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
-            </HBox>
+               <StackPane.margin>
+                  <Insets bottom="50.0" top="50.0" />
+               </StackPane.margin>
+            </VBox>
          </children>
       </StackPane>
    </children>
