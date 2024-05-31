@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
@@ -18,13 +14,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
-/**
- *
- * @author esteb
- */
 @Entity
 @Table(name = "PREG_CATEGORIASJUGADOR")
 @NamedQueries({

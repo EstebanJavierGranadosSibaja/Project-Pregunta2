@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
@@ -34,6 +30,7 @@ import java.util.List;
     @NamedQuery(name = "PregJugadores.findByJugVersion", query = "SELECT p FROM PregJugadores p WHERE p.version = :version")})
 public class PregJugadores implements Serializable {
 
+    
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @SequenceGenerator(name = "PREG_JUGADORES_TGR01", sequenceName = "PREG_JUGADORES_SEQ01", allocationSize = 1)

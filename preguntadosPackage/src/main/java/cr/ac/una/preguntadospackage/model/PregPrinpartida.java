@@ -27,6 +27,7 @@ import java.util.List;
 @NamedQueries({
     @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
     @NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.id = :id"),
+    @NamedQuery(name = "PregPrinpartida.findByPparNombrePartida", query = "SELECT p FROM PregPrinpartida p WHERE p.nombrePartida = :nombrePartida"),
     @NamedQuery(name = "PregPrinpartida.findByPparModoJuego", query = "SELECT p FROM PregPrinpartida p WHERE p.modoJuego = :modoJuego"),
     @NamedQuery(name = "PregPrinpartida.findByPparModoDuelo", query = "SELECT p FROM PregPrinpartida p WHERE p.modoDuelo = :modoDuelo"),
     @NamedQuery(name = "PregPrinpartida.findByPparTiempoTotal", query = "SELECT p FROM PregPrinpartida p WHERE p.tiempoTotal = :tiempoTotal"),
@@ -46,6 +47,9 @@ public class PregPrinpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "PPAR_ID")
     private Long id;
+    @Basic(optional = false)
+    @Column(name = "PPAR_NOMBRE_PARTIDA")
+    private String nombrePartida;
     @Basic(optional = false)
     @Column(name = "PPAR_MODO_JUEGO")
     private String modoJuego;
@@ -85,6 +89,7 @@ public class PregPrinpartida implements Serializable {
     }
 
     public void Actualizar(PregPrinpartidaDto pregPrinpartidaDto) {
+        this.nombrePartida = pregPrinpartidaDto.getNombrePartida();
         this.modoJuego = pregPrinpartidaDto.getModoJuego();
         this.modoDuelo = pregPrinpartidaDto.getModoDuelo();
         this.tiempoTotal = pregPrinpartidaDto.getTiempoTotal();
@@ -102,6 +107,14 @@ public class PregPrinpartida implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+    
+    public String getNombrePartida() {
+        return nombrePartida;
+    }
+
+    public void setNombrePartida(String nombrePartida) {
+        this.nombrePartida = nombrePartida;
     }
 
     public String getModoJuego() {

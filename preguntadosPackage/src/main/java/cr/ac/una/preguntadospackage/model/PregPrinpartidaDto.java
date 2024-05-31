@@ -20,6 +20,7 @@ public class PregPrinpartidaDto implements Serializable {
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 
     private Long id;
+    private SimpleStringProperty nombrePartida;
     private String modoJuego;
     private String modoDuelo;
     private LocalDate tiempoTotal;
@@ -34,12 +35,14 @@ public class PregPrinpartidaDto implements Serializable {
     private List<PregJugpartida> pregJugpartidaList;
 
     public PregPrinpartidaDto() {
+        this.nombrePartida = new SimpleStringProperty("");
         this.modificado = false;
     }
 
     public PregPrinpartidaDto(PregPrinpartida pregPrinpartida) {
         this();
         this.id = pregPrinpartida.getId();
+        this.nombrePartida.set(pregPrinpartida.getNombrePartida());
         this.modoJuego = pregPrinpartida.getModoJuego();
         this.modoDuelo = pregPrinpartida.getModoDuelo();
         this.tiempoTotal = pregPrinpartida.getTiempoTotal();
@@ -59,6 +62,14 @@ public class PregPrinpartidaDto implements Serializable {
         this.id = id;
     }
 
+    public String getNombrePartida() {
+        return nombrePartida.get();
+    }
+
+    public void setNombrePartida(String nombrePartida) {
+        this.nombrePartida.set(nombrePartida);
+    }
+    
     public String getModoJuego() {
         return modoJuego;
     }
