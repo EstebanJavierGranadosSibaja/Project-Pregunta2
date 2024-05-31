@@ -949,11 +949,6 @@
                               <Label fx:id="lblPlayerCurrentlySelecting" layoutX="164.0" layoutY="20.0" prefHeight="62.0" prefWidth="308.0" text="JUGADOR NUMERO" />
                            </children>
                         </AnchorPane>
-                        <ImageView fitHeight="150.0" fitWidth="121.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../resources/TiroExtra.png" />
-                           </image>
-                        </ImageView>
                      </children>
                   </AnchorPane>
                </children>
