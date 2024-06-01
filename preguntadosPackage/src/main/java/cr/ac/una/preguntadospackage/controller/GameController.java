@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.animationUtils;
 import cr.ac.una.preguntadospackage.util.soundUtils;
 import javafx.animation.RotateTransition;
 import javafx.event.Event;
@@ -21,6 +22,7 @@ public class GameController extends Controller implements Initializable {
 
     private int selectedSectors = 0;
     public int currentSelectingPlayer = 1; // the player that is currently selecting a pawn (1-6)
+    private Boolean haveAllPlayersSelectedSectors = false;
 
     @FXML public Label lblPlayerCurrentlySelecting, lblCurrentPlayerTurn;
     @FXML private AnchorPane apSelectionScreen;
@@ -99,11 +101,8 @@ public class GameController extends Controller implements Initializable {
 
         imgSpinner.setRotate(27); // reset the spinner to its original position (27 degrees)
         RotateTransition rotateAnimation = new RotateTransition(javafx.util.Duration.seconds(4.5), imgSpinner);
-        RotateTransition rotateRainbowAnimation = new RotateTransition(javafx.util.Duration.seconds(4.5), imgRainbowCircle);
-        rotateRainbowAnimation.setByAngle(1200); // 3600 is the amount of degrees that the spinner will rotate
         rotateAnimation.setByAngle(randomDegrees + 3600); // 3600 is the amount of degrees that the spinner will rotate
         rotateAnimation.play();
-        rotateRainbowAnimation.play();
 
 
         // lambda expression to execute the code after the animation has finished
@@ -247,6 +246,9 @@ public class GameController extends Controller implements Initializable {
         if (currentSelectingPlayer - 1 == partida.getCantidadJugadores().intValue()) {
             apSelectionScreen.setVisible(false);
             currentSelectingPlayer = 1;
+            // for debug purposes make all the sectors blink
+            for (int i = 1; i <= 6; i++) animationUtils.getInstance().playAnimation("constantBlink", getSectorImageIDbySector(i));
+
         }
     }
 
@@ -335,6 +337,7 @@ public class GameController extends Controller implements Initializable {
 
     private void CheckIfAllTheSectorsHaveBeenSelected() {
         if (selectedSectors == partida.getCantidadJugadores().intValue()) {
+            haveAllPlayersSelectedSectors = true; // this way we can re-use the sector selection panels for signaling the player's turn
             // hide the sector selection panels
             imgSelectorSector1.setVisible(false);imgSelectorSector2.setVisible(false);imgSelectorSector3.setVisible(false);
             imgSelectorSector4.setVisible(false);imgSelectorSector5.setVisible(false);imgSelectorSector6.setVisible(false);
@@ -353,6 +356,9 @@ public class GameController extends Controller implements Initializable {
 
             // just to initialize the first player's turn
             lblCurrentPlayerTurn.setText("TURNO DEL JUGADOR: " + currentSelectingPlayer);
+
+            // for debug purposes make the first player's sector blink
+            animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer - 1].getPosicionSector().intValue()));
         }
     }
 
@@ -394,56 +400,74 @@ public class GameController extends Controller implements Initializable {
 
     @FXML
     public void onActionSector4(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector((long)4);
-        imgSelectorSector4.setVisible(false);
-        currentSelectingPlayer++;
-        selectedSectors++;
-        CheckIfAllTheSectorsHaveBeenSelected();
+        if(!haveAllPlayersSelectedSectors){
+            players[currentSelectingPlayer - 1].setPosicionSector((long)4);
+            imgSelectorSector4.setVisible(false);
+            currentSelectingPlayer++;
+            selectedSectors++;
+            CheckIfAllTheSectorsHaveBeenSelected();
+
+        }
     }
 
     @FXML
     public void onActionSector3(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector((long)3);
-        imgSelectorSector3.setVisible(false);
-        currentSelectingPlayer++;
-        selectedSectors++;
-        CheckIfAllTheSectorsHaveBeenSelected();
+        if(!haveAllPlayersSelectedSectors){
+            players[currentSelectingPlayer - 1].setPosicionSector((long)3);
+            imgSelectorSector3.setVisible(false);
+            currentSelectingPlayer++;
+            selectedSectors++;
+            CheckIfAllTheSectorsHaveBeenSelected();
+
+        }
     }
 
     @FXML
     public void onActionSector6(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector((long)6);
-        imgSelectorSector6.setVisible(false);
-        currentSelectingPlayer++;
-        selectedSectors++;
-        CheckIfAllTheSectorsHaveBeenSelected();
+        if(!haveAllPlayersSelectedSectors){
+            players[currentSelectingPlayer - 1].setPosicionSector((long)6);
+            imgSelectorSector6.setVisible(false);
+            currentSelectingPlayer++;
+            selectedSectors++;
+            CheckIfAllTheSectorsHaveBeenSelected();
+
+        }
     }
 
     @FXML
     public void onActionSector5(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector((long)5);
-        imgSelectorSector5.setVisible(false);
-        currentSelectingPlayer++;
-        selectedSectors++;
-        CheckIfAllTheSectorsHaveBeenSelected();
+        if(!haveAllPlayersSelectedSectors){
+            players[currentSelectingPlayer - 1].setPosicionSector((long)5);
+            imgSelectorSector5.setVisible(false);
+            currentSelectingPlayer++;
+            selectedSectors++;
+            CheckIfAllTheSectorsHaveBeenSelected();
+
+        }
     }
 
     @FXML
     public void onActionSector2(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector((long)2);
-        imgSelectorSector2.setVisible(false);
-        currentSelectingPlayer++;
-        selectedSectors++;
-        CheckIfAllTheSectorsHaveBeenSelected();
+        if(!haveAllPlayersSelectedSectors){
+            players[currentSelectingPlayer - 1].setPosicionSector((long)2);
+            imgSelectorSector2.setVisible(false);
+            currentSelectingPlayer++;
+            selectedSectors++;
+            CheckIfAllTheSectorsHaveBeenSelected();
+
+        }
     }
 
     @FXML
     public void onActionSector1(Event event) {
-        players[currentSelectingPlayer - 1].setPosicionSector((long)1);
-        imgSelectorSector1.setVisible(false);
-        currentSelectingPlayer++;
-        selectedSectors++;
-        CheckIfAllTheSectorsHaveBeenSelected();
+        if(!haveAllPlayersSelectedSectors){
+            players[currentSelectingPlayer - 1].setPosicionSector((long)1);
+            imgSelectorSector1.setVisible(false);
+            currentSelectingPlayer++;
+            selectedSectors++;
+            CheckIfAllTheSectorsHaveBeenSelected();
+
+        }
     }
 
     private void hideAllPawns() {
@@ -477,5 +501,17 @@ public class GameController extends Controller implements Initializable {
         movePawnForward(players[currentSelectingPlayer - 1].getPosicionSector().intValue(), players[currentSelectingPlayer - 1].getPosicionCasilla().intValue());
         showCoin(category, players[currentSelectingPlayer - 1].getPosicionSector().intValue());
         players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() + 1);
+    }
+
+    public ImageView getSectorImageIDbySector(int sector){
+        switch (sector) {
+            case 1: return imgSelectorSector1;
+            case 2: return imgSelectorSector2;
+            case 3: return imgSelectorSector3;
+            case 4: return imgSelectorSector4;
+            case 5: return imgSelectorSector5;
+            case 6: return imgSelectorSector6;
+            default: return null;
+        }
     }
 }

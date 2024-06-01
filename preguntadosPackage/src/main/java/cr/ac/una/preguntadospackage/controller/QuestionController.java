@@ -3,6 +3,7 @@ package cr.ac.una.preguntadospackage.controller;
 //import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.animationUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -139,6 +140,9 @@ public class QuestionController extends Controller implements Initializable {
 
         // debug return to the main menu
         FlowController.getInstance().goView("GameView");
+
+        // play an animation to indicate the current playing sector
+        animationUtils.getInstance().playAnimation("blink", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer - 1].getPosicionSector().intValue()));
 
         resetCategoryTheme();
     }
