@@ -20,6 +20,7 @@ import java.util.List;
 @Entity
 @Table(name = "PREG_JUGADORES")
 @NamedQueries({
+    @NamedQuery(name = "PregJugadores.findByParameters", query = "SELECT p FROM PregJugadores p WHERE upper(p.id) LIKE :id AND upper(p.nombre) LIKE :nombre AND upper(p.partidasJugadas) LIKE :partidasJugadas AND upper(p.partidasGanadas) LIKE :partidasGanadas AND upper(p.cantidadRespuestasGeneral) LIKE :cantidadRespuestasGeneral AND upper(p.cantidadAcertadasGeneral) LIKE :cantidadAcertadasGeneral"),
     @NamedQuery(name = "PregJugadores.findAll", query = "SELECT p FROM PregJugadores p"),
     @NamedQuery(name = "PregJugadores.findByJugId", query = "SELECT p FROM PregJugadores p WHERE p.id = :id"),
     @NamedQuery(name = "PregJugadores.findByJugNombre", query = "SELECT p FROM PregJugadores p WHERE p.nombre = :nombre"),
@@ -30,7 +31,6 @@ import java.util.List;
     @NamedQuery(name = "PregJugadores.findByJugVersion", query = "SELECT p FROM PregJugadores p WHERE p.version = :version")})
 public class PregJugadores implements Serializable {
 
-    
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @SequenceGenerator(name = "PREG_JUGADORES_TGR01", sequenceName = "PREG_JUGADORES_SEQ01", allocationSize = 1)
