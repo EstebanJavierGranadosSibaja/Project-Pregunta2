@@ -24,7 +24,7 @@ public class PregCategoriasService {
             Query qryUsuario = em.createNamedQuery("PregCategorias.findByCatCategoria", PregCategorias.class);
             qryUsuario.setParameter("categoria", categoria);
             PregCategoriasDto pregCategoriasDto = new PregCategoriasDto((PregCategorias) qryUsuario.getSingleResult());
-            return new Respuesta(true, "", "", "Categoria", pregCategoriasDto);
+            return new Respuesta(true, "", "", "PregCategoria", pregCategoriasDto);
         } catch (NoResultException ex) {
             return new Respuesta(false, "No existe la categoria consultada.", "getCategoria NoResultException");
         } catch (NonUniqueResultException ex) {
