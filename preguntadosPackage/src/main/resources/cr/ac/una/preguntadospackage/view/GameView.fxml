@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -856,17 +857,17 @@
                               <Image url="@../resources/selectionSignal.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector3" fitHeight="230.0" fitWidth="195.0" layoutX="546.0" layoutY="320.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" rotate="-120.0">
+                        <ImageView fx:id="imgSelectorSector3" fitHeight="230.0" fitWidth="195.0" layoutX="545.0" layoutY="322.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" rotate="-120.0">
                            <image>
                               <Image url="@../resources/selectionSignal.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector4" fitHeight="230.0" fitWidth="195.0" layoutX="366.0" layoutY="444.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="-61.0">
+                        <ImageView fx:id="imgSelectorSector4" fitHeight="230.0" fitWidth="195.0" layoutX="365.0" layoutY="446.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="-61.0">
                            <image>
                               <Image url="@../resources/selectionSignal.png" />
                            </image>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector5" fitHeight="230.0" fitWidth="195.0" layoutX="170.0" layoutY="348.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgSelectorSector5" fitHeight="230.0" fitWidth="195.0" layoutX="169.0" layoutY="350.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../resources/selectionSignal.png" />
                            </image></ImageView>
@@ -875,7 +876,7 @@
                               <Image url="@../resources/selectionSignal.png" />
                            </image>
                         </ImageView>
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="-363.0" layoutY="-2.0" prefHeight="697.0" prefWidth="1252.0" style="-fx-background-color: rgba(64, 64, 64, 0.8); -fx-background-radius: 50;">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="-363.0" layoutY="-2.0" prefHeight="697.0" prefWidth="1252.0" style="-fx-background-color: rgba(64, 64, 64, 0.8); -fx-background-radius: 50;" visible="false">
                            <children>
                               <HBox alignment="CENTER" layoutX="353.0" layoutY="270.0" prefHeight="157.0" prefWidth="547.0" spacing="25.0" style="-fx-background-color: rgba(64, 64, 64, 0.8);">
                                  <children>
@@ -1007,6 +1008,8 @@
                                  </font></Label>
                            </children>
                         </AnchorPane>
+                        <MFXButton buttonType="RAISED" layoutX="821.0" layoutY="9.0" onAction="#onActionExit" prefHeight="34.0" prefWidth="61.0" text="SALIR" />
+                        <MFXButton buttonType="RAISED" layoutX="821.0" layoutY="661.0" onAction="#onActionHelp" prefHeight="34.0" prefWidth="61.0" text="?" />
                      </children>
                   </AnchorPane>
                </children>
