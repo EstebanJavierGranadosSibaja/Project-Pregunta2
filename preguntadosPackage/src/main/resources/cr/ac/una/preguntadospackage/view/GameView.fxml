@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Bloom?>
@@ -12,19 +13,56 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #8e7b94;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #9161b9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <children>
       <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="260.0">
+            <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="353.0">
                <children>
-                  <Label fx:id="lblCurrentPlayerTurn" prefHeight="79.0" prefWidth="175.0" text="TURNO DEL JUGADOR:" />
+                  <Label fx:id="lblCurrentPlayerTurn" prefHeight="79.0" prefWidth="287.0" text="TURNO DEL JUGADOR:">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font></Label>
+                  <Label fx:id="lblCurrentPlayerTurn1" prefHeight="79.0" prefWidth="287.0" text="CARTAS DISPONIBLES" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <HBox alignment="CENTER" prefHeight="214.0" prefWidth="353.0">
+                     <children>
+                        <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/TiroExtra.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/DobleOportunidad.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="214.0" prefWidth="353.0">
+                     <children>
+                        <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Pasar.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Bomba.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
             <StackPane minHeight="668.0" minWidth="888.0" prefHeight="668.0" prefWidth="888.0">
                <children>
-                  <ImageView fitHeight="586.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgRainbowCircle" fitHeight="586.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/RainbowCircle.png" />
                      </image>
@@ -37,7 +75,7 @@
                         <Image url="@../resources/PlayingBorder.png" />
                      </image>
                      <effect>
-                        <ColorAdjust brightness="-0.16" hue="-0.2" saturation="0.31" />
+                        <ColorAdjust />
                      </effect>
                   </ImageView>
                   <ImageView fitHeight="464.0" fitWidth="464.0" pickOnBounds="true" preserveRatio="true">
@@ -45,7 +83,7 @@
                         <Image url="@../resources/path1-5-1-9.png" />
                      </image>
                      <effect>
-                        <ColorAdjust brightness="-0.39" contrast="0.15" hue="-1.0" saturation="-1.0" />
+                        <ColorAdjust brightness="-0.39" contrast="0.15" hue="0.62" saturation="0.01" />
                      </effect>
                   </ImageView>
                   <Separator prefWidth="200.0" visible="false" />
@@ -383,7 +421,7 @@
                            </children>
                         </StackPane>
                         <Separator layoutX="70.0" layoutY="70.0" prefWidth="200.0" visible="false" />
-                        <StackPane layoutX="528.0" layoutY="577.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="521.0" layoutY="551.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -397,7 +435,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="490.0" layoutY="588.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="483.0" layoutY="562.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -411,7 +449,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="448.0" layoutY="593.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="442.0" layoutY="567.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -425,7 +463,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="404.0" layoutY="594.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="400.0" layoutY="568.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -439,7 +477,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="358.0" layoutY="590.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="359.0" layoutY="562.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -453,7 +491,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="313.0" layoutY="577.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="321.0" layoutY="547.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -468,7 +506,7 @@
                            </children>
                         </StackPane>
                         <Separator layoutX="80.0" layoutY="80.0" prefWidth="200.0" visible="false" />
-                        <StackPane layoutX="694.0" layoutY="352.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="668.0" layoutY="348.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -482,7 +520,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="690.0" layoutY="394.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="662.0" layoutY="387.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -496,7 +534,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="679.0" layoutY="436.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="647.0" layoutY="424.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -510,7 +548,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="656.0" layoutY="478.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="630.0" layoutY="460.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -524,7 +562,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="628.0" layoutY="517.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="603.0" layoutY="490.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -538,7 +576,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="591.0" layoutY="550.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="573.0" layoutY="520.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -638,7 +676,7 @@
                            </children>
                         </StackPane>
                         <Separator layoutX="90.0" layoutY="90.0" prefWidth="200.0" visible="false" />
-                        <StackPane layoutX="366.0" layoutY="41.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="360.0" layoutY="80.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -652,7 +690,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="421.0" layoutY="32.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="400.0" layoutY="75.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -666,7 +704,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="461.0" layoutY="39.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="440.0" layoutY="75.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -680,7 +718,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="503.0" layoutY="54.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="480.0" layoutY="84.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -694,7 +732,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="536.0" layoutY="68.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="518.0" layoutY="96.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -708,7 +746,7 @@
                               </ImageView>
                            </children>
                         </StackPane>
-                        <StackPane layoutX="312.0" layoutY="58.0" prefHeight="44.0" prefWidth="47.0">
+                        <StackPane layoutX="322.0" layoutY="94.0" prefHeight="44.0" prefWidth="47.0">
                            <children>
                               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -808,39 +846,57 @@
                            </children>
                         </StackPane>
                         <Separator layoutX="70.0" layoutY="70.0" prefWidth="200.0" visible="false" />
-                        <ImageView fx:id="imgSelectorSector1" fitHeight="159.0" fitWidth="120.0" layoutX="379.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="-116.6">
+                        <ImageView fx:id="imgSelectorSector1" blendMode="SOFT_LIGHT" fitHeight="159.0" fitWidth="120.0" layoutX="379.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="-118.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector2" fitHeight="325.0" fitWidth="210.0" layoutX="574.0" layoutY="92.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="-60.9">
+                        <ImageView fx:id="imgSelectorSector2" blendMode="SOFT_LIGHT" fitHeight="325.0" fitWidth="210.0" layoutX="555.0" layoutY="86.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="-62.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector3" fitHeight="325.0" fitWidth="210.0" layoutX="565.0" layoutY="353.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imgSelectorSector3" blendMode="SOFT_LIGHT" fitHeight="325.0" fitWidth="210.0" layoutX="550.0" layoutY="357.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" rotate="2.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector5" fitHeight="325.0" fitWidth="210.0" layoutX="114.0" layoutY="334.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true" rotate="118.6">
+                        <ImageView fx:id="imgSelectorSector5" blendMode="SOFT_LIGHT" fitHeight="325.0" fitWidth="210.0" layoutX="114.0" layoutY="334.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true" rotate="116.6">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector6" fitHeight="325.0" fitWidth="210.0" layoutX="125.0" layoutY="61.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+                        <ImageView fx:id="imgSelectorSector6" blendMode="SOFT_LIGHT" fitHeight="325.0" fitWidth="210.0" layoutX="125.0" layoutY="61.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="180.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </ImageView>
-                        <ImageView fx:id="imgSelectorSector4" fitHeight="190.0" fitWidth="210.0" layoutX="375.0" layoutY="495.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="76.0">
+                        <ImageView fx:id="imgSelectorSector4" blendMode="SOFT_LIGHT" fitHeight="168.0" fitWidth="126.0" layoutX="376.0" layoutY="506.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="60.0">
                            <image>
                               <Image url="@../resources/Sector.png" />
                            </image>
+                           <cursor>
+                              <Cursor fx:constant="OPEN_HAND" />
+                           </cursor>
                         </ImageView>
-                        <AnchorPane fx:id="apSelectionScreen" layoutX="124.0" layoutY="200.0" prefHeight="332.0" prefWidth="649.0" style="-fx-background-color: purple;">
+                        <AnchorPane fx:id="apSelectionScreen" layoutX="18.0" layoutY="81.0" prefHeight="502.0" prefWidth="640.0" style="-fx-background-color: #422774;">
                            <children>
-                              <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="90.0" prefWidth="547.0" spacing="25.0">
+                              <HBox alignment="CENTER" layoutX="51.0" layoutY="197.0" prefHeight="157.0" prefWidth="547.0" spacing="25.0">
                                  <children>
                                     <StackPane prefHeight="90.0" prefWidth="0.0">
                                        <children>
@@ -858,6 +914,9 @@
                                              </effect>
                                           </ImageView>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </StackPane>
                                     <StackPane prefHeight="90.0" prefWidth="32.0">
                                        <children>
@@ -875,6 +934,9 @@
                                              </effect>
                                           </ImageView>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </StackPane>
                                     <StackPane prefHeight="90.0" prefWidth="55.0">
                                        <children>
@@ -892,6 +954,9 @@
                                              </effect>
                                           </ImageView>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </StackPane>
                                     <StackPane prefHeight="90.0" prefWidth="26.0">
                                        <children>
@@ -909,6 +974,9 @@
                                              </effect>
                                           </ImageView>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </StackPane>
                                     <StackPane prefHeight="90.0" prefWidth="21.0">
                                        <children>
@@ -926,6 +994,9 @@
                                              </effect>
                                           </ImageView>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </StackPane>
                                     <StackPane prefHeight="90.0" prefWidth="21.0">
                                        <children>
@@ -943,6 +1014,9 @@
                                              </effect>
                                           </ImageView>
                                        </children>
+                                       <cursor>
+                                          <Cursor fx:constant="OPEN_HAND" />
+                                       </cursor>
                                     </StackPane>
                                  </children>
                               </HBox>

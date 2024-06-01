@@ -42,9 +42,9 @@
                         <Image url="@../resources/placeholder.png" />
                      </image>
                   </ImageView>
-                  <HBox alignment="CENTER" prefHeight="109.0" prefWidth="398.0">
+                  <HBox alignment="CENTER" prefHeight="55.0" prefWidth="398.0">
                      <children>
-                        <MFXCircleToggleNode fx:id="toggleHard1" prefHeight="107.0" prefWidth="116.0" text="DUELO">
+                        <MFXCircleToggleNode fx:id="toggleDuelMode" prefHeight="107.0" prefWidth="116.0" size="16.0" text="DUELO">
                            <toggleGroup>
                               <ToggleGroup fx:id="Difficulty1" />
                            </toggleGroup>

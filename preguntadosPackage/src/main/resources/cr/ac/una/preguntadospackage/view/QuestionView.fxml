@@ -11,7 +11,7 @@
 
 <VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.QuestionController">
    <children>
-      <HBox prefHeight="186.0" prefWidth="1280.0">
+      <HBox alignment="CENTER" prefHeight="88.0" prefWidth="1280.0">
          <children>
             <Label prefHeight="100.0" prefWidth="232.0" text="PUNTOS" />
             <Label prefHeight="100.0" prefWidth="232.0" text="VALOR" />
@@ -35,18 +35,43 @@
             </VBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <HBox alignment="CENTER" prefHeight="226.0" prefWidth="1280.0">
          <children>
             <Label fx:id="lblCategory" prefHeight="81.0" prefWidth="381.0" text="CATEGORIA">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
-            <StackPane prefHeight="150.0" prefWidth="200.0">
+            <StackPane prefHeight="305.0" prefWidth="327.0">
                <children>
-                  <ImageView fitHeight="126.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgArtChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../resources/Arte.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgScienceChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/Ciencia.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgSportsChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/Deporte.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgGeographyChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/Geografia.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgHistoryChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/Mate.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgEntertainmentChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../resources/Entretenimiento.png" />
                      </image>
                   </ImageView>
                </children>
