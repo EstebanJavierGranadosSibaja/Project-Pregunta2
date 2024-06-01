@@ -22,11 +22,13 @@ public class MenuController extends Controller implements Initializable {
     @FXML
     private MFXButton btnPlayMultiplayer;
     @FXML
-    private MFXButton btnInfo;
+    private MFXButton btnMantenimientoPreguntas;
     @FXML
-    private MFXButton btnQuestionMaintenance;
+    private MFXButton btnRankedGlobal;
     @FXML
-    private MFXButton btnSettings;
+    private MFXButton btnSobreNosotros;
+    @FXML
+    private MFXButton btnInformacion;
 
     /**
      * Initializes the controller class.
@@ -44,18 +46,29 @@ public class MenuController extends Controller implements Initializable {
     private void onActionPlayMultiplayer(ActionEvent event) { FlowController.getInstance().goView("GameParametersView"); }
 
 
-    @FXML
     private void onActionInfo(ActionEvent event) {
         FlowController.getInstance().goView("InformationView");
     }
 
-    @FXML
-    private void onActionQuestionMaintenance(ActionEvent event) {
+
+    private void onActionSettings(ActionEvent event) {
+        FlowController.getInstance().goView("SettingsView");
     }
 
     @FXML
-    private void onActionSettings(ActionEvent event) {
-        FlowController.getInstance().goView("SettingsView");
+    private void onActionMentenimientoPreguntas(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionRankedGlobal(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionSobreNosotros(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionInformacion(ActionEvent event) {
     }
     
 }

@@ -21,11 +21,11 @@
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="353.0">
                <children>
-                  <Label fx:id="lblCurrentPlayerTurn" prefHeight="79.0" prefWidth="287.0" text="TURNO DEL JUGADOR:">
+                  <Label fx:id="lblCurrentPlayerTurn" alignment="CENTER" prefHeight="79.0" prefWidth="287.0" text="TURNO DEL JUGADOR:">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font></Label>
-                  <Label fx:id="lblCurrentPlayerTurn1" prefHeight="79.0" prefWidth="287.0" text="CARTAS DISPONIBLES" textAlignment="CENTER">
+                  <Label fx:id="lblCurrentPlayerTurn1" alignment="CENTER" prefHeight="79.0" prefWidth="287.0" text="CARTAS DISPONIBLES" textAlignment="CENTER">
                      <font>
                         <Font name="System Bold" size="21.0" />
                      </font>
