@@ -4,10 +4,13 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.Flow;
+
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.animationUtils;
 import cr.ac.una.preguntadospackage.util.soundUtils;
 import javafx.animation.RotateTransition;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -39,6 +42,8 @@ public class GameController extends Controller implements Initializable {
             imgSector6SciencieBlocker, imgSector6EntertainmentBlocker, imgSector4SportBlocker, imgSector5HistoryBlocker, imgSector5ArtBlocker, imgSector5SportBlocker, imgSector6SportBlocker, imgSector1SportBlocker;
     @FXML
     private ImageView imgRainbowCircle;
+    @FXML
+    private Label lblCurrentPlayerTurn1;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -91,7 +96,7 @@ public class GameController extends Controller implements Initializable {
     @FXML
     public void onActionSpinRoulette(MouseEvent event) {
 
-        if (hasSpinnerBeenClicked) return;
+        if (hasSpinnerBeenClicked || !haveAllPlayersSelectedSectors) return;
         hasSpinnerBeenClicked = true;
 
         soundUtils.getInstance().playSound("roulleteClick");
@@ -186,7 +191,7 @@ public class GameController extends Controller implements Initializable {
             }
             sectorPawns[player].setVisible(true);
             // TODO: what could happen when the player reaches the last casilla?
-            //players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() + 1);
+            players[currentSelectingPlayer - 1].setPosicionCasilla(players[currentSelectingPlayer - 1].getPosicionCasilla() + 1);
         } else throw new IllegalArgumentException("Invalid sector");
     }
 
@@ -513,5 +518,64 @@ public class GameController extends Controller implements Initializable {
             case 6: return imgSelectorSector6;
             default: return null;
         }
+    }
+
+    @FXML
+    public void onActionExit(ActionEvent actionEvent) {
+        // logic of saving to DB goes here
+        // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        FlowController.getInstance().goView("MenuView");
+
+        // completly reset the gamecontroller
+        resetGame();
+
+    }
+
+    @FXML
+    public void onActionHelp(ActionEvent actionEvent) {
+            FlowController.getInstance().goView("HelpView");
+    }
+
+    private void resetGame() {
+        // Reset game-related variables
+        selectedSectors = 0;
+        currentSelectingPlayer = 1;
+        haveAllPlayersSelectedSectors = false;
+
+        // Reset players array
+        players = new PregJugpartidaDto[6];
+        for (int i = 0; i < 6; i++) {
+            players[i] = new PregJugpartidaDto();
+        }
+
+        // show all the coin blockers again
+        imgSector1SciencieBlocker.setVisible(true);imgSector2SciencieBlocker.setVisible(true);imgSector3SciencieBlocker.setVisible(true);imgSector4SciencieBlocker.setVisible(true);imgSector5SciencieBlocker.setVisible(true);imgSector6SciencieBlocker.setVisible(true);
+        imgSector1SportBlocker.setVisible(true);imgSector2SportBlocker.setVisible(true);imgSector3SportBlocker.setVisible(true);imgSector4SportBlocker.setVisible(true);imgSector5SportBlocker.setVisible(true);imgSector6SportBlocker.setVisible(true);
+        imgSector1HistoryBlocker.setVisible(true);imgSector2HistoryBlocker.setVisible(true);imgSector3HistoryBlocker.setVisible(true);imgSector4HistoryBlocker.setVisible(true);imgSector5HistoryBlocker.setVisible(true);imgSector6HistoryBlocker.setVisible(true);
+        imgSector1ArtBlocker.setVisible(true);imgSector2ArtBlocker.setVisible(true);imgSector3ArtBlocker.setVisible(true);imgSector4ArtBlocker.setVisible(true);imgSector5ArtBlocker.setVisible(true);imgSector6ArtBlocker.setVisible(true);
+        imgSector1EntertainmentBlocker.setVisible(true);imgSector2EntertainmentBlocker.setVisible(true);imgSector3EntertainmentBlocker.setVisible(true);imgSector4EntertainmentBlocker.setVisible(true);imgSector5EntertainmentBlocker.setVisible(true);imgSector6EntertainmentBlocker.setVisible(true);
+        imgSector1GeographyBlocker.setVisible(true);imgSector2GeographyBlocker.setVisible(true);imgSector3GeographyBlocker.setVisible(true);imgSector4GeographyBlocker.setVisible(true);imgSector5GeographyBlocker.setVisible(true);imgSector6GeographyBlocker.setVisible(true);
+
+        // Reset pawn images
+        hideAllPawns();
+        hideAllNonSelectedPawnImages(partida.getCantidadJugadores().intValue());
+
+        // Reset partida object
+        partida = new PregPrinpartidaDto();
+
+        // Reset UI elements
+        apSelectionScreen.setVisible(true);
+        lblPlayerCurrentlySelecting.setText("Player 1");
+        lblCurrentPlayerTurn.setText("");
+
+
+
+        // Reset category animation
+        hideCategoryAnimation();
+    }
+
+    // this metod should be developed later
+    public void loadGameData(PregPrinpartidaDto partida, PregJugpartidaDto[] players) {
+        // load the game data from the database
     }
 }
