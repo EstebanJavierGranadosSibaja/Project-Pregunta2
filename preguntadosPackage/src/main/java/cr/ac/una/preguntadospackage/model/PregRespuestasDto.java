@@ -34,7 +34,7 @@ public class PregRespuestasDto implements Serializable {
     }
 
     public Long getId() {
-         if (this.id.get() != null && !this.id.get().isBlank()) {
+        if (this.id.get() != null && !this.id.get().isBlank()) {
             return Long.valueOf(this.id.get());
         }
         return null;
@@ -53,7 +53,7 @@ public class PregRespuestasDto implements Serializable {
     }
 
     public String getEsCorrecta() {
-        return esCorrecta.get()?"T":"F";
+        return esCorrecta.get() ? "T" : "F";
     }
 
     public void setEsCorrecta(String esCorrecta) {
