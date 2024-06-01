@@ -25,13 +25,7 @@ public class PregJugadoresService {
         qryJugador.setParameter("nombre", nombre);
         PregJugadoresDto pregJugadoresDto = new PregJugadoresDto((PregJugadores) qryJugador.getSingleResult());
 
-        if (pregJugadoresDto.getId() == null) {
-            return false;
-        }
-        if (pregJugadoresDto.getNombre().isEmpty() || pregJugadoresDto.getNombre().isBlank()) {
-            return true;
-        }
-        return false;
+        return pregJugadoresDto.getId() != null;
     }
 
     public Respuesta getJugador(String nombre) {
@@ -103,7 +97,34 @@ public class PregJugadoresService {
             return new Respuesta(false, "Error guardadndo al jugador.", "guardarJugador " + ex.getMessage());
         }
     }
-
+  public Respuesta guardarJugadores(List<PregJugadoresDto> jugadores) {
+        try {
+            for (PregJugadoresDto tempJugadores : jugadores) {
+                et = em.getTransaction();
+                et.begin();
+                PregJugadores pregJugadores;
+                if (tempJugadores.getId() != null && tempJugadores.getId() > 0) {
+                    pregJugadores = em.find(PregJugadores.class, tempJugadores.getId());
+                    if (pregJugadores == null) {
+                        return new Respuesta(false, "No se encontró", "guardarJugadores NoResultException");
+                    }
+                    pregJugadores.Actualizar(tempJugadores);
+                    pregJugadores = em.merge(pregJugadores);
+                } else {
+                    pregJugadores = new PregJugadores(tempJugadores);
+                    em.persist(pregJugadores);
+                }
+                et.commit();
+                return new Respuesta(true, "", "", "PregJugadores", new PregJugadoresDto(pregJugadores));
+            }
+            return new Respuesta(true, "", "", "PregJugadores", jugadores);
+        } catch (Exception ex) {
+            et.rollback();
+            Logger.getLogger(PregRespuestasService.class.getName()).log(Level.SEVERE, "Error guardando los jugadores", ex);
+            return new Respuesta(false, "Error guardando los jugadores.", "guardarJugadores " + ex.getMessage());
+        }
+    }
+    
     public Respuesta eliminarJugador(String nombre) {
         try {
             et = em.getTransaction();
@@ -111,6 +132,29 @@ public class PregJugadoresService {
             PregJugadores pregJugadores;
             if (nombre != null && nombre.isEmpty() && nombre.isBlank()) {
                 pregJugadores = em.find(PregJugadores.class, nombre);
+                if (pregJugadores == null) {
+                    return new Respuesta(false, "No se encontró", "eliminarJugador NoResultException");
+                }
+                em.remove(pregJugadores);
+            } else {
+                return new Respuesta(false, "No se encontró", "eliminarJugador NoResultException");
+            }
+            et.commit();
+            return new Respuesta(true, "", "");
+        } catch (Exception ex) {
+            et.rollback();
+            Logger.getLogger(PregJugadoresService.class.getName()).log(Level.SEVERE, "Error eliminando al jugador", ex);
+            return new Respuesta(false, "Error eliminando al jugador.", "eliminarJugador " + ex.getMessage());
+        }
+    }
+    
+    public Respuesta eliminarJugador(Long id) {
+        try {
+            et = em.getTransaction();
+            et.begin();
+            PregJugadores pregJugadores;
+            if (id != null && id > 0) {
+                pregJugadores = em.find(PregJugadores.class, id);
                 if (pregJugadores == null) {
                     return new Respuesta(false, "No se encontró", "eliminarJugador NoResultException");
                 }
