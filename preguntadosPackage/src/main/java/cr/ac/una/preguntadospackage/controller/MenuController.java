@@ -30,9 +30,6 @@ public class MenuController extends Controller implements Initializable {
     @FXML
     private MFXButton btnInformacion;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -46,15 +43,6 @@ public class MenuController extends Controller implements Initializable {
     private void onActionPlayMultiplayer(ActionEvent event) { FlowController.getInstance().goView("GameParametersView"); }
 
 
-    private void onActionInfo(ActionEvent event) {
-        FlowController.getInstance().goView("InformationView");
-    }
-
-
-    private void onActionSettings(ActionEvent event) {
-        FlowController.getInstance().goView("SettingsView");
-    }
-
     @FXML
     private void onActionMentenimientoPreguntas(ActionEvent event) {
     }
@@ -65,10 +53,12 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionSobreNosotros(ActionEvent event) {
+         FlowController.getInstance().goView("SobreNosotrosView");
     }
 
     @FXML
     private void onActionInformacion(ActionEvent event) {
+        FlowController.getInstance().goView("InformacionView");
     }
     
 }

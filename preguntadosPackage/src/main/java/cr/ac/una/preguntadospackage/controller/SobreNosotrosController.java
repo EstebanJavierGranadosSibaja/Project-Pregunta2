@@ -17,7 +17,7 @@ import javafx.fxml.Initializable;
  *
  * @author Matteo2K24
  */
-public class InformationViewController extends Controller implements Initializable {
+public class SobreNosotrosController extends Controller implements Initializable {
 
     @FXML
     private MFXButton btnQuitInfo;

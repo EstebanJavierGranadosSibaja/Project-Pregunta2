@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.MenuController">
+<VBox alignment="CENTER" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.MenuController">
    <children>
       <StackPane prefHeight="730.0" prefWidth="1280.0">
          <children>
@@ -21,10 +21,10 @@
                   </ImageView>
                   <VBox alignment="CENTER" prefHeight="309.0" prefWidth="1259.0" spacing="10.0">
                      <children>
-                        <MFXButton fx:id="btnPlayMultiplayer" buttonType="RAISED" onAction="#onActionPlayMultiplayer" prefHeight="75.0" prefWidth="300.0" text="JUGAR" />
-                        <MFXButton fx:id="btnMantenimientoPreguntas" buttonType="RAISED" layoutX="500.0" layoutY="78.0" onAction="#onActionMentenimientoPreguntas" prefHeight="75.0" prefWidth="300.0" text="MANTENIIENTO DE PREGUNTAS" />
-                        <MFXButton fx:id="btnRankedGlobal" buttonType="RAISED" onAction="#onActionRankedGlobal" prefHeight="75.0" prefWidth="300.0" text="RENKED GLOBAL" />
-                        <MFXButton fx:id="btnSobreNosotros" buttonType="RAISED" onAction="#onActionSobreNosotros" prefHeight="75.0" prefWidth="300.0" text="SOBRE NOSTROS" />
+                        <MFXButton fx:id="btnPlayMultiplayer" buttonType="RAISED" layoutX="489.0" layoutY="90.0" onAction="#onActionPlayMultiplayer" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" stylesheets="@GeneralCSS.css" text="JUGAR" />
+                        <MFXButton fx:id="btnMantenimientoPreguntas" buttonType="RAISED" layoutX="500.0" layoutY="78.0" onAction="#onActionMentenimientoPreguntas" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="MANTENIIENTO DE PREGUNTAS" />
+                        <MFXButton fx:id="btnRankedGlobal" buttonType="RAISED" onAction="#onActionRankedGlobal" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="RENKED GLOBAL" />
+                        <MFXButton fx:id="btnSobreNosotros" buttonType="RAISED" onAction="#onActionSobreNosotros" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="SOBRE NOSTROS" />
                      </children>
                      <padding>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -42,9 +42,9 @@
       </StackPane>
       <HBox alignment="CENTER_RIGHT" prefHeight="195.0" prefWidth="1280.0">
          <children>
-            <MFXButton fx:id="btnInformacion" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#onActionInformacion" prefHeight="100.0" prefWidth="139.0" text="JUGAR">
+            <MFXButton fx:id="btnInformacion" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#onActionInformacion" prefHeight="49.0" prefWidth="70.0" text="JUGAR">
                <graphic>
-                  <ImageView fitHeight="66.0" fitWidth="69.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="38.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../resources/Pregunta%20icon.png" />
                      </image>

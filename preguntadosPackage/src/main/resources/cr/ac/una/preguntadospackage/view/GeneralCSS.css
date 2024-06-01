@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Bree Serif';
+    src: url('path/to/fonts/BreeSerif-Regular.ttf'); /* Asegúrate de que la ruta sea correcta */
+}
+
+.root {
+    -fx-background-image: url("../resources/Pregunta2_FONDO.jpg"); /* Ruta de la imagen de fondo */
+    -fx-background-size: cover; /* Ajustar la imagen para cubrir el área */
+    -fx-background-position: center center; /* Centrar la imagen */
+}
+
+.mfx-button{
+    -fx-font-family: 'Bree Serif';
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #000000; /* Texto negro */
+    -fx-background-color: FFD54F; /* Color amarillo similar al de Preguntados */
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-padding: 10 20 10 20;
+}
+
+.mfx-button:hover {
+    -fx-background-color: FFC107 ; /* Color amarillo más claro al pasar el ratón */
+}
