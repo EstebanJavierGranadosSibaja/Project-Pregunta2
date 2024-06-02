@@ -45,7 +45,7 @@ public class PregJugadoresService {
         }
     }
 
-    public Respuesta getJugadores(Long id, String nombre, Long partidasJugadas, Long partidasGanadas, Long cantidadRespuestasGeneral, Long cantidadAcertadasGeneral) {
+    public Respuesta getJugadores(String id, String nombre, String partidasJugadas, String partidasGanadas, String cantidadRespuestasGeneral, String cantidadAcertadasGeneral) {
         try {
             Query qryJugadores = em.createNamedQuery("PregJugadores.findByParameters", PregJugadores.class);
             qryJugadores.setParameter("id", "%" + id + "%");

@@ -1,7 +1,7 @@
-@font-face {
+/*@font-face {
     font-family: 'Bree Serif';
-    src: url("../resources/BreeSerif-Regular.ttf");  /*Asegúrate de que la ruta sea correcta */
-}
+    src: url("../resources/BreeSerif-Regular.ttf");  Asegúrate de que la ruta sea correcta 
+}*/
 
 .root {
     -fx-background-image: url("../resources/Pregunta2_FONDO.jpg"); /* Ruta de la imagen de fondo */
@@ -80,4 +80,24 @@
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
     -fx-text-alignment: justify;
+}
+
+.mfx-textfield {
+    -fx-background-color: #FFFDE7; /* Fondo blanco */
+    -fx-border-color: white; /* Color del borde */
+    -fx-border-width: 3px; /* Ancho del borde */
+    -fx-border-radius: 7px; /* Radio de borde */
+    -fx-padding: 5px; /* Relleno interno */
+    -fx-font-family: 'Bree Serif'; /* Fuente */
+    -fx-font-size: 16px; /* Tamaño de fuente */
+    -fx-text-fill: #333333; /* Color del texto */
+}
+
+.mfx-textfield:focused {
+    -fx-background-color: #FFFACD; /* Fondo amarillo claro cuando está enfocado */
+    -fx-border-color: #FFD700; /* Color del borde cuando está enfocado */
+}
+
+.mfx-textfield:hover {
+    -fx-border-color: #E5AE25; /* Color del borde cuando se pasa el ratón por encima */
 }
