@@ -60,5 +60,4 @@ public class MenuController extends Controller implements Initializable {
     private void onActionInformacion(ActionEvent event) {
         FlowController.getInstance().goView("InformacionView");
     }
-    
 }

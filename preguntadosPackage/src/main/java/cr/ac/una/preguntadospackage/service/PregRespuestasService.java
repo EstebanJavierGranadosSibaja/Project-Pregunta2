@@ -94,7 +94,7 @@ public class PregRespuestasService {
                 if (tempRespuestas.getId() != null && tempRespuestas.getId() > 0) {
                     pregRespuestas = em.find(PregRespuestas.class, tempRespuestas.getId());
                     if (pregRespuestas == null) {
-                        return new Respuesta(false, "No se encontró", "guardarRespuesta NoResultException");
+                        return new Respuesta(false, "No se encontró", "guardarRespuestas NoResultException");
                     }
                     pregRespuestas.Actualizar(tempRespuestas);
                     pregRespuestas = em.merge(pregRespuestas);
@@ -108,8 +108,8 @@ public class PregRespuestasService {
             return new Respuesta(true, "", "", "PregRespuestas", respuestas);
         } catch (Exception ex) {
             et.rollback();
-            Logger.getLogger(PregRespuestasService.class.getName()).log(Level.SEVERE, "Error guardando la respuesta", ex);
-            return new Respuesta(false, "Error guardando la respuesta.", "guardarRespuesta " + ex.getMessage());
+            Logger.getLogger(PregRespuestasService.class.getName()).log(Level.SEVERE, "Error guardando las respuestas", ex);
+            return new Respuesta(false, "Error guardando las respuestas.", "guardarRespuestas " + ex.getMessage());
         }
     }
 

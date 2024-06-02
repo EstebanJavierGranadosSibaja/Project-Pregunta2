@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Bree Serif';
-    src: url('path/to/fonts/BreeSerif-Regular.ttf'); /* Asegúrate de que la ruta sea correcta */
+    src: url("../resources/BreeSerif-Regular.ttf");  /*Asegúrate de que la ruta sea correcta */
 }
 
 .root {
@@ -21,5 +21,63 @@
 }
 
 .mfx-button:hover {
-    -fx-background-color: FFC107 ; /* Color amarillo más claro al pasar el ratón */
+    -fx-background-color: #E5AE25  ; /* Color amarillo más claro al pasar el ratón */
+    -fx-background-radius: 15px;
+    -fx-border-radius: 15px;
+    -fx-padding: 10 20 10 20;
+}
+
+.translucent-brown-vbox {
+    -fx-background-color: rgba(243, 203, 102, 0.5); /* Color verde pastel cálido translúcido */
+    -fx-background-radius: 10px;
+    -fx-padding: 15px;
+    -fx-border-radius: 10px;
+    -fx-border-color: rgba(229, 174, 37, 0.8); /* Color de borde verde pastel más oscuro */
+    -fx-border-width: 5px;
+}
+
+.mfx-label {
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-border-color: transparent; /* Color del borde transparente */
+    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-padding: 0px; /* Ajustar según sea necesario */
+    -fx-font-family: 'Bree Serif';
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fiil-position: center center; /* Centrar la imagen */
+
+}
+
+.mfx-label-tittle {
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-border-color: transparent; /* Color del borde transparente */
+    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-padding: 0px; /* Ajustar según sea necesario */
+    -fx-font-family: 'Bree Serif';
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+    -fx-text-fiil-position: center center; /* Centrar la imagen */
+
+}
+
+.mfx-label-small {
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-border-color: transparent; /* Color del borde transparente */
+    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-padding: 0px; /* Ajustar según sea necesario */
+    -fx-font-family: 'Bree Serif';
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fiil-position: center center; /* Centrar la imagen */
+
+}
+
+.mfx-transparent-textarea {
+    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-font-family: 'Bree Serif';
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-border-color: transparent; /* Color del borde transparente */
+    -fx-text-alignment: justify;
 }

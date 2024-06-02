@@ -10,9 +10,7 @@
          <children>
             <Label prefHeight="142.0" prefWidth="511.0" text="AQUI VAN LOS AJUSTES" />
             <Label prefHeight="142.0" prefWidth="511.0" text="AQUI VAN LOS AJUSTES" />
-            <Label prefHeight="142.0" prefWidth="511.0" text="AQUI VAN LOS AJUSTES" />
-            <Label prefHeight="142.0" prefWidth="511.0" text="AQUI VAN LOS AJUSTES" />
-            <MFXButton fx:id="btnQuitSettings" buttonType="RAISED" onAction="#onActionQuitSettings" prefHeight="115.0" prefWidth="394.0" styleClass="mfx-button" text="SAQUENME DE AQUI YAAAAAAA" />
+            <MFXButton fx:id="btnQuitSettings" buttonType="RAISED" onAction="#onActionQuitSettings" prefHeight="103.0" prefWidth="264.0" text="VOLVER AL MENU" />
          </children>
       </VBox>
    </children>
