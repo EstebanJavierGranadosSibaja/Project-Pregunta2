@@ -1,18 +1,19 @@
 package cr.ac.una.preguntadospackage.controller;
 
 //import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
+
 import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.animationUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * FXML Controller class
@@ -142,7 +143,7 @@ public class QuestionController extends Controller implements Initializable {
         FlowController.getInstance().goView("GameView");
 
         // play an animation to indicate the current playing sector
-        animationUtils.getInstance().playAnimation("blink", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer - 1].getPosicionSector().intValue()));
+        animationUtils.getInstance().playAnimation("blink", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()));
 
         resetCategoryTheme();
     }

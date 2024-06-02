@@ -45,14 +45,20 @@ public class animationUtils {
             case "blink": {
                 // play the blink animation
                 imageView.setVisible(true);
-                FadeTransition ft = new FadeTransition(Duration.millis(700), imageView);
-                ft.setFromValue(0.5);
+                FadeTransition ft = new FadeTransition(Duration.millis(900), imageView);
+                ft.setFromValue(0.8);
                 ft.setToValue(0.0);
-                ft.setCycleCount(4);
+                ft.setCycleCount(2);
                 ft.setAutoReverse(true);
-                ft.setOnFinished(event -> imageView.setVisible(false)); // Hide the imageView after the animation
+                ft.setOnFinished(event -> {
+                    imageView.setVisible(false);
+                    ft.stop();
+                });
                 ft.play();
+
                 break;
+
+
             }
             case "constantBlink": {
                 // play the constant blink animation
@@ -62,6 +68,10 @@ public class animationUtils {
                 ft.setToValue(0.0);
                 ft.setCycleCount(4);
                 ft.setAutoReverse(true);
+                ft.setOnFinished(event -> {
+                    imageView.setVisible(false);
+                    ft.stop();
+                });
                 ft.play();
                 break;
             }

@@ -2,12 +2,10 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,7 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-
+2
 <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <children>
       <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0">
@@ -1016,11 +1014,559 @@
                <HBox.margin>
                   <Insets />
                </HBox.margin>
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #9161b9;" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
+   <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0">
+      <VBox.margin>
+         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+      </VBox.margin>
+      <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="353.0">
+         <Label fx:id="lblCurrentPlayerTurn" alignment="CENTER" prefHeight="79.0" prefWidth="287.0" text="TURNO DEL JUGADOR:">
+            <font>
+               <Font name="System Bold" size="21.0" />
+            </font>
+         </Label>
+         <Label fx:id="lblCurrentPlayerTurn1" alignment="CENTER" prefHeight="79.0" prefWidth="287.0" text="CARTAS DISPONIBLES" textAlignment="CENTER">
+            <font>
+               <Font name="System Bold" size="21.0" />
+            </font>
+         </Label>
+         <HBox alignment="CENTER" prefHeight="214.0" prefWidth="353.0">
+            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/TiroExtra.png" />
+            </ImageView>
+            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/DobleOportunidad.png" />
+            </ImageView>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="214.0" prefWidth="353.0">
+            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/Pasar.png" />
+            </ImageView>
+            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/Bomba.png" />
+            </ImageView>
+         </HBox>
+      </VBox>
+      <StackPane minHeight="668.0" minWidth="888.0" prefHeight="668.0" prefWidth="888.0">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <ImageView fx:id="imgRainbowCircle" fitHeight="586.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true">
+            <effect>
+               <Bloom />
+            </effect>
+            <Image url="@../resources/RainbowCircle.png" />
+         </ImageView>
+         <ImageView fitHeight="575.0" fitWidth="575.0" pickOnBounds="true" preserveRatio="true">
+            <effect>
+               <ColorAdjust />
+            </effect>
+            <Image url="@../resources/PlayingBorder.png" />
+         </ImageView>
+         <ImageView fitHeight="568.0" fitWidth="568.0" pickOnBounds="true" preserveRatio="true">
+            <effect>
+               <ColorAdjust brightness="-0.39" contrast="0.15" hue="0.62" saturation="0.01" />
+            </effect>
+            <Image url="@../resources/path1-5-1-9.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgSpinner" fitHeight="355.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
+            <Image url="@../resources/Roullete.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgArt" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Arte.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgScience" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Ciencia.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgSport" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Deporte.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgEntertainment" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Entretenimiento.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgGeography" fitHeight="281.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Geografia.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgHistory" fitHeight="300.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Mate.png" />
+         </ImageView>
+         <Separator prefWidth="200.0" visible="false" />
+         <ImageView fx:id="imgCrown" fitHeight="295.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <Image url="@../resources/Corona.png" />
+         </ImageView>
+         <AnchorPane prefHeight="642.0" prefWidth="830.0">
+            <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="394.0" layoutY="289.0" onMouseClicked="#onActionSpinRoulette" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/Spinner.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector4Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="342.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnOrange.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector4Pawn2" fitHeight="80.0" fitWidth="60.0" layoutX="386.0" layoutY="466.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnOrange.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector4Pawn3" fitHeight="80.0" fitWidth="60.0" layoutX="434.0" layoutY="463.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnOrange.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector4Pawn4" fitHeight="80.0" fitWidth="60.0" layoutX="486.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnOrange.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector5Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="233.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnGreen.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector5Pawn2" fitHeight="80.0" fitWidth="60.0" layoutX="240.0" layoutY="352.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnGreen.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector5Pawn3" fitHeight="80.0" fitWidth="60.0" layoutX="267.0" layoutY="398.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnGreen.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector5Pawn4" fitHeight="80.0" fitWidth="60.0" layoutX="300.0" layoutY="426.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnGreen.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector6Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="308.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPurple.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector6Pawn2" fitHeight="80.0" fitWidth="60.0" layoutX="273.0" layoutY="164.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPurple.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector6Pawn3" fitHeight="80.0" fitWidth="60.0" layoutX="247.0" layoutY="208.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPurple.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector6Pawn4" fitHeight="80.0" fitWidth="60.0" layoutX="233.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPurple.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector1Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="486.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnRed.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector1Pawn2" fitHeight="80.0" fitWidth="60.0" layoutX="441.0" layoutY="98.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnRed.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector1Pawn3" fitHeight="80.0" fitWidth="60.0" layoutX="394.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnRed.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector1Pawn4" fitHeight="80.0" fitWidth="60.0" layoutX="342.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnRed.png" />
+            </ImageView>
+            <Separator layoutX="40.0" layoutY="40.0" prefWidth="200.0" visible="false" />
+            <ImageView fx:id="imgSector2Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="602.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnBlue.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector2Pawn2" fitHeight="80.0" fitWidth="60.0" layoutX="592.0" layoutY="214.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnBlue.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector2Pawn3" fitHeight="80.0" fitWidth="60.0" layoutX="565.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnBlue.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector2Pawn4" fitHeight="80.0" fitWidth="60.0" layoutX="532.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnBlue.png" />
+            </ImageView>
+            <Separator layoutX="50.0" layoutY="50.0" prefWidth="200.0" visible="false" />
+            <ImageView fx:id="imgSector3Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="532.0" layoutY="433.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPink.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector3Pawn2" fitHeight="80.0" fitWidth="60.0" layoutX="565.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPink.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector3Pawn3" fitHeight="80.0" fitWidth="60.0" layoutX="592.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPink.png" />
+            </ImageView>
+            <ImageView fx:id="imgSector3Pawn4" fitHeight="80.0" fitWidth="60.0" layoutX="602.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+               <effect>
+                  <Bloom threshold="0.94" />
+               </effect>
+               <Image url="@../resources/PawnPink.png" />
+            </ImageView>
+            <Separator layoutX="60.0" layoutY="60.0" prefWidth="200.0" visible="false" />
+            <StackPane layoutX="273.0" layoutY="523.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/GreenCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector5SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleGreenCoin.png" />
+               </ImageView>
             </StackPane>
-         </children>
-         <VBox.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </VBox.margin>
-      </HBox>
-   </children>
+            <StackPane layoutX="242.0" layoutY="498.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/RedCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector5ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleleRedCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="215.0" layoutY="468.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/BlueCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector5GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleBlueCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="195.0" layoutY="433.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/OrangeCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector5SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="182.0" layoutY="392.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/YellowCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector5HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleYellowCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="170.0" layoutY="352.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PinkCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector5EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaiblePinkCoin.png" />
+               </ImageView>
+            </StackPane>
+            <Separator layoutX="70.0" layoutY="70.0" prefWidth="200.0" visible="false" />
+            <StackPane layoutX="521.0" layoutY="551.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/GreenCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector4SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleGreenCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="483.0" layoutY="562.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/RedCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector4ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleleRedCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="442.0" layoutY="567.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/BlueCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector4GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleBlueCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="400.0" layoutY="568.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/OrangeCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector4SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="359.0" layoutY="562.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/YellowCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector4HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleYellowCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="321.0" layoutY="547.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PinkCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector4EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaiblePinkCoin.png" />
+               </ImageView>
+            </StackPane>
+            <Separator layoutX="80.0" layoutY="80.0" prefWidth="200.0" visible="false" />
+            <StackPane layoutX="668.0" layoutY="348.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/GreenCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector3SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleGreenCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="662.0" layoutY="387.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/RedCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector3ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleleRedCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="647.0" layoutY="424.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/BlueCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector3GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleBlueCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="630.0" layoutY="460.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/OrangeCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector3SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="603.0" layoutY="490.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/YellowCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector3HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleYellowCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="573.0" layoutY="520.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PinkCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector3EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaiblePinkCoin.png" />
+               </ImageView>
+            </StackPane>
+            <Separator layoutX="80.0" layoutY="80.0" prefWidth="200.0" visible="false" />
+            <StackPane layoutX="565.0" layoutY="124.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/GreenCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector2SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleGreenCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="595.0" layoutY="153.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/RedCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector2ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleleRedCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="623.0" layoutY="182.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/BlueCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector2GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleBlueCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="642.0" layoutY="217.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/OrangeCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector2SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="660.0" layoutY="253.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/YellowCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector2HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleYellowCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="670.0" layoutY="291.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PinkCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector2EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaiblePinkCoin.png" />
+               </ImageView>
+            </StackPane>
+            <Separator layoutX="90.0" layoutY="90.0" prefWidth="200.0" visible="false" />
+            <StackPane layoutX="360.0" layoutY="80.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/RedCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector1ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleleRedCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="400.0" layoutY="75.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/BlueCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector1GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleBlueCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="440.0" layoutY="75.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/OrangeCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector1SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="480.0" layoutY="84.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/YellowCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector1HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleYellowCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="518.0" layoutY="96.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PinkCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector1EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaiblePinkCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="322.0" layoutY="94.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/GreenCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector1SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleGreenCoin.png" />
+               </ImageView>
+            </StackPane>
+            <Separator layoutX="100.0" layoutY="100.0" prefWidth="200.0" visible="false" />
+            <StackPane layoutX="170.0" layoutY="295.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/GreenCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector6SciencieBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleGreenCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="180.0" layoutY="256.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/RedCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector6ArtBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleleRedCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="193.0" layoutY="217.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/BlueCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector6GeographyBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleBlueCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="213.0" layoutY="180.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/OrangeCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector6SportBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="240.0" layoutY="147.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/YellowCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector6HistoryBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaibleYellowCoin.png" />
+               </ImageView>
+            </StackPane>
+            <StackPane layoutX="271.0" layoutY="118.0" prefHeight="44.0" prefWidth="47.0">
+               <ImageView fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PinkCoin.png" />
+               </ImageView>
+               <ImageView fx:id="imgSector6EntertainmentBlocker" fitHeight="44.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/NonAvaiblePinkCoin.png" />
+               </ImageView>
+            </StackPane>
+            <Separator layoutX="80.0" layoutY="80.0" prefWidth="200.0" visible="false" />
+            <ImageView fx:id="imgSelectorSector1" fitHeight="230.0" fitWidth="195.0" layoutX="335.0" layoutY="10.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="120.4">
+               <Image url="@../resources/selectionSignal.png" />
+            </ImageView>
+            <ImageView fx:id="imgSelectorSector2" fitHeight="230.0" fitWidth="195.0" layoutX="530.0" layoutY="108.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <Image url="@../resources/selectionSignal.png" />
+            </ImageView>
+            <ImageView fx:id="imgSelectorSector3" fitHeight="230.0" fitWidth="195.0" layoutX="545.0" layoutY="322.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" rotate="-120.0">
+               <Image url="@../resources/selectionSignal.png" />
+            </ImageView>
+            <ImageView fx:id="imgSelectorSector4" fitHeight="230.0" fitWidth="195.0" layoutX="365.0" layoutY="446.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="-61.0">
+               <Image url="@../resources/selectionSignal.png" />
+            </ImageView>
+            <ImageView fx:id="imgSelectorSector5" fitHeight="230.0" fitWidth="195.0" layoutX="169.0" layoutY="350.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/selectionSignal.png" />
+            </ImageView>
+            <ImageView fx:id="imgSelectorSector6" fitHeight="230.0" fitWidth="195.0" layoutX="154.0" layoutY="135.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="58.8">
+               <Image url="@../resources/selectionSignal.png" />
+            </ImageView>
+            <MFXButton buttonType="RAISED" layoutX="751.0" layoutY="17.0" onAction="#onActionExit" prefHeight="34.0" prefWidth="94.0" text="SALIR" />
+            <MFXButton buttonType="RAISED" layoutX="821.0" layoutY="661.0" onAction="#onActionHelp" prefHeight="34.0" prefWidth="61.0" text="?" />
+         </AnchorPane>
+      </StackPane>
+   </HBox>
 </VBox>
