@@ -65,6 +65,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
     private MFXTextField txtPreguntasRespondidas;
     @FXML
     private MFXTextField txtPreguntasAcertadas;
+    
 
     /**
      * Initializes the controller class.
@@ -91,29 +92,6 @@ public class ListaJugadoresController extends Controller implements Initializabl
         }
     }
 
-    @FXML
-    private void onActionId(ActionEvent event) {
-    }
-
-    @FXML
-    private void onActionNombre(ActionEvent event) {
-    }
-
-    @FXML
-    private void onActionPartidasJugadas(ActionEvent event) {
-    }
-
-    @FXML
-    private void onActionPartidasGanadas(ActionEvent event) {
-    }
-
-    @FXML
-    private void onActionPreguntasRespondidas(ActionEvent event) {
-    }
-
-    @FXML
-    private void onActionPreguntasAcertadas(ActionEvent event) {
-    }
 
     @FXML
     private void onActionFiltrar(ActionEvent event) {
@@ -136,6 +114,5 @@ public class ListaJugadoresController extends Controller implements Initializabl
     private void onAcionAceptar(ActionEvent event) {
         resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
         //getStage().close();
-    }
-
+    } 
 }
