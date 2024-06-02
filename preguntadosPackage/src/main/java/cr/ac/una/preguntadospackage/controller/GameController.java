@@ -26,6 +26,8 @@ public class GameController extends Controller implements Initializable {
     public int currentSelectingPlayer = 0; // the player that is currently selecting a pawn (1-6)
     private Boolean haveAllPlayersSelectedSectors = false;
 
+
+
     @FXML public Label lblCurrentPlayerTurn;
 
     // for now create the 6 players as DTOs
@@ -173,11 +175,16 @@ public class GameController extends Controller implements Initializable {
     private ImageView imgSector1Pawn2;
     @FXML
     private ImageView imgSector1Pawn3;
-
     Boolean hasFirstTurnBeenAssigned = false;
+    @FXML
+    private Label lblCurrentPlayerTurn1;
+    @FXML
+    private ImageView imgRainbowCircle;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+
     }
 
     @Override
@@ -256,27 +263,31 @@ public class GameController extends Controller implements Initializable {
 
             if(!hasFirstTurnBeenAssigned){
                 if(numberOfCategory == 2){
-                    System.out.println("El primer turno es del jugador " + currentSelectingPlayer);
+                    System.out.println("El primer turno es del jugador " + (currentSelectingPlayer+1) );
                     hasFirstTurnBeenAssigned = true;
                 } else {
+                    System.out.println("El jugador " + (currentSelectingPlayer + 1) + " no tiene el primer turno");
                     currentSelectingPlayer++;
                     // to avoid an index out of bounds exception
                     if(currentSelectingPlayer == players.length) currentSelectingPlayer = 0;
-                    System.out.println("El jugador " + (currentSelectingPlayer + 1) + " no tiene el primer turno");
+
                 }
                 hasSpinnerBeenClicked = false;
-                animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()));
+                animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
             } else {
-            // get the question controller instance and set the category theme
-            QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
-            questionController.setCategoryTheme(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
-            FlowController.getInstance().goView("QuestionView");
-            hasSpinnerBeenClicked = false;
+                if(numberOfCategory == 2){
+                    FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
+                    hasSpinnerBeenClicked = false;
+                } else {
+                    // get the question controller instance and set the category theme
+                    QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
+                    questionController.setCategoryTheme(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
+                    FlowController.getInstance().goView("QuestionView");
+                    hasSpinnerBeenClicked = false;
 
-            rotateAnimation.stop();
+                    rotateAnimation.stop();
+                }
             }
-
-
         });
     }
 
@@ -331,15 +342,27 @@ public class GameController extends Controller implements Initializable {
     }
 
     public void movePawnForward(int sector, int player) {
+
         ImageView[] sectorPawns = getPawnsBySector(sector);
         if (sectorPawns != null) {
-            for (ImageView pawn: sectorPawns) {
-                if (pawn.isVisible()) {
-                    pawn.setVisible(false);
+            for (ImageView sectorPawn : sectorPawns) {
+                if (sectorPawn.isVisible()) {
+                    // get the coordinates of the old pawn
+                    double oldX = sectorPawn.getLayoutX();
+                    double oldY = sectorPawn.getLayoutY();
+
+                    // get the coordinates of the new pawn
+                    double newX = sectorPawns[player].getLayoutX();
+                    double newY = sectorPawns[player].getLayoutY();
+
+                    // TODO:
+                    //animationUtils.getInstance().playAnimation("translate", sectorPawn, (int) oldX, (int) oldY, (int) newX, (int) newY);
+
+                    sectorPawn.setVisible(false); // hide the old pawn
+                    sectorPawns[player].setVisible(true); // show the new pawn
                     break;
                 }
             }
-            sectorPawns[player].setVisible(true);
             // TODO: what could happen when the player reaches the last casilla?
             players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() + 1);
         } else throw new IllegalArgumentException("Invalid sector");
@@ -491,7 +514,7 @@ public class GameController extends Controller implements Initializable {
             lblCurrentPlayerTurn.setText("TURNO DEL JUGADOR: " + (currentSelectingPlayer+1) );
 
             // for debug purposes make the first player's sector blink
-            animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()));
+            animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
         }
     }
 
@@ -592,9 +615,10 @@ public class GameController extends Controller implements Initializable {
     }
 
     public void playerCorrectAnswer(String category){
+        System.out.println("El jugador " + (currentSelectingPlayer + 1) + " ha respondido correctamente");
         movePawnForward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue());
+        players[currentSelectingPlayer].setPosicionCasilla((players[currentSelectingPlayer].getPosicionCasilla() + 1));
         showCoin(category, players[currentSelectingPlayer].getPosicionSector().intValue());
-        players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() + 1);
     }
 
     public ImageView getSectorImageIDbySector(int sector){
@@ -628,7 +652,7 @@ public class GameController extends Controller implements Initializable {
     private void resetGame() {
         // Reset game-related variables
         selectedSectors = 0;
-        currentSelectingPlayer = 1;
+        currentSelectingPlayer = 0;
         haveAllPlayersSelectedSectors = false;
 
         // Reset players array

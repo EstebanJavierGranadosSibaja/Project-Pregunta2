@@ -1,6 +1,7 @@
 package cr.ac.una.preguntadospackage.util;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -39,16 +40,16 @@ public class animationUtils {
     }
 
     // method to play the animation
-    public void playAnimation(String effect, ImageView imageView) {
+    public void playAnimation(String effect, ImageView imageView, int oldX, int oldY, int newX, int newY) {
         // depending on the effect, play the corresponding animation
         switch (effect) {
             case "blink": {
                 // play the blink animation
                 imageView.setVisible(true);
-                FadeTransition ft = new FadeTransition(Duration.millis(900), imageView);
+                FadeTransition ft = new FadeTransition(Duration.millis(1000), imageView);
                 ft.setFromValue(0.8);
                 ft.setToValue(0.0);
-                ft.setCycleCount(2);
+                ft.setCycleCount(3);
                 ft.setAutoReverse(true);
                 ft.setOnFinished(event -> {
                     imageView.setVisible(false);
@@ -68,6 +69,40 @@ public class animationUtils {
                 ft.setToValue(0.0);
                 ft.setCycleCount(4);
                 ft.setAutoReverse(true);
+                ft.setOnFinished(event -> {
+                    imageView.setVisible(false);
+                    ft.stop();
+                });
+                ft.play();
+                break;
+            }
+
+            case "translate": {
+                // translate the image from the old position to the new position
+                System.out.println("moving image");
+                imageView.setLayoutX(oldX); // just to make shure it is in the right position
+                imageView.setLayoutY(oldY); // just to make shure it is in the right position
+                imageView.setVisible(true); // just to make shure it is visible
+                TranslateTransition tt = new TranslateTransition(Duration.millis(1000), imageView);
+                tt.setFromX(oldX);
+                tt.setFromY(oldY);
+                tt.setToX(newX);
+                tt.setToY(newY);
+                tt.setOnFinished(event -> {
+                    imageView.setLayoutX(newX);
+                    imageView.setLayoutY(newY);
+                    tt.stop();
+                });
+                break;
+            }
+            case "slowPopUp": {
+                // play the slow pop up animation
+                imageView.setVisible(true);
+                FadeTransition ft = new FadeTransition(Duration.millis(2000), imageView);
+                ft.setFromValue(0.0);
+                ft.setToValue(1.0);
+                ft.setCycleCount(1);
+                ft.setAutoReverse(false);
                 ft.setOnFinished(event -> {
                     imageView.setVisible(false);
                     ft.stop();

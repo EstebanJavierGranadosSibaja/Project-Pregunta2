@@ -9,18 +9,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerSelectionController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerSelectionController">
    <children>
       <HBox alignment="CENTER" prefHeight="509.0" prefWidth="1280.0">
          <children>
             <VBox alignment="CENTER" prefHeight="641.0" prefWidth="542.0">
                <children>
-                  <Label fx:id="lblPlayerNumber" prefHeight="61.0" prefWidth="238.0" text="NOMBRE DEL JUGADOR " />
+                  <Label fx:id="lblPlayerNumber" prefHeight="61.0" prefWidth="269.0" text="NOMBRE DE USUARIO DEL JUGADOR " />
                   <MFXTextField fx:id="txtPlayerName" prefHeight="27.0" prefWidth="261.0" />
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="641.0" prefWidth="542.0">
+            <VBox alignment="CENTER" prefHeight="641.0" prefWidth="542.0" style="-fx-background-color: rgba(64, 64, 64, 0.5); -fx-background-radius: 50;">
                <children>
                   <HBox alignment="CENTER" fillHeight="false" prefHeight="202.0" prefWidth="542.0">
                      <children>
@@ -120,7 +119,7 @@
       </HBox>
       <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
          <children>
-            <MFXButton buttonType="RAISED" onAction="#onActionConfirmar" prefHeight="59.0" prefWidth="125.0" text="CONFIRMAR" />
+            <MFXButton buttonType="RAISED" onAction="#onActionConfirmar" prefHeight="59.0" prefWidth="143.0" text="CONFIRMAR" />
             <MFXButton buttonType="RAISED" onAction="#onActionGoBack" prefHeight="59.0" prefWidth="125.0" text="ATRAS" />
          </children>
       </HBox>

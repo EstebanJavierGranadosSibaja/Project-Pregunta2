@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox alignment="CENTER" maxHeight="-Infinity" styleClass="root" stylesheets="@GeneralCSS.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerCategoryCrownSelectionController">
+   <children>
+      <Label prefHeight="97.0" prefWidth="830.0" text="             SELECCIONA UNA CATEGORIA">
+         <font>
+            <Font size="38.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" prefHeight="317.0" prefWidth="1280.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="317.0" prefWidth="143.0">
+                     <children>
+                        <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionEntertainment" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/PinkCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDisabledEntertainment" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../resources/NonAvaiblePinkCoin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label prefHeight="72.0" prefWidth="195.0" text="ENTRETENIMIENTO" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="317.0" prefWidth="143.0">
+                     <children>
+                        <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionGeography" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/BlueCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDisabledGeography" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../resources/NonAvaibleBlueCoin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label prefHeight="72.0" prefWidth="195.0" text="GEOGRAFIA" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="317.0" prefWidth="143.0">
+                     <children>
+                        <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionScience" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/GreenCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDisabledScience" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../resources/NonAvaibleGreenCoin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label prefHeight="72.0" prefWidth="195.0" text="CIENCIA" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="317.0" prefWidth="143.0">
+                     <children>
+                        <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionHistory" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/YellowCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDisabledHistory" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../resources/NonAvaibleYellowCoin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label prefHeight="72.0" prefWidth="195.0" text="HISTORIA" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="317.0" prefWidth="143.0">
+                     <children>
+                        <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionSports" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/OrangeCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDisabledSports" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../resources/NonAvaibleOrangeCoin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label prefHeight="72.0" prefWidth="195.0" text="DEPORTES" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <StackPane prefHeight="317.0" prefWidth="143.0">
+                     <children>
+                        <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionArt" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/RedCoin.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="imgDisabledArt" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@../resources/NonAvaibleleRedCoin.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <Label prefHeight="72.0" prefWidth="195.0" text="ARTES" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

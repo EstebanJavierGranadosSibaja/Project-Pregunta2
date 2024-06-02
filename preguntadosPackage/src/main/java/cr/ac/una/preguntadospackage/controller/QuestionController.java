@@ -4,7 +4,6 @@ package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
-import cr.ac.una.preguntadospackage.util.animationUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,7 +22,7 @@ import java.util.ResourceBundle;
 
 public class QuestionController extends Controller implements Initializable {
 
-    GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+    //GameController gameController;
 
     @FXML
     private Label lblPregunta;
@@ -62,12 +61,15 @@ public class QuestionController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        //gameController = (GameController) FlowController.getInstance().getController("GameView");
+
        // initialize the array
         for(int i = 0; i < 4; i++){
             respuestas[i] = new PregRespuestasDto();
         }
 
         // for now configure it so the first one is correct always TODO:
+// this should be replaced with the actual question and answers coming from the database
         respuestas[0].setEsCorrecta("T");
         respuestas[1].setEsCorrecta("F");
         respuestas[2].setEsCorrecta("F");
@@ -80,6 +82,10 @@ public class QuestionController extends Controller implements Initializable {
     }
 
     public void setCategoryTheme(String category) {
+
+
+
+
         this.category = category;
         lblCategory.setText(category.toUpperCase());
         switch(category) {
@@ -116,6 +122,7 @@ public class QuestionController extends Controller implements Initializable {
 
     private void calculateAnswerResult(int questionNumber){
         // print the current selecting player
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         System.out.println("Player " + gameController.currentSelectingPlayer + " selected answer " + questionNumber);
         System.out.println((questionNumber-1));
         System.out.println(respuestas[questionNumber - 1 ].getEsCorrecta());
@@ -133,8 +140,8 @@ public class QuestionController extends Controller implements Initializable {
             // the logic for the wrong answer goes here
         }
         // anyway we need to move to the next player
-        if(gameController.currentSelectingPlayer == gameController.partida.getCantidadJugadores().intValue()) gameController.currentSelectingPlayer = 0;
         gameController.currentSelectingPlayer++;
+        if(gameController.currentSelectingPlayer == gameController.partida.getCantidadJugadores().intValue()) gameController.currentSelectingPlayer = 0;
 
         // print the current selecting player after the ++
         gameController.lblCurrentPlayerTurn.setText("TURNO DEL JUGADOR: " + gameController.currentSelectingPlayer);
@@ -143,7 +150,7 @@ public class QuestionController extends Controller implements Initializable {
         FlowController.getInstance().goView("GameView");
 
         // play an animation to indicate the current playing sector
-        animationUtils.getInstance().playAnimation("blink", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()));
+        //animationUtils.getInstance().playAnimation("blink", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
 
         resetCategoryTheme();
     }
