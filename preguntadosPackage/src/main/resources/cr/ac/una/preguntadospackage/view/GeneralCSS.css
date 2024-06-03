@@ -13,7 +13,7 @@
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-text-fill: #000000; /* Texto negro */
+    -fx-text-fill: #B3821A; /* Texto negro */
     -fx-background-color: FFD54F; /* Color amarillo similar al de Preguntados */
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
@@ -32,14 +32,14 @@
     -fx-background-radius: 10px;
     -fx-padding: 15px;
     -fx-border-radius: 10px;
-    -fx-border-color: rgba(229, 174, 37, 0.8); /* Color de borde verde pastel más oscuro */
+    -fx-border-color: rgba(179, 130, 26, 0.8); /* Color de borde verde pastel más oscuro */
     -fx-border-width: 5px;
 }
 
 .mfx-label {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
-    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-text-fill: #B3821A; /* Color del texto */
     -fx-padding: 0px; /* Ajustar según sea necesario */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 20px;
@@ -51,7 +51,7 @@
 .mfx-label-tittle {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
-    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-text-fill: #B3821A; /* Color del texto */
     -fx-padding: 0px; /* Ajustar según sea necesario */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 40px;
@@ -63,19 +63,18 @@
 .mfx-label-small {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
-    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-text-fill: #B3821A; /* Color del texto */
     -fx-padding: 0px; /* Ajustar según sea necesario */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-text-fiil-position: center center; /* Centrar la imagen */
-
 }
 
 .mfx-transparent-textarea {
-    -fx-text-fill: #E5AE25; /* Color del texto */
+    -fx-text-fill: #B3821A; /* Color del texto */
     -fx-font-family: 'Bree Serif';
-    -fx-font-size: 12px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
@@ -99,5 +98,23 @@
 }
 
 .mfx-textfield:hover {
-    -fx-border-color: #E5AE25; /* Color del borde cuando se pasa el ratón por encima */
+    -fx-border-color: #B3821A; /* Color del borde cuando se pasa el ratón por encima */
+}
+
+.cycle-toggle-node {
+    -fx-background-color: #cccccc;
+    -fx-border-color: #333333;
+    -fx-border-width: 2;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.cycle-toggle-node[state="state1"] {
+    -fx-background-color: #ff0000; /* Rojo */
+}
+
+.cycle-toggle-node[state="state2"] {
+    -fx-background-color: #00ff00; /* Verde */
 }

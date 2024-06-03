@@ -4,32 +4,74 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root"
-      stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cr.ac.una.preguntadospackage.controller.InformacionController">
+<VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="15.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.InformacionController">
    <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
-   <Label alignment="CENTER" prefHeight="18.0" prefWidth="1343.0" styleClass="mfx-label-tittle"
-          text="¿QUE ES PEGUNTADOS?">
+   <Label alignment="CENTER" prefHeight="18.0" prefWidth="1343.0" styleClass="mfx-label-tittle" text="¿QUE ES PEGUNTADOS?">
       <VBox.margin>
-         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+         <Insets bottom="-10.0" top="5.0" />
       </VBox.margin>
    </Label>
-   <VBox alignment="TOP_CENTER" prefHeight="522.0" prefWidth="1332.0">
-      <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-repeat: 0;"
-                styleClass="mfx-transparent-textarea"
-                text="&quot;Preguntados&quot; es un juego de preguntas y respuestas que desafía tus conocimientos en diferentes áreas como Arte, Ciencia, Deportes, Entretenimiento, Geografía e Historia. En el juego, los jugadores giran una rueda para seleccionar una categoría y luego responden preguntas relacionadas con esa categoría. Por cada respuesta correcta, los jugadores acumulan puntos y avanzan en un tablero circular. El objetivo es acumular la mayor cantidad de puntos posible para ganar la partida. Puedes jugar contra amigos. Es una forma divertida y emocionante de poner a prueba tus conocimientos y competir con otras personas."
-                wrapText="true">
+   <VBox alignment="TOP_CENTER" prefHeight="522.0" prefWidth="1332.0" styleClass="translucent-brown-vbox" VBox.vgrow="ALWAYS">
+      <TextArea editable="false" prefHeight="135.0" prefWidth="1259.0" style="-fx-background-repeat: 0;" styleClass="mfx-transparent-textarea" text="&quot;Preguntados&quot; es un juego de preguntas y respuestas que desafía tus conocimientos en diferentes áreas como Arte, Ciencia, Deportes, Entretenimiento, Geografía e Historia. En el juego, los jugadores giran una rueda para seleccionar una categoría y luego responden preguntas relacionadas con esa categoría. Por cada respuesta correcta, los jugadores acumulan puntos y avanzan en un tablero circular. El objetivo es acumular la mayor cantidad de puntos posible para ganar la partida. Puedes jugar contra amigos. Es una forma divertida y emocionante de poner a prueba tus conocimientos y competir con otras personas." wrapText="true" VBox.vgrow="ALWAYS">
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </TextArea>
-      <Label prefHeight="118.0" prefWidth="382.0" text="AQUI VAN LOS MODS DE JUEGO EXPLICADOS"/>
+      <Label alignment="CENTER" prefHeight="18.0" prefWidth="1343.0" styleClass="mfx-label-tittle" text="MODOS DE JUEGO">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+      <TextArea editable="false" prefHeight="135.0" prefWidth="1259.0" style="-fx-background-repeat: 0;" styleClass="mfx-transparent-textarea" text="En preguntados hay tres modos de juego principales, el modo FACIL es aquel donde inicias con 4 ayudas y las puedes utilizar sin problema, al usar todas tus ayudas puedes ceder tu turno y obtener dos nuevas ayudas al azar a cambio, el modo MEDIO es aquel donde inicias sin ayudas pero recibes una de forma aleatoria por cada ficha personaje que ganas, el modo DIFICL es aquel donde no tienes ayuda de ningun tipo.&#10;&#10;No todo es tan simple en preguntados, por eso existe el modo DUELO el cual, el jugador que llegar a la corona puede desafiar a otro jugador, este no puede rechazar el duelo, ambos deben tener al menos una ficha personaje, ya que las pondran en juego, UN TODO O NADA! El retador escoge la categoria y ambos deben responder una pregunta de la misma.&#10;&#10;Claro, pueden haber varios caminos, si el retador gana, este roba la ficha personaje al retado y avanza sin perder su turno, si el jugador retado gana, el retador pierde su ficha personaje y cede su turno al siguiente, en caso de empate, el jugador retado recibe una pregunta extra, si acierta roba la ficha al otro jugador y sigue su turno, si pierde le cede su ficha al retador y este mismo sigue con su turno.&#10;&#10;" wrapText="true" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </TextArea>
+      <HBox prefHeight="264.0" prefWidth="1250.0" spacing="15.0" VBox.vgrow="ALWAYS">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="195.0" prefWidth="1238.0" spacing="100.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="170.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/DobleOportunidad.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="170.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Bomba.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="170.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/Pasar.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="170.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/TiroExtra.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <padding>
+                        <Insets bottom="-30.0" left="-30.0" right="-30.0" top="-30.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
    </VBox>
-   <MFXButton fx:id="btnQuitSettings" buttonType="RAISED" onAction="#onActionQuitSettings" prefHeight="103.0"
-              prefWidth="264.0" text="VOLVER AL MENU"/>
+   <MFXButton fx:id="btnQuitSettings" buttonType="RAISED" onAction="#onActionQuitSettings" prefHeight="60.0" prefWidth="264.0" styleClass="mfx-button" text="VOLVER AL MENU" />
 </VBox>

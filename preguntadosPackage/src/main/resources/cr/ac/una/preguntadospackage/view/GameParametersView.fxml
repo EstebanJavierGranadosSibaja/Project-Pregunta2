@@ -14,91 +14,86 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" spacing="10.0"
-      styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cr.ac.una.preguntadospackage.controller.GameParametersController">
+<VBox alignment="CENTER" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameParametersController">
    <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
-   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1366.0" styleClass="mfx-label-tittle"
-          text="PARAMETROS DE LA PARTIDA"/>
-   <HBox alignment="CENTER" prefHeight="526.0" prefWidth="1250.0" spacing="50.0">
+   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="1366.0" styleClass="mfx-label-tittle" text="PARAMETROS DE LA PARTIDA" />
+   <HBox alignment="CENTER" prefHeight="526.0" prefWidth="1250.0" spacing="50.0" VBox.vgrow="ALWAYS">
       <padding>
-         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
       </padding>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="10.0"
-            styleClass="translucent-brown-vbox">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="10.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
          <HBox.margin>
-            <Insets bottom="50.0" top="50.0"/>
+            <Insets bottom="50.0" top="50.0" />
          </HBox.margin>
          <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
          <ImageView fitHeight="100.0" fitWidth="397.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png"/>
+            <Image url="@../resources/placeholder.png" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0">
-            <MFXCircleToggleNode fx:id="toggleEasy" prefHeight="107.0" prefWidth="116.0" selected="true"
-                                 size="16.0" styleClass="mfx-label-small" text="FACIL">
+            <MFXCircleToggleNode fx:id="toggleEasy" prefHeight="107.0" prefWidth="116.0" selected="true" size="16.0" styleClass="mfx-label-small" text="FACIL">
                <toggleGroup>
-                  <ToggleGroup fx:id="Difficulty"/>
+                  <ToggleGroup fx:id="Difficulty" />
                </toggleGroup>
             </MFXCircleToggleNode>
-            <MFXCircleToggleNode fx:id="toggleMid" prefHeight="107.0" prefWidth="116.0" size="16.0"
-                                 styleClass="mfx-label-small" text="MEDIO" toggleGroup="$Difficulty"/>
-            <MFXCircleToggleNode fx:id="toggleHard" prefHeight="86.0" prefWidth="65.0" size="16.0"
-                                 styleClass="mfx-label-small" text="DIFICIL" toggleGroup="$Difficulty"/>
+            <MFXCircleToggleNode fx:id="toggleMid" prefHeight="107.0" prefWidth="116.0" size="16.0" styleClass="mfx-label-small" text="MEDIO" toggleGroup="$Difficulty" />
+            <MFXCircleToggleNode fx:id="toggleHard" prefHeight="86.0" prefWidth="65.0" size="16.0" styleClass="mfx-label-small" text="DIFICIL" toggleGroup="$Difficulty" />
          </HBox>
          <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png"/>
+            <Image url="@../resources/placeholder.png" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="55.0" prefWidth="398.0">
-            <MFXCircleToggleNode fx:id="toggleDuelMode" prefHeight="107.0" prefWidth="116.0" size="16.0"
-                                 styleClass="mfx-label-small" text="DUELO">
+            <MFXCircleToggleNode fx:id="toggleDuelMode" prefHeight="107.0" prefWidth="116.0" size="16.0" styleClass="mfx-label-small" text="DUELO">
                <toggleGroup>
-                  <ToggleGroup fx:id="Difficulty1"/>
+                  <ToggleGroup fx:id="Difficulty1" />
                </toggleGroup>
             </MFXCircleToggleNode>
          </HBox>
       </VBox>
-      <Separator orientation="VERTICAL" prefHeight="521.0" prefWidth="0.0" style="-fx-background-color: #E5AE25;"/>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="10.0"
-            styleClass="translucent-brown-vbox">
+      <Separator orientation="VERTICAL" prefHeight="521.0" prefWidth="0.0" style="-fx-background-color: #E5AE25;" />
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="10.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
          <HBox.margin>
-            <Insets bottom="50.0" top="50.0"/>
+            <Insets bottom="50.0" top="50.0" />
          </HBox.margin>
          <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
          <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png"/>
+            <Image url="@../resources/placeholder.png" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="109.0" prefWidth="398.0">
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="219.0" styleClass="mfx-label-small"
-                   text="NUMERO DE JUGADORES"/>
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="219.0" styleClass="mfx-label-small" text="NUMERO DE JUGADORES" />
             <Spinner fx:id="nonMFXspinner" prefHeight="66.0" prefWidth="201.0">
                <cursor>
-                  <Cursor fx:constant="HAND"/>
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Spinner>
          </HBox>
          <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png"/>
+            <Image url="@../resources/placeholder.png" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="54.0" prefWidth="379.0">
-            <Label fx:id="test1" alignment="CENTER" prefHeight="50.0" prefWidth="166.0"
-                   styleClass="mfx-label-small" text="TIEMPO LIMITE"/>
-            <MFXSlider fx:id="sldrGameTime" max="45.0" min="5.0" prefHeight="27.0" prefWidth="149.0"
-                       value="5.0"/>
-            <Label fx:id="lblGameTime1" prefHeight="68.0" prefWidth="70.0" text=" "/>
+            <Label fx:id="test1" alignment="CENTER" prefHeight="50.0" prefWidth="166.0" styleClass="mfx-label-small" text="TIEMPO LIMITE" />
+            <MFXSlider fx:id="sldrGameTime" max="45.0" min="5.0" prefHeight="27.0" prefWidth="149.0" value="5.0" />
+            <Label fx:id="lblGameTime1" prefHeight="68.0" prefWidth="70.0" text=" " />
          </HBox>
       </VBox>
    </HBox>
-   <HBox alignment="CENTER" prefHeight="79.0" prefWidth="1250.0" spacing="250.0">
-      <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="75.0" prefWidth="220.0"
-                 text="INICIAR JUEGO"/>
-      <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="75.0" prefWidth="220.0"
-                 text="CANCELAR Y VOLVER"/>
+   <HBox alignment="CENTER" prefHeight="79.0" prefWidth="1250.0">
+      <children>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <children>
+               <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="75.0" prefWidth="220.0" text="INICIAR JUEGO" />
+            </children>
+         </HBox>
+         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+            <children>
+               <MFXButton fx:id="btnCancel" buttonType="RAISED" onAction="#onActionCancel" prefHeight="75.0" prefWidth="220.0" text="CANCELAR Y VOLVER" />
+            </children>
+         </HBox>
+      </children>
    </HBox>
 </VBox>
