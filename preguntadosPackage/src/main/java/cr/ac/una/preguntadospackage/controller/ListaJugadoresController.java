@@ -49,10 +49,6 @@ public class ListaJugadoresController extends Controller implements Initializabl
     private MFXButton btnVolver;
     @FXML
     private MFXButton btnAceptar11;
-
-    private ObservableList<PregJugadoresDto> jugadoresList;
-
-    private PregJugadoresDto resultado;
     @FXML
     private MFXTextField txtId;
     @FXML
@@ -65,7 +61,10 @@ public class ListaJugadoresController extends Controller implements Initializabl
     private MFXTextField txtPreguntasRespondidas;
     @FXML
     private MFXTextField txtPreguntasAcertadas;
-    
+
+    private ObservableList<PregJugadoresDto> jugadoresList;
+
+    private PregJugadoresDto resultado;
 
     /**
      * Initializes the controller class.
@@ -92,7 +91,6 @@ public class ListaJugadoresController extends Controller implements Initializabl
         }
     }
 
-
     @FXML
     private void onActionFiltrar(ActionEvent event) {
         PregJugadoresService empService = new PregJugadoresService();
@@ -114,5 +112,5 @@ public class ListaJugadoresController extends Controller implements Initializabl
     private void onAcionAceptar(ActionEvent event) {
         resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
         //getStage().close();
-    } 
+    }
 }

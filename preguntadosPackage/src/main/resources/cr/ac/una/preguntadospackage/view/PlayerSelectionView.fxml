@@ -2,6 +2,7 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,93 +10,78 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@GeneralCSS.css"
-      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="cr.ac.una.preguntadospackage.controller.PlayerSelectionController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="15.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerSelectionController">
    <HBox alignment="CENTER" prefHeight="509.0" prefWidth="1280.0">
       <VBox alignment="CENTER" prefHeight="641.0" prefWidth="542.0">
-         <Label fx:id="lblPlayerNumber" prefHeight="61.0" prefWidth="269.0"
-                text="NOMBRE DE USUARIO DEL JUGADOR "/>
-         <MFXTextField fx:id="txtPlayerName" prefHeight="27.0" prefWidth="261.0"/>
+         <Label fx:id="lblPlayerNumber" alignment="CENTER" prefHeight="62.0" prefWidth="379.0" styleClass="mfx-label-small" text="NOMBRE DE USUARIO DEL JUGADOR " />
+         <MFXTextField fx:id="txtPlayerName" floatMode="ABOVE" prefHeight="50.0" prefWidth="276.0" />
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="641.0" prefWidth="542.0"
-            style="-fx-background-color: rgba(64, 64, 64, 0.5); -fx-background-radius: 50;">
+      <VBox alignment="CENTER" prefHeight="641.0" prefWidth="542.0" styleClass="translucent-brown-vbox">
          <HBox alignment="CENTER" fillHeight="false" prefHeight="202.0" prefWidth="542.0">
             <StackPane prefHeight="133.0" prefWidth="148.0">
-               <ImageView fx:id="imgBluePawnSelection" fitHeight="155.0" fitWidth="150.0"
-                          onMouseClicked="#onActionBluePawnSelected" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../resources/PawnBlue.png"/>
+               <ImageView fx:id="imgBluePawnSelection" fitHeight="155.0" fitWidth="150.0" onMouseClicked="#onActionBluePawnSelected" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PawnBlue.png" />
                </ImageView>
-               <ImageView fx:id="imgDisabledBluePawn" fitHeight="155.0" fitWidth="150.0"
-                          pickOnBounds="true" preserveRatio="true" visible="false">
-                  <Image url="@../resources/nonAvaiblePawn.png"/>
+               <ImageView fx:id="imgDisabledBluePawn" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <Image url="@../resources/nonAvaiblePawn.png" />
                </ImageView>
             </StackPane>
             <StackPane prefHeight="133.0" prefWidth="148.0">
-               <ImageView fx:id="imgGreenPawnSelection" fitHeight="155.0" fitWidth="150.0"
-                          onMouseClicked="#onActionGreenPawnSelected" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../resources/PawnGreen.png"/>
+               <ImageView fx:id="imgGreenPawnSelection" fitHeight="155.0" fitWidth="150.0" onMouseClicked="#onActionGreenPawnSelected" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PawnGreen.png" />
                </ImageView>
-               <ImageView fx:id="imgDisabledGreenPawn" fitHeight="155.0" fitWidth="150.0"
-                          pickOnBounds="true" preserveRatio="true" visible="false">
-                  <Image url="@../resources/nonAvaiblePawn.png"/>
+               <ImageView fx:id="imgDisabledGreenPawn" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <Image url="@../resources/nonAvaiblePawn.png" />
                </ImageView>
             </StackPane>
             <StackPane prefHeight="133.0" prefWidth="148.0">
-               <ImageView fx:id="imgPinkPawnSelection" fitHeight="155.0" fitWidth="150.0"
-                          onMouseClicked="#onActionPinkPawnSelected" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../resources/PawnPink.png"/>
+               <ImageView fx:id="imgPinkPawnSelection" fitHeight="155.0" fitWidth="150.0" onMouseClicked="#onActionPinkPawnSelected" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PawnPink.png" />
                </ImageView>
-               <ImageView fx:id="imgDisabledPinkPawn" fitHeight="155.0" fitWidth="150.0"
-                          pickOnBounds="true" preserveRatio="true" visible="false">
-                  <Image url="@../resources/nonAvaiblePawn.png"/>
+               <ImageView fx:id="imgDisabledPinkPawn" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <Image url="@../resources/nonAvaiblePawn.png" />
                </ImageView>
             </StackPane>
          </HBox>
          <HBox alignment="CENTER" fillHeight="false" prefHeight="206.0" prefWidth="542.0">
             <StackPane prefHeight="133.0" prefWidth="148.0">
-               <ImageView fx:id="imgOrangePawnSelection" fitHeight="155.0" fitWidth="150.0"
-                          onMouseClicked="#onActionOrangePawnSelected" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../resources/PawnOrange.png"/>
+               <ImageView fx:id="imgOrangePawnSelection" fitHeight="155.0" fitWidth="150.0" onMouseClicked="#onActionOrangePawnSelected" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PawnOrange.png" />
                </ImageView>
-               <ImageView fx:id="imgDisabledOrangePawn" fitHeight="155.0" fitWidth="150.0"
-                          pickOnBounds="true" preserveRatio="true" visible="false">
-                  <Image url="@../resources/nonAvaiblePawn.png"/>
+               <ImageView fx:id="imgDisabledOrangePawn" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <Image url="@../resources/nonAvaiblePawn.png" />
                </ImageView>
             </StackPane>
             <StackPane prefHeight="133.0" prefWidth="148.0">
-               <ImageView fx:id="imgRedPawnSelection" fitHeight="155.0" fitWidth="150.0"
-                          onMouseClicked="#onActionRedPawnSelected" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../resources/PawnRed.png"/>
+               <ImageView fx:id="imgRedPawnSelection" fitHeight="155.0" fitWidth="150.0" onMouseClicked="#onActionRedPawnSelected" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PawnRed.png" />
                </ImageView>
-               <ImageView fx:id="imgDisabledRedPawn" fitHeight="155.0" fitWidth="150.0"
-                          pickOnBounds="true" preserveRatio="true" visible="false">
-                  <Image url="@../resources/nonAvaiblePawn.png"/>
+               <ImageView fx:id="imgDisabledRedPawn" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <Image url="@../resources/nonAvaiblePawn.png" />
                </ImageView>
             </StackPane>
             <StackPane prefHeight="133.0" prefWidth="148.0">
-               <ImageView fx:id="imgPurplePawnSelection" fitHeight="155.0" fitWidth="150.0"
-                          onMouseClicked="#onActionPurplePawnSelected" pickOnBounds="true"
-                          preserveRatio="true">
-                  <Image url="@../resources/PawnPurple.png"/>
+               <ImageView fx:id="imgPurplePawnSelection" fitHeight="155.0" fitWidth="150.0" onMouseClicked="#onActionPurplePawnSelected" pickOnBounds="true" preserveRatio="true">
+                  <Image url="@../resources/PawnPurple.png" />
                </ImageView>
-               <ImageView fx:id="imgDisabledPurplePawn" fitHeight="155.0" fitWidth="150.0"
-                          pickOnBounds="true" preserveRatio="true" visible="false">
-                  <Image url="@../resources/nonAvaiblePawn.png"/>
+               <ImageView fx:id="imgDisabledPurplePawn" fitHeight="155.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                  <Image url="@../resources/nonAvaiblePawn.png" />
                </ImageView>
             </StackPane>
          </HBox>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
       </VBox>
+      <padding>
+         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      </padding>
    </HBox>
-   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="100.0">
-      <MFXButton buttonType="RAISED" onAction="#onActionConfirmar" prefHeight="59.0" prefWidth="143.0"
-                 text="CONFIRMAR"/>
-      <MFXButton buttonType="RAISED" onAction="#onActionGoBack" prefHeight="59.0" prefWidth="125.0" text="ATRAS"/>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="150.0">
+      <MFXButton buttonType="RAISED" onAction="#onActionConfirmar" prefHeight="75.0" prefWidth="150.0" text="CONFIRMAR" />
+      <MFXButton buttonType="RAISED" onAction="#onActionGoBack" prefHeight="75.0" prefWidth="150.0" text="ATRAS" />
    </HBox>
 </VBox>

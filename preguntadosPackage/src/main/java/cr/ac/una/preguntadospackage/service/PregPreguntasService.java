@@ -39,32 +39,31 @@ public class PregPreguntasService {
         }
     }
 
-//    public Respuesta getPreguntas(Long id, String nombre, Long partidasJugadas, Long partidasGanadas, Long cantidadRespuestasGeneral, Long cantidadAcertadasGeneral) {
-//        try {
-//            Query qryJugadores = em.createNamedQuery("PregPreguntas.findByParameters", PregJugadores.class);
-//            qryJugadores.setParameter("id", "%" + id + "%");
-//            qryJugadores.setParameter("nombre", "%" + nombre + "%");
-//            qryJugadores.setParameter("partidasJugadas", "%" + partidasJugadas + "%");
-//            qryJugadores.setParameter("partidasGanadas", "%" + partidasGanadas + "%");
-//            qryJugadores.setParameter("cantidadRespuestasGeneral", "%" + cantidadRespuestasGeneral + "%");
-//            qryJugadores.setParameter("cantidadAcertadasGeneral", "%" + cantidadAcertadasGeneral + "%");
-//
-//            List<PregJugadoresDto> jugadores = new ArrayList<>();
-//            List<PregJugadores> jugador = qryJugadores.getResultList();
-//            for (PregJugadores tempJugadores : jugador) {
-//                jugadores.add(new PregJugadoresDto(tempJugadores));
-//            }
-//            return new Respuesta(true, "", "", "PregJugadores", jugadores);
-//        } catch (NoResultException ex) {
-//            return new Respuesta(false, "No existe ningun jugador con los parametros colocados.", "getJugadores NoResultException");
-//        } catch (NonUniqueResultException ex) {
-//            Logger.getLogger(PregJugadoresService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar el jugador.", ex);
-//            return new Respuesta(false, "Ocurrio un error al consultar los jugadores.", "getJugadores NonUniqueResultException");
-//        } catch (Exception ex) {
-//            Logger.getLogger(PregJugadoresService.class.getName()).log(Level.SEVERE, "Error obteniendo los jugadores", ex);
-//            return new Respuesta(false, "Error obteniendo los jugadores.", "getJugadores " + ex.getMessage());
-//        }
-//    }
+    public Respuesta getPreguntas(String id, String textoPregunta, String cantidadRespuestas, String cantidadAciertos, String estado) {
+        try {
+            Query qryJugadores = em.createNamedQuery("PregPreguntas.findByParameters", PregPreguntas.class);
+            qryJugadores.setParameter("id", "%" + id + "%");
+            qryJugadores.setParameter("textoPregunta", "%" + textoPregunta + "%");
+            qryJugadores.setParameter("cantidadRespuestas", "%" + cantidadRespuestas + "%");
+            qryJugadores.setParameter("cantidadAciertos", "%" + cantidadAciertos + "%");
+            qryJugadores.setParameter("estado", "%" + estado + "%");
+
+            List<PregPreguntasDto> preguntas = new ArrayList<>();
+            List<PregPreguntas> pregunta = qryJugadores.getResultList();
+            for (PregPreguntas tempPreguntas : pregunta) {
+                preguntas.add(new PregPreguntasDto(tempPreguntas));
+            }
+            return new Respuesta(true, "", "", "PregPreguntas", preguntas);
+        } catch (NoResultException ex) {
+            return new Respuesta(false, "No existe ninguna pregunta con los parametros colocados.", "getPreguntas NoResultException");
+        } catch (NonUniqueResultException ex) {
+            Logger.getLogger(PregJugadoresService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar la pregunta.", ex);
+            return new Respuesta(false, "Ocurrio un error al consultar las preguntas.", "getPreguntas NonUniqueResultException");
+        } catch (Exception ex) {
+            Logger.getLogger(PregJugadoresService.class.getName()).log(Level.SEVERE, "Error obteniendo las preguntas", ex);
+            return new Respuesta(false, "Error obteniendo las preguntas.", "getPreguntas " + ex.getMessage());
+        }
+    }
 
 //    public Respuesta guardarJugador(PregJugadoresDto pregJugadoresDto) {
 //        try {
