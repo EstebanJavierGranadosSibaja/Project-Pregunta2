@@ -32,7 +32,6 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     /*

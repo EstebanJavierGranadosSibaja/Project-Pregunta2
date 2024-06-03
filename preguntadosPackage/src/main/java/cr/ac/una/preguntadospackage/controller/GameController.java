@@ -14,189 +14,54 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
+/*
+    * Main game controller class
+ */
+
 public class GameController extends Controller implements Initializable {
 
     private int selectedSectors = 0;
-    public int currentSelectingPlayer = 0; // the player that is currently selecting a pawn (1-6)
-    private Boolean haveAllPlayersSelectedSectors = false;
+    int currentSelectingPlayer = 0;
+    private Boolean haveAllPlayersSelectedSectors = false, hasFirstTurnBeenAssigned = false;
+    private Boolean hasSpinnerBeenClicked = false;
 
+    @FXML
+    public Label lblCurrentPlayerTurn, lblCurrentPlayerTurn1;
 
+    @FXML
+    private ImageView imgSector2Pawn2, imgSector2Pawn1, imgSector2Pawn4, imgSector2Pawn3, imgSector5EntertainmentBlocker, imgHistory,
+            imgSector2ArtBlocker, imgSector3GeographyBlocker, imgSector6GeographyBlocker, imgSector5SciencieBlocker, imgSector6Pawn2,
+            imgSector4EntertainmentBlocker, imgSector6Pawn1, imgSector6Pawn4, imgSector6Pawn3, imgSector4HistoryBlocker, imgSport,
+            imgSector1ArtBlocker, imgSector6ArtBlocker, imgSector3Pawn4, imgSector2SciencieBlocker, imgSector3Pawn2, imgSector3Pawn3,
+            imgSector3ArtBlocker, imgSector1SciencieBlocker, imgSector5Pawn1, imgSector5Pawn2, imgSector5Pawn3, imgSector4GeographyBlocker,
+            imgSector3SciencieBlocker, imgSector3EntertainmentBlocker, imgSector1GeographyBlocker, imgCrown, imgSector3HistoryBlocker,
+            imgSelectorSector5, imgSelectorSector4, imgSelectorSector6, imgSector4Pawn2, imgSelectorSector1, imgSector4Pawn1, imgScience,
+            imgSelectorSector3, imgSector4SciencieBlocker, imgSelectorSector2, imgSpinner, imgSector3SportBlocker, imgSector2EntertainmentBlocker,
+            imgSector5Pawn4, imgSector4ArtBlocker, imgSector6HistoryBlocker, imgSector2SportBlocker, imgSector1SportBlocker, imgSector3Pawn1,
+            imgSector2HistoryBlocker, imgGeography, imgSector1EntertainmentBlocker, imgSector2GeographyBlocker, imgSector5GeographyBlocker,
+            imgSector6SciencieBlocker, imgSector6EntertainmentBlocker, imgEntertainment, imgSector4SportBlocker, imgSector5HistoryBlocker,
+            imgSector1HistoryBlocker, imgSector5ArtBlocker, imgSector5SportBlocker, imgSector1Pawn4, imgSector4Pawn4, imgSector4Pawn3,
+            imgSector6SportBlocker, imgArt, imgSector1Pawn1, imgSector1Pawn2, imgSector1Pawn3, imgRainbowCircle;
 
-    @FXML public Label lblCurrentPlayerTurn;
-
-    // for now create the 6 players as DTOs
     public PregJugpartidaDto[] players;
     PregPrinpartidaDto partida;
 
-    @FXML private ImageView imgSector2Pawn2, imgSector2Pawn1, imgSector2Pawn4, imgSector2Pawn3;
-    @FXML
-    private ImageView imgSector5EntertainmentBlocker;
-    @FXML
-    private ImageView imgHistory;
-    @FXML
-    private ImageView imgSector2ArtBlocker;
-    @FXML
-    private ImageView imgSector3GeographyBlocker;
-    @FXML
-    private ImageView imgSector6GeographyBlocker;
-    @FXML
-    private ImageView imgSector5SciencieBlocker;
-    @FXML
-    private ImageView imgSector6Pawn2;
-    @FXML
-    private ImageView imgSector4EntertainmentBlocker;
-    @FXML
-    private ImageView imgSector6Pawn1;
-    @FXML
-    private ImageView imgSector6Pawn4;
-    @FXML
-    private ImageView imgSector6Pawn3;
-    @FXML
-    private ImageView imgSector4HistoryBlocker;
-    @FXML
-    private ImageView imgSport;
-    @FXML
-    private ImageView imgSector1ArtBlocker;
-    @FXML
-    private ImageView imgSector6ArtBlocker;
-    @FXML
-    private ImageView imgSector3Pawn4;
-    @FXML
-    private ImageView imgSector2SciencieBlocker;
-    @FXML
-    private ImageView imgSector3Pawn2;
-    @FXML
-    private ImageView imgSector3Pawn3;
-    @FXML
-    private ImageView imgSector3ArtBlocker;
-    @FXML
-    private ImageView imgSector1SciencieBlocker;
-    @FXML
-    private ImageView imgSector5Pawn1;
-    @FXML
-    private ImageView imgSector5Pawn2;
-    @FXML
-    private ImageView imgSector5Pawn3;
-    @FXML
-    private ImageView imgSector4GeographyBlocker;
-    @FXML
-    private ImageView imgSector3SciencieBlocker;
-    @FXML
-    private ImageView imgSector3EntertainmentBlocker;
-    @FXML
-    private ImageView imgSector1GeographyBlocker;
-    @FXML
-    private ImageView imgCrown;
-    @FXML
-    private ImageView imgSector3HistoryBlocker;
-    @FXML
-    private ImageView imgSelectorSector5;
-    @FXML
-    private ImageView imgSelectorSector4;
-    @FXML
-    private ImageView imgSelectorSector6;
-    @FXML
-    private ImageView imgSector4Pawn2;
-    @FXML
-    private ImageView imgSelectorSector1;
-    @FXML
-    private ImageView imgSector4Pawn1;
-    @FXML
-    private ImageView imgScience;
-    @FXML
-    private ImageView imgSelectorSector3;
-    @FXML
-    private ImageView imgSector4SciencieBlocker;
-    @FXML
-    private ImageView imgSelectorSector2;
-    @FXML
-    private ImageView imgSpinner;
-    @FXML
-    private ImageView imgSector3SportBlocker;
-    @FXML
-    private ImageView imgSector2EntertainmentBlocker;
-    @FXML
-    private ImageView imgSector5Pawn4;
-    @FXML
-    private ImageView imgSector4ArtBlocker;
-    @FXML
-    private ImageView imgSector6HistoryBlocker;
-    @FXML
-    private ImageView imgSector2SportBlocker;
-    @FXML
-    private ImageView imgSector1SportBlocker;
-    @FXML
-    private ImageView imgSector3Pawn1;
-    @FXML
-    private ImageView imgSector2HistoryBlocker;
-    @FXML
-    private ImageView imgGeography;
-    @FXML
-    private ImageView imgSector1EntertainmentBlocker;
-    @FXML
-    private ImageView imgSector2GeographyBlocker;
-    @FXML
-    private ImageView imgSector5GeographyBlocker;
-    @FXML
-    private ImageView imgSector6SciencieBlocker;
-    @FXML
-    private ImageView imgSector6EntertainmentBlocker;
-    @FXML
-    private ImageView imgEntertainment;
-    @FXML
-    private ImageView imgSector4SportBlocker;
-    @FXML
-    private ImageView imgSector5HistoryBlocker;
-    @FXML
-    private ImageView imgSector1HistoryBlocker;
-    @FXML
-    private ImageView imgSector5ArtBlocker;
-    @FXML
-    private ImageView imgSector5SportBlocker;
-    @FXML
-    private ImageView imgSector1Pawn4;
-    @FXML
-    private ImageView imgSector4Pawn4;
-    @FXML
-    private ImageView imgSector4Pawn3;
-    @FXML
-    private ImageView imgSector6SportBlocker;
-    @FXML
-    private ImageView imgArt;
-    @FXML
-    private ImageView imgSector1Pawn1;
-    @FXML
-    private ImageView imgSector1Pawn2;
-    @FXML
-    private ImageView imgSector1Pawn3;
-    Boolean hasFirstTurnBeenAssigned = false;
-    @FXML
-    private Label lblCurrentPlayerTurn1;
-    @FXML
-    private ImageView imgRainbowCircle;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-
     }
 
     @Override
     public void initialize() {}
 
     public void setUpGameEnviroment(int playerCount, String[] playerColors, String[] playerIDs, String modoJuego, String modoDuelo, int timeLimitInMinutes) {
-
         // initialize the players array
         players = new PregJugpartidaDto[playerCount];
-        for (int i = 0; i < playerCount; i++) {
-            players[i] = new PregJugpartidaDto();
-        }
+        for (int i = 0; i < playerCount; i++) players[i] = new PregJugpartidaDto();
 
         // cycle through the players and assign the colors and IDs to each PregJugpartidaDto
         for (int i = 0; i < playerCount; i++) {
@@ -204,6 +69,7 @@ public class GameController extends Controller implements Initializable {
             players[i].setNombreJugador(playerIDs[i]);
         }
 
+        // DEBUG
         System.out.println("Player count: " + playerCount);
         System.out.println("Game mode: " + modoJuego);
         System.out.println("Duel mode: " + modoDuelo);
@@ -234,45 +100,45 @@ public class GameController extends Controller implements Initializable {
     }
 
     // ROULLETE LOGIC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    private Boolean hasSpinnerBeenClicked = false;
+
+
     @FXML
     public void onActionSpinRoulette(MouseEvent event) {
-
+        // if the spinner has already been clicked or not all players have selected their sectors, return
         if (hasSpinnerBeenClicked || !haveAllPlayersSelectedSectors) return;
         hasSpinnerBeenClicked = true;
 
+        imgSpinner.setRotate(27); // reset the spinner to its original position (27 degrees)
         soundUtils.getInstance().playSound("roulleteClick");
 
         double randomDegrees = Math.random() * 360;
         int numberOfCategory = (int) Math.floor(randomDegrees / 51.4);
 
-        imgSpinner.setRotate(27); // reset the spinner to its original position (27 degrees)
         RotateTransition rotateAnimation = new RotateTransition(javafx.util.Duration.seconds(4.5), imgSpinner);
         rotateAnimation.setByAngle(randomDegrees + 3600); // 3600 is the amount of degrees that the spinner will rotate
         rotateAnimation.play();
 
-
-        // lambda expression to execute the code after the animation has finished
-        rotateAnimation.setOnFinished(expression -> {
-
+        rotateAnimation.setOnFinished(_event -> {
+            // pause the thread for half a second to show the spinner result
             try {
                 Thread.sleep(500);
-            } catch (InterruptedException ex) {
+            }
+            catch (InterruptedException ex) {
                 System.out.println("Error pausing thread after spinner: " + ex.getMessage());
             }
 
+            // as the spinner has multiple uses, we need to check if the first turn has been assigned to a player
+            // to then show the category crown selection view or the question view
             if(!hasFirstTurnBeenAssigned){
-                if(numberOfCategory == 2){
-                    System.out.println("El primer turno es del jugador " + (currentSelectingPlayer+1) );
-                    hasFirstTurnBeenAssigned = true;
-                } else {
-                    System.out.println("El jugador " + (currentSelectingPlayer + 1) + " no tiene el primer turno");
+                if(numberOfCategory == 2) hasFirstTurnBeenAssigned = true;
+                else {
                     currentSelectingPlayer++;
                     // to avoid an index out of bounds exception
                     if(currentSelectingPlayer == players.length) currentSelectingPlayer = 0;
-
                 }
+                // reset the spinner click functionality
                 hasSpinnerBeenClicked = false;
+                // show the current player's turn (even works if he won the first turn)
                 animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
             } else {
                 if(numberOfCategory == 2){
@@ -284,16 +150,13 @@ public class GameController extends Controller implements Initializable {
                     questionController.setCategoryTheme(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
                     FlowController.getInstance().goView("QuestionView");
                     hasSpinnerBeenClicked = false;
-
-                    rotateAnimation.stop();
+                    rotateAnimation.stop(); // stop the animation (bugfix try)
                 }
             }
-        });
+        }); // end of rotateAnimation.setOnFinished
     }
 
     public void showCoin(String coinCategory, int inventoryNumber) {
-        System.out.println("supuestamente al usuario ya se le asigno la moneda y ya se deberia ver en el tablero " + coinCategory + " " + inventoryNumber);
-
         switch(coinCategory) {
             case "sciencie": {
                 players[currentSelectingPlayer].setFichaCiencias("A");
@@ -342,29 +205,15 @@ public class GameController extends Controller implements Initializable {
     }
 
     public void movePawnForward(int sector, int player) {
-
         ImageView[] sectorPawns = getPawnsBySector(sector);
         if (sectorPawns != null) {
             for (ImageView sectorPawn : sectorPawns) {
                 if (sectorPawn.isVisible()) {
-                    // get the coordinates of the old pawn
-                    double oldX = sectorPawn.getLayoutX();
-                    double oldY = sectorPawn.getLayoutY();
-
-                    // get the coordinates of the new pawn
-                    double newX = sectorPawns[player].getLayoutX();
-                    double newY = sectorPawns[player].getLayoutY();
-
-                    // TODO:
-                    //animationUtils.getInstance().playAnimation("translate", sectorPawn, (int) oldX, (int) oldY, (int) newX, (int) newY);
-
                     sectorPawn.setVisible(false); // hide the old pawn
                     sectorPawns[player].setVisible(true); // show the new pawn
                     break;
                 }
             }
-            // TODO: what could happen when the player reaches the last casilla?
-            players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() + 1);
         } else throw new IllegalArgumentException("Invalid sector");
     }
 
@@ -420,9 +269,7 @@ public class GameController extends Controller implements Initializable {
     }
 
     private void setPawnImages(ImageView[] pawns, Image pawnImage) {
-        for (ImageView pawn: pawns) {
-            pawn.setImage(pawnImage);
-        }
+        for (ImageView pawn: pawns) pawn.setImage(pawnImage);
     }
 
     private void setPawnsBySelectedColor(int sector, String color) {
@@ -499,11 +346,9 @@ public class GameController extends Controller implements Initializable {
 
             loadPawnPositions(); // TODO: this should be called when the game starts but overwritten by the player's previous progress saved in the database
 
-            // cycle through the players and show their assigned sector and color saved (DEBUG)
-            for (PregJugpartidaDto player: players) System.out.println("Player has been assigned the sector " + player.getPosicionSector() + " and the color " + player.getColorPeon());
-
             // TODO: this should be overwritten by the player's previous progress saved in the database
             for (int i = 0; i < partida.getCantidadJugadores().intValue(); i++) {
+                setPawnsBySelectedColor(players[i].getPosicionSector().intValue(), players[i].getColorPeon());
               players[i].setPosicionCasilla((long)1);
             }
 
@@ -526,7 +371,6 @@ public class GameController extends Controller implements Initializable {
             currentSelectingPlayer++;
             selectedSectors++;
             CheckIfAllTheSectorsHaveBeenSelected();
-
         }
     }
 
@@ -538,7 +382,6 @@ public class GameController extends Controller implements Initializable {
             currentSelectingPlayer++;
             selectedSectors++;
             CheckIfAllTheSectorsHaveBeenSelected();
-
         }
     }
 
@@ -550,7 +393,6 @@ public class GameController extends Controller implements Initializable {
             currentSelectingPlayer++;
             selectedSectors++;
             CheckIfAllTheSectorsHaveBeenSelected();
-
         }
     }
 
@@ -562,7 +404,6 @@ public class GameController extends Controller implements Initializable {
             currentSelectingPlayer++;
             selectedSectors++;
             CheckIfAllTheSectorsHaveBeenSelected();
-
         }
     }
 
@@ -615,7 +456,6 @@ public class GameController extends Controller implements Initializable {
     }
 
     public void playerCorrectAnswer(String category){
-        System.out.println("El jugador " + (currentSelectingPlayer + 1) + " ha respondido correctamente");
         movePawnForward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue());
         players[currentSelectingPlayer].setPosicionCasilla((players[currentSelectingPlayer].getPosicionCasilla() + 1));
         showCoin(category, players[currentSelectingPlayer].getPosicionSector().intValue());
@@ -638,16 +478,13 @@ public class GameController extends Controller implements Initializable {
         // logic of saving to DB goes here
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         FlowController.getInstance().goView("MenuView");
-
         // completly reset the gamecontroller
         resetGame();
 
     }
 
     @FXML
-    public void onActionHelp(ActionEvent actionEvent) {
-            FlowController.getInstance().goView("HelpView");
-    }
+    public void onActionHelp(ActionEvent actionEvent) { FlowController.getInstance().goView("HelpView"); }
 
     private void resetGame() {
         // Reset game-related variables
@@ -678,8 +515,6 @@ public class GameController extends Controller implements Initializable {
         // Reset UI elements
         lblCurrentPlayerTurn.setText("");
 
-
-
         // Reset category animation
         hideCategoryAnimation();
     }
@@ -689,7 +524,6 @@ public class GameController extends Controller implements Initializable {
     public void recieveParameters(String[] playerColors, String[] playerNames, int amountOfPlayers, String gameMode, String duelMode, int timeLimitInMinutes) {
         // here we should make a way to differentiate between loading from the database or just creating a new game
         // TODO
-
         setUpGameEnviroment(amountOfPlayers, playerColors, playerNames, gameMode, duelMode, timeLimitInMinutes);
     }
 }

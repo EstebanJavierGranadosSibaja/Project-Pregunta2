@@ -9,74 +9,60 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.QuestionController">
-   <children>
-      <HBox alignment="CENTER" prefHeight="88.0" prefWidth="1280.0">
-         <children>
-            <Label prefHeight="100.0" prefWidth="232.0" text="PUNTOS" />
-            <Label prefHeight="100.0" prefWidth="232.0" text="VALOR" />
-            <Label prefHeight="100.0" prefWidth="232.0" text="OTRO DATO" />
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="403.0" prefWidth="1280.0">
-         <children>
-            <Label fx:id="lblPregunta" prefHeight="168.0" prefWidth="547.0" text="PREGUNTA" />
-            <VBox alignment="CENTER" prefHeight="309.0" prefWidth="333.0">
-               <children>
-                  <MFXButton fx:id="btnRespuesta1" onAction="#onActionRespuesta1" prefHeight="81.0" prefWidth="323.0" text="RESPUESTA 1" />
-                  <MFXButton fx:id="btnRespuesta3" onAction="#onActionRespuesta3" prefHeight="81.0" prefWidth="321.0" text="RESPUESTA 3" />
-               </children>
-            </VBox>
-            <VBox alignment="CENTER" prefHeight="309.0" prefWidth="340.0">
-               <children>
-                  <MFXButton fx:id="btnRespuesta2" onAction="#onActionRespuesta2" prefHeight="81.0" prefWidth="337.0" text="RESPUESTA 2" />
-                  <MFXButton fx:id="btnRespuesta4" onAction="#onActionRespuesta4" prefHeight="81.0" prefWidth="337.0" text="RESPUESTA 4" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <HBox alignment="CENTER" prefHeight="226.0" prefWidth="1280.0">
-         <children>
-            <Label fx:id="lblCategory" prefHeight="81.0" prefWidth="381.0" text="CATEGORIA">
-               <font>
-                  <Font size="45.0" />
-               </font>
-            </Label>
-            <StackPane prefHeight="305.0" prefWidth="327.0">
-               <children>
-                  <ImageView fx:id="imgArtChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../resources/Arte.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgScienceChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../resources/Ciencia.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgSportsChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../resources/Deporte.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgGeographyChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../resources/Geografia.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgHistoryChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../resources/Mate.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgEntertainmentChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true" preserveRatio="true" visible="false">
-                     <image>
-                        <Image url="@../resources/Entretenimiento.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </StackPane>
-         </children>
-      </HBox>
-   </children>
+<VBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cr.ac.una.preguntadospackage.controller.QuestionController">
+   <HBox alignment="CENTER" prefHeight="88.0" prefWidth="1280.0">
+      <Label prefHeight="100.0" prefWidth="232.0" text="PUNTOS"/>
+      <Label prefHeight="100.0" prefWidth="232.0" text="VALOR"/>
+      <Label prefHeight="100.0" prefWidth="232.0" text="OTRO DATO"/>
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="403.0" prefWidth="1280.0">
+      <Label fx:id="lblPregunta" prefHeight="168.0" prefWidth="547.0" text="PREGUNTA"/>
+      <VBox alignment="CENTER" prefHeight="309.0" prefWidth="333.0">
+         <MFXButton fx:id="btnRespuesta1" onAction="#onActionRespuesta1" prefHeight="81.0" prefWidth="323.0"
+                    text="RESPUESTA 1"/>
+         <MFXButton fx:id="btnRespuesta3" onAction="#onActionRespuesta3" prefHeight="81.0" prefWidth="321.0"
+                    text="RESPUESTA 3"/>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="309.0" prefWidth="340.0">
+         <MFXButton fx:id="btnRespuesta2" onAction="#onActionRespuesta2" prefHeight="81.0" prefWidth="337.0"
+                    text="RESPUESTA 2"/>
+         <MFXButton fx:id="btnRespuesta4" onAction="#onActionRespuesta4" prefHeight="81.0" prefWidth="337.0"
+                    text="RESPUESTA 4"/>
+      </VBox>
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="226.0" prefWidth="1280.0">
+      <Label fx:id="lblCategory" prefHeight="81.0" prefWidth="381.0" text="CATEGORIA">
+         <font>
+            <Font size="45.0"/>
+         </font>
+      </Label>
+      <StackPane prefHeight="305.0" prefWidth="327.0">
+         <ImageView fx:id="imgArtChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true"
+                    preserveRatio="true" visible="false">
+            <Image url="@../resources/Arte.png"/>
+         </ImageView>
+         <ImageView fx:id="imgScienceChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true"
+                    preserveRatio="true" visible="false">
+            <Image url="@../resources/Ciencia.png"/>
+         </ImageView>
+         <ImageView fx:id="imgSportsChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true"
+                    preserveRatio="true" visible="false">
+            <Image url="@../resources/Deporte.png"/>
+         </ImageView>
+         <ImageView fx:id="imgGeographyChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true"
+                    preserveRatio="true" visible="false">
+            <Image url="@../resources/Geografia.png"/>
+         </ImageView>
+         <ImageView fx:id="imgHistoryChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true"
+                    preserveRatio="true" visible="false">
+            <Image url="@../resources/Mate.png"/>
+         </ImageView>
+         <ImageView fx:id="imgEntertainmentChar" fitHeight="216.0" fitWidth="231.0" pickOnBounds="true"
+                    preserveRatio="true" visible="false">
+            <Image url="@../resources/Entretenimiento.png"/>
+         </ImageView>
+      </StackPane>
+   </HBox>
 </VBox>

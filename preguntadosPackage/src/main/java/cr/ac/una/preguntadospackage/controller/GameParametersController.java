@@ -59,25 +59,20 @@ public class GameParametersController extends Controller implements Initializabl
     public void initialize(URL url, ResourceBundle rb) {
         // start the spinner with 1 player
         nonMFXspinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 6, 2));
-
-    }    
-
+    }
     @Override
     public void initialize() {
-       
     }
 
     @FXML
     private void onActionStart(ActionEvent event) {
         String gamemode;
-        if(toggleEasy.isSelected()){
-            gamemode = "F";
-        } else if(toggleMid.isSelected()){
-            gamemode = "M";
-        } else {
-            gamemode = "D";
-        }
+        // get the selected game mode
+        if(toggleEasy.isSelected()) gamemode = "F";
+        else if(toggleMid.isSelected())gamemode = "M";
+        else gamemode = "D";
 
+        // get the selected player count
         int playerCount = (int) nonMFXspinner.getValue();
 
         PlayerSelectionController playerSelectionController = (PlayerSelectionController) FlowController.getInstance().getController("PlayerSelectionView");
@@ -87,13 +82,8 @@ public class GameParametersController extends Controller implements Initializabl
 
     @FXML
     private void onActionCancel(ActionEvent event) {
-
-
-
-
-        
+        // TODO: reset all the data
         FlowController.getInstance().goView("MenuView");
-
     }
 
     

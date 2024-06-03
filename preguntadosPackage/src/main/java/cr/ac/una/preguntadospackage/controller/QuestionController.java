@@ -128,14 +128,8 @@ public class QuestionController extends Controller implements Initializable {
         System.out.println(respuestas[questionNumber - 1 ].getEsCorrecta());
 
         if(respuestas[(questionNumber - 1)].getEsCorrecta().equals("T")){
-            System.out.println("Es correcta!");
-            // print the player current sector and casilla
-
-            // the logic for the correct answer goes here
             gameController.playerCorrectAnswer(category);
             System.out.println(category);
-
-
         } else {
             // the logic for the wrong answer goes here
         }

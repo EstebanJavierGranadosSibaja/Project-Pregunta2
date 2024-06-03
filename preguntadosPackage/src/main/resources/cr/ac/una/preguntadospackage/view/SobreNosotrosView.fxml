@@ -10,55 +10,57 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.SobreNosotrosController">
-   <children>
-      <Label alignment="CENTER" prefHeight="18.0" prefWidth="1293.0" styleClass="mfx-label-tittle" text="UNIVERSIDAD NACIONAL DE COSTA RICA" />
-      <Label alignment="CENTER" layoutX="479.0" layoutY="25.0" prefHeight="18.0" prefWidth="1292.0" styleClass="mfx-label" text="PROGRAMCION 2" />
-      <Label alignment="CENTER" layoutX="479.0" layoutY="53.0" prefHeight="18.0" prefWidth="1267.0" styleClass="mfx-label" text="I CLICLO 2024" />
-      <HBox prefHeight="447.0" prefWidth="1250.0" styleClass="translucent-brown-vbox">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="650.0" spacing="3.0">
-               <children>
-                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/EstebanImage.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="706.0" styleClass="mfx-label" text="ESTEBAN JAVIER GRANADOS SIBAJA" />
-                  <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-repeat: 0;" styleClass="mfx-transparent-textarea" text="Soy Esteban, un estudiante de Ingeniera en Sistamas de la Universidad Nacional de Costa Rica, este es mi segundo año es la carrera, me gusta mucho el desarrollo de programas en lenguajes como C++ o  JAVA ,mi objetivo es ser un gran ingeniero en sistemas, poder vivir de ese labor y disfrutar del ambiente laboral que se da en esta cerrera." wrapText="true">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TextArea>
-               </children>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-            </VBox>
-            <Separator orientation="VERTICAL" style="-fx-background-color: #E5AE25;" />
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="650.0" spacing="3.0">
-               <children>
-                  <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../resources/EstebanImage.jpg" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" prefHeight="18.0" prefWidth="654.0" styleClass="mfx-label" text="MATTEO VARGAS" />
-                  <TextArea editable="false" prefHeight="148.0" prefWidth="600.0" styleClass="mfx-transparent-textarea" text="Soy Esteban, un estudiante de Ingeniera en Sistamas de la Universidad Nacional de Costa Rica, este es mi segundo año es la carrera, me gusta mucho el desarrollo de programas en lenguajes como C++ o  JAVA, mi objetivo es ser un gran ingeniero en sistemas, poder vivir de ese labor y disfrutar del ambiente laboral que se da en esta cerrera." wrapText="true">
-                     <padding>
-                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                     </padding>
-                  </TextArea>
-               </children>
-               <padding>
-                  <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-               </padding>
-            </VBox>
-         </children>
-      </HBox>
-      <MFXButton fx:id="btnQuitInfo" buttonType="RAISED" onAction="#onActionQuitInfo" prefHeight="77.0" prefWidth="261.0" styleClass="mfx-button" text="VOLVER AL MENU" />
-   </children>
+<VBox alignment="TOP_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root"
+      stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="cr.ac.una.preguntadospackage.controller.SobreNosotrosController">
    <padding>
-      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
    </padding>
+   <Label alignment="CENTER" prefHeight="18.0" prefWidth="1293.0" styleClass="mfx-label-tittle"
+          text="UNIVERSIDAD NACIONAL DE COSTA RICA"/>
+   <Label alignment="CENTER" layoutX="479.0" layoutY="25.0" prefHeight="18.0" prefWidth="1292.0" styleClass="mfx-label"
+          text="PROGRAMCION 2"/>
+   <Label alignment="CENTER" layoutX="479.0" layoutY="53.0" prefHeight="18.0" prefWidth="1267.0" styleClass="mfx-label"
+          text="I CLICLO 2024"/>
+   <HBox prefHeight="447.0" prefWidth="1250.0" styleClass="translucent-brown-vbox">
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="650.0" spacing="3.0">
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+         </padding>
+         <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/EstebanImage.jpg"/>
+         </ImageView>
+         <Label alignment="CENTER" prefHeight="18.0" prefWidth="706.0" styleClass="mfx-label"
+                text="ESTEBAN JAVIER GRANADOS SIBAJA"/>
+         <TextArea editable="false" prefHeight="200.0" prefWidth="200.0" style="-fx-background-repeat: 0;"
+                   styleClass="mfx-transparent-textarea"
+                   text="Soy Esteban, un estudiante de Ingeniera en Sistamas de la Universidad Nacional de Costa Rica, este es mi segundo año es la carrera, me gusta mucho el desarrollo de programas en lenguajes como C++ o  JAVA ,mi objetivo es ser un gran ingeniero en sistemas, poder vivir de ese labor y disfrutar del ambiente laboral que se da en esta cerrera."
+                   wrapText="true">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+         </TextArea>
+      </VBox>
+      <Separator orientation="VERTICAL" style="-fx-background-color: #E5AE25;"/>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="650.0" spacing="3.0">
+         <padding>
+            <Insets bottom="4.0" left="4.0" right="4.0" top="4.0"/>
+         </padding>
+         <ImageView fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/EstebanImage.jpg"/>
+         </ImageView>
+         <Label alignment="CENTER" prefHeight="18.0" prefWidth="654.0" styleClass="mfx-label"
+                text="MATTEO VARGAS"/>
+         <TextArea editable="false" prefHeight="148.0" prefWidth="600.0" styleClass="mfx-transparent-textarea"
+                   text="Soy Esteban, un estudiante de Ingeniera en Sistamas de la Universidad Nacional de Costa Rica, este es mi segundo año es la carrera, me gusta mucho el desarrollo de programas en lenguajes como C++ o  JAVA, mi objetivo es ser un gran ingeniero en sistemas, poder vivir de ese labor y disfrutar del ambiente laboral que se da en esta cerrera."
+                   wrapText="true">
+            <padding>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0"/>
+            </padding>
+         </TextArea>
+      </VBox>
+   </HBox>
+   <MFXButton fx:id="btnQuitInfo" buttonType="RAISED" onAction="#onActionQuitInfo" prefHeight="77.0" prefWidth="261.0"
+              styleClass="mfx-button" text="VOLVER AL MENU"/>
 </VBox>

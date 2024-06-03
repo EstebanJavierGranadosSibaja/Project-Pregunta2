@@ -46,6 +46,8 @@
                <Image url="@../resources/Bomba.png" />
             </ImageView>
          </HBox>
+         <MFXButton buttonType="RAISED" onAction="#onActionExit" prefHeight="50.0" prefWidth="94.0" text="SALIR" />
+         <MFXButton buttonType="RAISED" onAction="#onActionHelp" prefHeight="51.0" prefWidth="61.0" text="?" />
       </VBox>
       <StackPane minHeight="668.0" minWidth="888.0" prefHeight="668.0" prefWidth="888.0">
          <HBox.margin>
@@ -564,8 +566,6 @@
             <ImageView fx:id="imgSelectorSector6" fitHeight="230.0" fitWidth="195.0" layoutX="154.0" layoutY="135.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="58.8">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <MFXButton buttonType="RAISED" layoutX="751.0" layoutY="17.0" onAction="#onActionExit" prefHeight="34.0" prefWidth="94.0" text="SALIR" />
-            <MFXButton buttonType="RAISED" layoutX="821.0" layoutY="661.0" onAction="#onActionHelp" prefHeight="34.0" prefWidth="61.0" text="?" />
          </AnchorPane>
       </StackPane>
    </HBox>
