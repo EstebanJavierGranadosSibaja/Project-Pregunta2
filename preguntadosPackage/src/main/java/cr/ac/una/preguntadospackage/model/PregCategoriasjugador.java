@@ -14,6 +14,7 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "PREG_CATEGORIASJUGADOR")
@@ -45,7 +46,7 @@ public class PregCategoriasjugador implements Serializable {
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private PregJugadores cajuIdjug;
 
-   public PregCategoriasjugador() {
+    public PregCategoriasjugador() {
     }
 
     public PregCategoriasjugador(PregCategoriasjugadorDto pregCategoriasjugadorDto) {

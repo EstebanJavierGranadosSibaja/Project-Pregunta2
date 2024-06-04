@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package cr.ac.una.preguntadospackage.model;
 
 import jakarta.persistence.Basic;
@@ -24,8 +20,8 @@ import java.math.BigDecimal;
 @Table(name = "PREG_PREGUNTASPARTIDA")
 @NamedQueries({
     @NamedQuery(name = "PregPreguntaspartida.findAll", query = "SELECT p FROM PregPreguntaspartida p"),
-    @NamedQuery(name = "PregPreguntaspartida.findByPrpaId", query = "SELECT p FROM PregPreguntaspartida p WHERE p.prpaId = :prpaId"),
-    @NamedQuery(name = "PregPreguntaspartida.findByPrpaEstadoRespondida", query = "SELECT p FROM PregPreguntaspartida p WHERE p.prpaEstadoRespondida = :prpaEstadoRespondida")})
+    @NamedQuery(name = "PregPreguntaspartida.findByPrpaId", query = "SELECT p FROM PregPreguntaspartida p WHERE p.id = :id"),
+    @NamedQuery(name = "PregPreguntaspartida.findByPrpaEstadoRespondida", query = "SELECT p FROM PregPreguntaspartida p WHERE p.estadoRespondida = :estadoRespondida")})
 public class PregPreguntaspartida implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -22,7 +22,6 @@ import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
 
-@Entity
 @Table(name = "PREG_CATEGORIAS")
 @NamedQueries({
     @NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
@@ -30,6 +29,7 @@ import java.util.List;
     @NamedQuery(name = "PregCategorias.findByCatCategoria", query = "SELECT p FROM PregCategorias p WHERE p.categoria = :categoria"),
     @NamedQuery(name = "PregCategorias.findByCatEstado", query = "SELECT p FROM PregCategorias p WHERE p.estado = :estado"),
     @NamedQuery(name = "PregCategorias.findByCatVersion", query = "SELECT p FROM PregCategorias p WHERE p.version = :version")})
+@Entity
 public class PregCategorias implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -140,5 +140,4 @@ public class PregCategorias implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregCategorias[ catId=" + id + " ]";
     }
-
 }

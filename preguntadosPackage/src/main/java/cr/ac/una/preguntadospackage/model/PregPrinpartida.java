@@ -17,9 +17,13 @@ import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import jakarta.persistence.Version;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -108,7 +112,7 @@ public class PregPrinpartida implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
+
     public String getNombrePartida() {
         return nombrePartida;
     }
@@ -229,5 +233,4 @@ public class PregPrinpartida implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregPrinpartida[ pparId=" + id + " ]";
     }
-
 }

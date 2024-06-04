@@ -19,6 +19,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "PREG_RESPUESTAS")

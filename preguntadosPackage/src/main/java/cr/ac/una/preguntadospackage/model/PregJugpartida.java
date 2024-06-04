@@ -19,6 +19,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
+import java.math.BigInteger;
 
 @Entity
 @Table(name = "PREG_JUGPARTIDA")
@@ -60,18 +61,6 @@ public class PregJugpartida implements Serializable {
     @Column(name = "JPAR_COLOR_PEON")
     private String colorPeon;
     @Basic(optional = false)
-    @Column(name = "JPAR_POSICION_SECTOR")
-    private Long posicionSector;
-    @Basic(optional = false)
-    @Column(name = "JPAR_POSICION_CASILLA")
-    private Long posicionCasilla;
-    @Basic(optional = false)
-    @Column(name = "JPAR_CANTIDAD_AYUDAS_TOTAL")
-    private Long cantidadAyudasTotal;
-    @Basic(optional = false)
-    @Column(name = "JPAR_CANTIDAD_AYUDAS_USADAS")
-    private Long cantidadAyudasUsadas;
-    @Basic(optional = false)
     @Column(name = "JPAR_DOBLE_AYUDA")
     private String dobleAyuda;
     @Basic(optional = false)
@@ -83,9 +72,6 @@ public class PregJugpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "JPAR_EXTRA_AYUDA")
     private String extraAyuda;
-    @Basic(optional = false)
-    @Column(name = "JPAR_CANTIDAD_FICHAS")
-    private Long cantidadFichas;
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_ARTE")
     private String fichaArte;
@@ -104,6 +90,21 @@ public class PregJugpartida implements Serializable {
     @Basic(optional = false)
     @Column(name = "JPAR_FICHA_DEPORTE")
     private String fichaDeporte;
+    @Basic(optional = false)
+    @Column(name = "JPAR_POSICION_SECTOR")
+    private Long posicionSector;
+    @Basic(optional = false)
+    @Column(name = "JPAR_POSICION_CASILLA")
+    private Long posicionCasilla;
+    @Basic(optional = false)
+    @Column(name = "JPAR_CANTIDAD_AYUDAS_TOTAL")
+    private Long cantidadAyudasTotal;
+    @Basic(optional = false)
+    @Column(name = "JPAR_CANTIDAD_AYUDAS_USADAS")
+    private Long cantidadAyudasUsadas;
+    @Basic(optional = false)
+    @Column(name = "JPAR_CANTIDAD_FICHAS")
+    private Long cantidadFichas;
     @Version
     @Column(name = "JPAR_VERSION")
     private Long version;
@@ -335,5 +336,4 @@ public class PregJugpartida implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugpartida[ jparId=" + id + " ]";
     }
-
 }

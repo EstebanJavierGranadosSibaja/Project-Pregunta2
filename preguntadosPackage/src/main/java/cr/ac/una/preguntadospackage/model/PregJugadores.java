@@ -15,6 +15,7 @@ import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.persistence.Version;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 @Entity
@@ -30,6 +31,8 @@ import java.util.List;
     @NamedQuery(name = "PregJugadores.findByJugCantidadAcertadasGeneral", query = "SELECT p FROM PregJugadores p WHERE p.cantidadAcertadasGeneral = :cantidadAcertadasGeneral"),
     @NamedQuery(name = "PregJugadores.findByJugVersion", query = "SELECT p FROM PregJugadores p WHERE p.version = :version")})
 public class PregJugadores implements Serializable {
+
+    
 
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
@@ -175,5 +178,4 @@ public class PregJugadores implements Serializable {
     public String toString() {
         return "cr.ac.una.preguntadospackage.model.PregJugadores[ jugId=" + id + " ]";
     }
-
 }
