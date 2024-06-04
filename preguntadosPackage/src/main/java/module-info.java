@@ -8,7 +8,7 @@ module cr.ac.una.preguntadospackage {
     requires java.base;
     requires jakarta.persistence;
     requires javafx.media;
-    //requires org.eclipse.persistence.jpa;
+    requires org.eclipse.persistence.jpa;
 
     opens cr.ac.una.preguntadospackage to javafx.fxml, jakarta.persistence;
     opens cr.ac.una.preguntadospackage.controller to javafx.fxml, jakarta.persistence;
