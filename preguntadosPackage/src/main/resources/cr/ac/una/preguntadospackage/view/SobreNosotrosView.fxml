@@ -15,7 +15,7 @@
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
    <Label alignment="CENTER" prefHeight="18.0" prefWidth="1293.0" styleClass="mfx-label-tittle" text="UNIVERSIDAD NACIONAL DE COSTA RICA" />
-   <Label alignment="CENTER" layoutX="479.0" layoutY="25.0" prefHeight="18.0" prefWidth="1292.0" styleClass="mfx-label" text="PROGRAMCION 2" />
+   <Label alignment="CENTER" layoutX="479.0" layoutY="25.0" prefHeight="18.0" prefWidth="1292.0" styleClass="mfx-label" text="PROGRAMACION 2" />
    <Label alignment="CENTER" layoutX="479.0" layoutY="53.0" prefHeight="18.0" prefWidth="1267.0" styleClass="mfx-label" text="I CLICLO 2024" />
    <HBox prefHeight="447.0" prefWidth="1250.0" styleClass="translucent-brown-vbox" VBox.vgrow="ALWAYS">
       <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="650.0" spacing="3.0" HBox.hgrow="ALWAYS">
