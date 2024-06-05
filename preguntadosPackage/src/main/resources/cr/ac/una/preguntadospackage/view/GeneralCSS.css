@@ -1,6 +1,11 @@
-@font-face {
+/*@font-face {
     font-family: 'Bree Serif';
-    src: url("../resources/BreeSerif-Regular.ttf");  /*Asegúrate de que la ruta sea correcta */
+    src: url("../resources/BreeSerif-Regular.ttf");  Asegúrate de que la ruta sea correcta 
+}*/
+
+*{
+    -mfx-purple:-fx-base-color-focus;
+    -mfx-main: -fx-base-color-focus;
 }
 
 .root {

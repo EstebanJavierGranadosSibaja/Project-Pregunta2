@@ -29,6 +29,8 @@ public class MenuController extends Controller implements Initializable {
     private MFXButton btnSobreNosotros;
     @FXML
     private MFXButton btnInformacion;
+    @FXML
+    private MFXButton btnCargarPartida;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -63,5 +65,9 @@ public class MenuController extends Controller implements Initializable {
     @FXML
     private void onActionInformacion(ActionEvent event) {
         FlowController.getInstance().goView("InformacionView");
+    }
+
+    @FXML
+    private void onActionCargarPartida(ActionEvent event) {
     }
 }

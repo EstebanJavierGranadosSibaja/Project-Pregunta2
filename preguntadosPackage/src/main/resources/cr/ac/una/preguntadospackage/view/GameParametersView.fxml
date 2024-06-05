@@ -71,12 +71,18 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Spinner>
+            <padding>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
          </HBox>
          <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
             <Image url="@../resources/placeholder.png" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="54.0" prefWidth="379.0">
-            <Label fx:id="test1" alignment="CENTER" prefHeight="50.0" prefWidth="166.0" styleClass="mfx-label-small" text="TIEMPO LIMITE" />
+            <Label fx:id="test1" alignment="CENTER" prefHeight="50.0" prefWidth="166.0" styleClass="mfx-label-small" text="TIEMPO LIMITE">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding></Label>
             <MFXSlider fx:id="sldrGameTime" max="45.0" min="5.0" prefHeight="27.0" prefWidth="149.0" value="5.0" />
             <Label fx:id="lblGameTime1" prefHeight="68.0" prefWidth="70.0" text=" " />
          </HBox>
@@ -86,7 +92,7 @@
       <children>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
             <children>
-               <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="75.0" prefWidth="220.0" text="INICIAR JUEGO" />
+               <MFXButton fx:id="btnStart" buttonType="RAISED" onAction="#onActionStart" prefHeight="75.0" prefWidth="220.0" text="SIGUIENTE" />
             </children>
          </HBox>
          <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
