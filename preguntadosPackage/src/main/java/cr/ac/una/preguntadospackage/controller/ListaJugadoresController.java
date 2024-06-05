@@ -7,6 +7,7 @@ package cr.ac.una.preguntadospackage.controller;
 import cr.ac.una.preguntadospackage.model.PregJugadoresDto;
 import cr.ac.una.preguntadospackage.service.PregJugadoresService;
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.Formato;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -77,6 +78,12 @@ public class ListaJugadoresController extends Controller implements Initializabl
         tbcPartidasGanadas.setCellValueFactory(cd -> cd.getValue().partidasGanadas);
         tbcPreguntasRespondidas.setCellValueFactory(cd -> cd.getValue().cantidasRespuestasGeneral);
         tbcPreguntasAcertadas.setCellValueFactory(cd -> cd.getValue().cantidasAcertadasGeneral);
+        txtId.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtNombre.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(30));
+        txtPartidasJugadas.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtPartidasGanadas.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtPreguntasRespondidas.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtPreguntasAcertadas.delegateSetTextFormatter(Formato.getInstance().integerFormat());
     }
 
     @Override
