@@ -117,7 +117,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-        resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
-        //getStage().close();
+        //resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
+        FlowController.getInstance().goView("EstadisticasDelJugadorView");
     }
 }

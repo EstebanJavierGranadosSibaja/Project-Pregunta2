@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.EstadisticasDelJugadorController">
    <padding>
       <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
    </padding>
@@ -49,5 +49,6 @@
             </VBox>
          </children>
       </HBox>
+      <MFXButton fx:id="btnVolver" onAction="#onActionBtnVolver" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="VOLVER" />
    </children>
 </VBox>
