@@ -16,13 +16,13 @@
    </padding>
    <Label alignment="CENTER" prefHeight="60.0" prefWidth="1301.0" styleClass="mfx-label-tittle" text="LISTA DE PREGUNTAS" VBox.vgrow="ALWAYS" />
    <HBox prefHeight="674.0" prefWidth="1280.0" spacing="25.0" VBox.vgrow="ALWAYS">
-      <VBox alignment="TOP_CENTER" prefHeight="619.0" prefWidth="332.0" spacing="29.8" styleClass="translucent-brown-vbox">
+      <VBox alignment="TOP_CENTER" prefHeight="619.0" prefWidth="354.0" spacing="29.8" styleClass="translucent-brown-vbox">
          <Label styleClass="mfx-label" text="PARAMETROS DE PREGUNTA">
             <VBox.margin>
                <Insets bottom="25.0" />
             </VBox.margin>
          </Label>
-         <MFXTextField fx:id="txtId" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="ID DEL USUARIO">
+         <MFXTextField fx:id="txtId" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="ID DE LA PREGUNTA">
             <styleClass>
                <String fx:value="mfx-textfield" />
                <String fx:value="mfx-label" />
@@ -52,10 +52,10 @@
                <String fx:value="mfx-label" />
             </styleClass>
          </MFXTextField>
-         <MFXTextField fx:id="txtEstado" floatMode="ABOVE" layoutX="30.0" layoutY="459.0" prefHeight="50.0" prefWidth="375.0" promptText="ESTADO (A: Activo I: Inactivo)">
+         <MFXTextField fx:id="txtEstado" floatMode="ABOVE" layoutX="30.0" layoutY="459.0" prefHeight="50.0" prefWidth="375.0" promptText="ESTADO (A: Activa I: Inactiva U: Usada)">
             <styleClass>
                <String fx:value="mfx-textfield" />
-               <String fx:value="mfx-label" />
+               <String fx:value="mfx-label-small" />
             </styleClass>
          </MFXTextField>
          <MFXButton fx:id="btnFiltrar" onAction="#onActionFiltrar" prefHeight="75.0" prefWidth="200.0" styleClass="mfx-button" text="FILTRAR" />

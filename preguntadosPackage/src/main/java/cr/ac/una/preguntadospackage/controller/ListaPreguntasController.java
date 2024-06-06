@@ -9,6 +9,7 @@ import cr.ac.una.preguntadospackage.model.PregJugadoresDto;
 import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
 import cr.ac.una.preguntadospackage.service.PregPreguntasService;
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.Formato;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -61,8 +62,6 @@ public class ListaPreguntasController extends Controller implements Initializabl
     private TableColumn<PregPreguntasDto, Boolean> tbcEstado;
     @FXML
     private MFXButton btnVolver;
-    @FXML
-    private MFXButton btnAceptar11;
 
     private ObservableList<PregPreguntasDto> preguntasList;
 
@@ -74,11 +73,17 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
-        tbcCategoria.setCellValueFactory(cd -> cd.getValue().categoria);
+        //tbcCategoria.setCellValueFactory(cd -> cd.getValue().categoria);
         tbcEnunciado.setCellValueFactory(cd -> cd.getValue().textoPregunta);
         tbcCantidadRespuestas.setCellValueFactory(cd -> cd.getValue().cantidadRespuestas);
         tbcCantidadAcertadas.setCellValueFactory(cd -> cd.getValue().cantidadAciertos);
         tbcEstado.setCellValueFactory(cd -> cd.getValue().estado);
+        txtId.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtCategoria.delegateSetTextFormatter(Formato.getInstance().letrasFormat(30));
+        txtEnunciado.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(500));
+        txtCantidadRespuestas.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtCantidadAciertos.delegateSetTextFormatter(Formato.getInstance().integerFormat());
+        txtEstado.delegateSetTextFormatter(Formato.getInstance().letrasFormat(1));
     }
 
     @Override
@@ -89,7 +94,7 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @FXML
     private void onActionFiltrar(ActionEvent event) {
         PregPreguntasService empService = new PregPreguntasService();
-        Respuesta respuesta = empService.getPreguntas(txtId.getText().toUpperCase(), tbcEnunciado.getText().toUpperCase(), tbcCantidadRespuestas.getText().toUpperCase(), tbcCantidadAcertadas.getText().toUpperCase(), tbcEstado.getText().toUpperCase());
+        Respuesta respuesta = empService.getPreguntas(txtId.getText().toUpperCase(), txtEnunciado.getText().toUpperCase(), txtCantidadRespuestas.getText().toUpperCase(), txtCantidadAciertos.getText().toUpperCase(), txtEstado.getText().toUpperCase());
         if (respuesta.getEstado()) {
             preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
             tbvPreguntas.setItems(preguntasList);
@@ -112,8 +117,8 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-        resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
-        //getStage().close();
+//        resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
+//        //getStage().close();
     }
 
 }
