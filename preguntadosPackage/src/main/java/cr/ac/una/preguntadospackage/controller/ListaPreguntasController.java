@@ -5,7 +5,6 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.model.PregCategoriasDto;
-import cr.ac.una.preguntadospackage.model.PregJugadoresDto;
 import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
 import cr.ac.una.preguntadospackage.service.PregPreguntasService;
 import cr.ac.una.preguntadospackage.util.FlowController;
@@ -99,7 +98,6 @@ public class ListaPreguntasController extends Controller implements Initializabl
             preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
             tbvPreguntas.setItems(preguntasList);
             tbvPreguntas.refresh();
-
         }
     }
 
