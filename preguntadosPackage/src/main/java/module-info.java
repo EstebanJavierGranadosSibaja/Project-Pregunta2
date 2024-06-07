@@ -25,5 +25,7 @@ module cr.ac.una.preguntadospackage {
     // 3 -> Entender la logica de las tablas intermedias no puras y como se relaionan realmente entre sí con las demas y el programa.
     // 4 -> Añadir alguna que otra vista simple que sea necesaria (PROBABLEMENTE LA DE MANEJO DE PREGUNTAS).
     // 5 -> Continuar con la documentación.
+    // IMPORTANTE ->            Collections.shuffle(empleados);
+
     
 }
