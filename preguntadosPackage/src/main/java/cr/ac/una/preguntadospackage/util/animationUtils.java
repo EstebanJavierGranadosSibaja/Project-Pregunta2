@@ -1,6 +1,7 @@
 package cr.ac.una.preguntadospackage.util;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.PauseTransition;
 import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -43,31 +44,13 @@ public class animationUtils {
     public void playAnimation(String effect, ImageView imageView, int oldX, int oldY, int newX, int newY) {
         // depending on the effect, play the corresponding animation
         switch (effect) {
-            case "blink": {
+            case "fade": {
                 // play the blink animation
                 imageView.setVisible(true);
                 FadeTransition ft = new FadeTransition(Duration.millis(1000), imageView);
                 ft.setFromValue(0.8);
                 ft.setToValue(0.0);
                 ft.setCycleCount(3);
-                ft.setAutoReverse(true);
-                ft.setOnFinished(event -> {
-                    imageView.setVisible(false);
-                    ft.stop();
-                });
-                ft.play();
-
-                break;
-
-
-            }
-            case "constantBlink": {
-                // play the constant blink animation
-                imageView.setVisible(true);
-                FadeTransition ft = new FadeTransition(Duration.millis(1000), imageView);
-                ft.setFromValue(1.0);
-                ft.setToValue(0.0);
-                ft.setCycleCount(4);
                 ft.setAutoReverse(true);
                 ft.setOnFinished(event -> {
                     imageView.setVisible(false);
@@ -96,7 +79,7 @@ public class animationUtils {
                 break;
             }
             case "slowPopUp": {
-                // play the slow pop up animation
+                // play a pause animation to show the slow pop up
                 imageView.setVisible(true);
                 FadeTransition ft = new FadeTransition(Duration.millis(2000), imageView);
                 ft.setFromValue(0.0);
@@ -104,11 +87,42 @@ public class animationUtils {
                 ft.setCycleCount(1);
                 ft.setAutoReverse(false);
                 ft.setOnFinished(event -> {
+
+                    ft.stop();
+                });
+
+                PauseTransition pt = new PauseTransition(Duration.millis(7000));
+
+                pt.setOnFinished(event -> {
                     imageView.setVisible(false);
+                    imageView.setVisible(false);
+                    pt.stop();
+
+                });
+
+                ft.play();
+                pt.play();
+
+
+                // play the slow pop up animation
+                //imageView.setVisible(true);
+
+                break;
+            }
+            case "nonHidingFade":{
+                // play the longer fade animation
+                imageView.setVisible(true);
+                FadeTransition ft = new FadeTransition(Duration.millis(3000), imageView);
+                ft.setFromValue(1.0);
+                ft.setToValue(0.2);
+                ft.setCycleCount(8);
+                ft.setAutoReverse(false);
+                ft.setOnFinished(event -> {
                     ft.stop();
                 });
                 ft.play();
                 break;
+
             }
         }
     }

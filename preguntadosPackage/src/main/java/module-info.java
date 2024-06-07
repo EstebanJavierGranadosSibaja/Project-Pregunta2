@@ -1,5 +1,4 @@
 module cr.ac.una.preguntadospackage {
-    
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.graphics;
@@ -8,6 +7,7 @@ module cr.ac.una.preguntadospackage {
     requires java.base;
     requires jakarta.persistence;
     requires javafx.media;
+
     requires eclipselink;
     requires jakarta.activation;
 
@@ -27,5 +27,4 @@ module cr.ac.una.preguntadospackage {
     // 5 -> Continuar con la documentación.
     // IMPORTANTE ->            Collections.shuffle(empleados);
 
-    
 }

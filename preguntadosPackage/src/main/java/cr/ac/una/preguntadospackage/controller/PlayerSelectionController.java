@@ -144,6 +144,7 @@ public class PlayerSelectionController extends Controller implements Initializab
                 // if all players have been selected, go to the game view
                 gameController.recieveParameters(playerColors, playerNames, amountOfPlayers, gameMode, duelMode, timeLimitInMinutes);
                 FlowController.getInstance().goView("GameView");
+
             } else {
                 // if there are still players to select, go to the next player
                 currentPlayer++;
