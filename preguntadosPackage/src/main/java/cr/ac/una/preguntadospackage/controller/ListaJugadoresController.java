@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.model.PregJugadoresDto;
@@ -23,11 +19,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
-/**
- * FXML Controller class
- *
- * @author esteb
- */
 public class ListaJugadoresController extends Controller implements Initializable {
 
     @FXML
@@ -67,9 +58,6 @@ public class ListaJugadoresController extends Controller implements Initializabl
 
     private PregJugadoresDto resultado;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
@@ -112,12 +100,12 @@ public class ListaJugadoresController extends Controller implements Initializabl
 
     @FXML
     private void onAcionVolver(ActionEvent event) {
+        tbvJugadores.refresh();
         FlowController.getInstance().goView("MenuView");
     }
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-        //resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
         FlowController.getInstance().goView("EstadisticasDelJugadorView");
     }
 }

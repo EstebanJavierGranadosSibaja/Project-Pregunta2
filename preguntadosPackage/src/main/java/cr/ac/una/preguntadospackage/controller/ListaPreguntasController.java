@@ -1,9 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
-package cr.ac.una.preguntadospackage.controller;
 
+package cr.ac.una.preguntadospackage.controller;
 import cr.ac.una.preguntadospackage.model.PregCategoriasDto;
 import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
 import cr.ac.una.preguntadospackage.service.PregPreguntasService;
@@ -24,11 +20,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
-/**
- * FXML Controller class
- *
- * @author esteb
- */
 public class ListaPreguntasController extends Controller implements Initializable {
 
     @FXML
@@ -66,9 +57,6 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     private PregPreguntasDto resultado;
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
@@ -87,7 +75,6 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     @Override
     public void initialize() {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @FXML
@@ -110,13 +97,14 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     @FXML
     private void onAcionVolver(ActionEvent event) {
+        tbvPreguntas.refresh();
         FlowController.getInstance().goView("MenuView");
     }
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-//        resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
-//        //getStage().close();
+        FlowController.getInstance().goView("MantenimientoPreguntasView");
+
     }
 
 }
