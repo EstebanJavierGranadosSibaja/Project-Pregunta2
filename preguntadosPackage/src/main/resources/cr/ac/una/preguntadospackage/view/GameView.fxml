@@ -2,7 +2,6 @@
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -12,51 +11,18 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #9161b9;" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0">
       <VBox.margin>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </VBox.margin>
-      <VBox alignment="TOP_CENTER" prefHeight="687.0" prefWidth="353.0">
-         <Label fx:id="lblCurrentPlayerTurn" alignment="CENTER" prefHeight="79.0" prefWidth="287.0" text="TURNO DEL JUGADOR:">
-            <font>
-               <Font name="System Bold" size="21.0" />
-            </font>
-         </Label>
-         <Label fx:id="lblCurrentPlayerTurn1" alignment="CENTER" prefHeight="79.0" prefWidth="287.0" text="CARTAS DISPONIBLES" textAlignment="CENTER">
-            <font>
-               <Font name="System Bold" size="21.0" />
-            </font>
-         </Label>
-         <HBox alignment="CENTER" prefHeight="214.0" prefWidth="353.0">
-            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../resources/TiroExtra.png" />
-            </ImageView>
-            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../resources/DobleOportunidad.png" />
-            </ImageView>
-         </HBox>
-         <HBox alignment="CENTER" prefHeight="214.0" prefWidth="353.0">
-            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../resources/Pasar.png" />
-            </ImageView>
-            <ImageView fitHeight="249.0" fitWidth="162.0" pickOnBounds="true" preserveRatio="true">
-               <Image url="@../resources/Bomba.png" />
-            </ImageView>
-         </HBox>
-      </VBox>
+      <MFXButton buttonType="RAISED" minWidth="53.0" onAction="#onActionHelp" prefHeight="45.0" prefWidth="53.0" text="?" />
+      <HBox prefHeight="100.0" prefWidth="200.0" />
       <StackPane minHeight="668.0" minWidth="888.0" prefHeight="668.0" prefWidth="888.0">
          <HBox.margin>
             <Insets />
          </HBox.margin>
-         <ImageView fx:id="imgRainbowCircle" fitHeight="586.0" fitWidth="586.0" pickOnBounds="true" preserveRatio="true">
-            <effect>
-               <Bloom />
-            </effect>
-            <Image url="@../resources/RainbowCircle.png" />
-         </ImageView>
          <ImageView fitHeight="575.0" fitWidth="575.0" pickOnBounds="true" preserveRatio="true">
             <effect>
                <ColorAdjust />
@@ -69,40 +35,13 @@
             </effect>
             <Image url="@../resources/path1-5-1-9.png" />
          </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgSpinner" fitHeight="355.0" fitWidth="355.0" pickOnBounds="true" preserveRatio="true" rotate="26.6">
-            <Image url="@../resources/Roullete.png" />
+         <ImageView fx:id="imgSpinner" fitHeight="305.0" fitWidth="305.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+               <Image url="@../resources/Roullete%20-%20Copy.png" />
+            </image>
          </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgArt" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Arte.png" />
-         </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgScience" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Ciencia.png" />
-         </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgSport" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Deporte.png" />
-         </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgEntertainment" fitHeight="332.0" fitWidth="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Entretenimiento.png" />
-         </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgGeography" fitHeight="281.0" fitWidth="281.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Geografia.png" />
-         </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgHistory" fitHeight="300.0" fitWidth="209.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Mate.png" />
-         </ImageView>
-         <Separator prefWidth="200.0" visible="false" />
-         <ImageView fx:id="imgCrown" fitHeight="295.0" fitWidth="258.0" pickOnBounds="true" preserveRatio="true" visible="false">
-            <Image url="@../resources/Corona.png" />
-         </ImageView>
-         <AnchorPane prefHeight="642.0" prefWidth="830.0">
-            <ImageView fitHeight="106.0" fitWidth="106.0" layoutX="394.0" layoutY="289.0" onMouseClicked="#onActionSpinRoulette" pickOnBounds="true" preserveRatio="true">
+         <AnchorPane prefHeight="702.0" prefWidth="888.0">
+            <ImageView fitHeight="80.0" fitWidth="94.0" layoutX="404.0" layoutY="296.0" onMouseClicked="#onActionSpinRoulette" pickOnBounds="true" preserveRatio="true">
                <Image url="@../resources/Spinner.png" />
             </ImageView>
             <ImageView fx:id="imgSector4Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="342.0" layoutY="453.0" pickOnBounds="true" preserveRatio="true">
@@ -200,6 +139,41 @@
                   <Bloom threshold="0.94" />
                </effect>
                <Image url="@../resources/PawnRed.png" />
+            </ImageView>
+            <ImageView fx:id="imgEntertainment" fitHeight="352.0" fitWidth="324.0" layoutX="282.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpEntertainment.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgScience" fitHeight="352.0" fitWidth="324.0" layoutX="284.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpScience.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgHistory" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpHistory.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgSport" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpSports.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgCrown" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpCrown.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgGeography" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpGeography.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgArt" fitHeight="352.0" fitWidth="324.0" layoutX="304.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/popUpArt.png" />
+               </image>
             </ImageView>
             <Separator layoutX="40.0" layoutY="40.0" prefWidth="200.0" visible="false" />
             <ImageView fx:id="imgSector2Pawn1" fitHeight="80.0" fitWidth="60.0" layoutX="602.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
@@ -546,27 +520,26 @@
                </ImageView>
             </StackPane>
             <Separator layoutX="80.0" layoutY="80.0" prefWidth="200.0" visible="false" />
-            <ImageView fx:id="imgSelectorSector1" fitHeight="230.0" fitWidth="195.0" layoutX="335.0" layoutY="10.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="120.4">
+            <ImageView fx:id="imgSelectorSector1" fitHeight="230.0" fitWidth="195.0" layoutX="335.0" layoutY="10.0" onMouseClicked="#onActionSector1" pickOnBounds="true" preserveRatio="true" rotate="120.4" visible="false">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <ImageView fx:id="imgSelectorSector2" fitHeight="230.0" fitWidth="195.0" layoutX="530.0" layoutY="108.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+            <ImageView fx:id="imgSelectorSector2" fitHeight="230.0" fitWidth="195.0" layoutX="530.0" layoutY="108.0" onMouseClicked="#onActionSector2" pickOnBounds="true" preserveRatio="true" rotate="180.0" visible="false">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <ImageView fx:id="imgSelectorSector3" fitHeight="230.0" fitWidth="195.0" layoutX="545.0" layoutY="322.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" rotate="-120.0">
+            <ImageView fx:id="imgSelectorSector3" fitHeight="230.0" fitWidth="195.0" layoutX="545.0" layoutY="322.0" onMouseClicked="#onActionSector3" pickOnBounds="true" preserveRatio="true" rotate="-120.0" visible="false">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <ImageView fx:id="imgSelectorSector4" fitHeight="230.0" fitWidth="195.0" layoutX="365.0" layoutY="446.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="-61.0">
+            <ImageView fx:id="imgSelectorSector4" fitHeight="230.0" fitWidth="195.0" layoutX="365.0" layoutY="446.0" onMouseClicked="#onActionSector4" pickOnBounds="true" preserveRatio="true" rotate="-61.0" visible="false">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <ImageView fx:id="imgSelectorSector5" fitHeight="230.0" fitWidth="195.0" layoutX="169.0" layoutY="350.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="imgSelectorSector5" fitHeight="230.0" fitWidth="195.0" layoutX="169.0" layoutY="350.0" onMouseClicked="#onActionSector5" pickOnBounds="true" preserveRatio="true" visible="false">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <ImageView fx:id="imgSelectorSector6" fitHeight="230.0" fitWidth="195.0" layoutX="154.0" layoutY="135.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="58.8">
+            <ImageView fx:id="imgSelectorSector6" fitHeight="230.0" fitWidth="195.0" layoutX="154.0" layoutY="135.0" onMouseClicked="#onActionSector6" pickOnBounds="true" preserveRatio="true" rotate="58.8" visible="false">
                <Image url="@../resources/selectionSignal.png" />
             </ImageView>
-            <MFXButton buttonType="RAISED" layoutX="751.0" layoutY="17.0" onAction="#onActionExit" prefHeight="34.0" prefWidth="94.0" text="SALIR" />
-            <MFXButton buttonType="RAISED" layoutX="821.0" layoutY="661.0" onAction="#onActionHelp" prefHeight="34.0" prefWidth="61.0" text="?" />
          </AnchorPane>
       </StackPane>
+      <MFXButton buttonType="RAISED" minHeight="17.0" onAction="#onActionExit" prefHeight="49.0" prefWidth="94.0" text="SALIR" />
    </HBox>
 </VBox>

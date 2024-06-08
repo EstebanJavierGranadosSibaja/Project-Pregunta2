@@ -23,66 +23,82 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
     private ImageView imgDisabledHistory;
 
     QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
-
+    public Boolean onLastCasilla = false;
+    public Boolean comesFromAyuda = false; // this enables us to know if the player is coming from the help view
+    // so that way we are not considering it as the last casilla or crown
 
     @Override
     public void initialize() {
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
     }
 
-    /*
-    FOR REFERENCE;
-    return switch (category) {
-            case 0 -> "sciencie";
-            case 1 -> "geography";
-            case 2 -> "crown";
-            case 3 -> "entertainment";
-            case 4 -> "art";
-            case 5 -> "sports";
-            case 6 -> "history";
-            default -> null;
-        };
-
-        THERE SHOULD BE AN ICON POPING UP WITH THE CATEGORY USING THIS slowPopUp ANIMATION METHOD
-     */
+    private void resetEverything() {
+        imgDisabledGeography.setVisible(false);
+        imgDisabledSports.setVisible(false);
+        imgDisabledArt.setVisible(false);
+        imgDisabledEntertainment.setVisible(false);
+        imgDisabledScience.setVisible(false);
+        imgDisabledHistory.setVisible(false);
+        comesFromAyuda = false;
+        onLastCasilla = false;
+    }
 
     @javafx.fxml.FXML
     public void onActionEntertainment(Event event) {
-        questionController.setCategoryTheme("entertainment");
+        questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("entertainment", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
+        resetEverything();
     }
 
     @javafx.fxml.FXML
     public void onActionHistory(Event event) {
-        questionController.setCategoryTheme("history");
+        questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("history", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
+        resetEverything();
+
+
+        /*questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("history", true);
+        FlowController.getInstance().goView("QuestionView");
+        resetEverything();
+
+         */
     }
 
     @javafx.fxml.FXML
     public void onActionArt(Event event) {
-        questionController.setCategoryTheme("art");
+        questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("art", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
+        resetEverything();
     }
 
     @javafx.fxml.FXML
     public void onActionGeography(Event event) {
-        questionController.setCategoryTheme("geography");
+        questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("geography", true);
         FlowController.getInstance().goView("QuestionView");
+        resetEverything();
     }
 
     @javafx.fxml.FXML
     public void onActionSports(Event event) {
-        questionController.setCategoryTheme("sports");
+        questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("sports", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
+        resetEverything();
     }
 
     @javafx.fxml.FXML
     public void onActionScience(Event event) {
-        questionController.setCategoryTheme("sciencie");
+        questionController.onLastCasilla = onLastCasilla;
+        questionController.setCategoryTheme("sciencie", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
+        resetEverything();
     }
 }

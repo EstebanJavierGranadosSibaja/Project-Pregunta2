@@ -3,8 +3,8 @@ package cr.ac.una.preguntadospackage.controller;
 import cr.ac.una.preguntadospackage.model.PregJugpartidaDto;
 import cr.ac.una.preguntadospackage.model.PregPrinpartidaDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
+
 import cr.ac.una.preguntadospackage.util.animationUtils;
-import cr.ac.una.preguntadospackage.util.soundUtils;
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -78,12 +78,43 @@ public class GameController extends Controller implements Initializable {
         // initialize the partida object
         partida = new PregPrinpartidaDto();
 
+
+        if(modoJuego.equals("F")){ // easy gamemode
+            // enable all players ayudas
+            // if a player has no ayudas, he can skip a spin and get two random coins
+            for (PregJugpartidaDto player : players) {
+                player.setBombaAyuda("A");
+                player.setDobleAyuda("A");
+                player.setExtraAyuda("A");
+                player.setPasarAyuda("A");
+            }
+        } else if (modoJuego.equals("M")) { // medium gamemode
+            // disable all players ayudas
+            // (they earn them by getting coins randomly)
+            for (PregJugpartidaDto player : players) {
+                player.setBombaAyuda("I");
+                player.setDobleAyuda("I");
+                player.setExtraAyuda("I");
+                player.setPasarAyuda("I");
+            }
+
+        } else { // hard gamemode
+            // disable all players ayudas
+            // player can NEVER get or use any ayudas
+            for (PregJugpartidaDto player : players) {
+                player.setBombaAyuda("I");
+                player.setDobleAyuda("I");
+                player.setExtraAyuda("I");
+                player.setPasarAyuda("I");
+            }
+        }
+
         // convert the give time limit in minutes to a LocalDate object
         //partida.setTiempoTotal(LocalDate.now().plusMinutes(timeLimitInMinutes));
 
         partida.setNombrePartida("Partida de prueba");
-        partida.setModoJuego("Clasico");// TODO: depend on the parameters selected by the user
-        partida.setModoDuelo("A");// TODO: depend on the parameters selected by the user A activado I inactivo
+        partida.setModoJuego(modoJuego);// TODO: depend on the parameters selected by the user
+        partida.setModoDuelo(modoDuelo);// TODO: depend on the parameters selected by the user A activado I inactivo
         partida.setTiempoTotal(LocalDate.now());// TODO: depends on a clock that starts when the game starts
         partida.setTiempoTranscurrido(LocalDate.now());// TODO: depends on a clock that starts when the game starts
         partida.setCantidadRondas(1L);// TODO: depend on the parameters selected by the user
@@ -91,12 +122,12 @@ public class GameController extends Controller implements Initializable {
         partida.setCantidadJugadores((long)playerCount);// TODO: depend on the parameters selected by the user
         partida.setSectorActivo(1L);// TODO: depends on the game state
         partida.setVersion(1L);// TODO: depends on the game state
-        partida.setModificado(false);// TODO: depends on the game state
+        partida.setModificado(true);// TODO: depends on the game state
         //partida.setPregJugpartidaList(List.of(players));// TODO: depends on the game state
         //partida.setPregPreguntaspartidaList(List.of());// TODO: depends on the game state
 
         hideAllPawns();
-        hideCategoryAnimation();
+
     }
 
     // ROULLETE LOGIC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -109,7 +140,6 @@ public class GameController extends Controller implements Initializable {
         hasSpinnerBeenClicked = true;
 
         imgSpinner.setRotate(27); // reset the spinner to its original position (27 degrees)
-        soundUtils.getInstance().playSound("roulleteClick");
 
         double randomDegrees = Math.random() * 360;
         int numberOfCategory = (int) Math.floor(randomDegrees / 51.4);
@@ -119,44 +149,48 @@ public class GameController extends Controller implements Initializable {
         rotateAnimation.play();
 
         rotateAnimation.setOnFinished(_event -> {
-            // pause the thread for half a second to show the spinner result
-            try {
-                Thread.sleep(500);
-            }
-            catch (InterruptedException ex) {
-                System.out.println("Error pausing thread after spinner: " + ex.getMessage());
-            }
-
-            // as the spinner has multiple uses, we need to check if the first turn has been assigned to a player
-            // to then show the category crown selection view or the question view
             if(!hasFirstTurnBeenAssigned){
-                if(numberOfCategory == 2) hasFirstTurnBeenAssigned = true;
+                if(numberOfCategory == 2) {
+                    hasFirstTurnBeenAssigned = true;
+                    // play the animation to indicate the current playing sector
+                    animationUtils.getInstance().playAnimation("fade", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
+                }
                 else {
                     currentSelectingPlayer++;
-                    // to avoid an index out of bounds exception
-                    if(currentSelectingPlayer == players.length) currentSelectingPlayer = 0;
+                    if(currentSelectingPlayer == players.length) currentSelectingPlayer = 0; // to avoid an index out of bounds exception
+
+                    // play an animation to indicate the current playing sector
+                    animationUtils.getInstance().playAnimation("fade", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
                 }
                 // reset the spinner click functionality
                 hasSpinnerBeenClicked = false;
                 // show the current player's turn (even works if he won the first turn)
-                animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
             } else {
                 if(numberOfCategory == 2){
+                    QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
+                    questionController.onLastCasilla = false;
                     FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
-                    hasSpinnerBeenClicked = false;
                 } else {
+                    // play the category animation
+                    playCategoryAnimation(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
+                    // add a delay to show the category animation
+                    try {
+                        Thread.sleep(1100);
+                    }
+                    catch (InterruptedException ex) {
+                        System.out.println("Error pausing thread after spinner: " + ex.getMessage());
+                    }
                     // get the question controller instance and set the category theme
                     QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
-                    questionController.setCategoryTheme(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
+                    questionController.setCategoryTheme(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)), false);
                     FlowController.getInstance().goView("QuestionView");
-                    hasSpinnerBeenClicked = false;
-                    rotateAnimation.stop(); // stop the animation (bugfix try)
                 }
+                hasSpinnerBeenClicked = false;
             }
         }); // end of rotateAnimation.setOnFinished
     }
 
-    public void showCoin(String coinCategory, int inventoryNumber) {
+    public void addCoin(String coinCategory, int inventoryNumber) {
         switch(coinCategory) {
             case "sciencie": {
                 players[currentSelectingPlayer].setFichaCiencias("A");
@@ -204,43 +238,60 @@ public class GameController extends Controller implements Initializable {
         }
     }
 
-    public void movePawnForward(int sector, int player) {
+    public void movePawnForward(int sector, int currentPosition) {
+        // -1 because the array is 0-indexed and the casillas are 1-indexed
         ImageView[] sectorPawns = getPawnsBySector(sector);
-        if (sectorPawns != null) {
-            for (ImageView sectorPawn : sectorPawns) {
-                if (sectorPawn.isVisible()) {
-                    sectorPawn.setVisible(false); // hide the old pawn
-                    sectorPawns[player].setVisible(true); // show the new pawn
-                    break;
-                }
+        assert sectorPawns != null;
+        for (ImageView sectorPawn : sectorPawns) {
+            if (sectorPawn.isVisible()) {
+                sectorPawn.setVisible(false); // hide the old pawn
+                break;
             }
-        } else throw new IllegalArgumentException("Invalid sector");
+        }
+        System.out.println("current index (not -1) position" + currentPosition);
+        sectorPawns[currentPosition - 1].setVisible(true); // show the new pawn
     }
 
-    public void movePawnBackward(int sector, int player) {
+    public void movePawnBackward(int sector, int currentPosition) {
         ImageView[] sectorPawns = getPawnsBySector(sector);
-        if (sectorPawns != null) {
-            for (int i = sectorPawns.length - 1; i >= 0; i--) {
-                if (sectorPawns[i].isVisible()) {
-                    sectorPawns[i].setVisible(false);
-                    break;
-                }
+        assert sectorPawns != null;
+        for (int i = sectorPawns.length - 1; i >= 0; i--) {
+            if (sectorPawns[i].isVisible()) {
+                sectorPawns[i].setVisible(false);
+                break;
             }
-            sectorPawns[player].setVisible(true);
-            players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() - 1);
-        } else throw new IllegalArgumentException("Invalid sector");
+        }
+        sectorPawns[currentPosition - 1].setVisible(true);
     }
+
+    /*
+    reference;
+    return switch (category) {
+            case 0 -> "sciencie";
+            case 1 -> "geography";
+            case 2 -> "crown";
+            case 3 -> "entertainment";
+            case 4 -> "art";
+            case 5 -> "sports";
+            case 6 -> "history";
+            default -> null;
+        };
+
+        public void playAnimation(String effect, ImageView imageView, int oldX, int oldY, int newX, int newY)
+     */
+
+
 
     // TODO: make it actually animate and not only show the image
-    public void playCategoryAnimation(int category) {
+    public void playCategoryAnimation(String category) {
         switch (category) {
-            case 0: imgScience.setVisible(true); break;
-            case 1: imgGeography.setVisible(true); break;
-            case 2: imgCrown.setVisible(true); break;
-            case 3: imgEntertainment.setVisible(true); break;
-            case 4: imgArt.setVisible(true); break;
-            case 5: imgSport.setVisible(true); break;
-            case 6: imgHistory.setVisible(true); break;
+            case "sciencie": animationUtils.getInstance().playAnimation("slowPopUp", imgScience, 0, 0, 0, 0  ); break;
+            case "geography": animationUtils.getInstance().playAnimation("slowPopUp", imgGeography, 0, 0, 0, 0  ); break;
+            case "crown": animationUtils.getInstance().playAnimation("slowPopUp", imgCrown, 0, 0, 0, 0  ); break;
+            case "entertainment": animationUtils.getInstance().playAnimation("slowPopUp", imgEntertainment, 0, 0, 0, 0  ); break;
+            case "art": animationUtils.getInstance().playAnimation("slowPopUp", imgArt, 0, 0, 0, 0  ); break;
+            case "sports": animationUtils.getInstance().playAnimation("slowPopUp", imgSport, 0, 0, 0, 0  ); break;
+            case "history": animationUtils.getInstance().playAnimation("slowPopUp", imgHistory, 0, 0, 0, 0  ); break;
         }
     }
 
@@ -355,11 +406,8 @@ public class GameController extends Controller implements Initializable {
             // reset the selected sectors, TODO: this should be done when the game starts but overwritten by the player's previous progress saved in the database
             currentSelectingPlayer = 0;
 
-            // just to initialize the first player's turn
-            lblCurrentPlayerTurn.setText("TURNO DEL JUGADOR: " + (currentSelectingPlayer+1) );
 
             // for debug purposes make the first player's sector blink
-            animationUtils.getInstance().playAnimation("blink", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
         }
     }
 
@@ -448,17 +496,48 @@ public class GameController extends Controller implements Initializable {
         };
     }
 
+    public void playerCorrectAnswer(String category, Boolean isCrowned, Boolean isLastCasilla) {
+        // print the current selecting player's position
+        System.out.println("Player " + currentSelectingPlayer + " has answered correctly");
+        System.out.println(players[currentSelectingPlayer].getPosicionCasilla());
 
+        // this has to go here because the player has to move after answering the question
+        // if the player reaches the last casilla, i would basically ignore the == 4 condition, as the sum happens
+        // after the check
+        if(!isLastCasilla && players[currentSelectingPlayer].getPosicionCasilla().intValue() != 4){
+            players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() + 1);
+        }
 
-    private void hideCategoryAnimation() {
-        imgArt.setVisible(false);imgCrown.setVisible(false);imgEntertainment.setVisible(false);imgGeography.setVisible(false);
-        imgHistory.setVisible(false);imgScience.setVisible(false);imgSport.setVisible(false);
-    }
+        System.out.println(players[currentSelectingPlayer].getPosicionCasilla());
+        // Then the player has reached crown casilla, which means he has to select a category and answer a question
+        // to possibly get a coin
+        if(players[currentSelectingPlayer].getPosicionCasilla().intValue() == 4){
 
-    public void playerCorrectAnswer(String category){
-        movePawnForward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue());
-        players[currentSelectingPlayer].setPosicionCasilla((players[currentSelectingPlayer].getPosicionCasilla() + 1));
-        showCoin(category, players[currentSelectingPlayer].getPosicionSector().intValue());
+            // do the same as we did before but with the crown category
+            System.out.println("Player " + currentSelectingPlayer + " has reached the crown casilla");
+            PlayerCategoryCrownSelectionController playerSelectionCrownController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
+            playerSelectionCrownController.onLastCasilla = true;
+
+            // a mid animation goes here between seeing the player category and the question
+
+            // move the pawn backward 3 times
+            movePawnBackward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue() - 3);
+            System.out.println("not crashing after move pawn backward");
+            players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() - 3);
+            System.out.println("not crashing after set position casilla");
+            FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
+            System.out.println("not crashing after go view");
+        } else {
+            movePawnForward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue());
+            FlowController.getInstance().goView("GameView");
+        }
+
+        if(isCrowned){
+            addCoin(category, players[currentSelectingPlayer].getPosicionSector().intValue());
+            // depending on the difficulty of the game, give the player a random ayuda
+            giveRandomAyudaToPlayerDependingOnDifficulty(); // could cause bugs, should check later!!!!!!!!!!!!!!!!!!!!!
+        }
+        System.out.println(players[currentSelectingPlayer].getPosicionCasilla());
     }
 
     public ImageView getSectorImageIDbySector(int sector){
@@ -477,16 +556,21 @@ public class GameController extends Controller implements Initializable {
     public void onActionExit(ActionEvent actionEvent) {
         // logic of saving to DB goes here
         // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        FlowController.getInstance().goView("MenuView");
-        // completly reset the gamecontroller
-        resetGame();
 
+
+        //@ESTEBAN
+
+
+
+        FlowController.getInstance().goView("MenuView");
+
+        resetGameScenario();
     }
 
     @FXML
     public void onActionHelp(ActionEvent actionEvent) { FlowController.getInstance().goView("HelpView"); }
 
-    private void resetGame() {
+    private void resetGameScenario() {
         // Reset game-related variables
         selectedSectors = 0;
         currentSelectingPlayer = 0;
@@ -513,10 +597,8 @@ public class GameController extends Controller implements Initializable {
         partida = new PregPrinpartidaDto();
 
         // Reset UI elements
-        lblCurrentPlayerTurn.setText("");
+        //lblCurrentPlayerTurn.setText("");
 
-        // Reset category animation
-        hideCategoryAnimation();
     }
 
 
@@ -524,6 +606,102 @@ public class GameController extends Controller implements Initializable {
     public void recieveParameters(String[] playerColors, String[] playerNames, int amountOfPlayers, String gameMode, String duelMode, int timeLimitInMinutes) {
         // here we should make a way to differentiate between loading from the database or just creating a new game
         // TODO
+        // make the sectors fade in and out to indicate that the player has to choose a sector
+        animationUtils.getInstance().playAnimation("nonHidingFade", imgSelectorSector1, 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("nonHidingFade", imgSelectorSector2, 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("nonHidingFade", imgSelectorSector3, 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("nonHidingFade", imgSelectorSector4, 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("nonHidingFade", imgSelectorSector5, 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("nonHidingFade", imgSelectorSector6, 0, 0, 0, 0);
+
         setUpGameEnviroment(amountOfPlayers, playerColors, playerNames, gameMode, duelMode, timeLimitInMinutes);
+    }
+
+    public void giveCurrentPlayerAnAyuda(String ayudaType) {
+        switch (ayudaType) {
+            case "bomba" -> players[currentSelectingPlayer].setBombaAyuda("A");
+            case "doble" -> players[currentSelectingPlayer].setDobleAyuda("A");
+            case "extra" -> players[currentSelectingPlayer].setExtraAyuda("A");
+            case "pasar" -> players[currentSelectingPlayer].setPasarAyuda("A");
+        }
+    }
+
+    public void giveRandomAyudaToPlayerDependingOnDifficulty() {
+        // Check if the game is in medium mode
+        if(partida.getModoJuego().equals("M")) {
+            // Generate a random ayuda
+            int randomAyuda;
+            boolean ayudaAssigned = false;
+
+            while (!ayudaAssigned) {
+                System.out.println("Random ayuda");
+                randomAyuda = (int) Math.floor(Math.random() * 4);
+
+                switch (randomAyuda) {
+                    case 0:
+                        if (players[currentSelectingPlayer].getBombaAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setBombaAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                    case 1:
+                        if (players[currentSelectingPlayer].getDobleAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setDobleAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                    case 2:
+                        if (players[currentSelectingPlayer].getExtraAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setExtraAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                    case 3:
+                        if (players[currentSelectingPlayer].getPasarAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setPasarAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                }
+            }
+        }
+
+        // if the gamemode is in easy, the player will always get a random ayuda if he decides to skip a turn
+        if(partida.getModoJuego().equals("F")) {
+            // Generate a random ayuda
+            int randomAyuda;
+            boolean ayudaAssigned = false;
+
+            while (!ayudaAssigned) {
+                randomAyuda = (int) Math.floor(Math.random() * 4);
+
+                switch (randomAyuda) {
+                    case 0:
+                        if (players[currentSelectingPlayer].getBombaAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setBombaAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                    case 1:
+                        if (players[currentSelectingPlayer].getDobleAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setDobleAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                    case 2:
+                        if (players[currentSelectingPlayer].getExtraAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setExtraAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                    case 3:
+                        if (players[currentSelectingPlayer].getPasarAyuda().equals("I")) {
+                            players[currentSelectingPlayer].setPasarAyuda("A");
+                            ayudaAssigned = true;
+                        }
+                        break;
+                }
+            }
+        }
     }
 }
