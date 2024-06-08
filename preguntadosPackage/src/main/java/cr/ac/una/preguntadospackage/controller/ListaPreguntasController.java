@@ -18,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class ListaPreguntasController extends Controller implements Initializable {
@@ -41,7 +43,7 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @FXML
     private TableColumn<PregPreguntasDto, String> tbcId;
     @FXML
-    private TableColumn<PregCategoriasDto, String> tbcCategoria;
+    private TableColumn<PregPreguntasDto, String> tbcCategoria;
     @FXML
     private TableColumn<PregPreguntasDto, String> tbcEnunciado;
     @FXML
@@ -57,10 +59,12 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     private PregPreguntasDto resultado;
 
+    private PregCategoriasDto preguntaCategoria;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
-        //tbcCategoria.setCellValueFactory(cd -> cd.getValue().categoria);
+        tbcCategoria.setCellValueFactory(cd -> cd.getValue().catId.getSimpleCategoria());
         tbcEnunciado.setCellValueFactory(cd -> cd.getValue().textoPregunta);
         tbcCantidadRespuestas.setCellValueFactory(cd -> cd.getValue().cantidadRespuestas);
         tbcCantidadAcertadas.setCellValueFactory(cd -> cd.getValue().cantidadAciertos);
@@ -76,11 +80,11 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @Override
     public void initialize() {
     }
-
+    
     @FXML
     private void onActionFiltrar(ActionEvent event) {
         PregPreguntasService empService = new PregPreguntasService();
-        Respuesta respuesta = empService.getPreguntas(txtId.getText().toUpperCase(), txtEnunciado.getText().toUpperCase(), txtCantidadRespuestas.getText().toUpperCase(), txtCantidadAciertos.getText().toUpperCase(), txtEstado.getText().toUpperCase());
+        Respuesta respuesta = empService.getPreguntas(txtId.getText().toUpperCase(), txtEnunciado.getText().toUpperCase(), txtCantidadRespuestas.getText().toUpperCase(), txtCantidadAciertos.getText().toUpperCase(), txtEstado.getText().toUpperCase(), txtCategoria.getText().toUpperCase());
         if (respuesta.getEstado()) {
             preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
             tbvPreguntas.setItems(preguntasList);

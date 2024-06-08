@@ -4,6 +4,7 @@ package cr.ac.una.preguntadospackage.model;
 import java.io.Serializable;
 import java.util.List;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class PregPreguntasDto implements Serializable {
@@ -18,9 +19,9 @@ public class PregPreguntasDto implements Serializable {
     public SimpleBooleanProperty estado;
     private Long version;
     private Boolean modificado;
-    private List<PregPreguntaspartida> pregPreguntaspartidaList;
-    private List<PregRespuestas> pregRespuestasList;
-    private PregCategorias catId;
+    private List<PregPreguntaspartidaDto> pregPreguntaspartidaList;
+    private List<PregRespuestasDto> pregRespuestasList;
+    public PregCategoriasDto catId;
 
     public PregPreguntasDto() {
         this.id = new SimpleStringProperty("");
@@ -39,6 +40,7 @@ public class PregPreguntasDto implements Serializable {
         this.cantidadAciertos.set(pregPreguntas.getCantidadAciertos().toString());
         this.estado.set(pregPreguntas.getEstado().equals("A"));
         this.version = pregPreguntas.getVersion();
+        this.catId = new PregCategoriasDto (pregPreguntas.getPreIdcat());
     }
 
     public Long getId() {
@@ -92,27 +94,27 @@ public class PregPreguntasDto implements Serializable {
         this.version = version;
     }
 
-    public List<PregPreguntaspartida> getPregPreguntaspartidaList() {
+    public List<PregPreguntaspartidaDto> getPregPreguntaspartidaList() {
         return pregPreguntaspartidaList;
     }
 
-    public void setPregPreguntaspartidaList(List<PregPreguntaspartida> pregPreguntaspartidaList) {
+    public void setPregPreguntaspartidaList(List<PregPreguntaspartidaDto> pregPreguntaspartidaList) {
         this.pregPreguntaspartidaList = pregPreguntaspartidaList;
     }
 
-    public List<PregRespuestas> getPregRespuestasList() {
+    public List<PregRespuestasDto> getPregRespuestasList() {
         return pregRespuestasList;
     }
 
-    public void setPregRespuestasList(List<PregRespuestas> pregRespuestasList) {
+    public void setPregRespuestasList(List<PregRespuestasDto> pregRespuestasList) {
         this.pregRespuestasList = pregRespuestasList;
     }
 
-    public PregCategorias getCatId() {
+    public PregCategoriasDto getCatId() {
         return catId;
     }
 
-    public void setCatId(PregCategorias catId) {
+    public void setCatId(PregCategoriasDto catId) {
         this.catId = catId;
     }
     

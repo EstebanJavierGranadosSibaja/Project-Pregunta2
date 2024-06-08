@@ -15,7 +15,6 @@ module cr.ac.una.preguntadospackage {
     opens cr.ac.una.preguntadospackage.controller to javafx.fxml, jakarta.persistence;
     opens cr.ac.una.preguntadospackage.model to jakarta.persistence, eclipselink;
     
-    
     exports cr.ac.una.preguntadospackage;
     
     // COSAS POR HACER MAÑANA

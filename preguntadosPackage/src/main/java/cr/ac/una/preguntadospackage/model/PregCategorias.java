@@ -21,12 +21,15 @@ import jakarta.persistence.Version;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.List;
+import javafx.beans.property.SimpleStringProperty;
 
 @Table(name = "PREG_CATEGORIAS")
 @NamedQueries({
+    //@NamedQuery(name = "PregCategorias.findByParameters", query = "SELECT p FROM PregCategorias p WHERE p."),
     @NamedQuery(name = "PregCategorias.findAll", query = "SELECT p FROM PregCategorias p"),
     @NamedQuery(name = "PregCategorias.findByCatId", query = "SELECT p FROM PregCategorias p WHERE p.id = :id"),
     @NamedQuery(name = "PregCategorias.findByCatCategoria", query = "SELECT p FROM PregCategorias p WHERE p.categoria = :categoria"),
+    @NamedQuery(name = "PregCategorias.findBylikeCatCategoria", query = "SELECT p FROM PregCategorias p WHERE upper(p.categoria) LIKE :categoria"),
     @NamedQuery(name = "PregCategorias.findByCatEstado", query = "SELECT p FROM PregCategorias p WHERE p.estado = :estado"),
     @NamedQuery(name = "PregCategorias.findByCatVersion", query = "SELECT p FROM PregCategorias p WHERE p.version = :version")})
 @Entity

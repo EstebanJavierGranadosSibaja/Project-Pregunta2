@@ -28,7 +28,7 @@ import java.util.List;
 @Table(name = "PREG_PREGUNTAS")
 @NamedQueries({
     @NamedQuery(name = "PregPreguntas.findAll", query = "SELECT p FROM PregPreguntas p"),
-    @NamedQuery(name = "PregPreguntas.findByParameters", query = "SELECT p FROM PregPreguntas p Where upper(p.id) LIKE :id AND upper(p.textoPregunta) LIKE :textoPregunta AND upper(p.cantidadRespuestas) LIKE :cantidadRespuestas AND upper(p.cantidadAciertos) LIKE :cantidadAciertos AND upper(p.estado) LIKE :estado"),
+    @NamedQuery(name = "PregPreguntas.findByParameters", query = "SELECT p FROM PregPreguntas p Where upper(p.id) LIKE :id AND upper(p.textoPregunta) LIKE :textoPregunta AND upper(p.cantidadRespuestas) LIKE :cantidadRespuestas AND upper(p.cantidadAciertos) LIKE :cantidadAciertos AND upper(p.estado) LIKE :estado AND upper(p.preIdcat.categoria) LIKE :categoria"),
     @NamedQuery(name = "PregPreguntas.findByPreId", query = "SELECT p FROM PregPreguntas p WHERE p.id = :id"),
     @NamedQuery(name = "PregPreguntas.findByPreTextoPregunta", query = "SELECT p FROM PregPreguntas p WHERE p.textoPregunta = :textoPregunta"),
     @NamedQuery(name = "PregPreguntas.findByPreCantidadRespuestas", query = "SELECT p FROM PregPreguntas p WHERE p.cantidadRespuestas = :cantidadRespuestas"),

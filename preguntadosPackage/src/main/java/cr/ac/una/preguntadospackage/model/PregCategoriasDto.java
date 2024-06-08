@@ -58,6 +58,14 @@ public class PregCategoriasDto implements Serializable {
         this.categoria.set(categoria);
     }
 
+    public SimpleStringProperty getSimpleCategoria(){
+        return categoria;
+    }
+    
+    public void getSimpleCategoria(SimpleStringProperty categoria){
+        this.categoria = categoria;
+    }
+    
     public String getEstado() {
         return estado.get() ? "A" : "I";
     }

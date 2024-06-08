@@ -1,5 +1,6 @@
 package cr.ac.una.preguntadospackage.service;
 
+import cr.ac.una.preguntadospackage.model.PregCategorias;
 import cr.ac.una.preguntadospackage.util.EntityManagerHelper;
 import cr.ac.una.preguntadospackage.model.PregPreguntas;
 import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
@@ -39,7 +40,7 @@ public class PregPreguntasService {
         }
     }
 
-    public Respuesta getPreguntas(String id, String textoPregunta, String cantidadRespuestas, String cantidadAciertos, String estado) {
+    public Respuesta getPreguntas(String id, String textoPregunta, String cantidadRespuestas, String cantidadAciertos, String estado, String categoria) {
         try {
             Query qryJugadores = em.createNamedQuery("PregPreguntas.findByParameters", PregPreguntas.class);
             qryJugadores.setParameter("id", "%" + id + "%");
@@ -47,6 +48,7 @@ public class PregPreguntasService {
             qryJugadores.setParameter("cantidadRespuestas", "%" + cantidadRespuestas + "%");
             qryJugadores.setParameter("cantidadAciertos", "%" + cantidadAciertos + "%");
             qryJugadores.setParameter("estado", "%" + estado + "%");
+            qryJugadores.setParameter("categoria", "%" + categoria + "%");
 
             List<PregPreguntasDto> preguntas = new ArrayList<>();
             List<PregPreguntas> pregunta = qryJugadores.getResultList();
@@ -90,7 +92,6 @@ public class PregPreguntasService {
 //            return new Respuesta(false, "Error guardadndo al jugador.", "guardarJugador " + ex.getMessage());
 //        }
 //    }
-
     public Respuesta eliminarPregunta(Long id) {
         try {
             et = em.getTransaction();
