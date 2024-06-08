@@ -120,7 +120,7 @@ public class PregJugadoresService {
             return new Respuesta(true, "", "", "PregJugadores", jugadores);
         } catch (Exception ex) {
             et.rollback();
-            Logger.getLogger(PregRespuestasService.class.getName()).log(Level.SEVERE, "Error guardando los jugadores", ex);
+            Logger.getLogger(PregJugadoresService.class.getName()).log(Level.SEVERE, "Error guardando los jugadores", ex);
             return new Respuesta(false, "Error guardando los jugadores.", "guardarJugadores " + ex.getMessage());
         }
     }

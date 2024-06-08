@@ -70,6 +70,11 @@ public class PregRespuestas implements Serializable {
         this.cantidadSelecionada = pregRespuestasDto.getCantidadSelecionada();
         this.version = pregRespuestasDto.getVersion();
     }
+    
+    public PregRespuestas(Long id){
+        this.id = id;
+    }
+            
 
     public Long getId() {
         return id;
