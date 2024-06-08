@@ -35,17 +35,16 @@ public class MenuController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
 
     @Override
     public void initialize() {
     }
 
     @FXML
-    private void onActionPlayMultiplayer(ActionEvent event) { 
-        FlowController.getInstance().goView("GameParametersView"); 
+    private void onActionPlayMultiplayer(ActionEvent event) {
+        FlowController.getInstance().goView("GameParametersView");
     }
-
 
     @FXML
     private void onActionMentenimientoPreguntas(ActionEvent event) {
@@ -59,7 +58,7 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionSobreNosotros(ActionEvent event) {
-         FlowController.getInstance().goView("SobreNosotrosView");
+        FlowController.getInstance().goView("SobreNosotrosView");
     }
 
     @FXML
@@ -69,5 +68,6 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionCargarPartida(ActionEvent event) {
+        FlowController.getInstance().goView("ListaPartidasGuardasView");
     }
 }

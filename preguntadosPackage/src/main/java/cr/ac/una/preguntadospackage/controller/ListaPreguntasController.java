@@ -60,6 +60,8 @@ public class ListaPreguntasController extends Controller implements Initializabl
     private PregPreguntasDto resultado;
 
     private PregCategoriasDto preguntaCategoria;
+    @FXML
+    private MFXButton btnAceptar11;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

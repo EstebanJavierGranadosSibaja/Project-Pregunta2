@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXTextField?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.ListaPartidasGuardasController">
+   <padding>
+      <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+   </padding>
+   <children>
+      <Label alignment="CENTER" prefHeight="60.0" prefWidth="1301.0" styleClass="mfx-label-tittle" text="LISTA DE PARTIDAS GUARDADAS" VBox.vgrow="ALWAYS" />
+      <HBox prefHeight="674.0" prefWidth="1280.0" spacing="25.0" VBox.vgrow="ALWAYS">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="619.0" prefWidth="418.0" spacing="29.8" styleClass="translucent-brown-vbox">
+               <children>
+                  <Label alignment="CENTER" prefHeight="32.0" prefWidth="383.0" styleClass="mfx-label" text="PARAMETROS DE LA PARTIDA">
+                     <VBox.margin>
+                        <Insets bottom="25.0" />
+                     </VBox.margin>
+                  </Label>
+                  <MFXTextField fx:id="txtIdPartida" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="ID DE LA PARTIDA">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXTextField fx:id="txtNombre" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="NOMBRE">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXTextField fx:id="txtModoJuego" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="MODO DE JUEGO (F: Facil, M: Medio, D: Dificil)">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXTextField fx:id="txtModoDuelo" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="MODE DUELO (A: Activo, I: Inactivo)">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXTextField fx:id="txtCantidadRondasJugadas" floatMode="ABOVE" layoutX="30.0" layoutY="133.0" prefHeight="50.0" prefWidth="375.0" promptText="CANTIDAS DE RONDAS JUGADAS">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXTextField fx:id="txtCantidadJugadores" floatMode="ABOVE" layoutX="32.0" layoutY="401.0" prefHeight="50.0" prefWidth="375.0" promptText="CANTIDAS DE JUGADORES">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXTextField fx:id="txtEstadoPartida" floatMode="ABOVE" layoutX="30.0" layoutY="459.0" prefHeight="50.0" prefWidth="375.0" promptText="ESTADO PARTIDA (A: Activa I: Inactiva)">
+                     <styleClass>
+                        <String fx:value="mfx-textfield" />
+                        <String fx:value="mfx-label-small" />
+                     </styleClass>
+                  </MFXTextField>
+                  <MFXButton fx:id="btnFiltrar" onAction="#onActionFiltrar" prefHeight="75.0" prefWidth="200.0" styleClass="mfx-button" text="FILTRAR" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" spacing="40.0" HBox.hgrow="ALWAYS">
+               <padding>
+                  <Insets bottom="10.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <children>
+                  <TableView fx:id="tbvPartidas" onMousePressed="#onMousePressedTbvPartidas" prefHeight="499.0" prefWidth="893.0" VBox.vgrow="ALWAYS">
+                     <columns>
+                        <TableColumn fx:id="tbcId" maxWidth="1.7976931348623157E308" prefWidth="125.0" text="ID " />
+                        <TableColumn fx:id="tbcNombre" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="NOMBRE" />
+                        <TableColumn fx:id="tbcModoJuego" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="MODO DE JUEGO" />
+                        <TableColumn fx:id="tbcModoDuelo" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="MODO DUELO" />
+                        <TableColumn fx:id="tbcCantidadRondasJugadas" maxWidth="1.7976931348623157E308" prefWidth="200.0" text="CANTIDAD DE RONDAS" />
+                        <TableColumn fx:id="tbcCantidadJugadores" prefWidth="200.0" text="CANTIDAD DE JUGADORES" />
+                        <TableColumn fx:id="tbcEstadoPartida" prefWidth="75.0" text="ESTADO DE LA PARTIDA" />
+                     </columns>
+                  </TableView>
+                  <HBox prefHeight="75.0" prefWidth="883.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <MFXButton fx:id="btnVolver" onAction="#onAcionVolver" prefHeight="75.0" prefWidth="200.0" styleClass="mfx-button" text="VOLVER" />
+                           </children>
+                        </VBox>
+                        <VBox alignment="CENTER_RIGHT" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                           <children>
+                              <MFXButton fx:id="btnAceptar11" onAction="#onAcionAceptar" prefHeight="75.0" prefWidth="200.0" styleClass="mfx-button" text="ACEPTAR" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </children>
+</VBox>

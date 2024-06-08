@@ -17,7 +17,7 @@
    <Label alignment="CENTER" prefHeight="60.0" prefWidth="1301.0" styleClass="mfx-label-tittle" text="LISTA DE PREGUNTAS" VBox.vgrow="ALWAYS" />
    <HBox prefHeight="674.0" prefWidth="1280.0" spacing="25.0" VBox.vgrow="ALWAYS">
       <VBox alignment="TOP_CENTER" prefHeight="619.0" prefWidth="354.0" spacing="29.8" styleClass="translucent-brown-vbox">
-         <Label styleClass="mfx-label" text="PARAMETROS DE PREGUNTA">
+         <Label alignment="CENTER" styleClass="mfx-label" text="PARAMETROS DE LA PREGUNTA">
             <VBox.margin>
                <Insets bottom="25.0" />
             </VBox.margin>
@@ -40,7 +40,7 @@
                <String fx:value="mfx-label" />
             </styleClass>
          </MFXTextField>
-         <MFXTextField fx:id="txtCantidadRespuestas" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="CANTIDAS DE RESPUETSAS">
+         <MFXTextField fx:id="txtCantidadRespuestas" floatMode="ABOVE" prefHeight="50.0" prefWidth="375.0" promptText="CANTIDAS DE RESPUESTAS">
             <styleClass>
                <String fx:value="mfx-textfield" />
                <String fx:value="mfx-label" />

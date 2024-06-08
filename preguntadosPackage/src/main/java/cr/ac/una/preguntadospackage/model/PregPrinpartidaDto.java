@@ -19,15 +19,15 @@ public class PregPrinpartidaDto implements Serializable {
     private static final long serialVersionUID = 1L;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
 
-    private Long id;
-    private SimpleStringProperty nombrePartida;
-    private String modoJuego;
-    private String modoDuelo;
+    public SimpleStringProperty id;
+    public SimpleStringProperty nombrePartida;
+    public SimpleStringProperty modoJuego;
+    public SimpleStringProperty modoDuelo;
     private LocalDate tiempoTotal;
     private LocalDate tiempoTranscurrido;
-    private Long cantidadRondas;
-    private String estadoPartida;
-    private Long cantidadJugadores;
+    public SimpleStringProperty cantidadRondas;
+    public SimpleStringProperty estadoPartida;
+    public SimpleStringProperty cantidadJugadores;
     private Long sectorActivo;
     private Long version;
     private Boolean modificado;
@@ -35,31 +35,40 @@ public class PregPrinpartidaDto implements Serializable {
     private List<PregJugpartida> pregJugpartidaList;
 
     public PregPrinpartidaDto() {
+        this.id = new SimpleStringProperty("");
         this.nombrePartida = new SimpleStringProperty("");
+        this.modoJuego = new SimpleStringProperty("");
+        this.modoDuelo = new SimpleStringProperty("");
+        this.cantidadRondas = new SimpleStringProperty("");
+        this.cantidadJugadores = new SimpleStringProperty("");
+        this.estadoPartida = new SimpleStringProperty("");
         this.modificado = false;
     }
 
     public PregPrinpartidaDto(PregPrinpartida pregPrinpartida) {
         this();
-        this.id = pregPrinpartida.getId();
+        this.id.set(pregPrinpartida.getId().toString());
         this.nombrePartida.set(pregPrinpartida.getNombrePartida());
-        this.modoJuego = pregPrinpartida.getModoJuego();
-        this.modoDuelo = pregPrinpartida.getModoDuelo();
+        this.modoJuego.set(pregPrinpartida.getModoJuego());
+        this.modoDuelo.set(pregPrinpartida.getModoDuelo());
         this.tiempoTotal = pregPrinpartida.getTiempoTotal();
         this.tiempoTranscurrido = pregPrinpartida.getTiempoTranscurrido();
-        this.cantidadRondas = pregPrinpartida.getCantidadRondas();
-        this.estadoPartida = pregPrinpartida.getEstadoPartida();
-        this.cantidadJugadores = pregPrinpartida.getCantidadJugadores();
+        this.cantidadRondas.set(pregPrinpartida.getCantidadRondas().toString());
+        this.estadoPartida.set(pregPrinpartida.getEstadoPartida());
+        this.cantidadJugadores.set(pregPrinpartida.getCantidadJugadores().toString());
         this.sectorActivo = pregPrinpartida.getSectorActivo();
         this.version = pregPrinpartida.getVersion();
     }
 
     public Long getId() {
-        return id;
+        if (this.id.get() != null && !this.id.get().isBlank()) {
+            return Long.valueOf(this.id.get());
+        }
+        return null;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.id.set(id.toString());
     }
 
     public String getNombrePartida() {
@@ -69,21 +78,21 @@ public class PregPrinpartidaDto implements Serializable {
     public void setNombrePartida(String nombrePartida) {
         this.nombrePartida.set(nombrePartida);
     }
-    
+
     public String getModoJuego() {
-        return modoJuego;
+        return modoJuego.get();
     }
 
     public void setModoJuego(String modoJuego) {
-        this.modoJuego = modoJuego;
+        this.modoJuego.set(modoJuego);
     }
 
     public String getModoDuelo() {
-        return modoDuelo;
+        return modoDuelo.get();
     }
 
     public void setModoDuelo(String modoDuelo) {
-        this.modoDuelo = modoDuelo;
+        this.modoDuelo.set(modoDuelo);
     }
 
     public LocalDate getTiempoTotal() {
@@ -103,27 +112,27 @@ public class PregPrinpartidaDto implements Serializable {
     }
 
     public Long getCantidadRondas() {
-        return cantidadRondas;
+        return Long.valueOf(cantidadRondas.get());
     }
 
     public void setCantidadRondas(Long cantidadRondas) {
-        this.cantidadRondas = cantidadRondas;
+        this.cantidadRondas.set(cantidadRondas.toString());
     }
 
     public String getEstadoPartida() {
-        return estadoPartida;
+        return estadoPartida.get();
     }
 
     public void setEstadoPartida(String estadoPartida) {
-        this.estadoPartida = estadoPartida;
+        this.estadoPartida.set(estadoPartida);
     }
 
     public Long getCantidadJugadores() {
-        return cantidadJugadores;
+        return Long.valueOf(cantidadJugadores.get());
     }
 
     public void setCantidadJugadores(Long cantidadJugadores) {
-        this.cantidadJugadores = cantidadJugadores;
+        this.cantidadJugadores.set(cantidadJugadores.toString());
     }
 
     public Long getSectorActivo() {
