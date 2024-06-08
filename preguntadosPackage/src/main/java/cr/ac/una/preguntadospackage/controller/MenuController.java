@@ -48,7 +48,7 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionMentenimientoPreguntas(ActionEvent event) {
-        FlowController.getInstance().goView("ListaPreguntasView");
+        FlowController.getInstance().goView("OpcionesDeMantenimientoView");
     }
 
     @FXML

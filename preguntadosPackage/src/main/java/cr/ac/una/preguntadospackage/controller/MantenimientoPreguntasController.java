@@ -50,7 +50,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtRespuesta2.clear();
         txtRespuesta3.clear();
         txtRespuesta4.clear();
-        FlowController.getInstance().goView("ListaPreguntasView");
+        FlowController.getInstance().goView("OpcionesDeMantenimientoView");
     }
 
     @FXML
@@ -60,7 +60,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtRespuesta2.clear();
         txtRespuesta3.clear();
         txtRespuesta4.clear();
-        FlowController.getInstance().goView("ListaPreguntasView");
+        FlowController.getInstance().goView("OpcionesDeMantenimientoView");
     }
 
     @Override

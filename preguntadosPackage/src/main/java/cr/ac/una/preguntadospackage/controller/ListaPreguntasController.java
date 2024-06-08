@@ -104,7 +104,7 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @FXML
     private void onAcionVolver(ActionEvent event) {
         tbvPreguntas.refresh();
-        FlowController.getInstance().goView("MenuView");
+        FlowController.getInstance().goView("OpcionesDeMantenimientoView");
     }
 
     @FXML
