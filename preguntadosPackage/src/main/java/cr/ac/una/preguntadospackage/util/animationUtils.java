@@ -59,6 +59,20 @@ public class animationUtils {
                 ft.play();
                 break;
             }
+            case "nonHidingFade": {
+                // play the fade animation without hiding the image
+                imageView.setVisible(true);
+                FadeTransition ft = new FadeTransition(Duration.millis(900), imageView);
+                ft.setFromValue(0.0);
+                ft.setToValue(1.0);
+                ft.setCycleCount(3);
+                ft.setAutoReverse(true);
+                ft.setOnFinished(event -> {
+                    ft.stop();
+                });
+                ft.play();
+                break;
+            }
 
             case "translate": {
                 // translate the image from the old position to the new position
@@ -81,49 +95,52 @@ public class animationUtils {
             case "slowPopUp": {
                 // play a pause animation to show the slow pop up
                 imageView.setVisible(true);
-                FadeTransition ft = new FadeTransition(Duration.millis(2000), imageView);
+                FadeTransition ft = new FadeTransition(Duration.millis(500), imageView);
                 ft.setFromValue(0.0);
                 ft.setToValue(1.0);
                 ft.setCycleCount(1);
                 ft.setAutoReverse(false);
                 ft.setOnFinished(event -> {
-
+                    imageView.setVisible(false);
                     ft.stop();
                 });
 
-                PauseTransition pt = new PauseTransition(Duration.millis(7000));
+                /*
+                PauseTransition pt = new PauseTransition(Duration.millis(4000));
 
                 pt.setOnFinished(event -> {
                     imageView.setVisible(false);
-                    imageView.setVisible(false);
                     pt.stop();
-
                 });
-
+                 */
                 ft.play();
-                pt.play();
-
-
-                // play the slow pop up animation
-                //imageView.setVisible(true);
+                //pt.play();
 
                 break;
             }
-            case "nonHidingFade":{
+            case "incorrect_correct":{
                 // play the longer fade animation
                 imageView.setVisible(true);
-                FadeTransition ft = new FadeTransition(Duration.millis(3000), imageView);
-                ft.setFromValue(1.0);
-                ft.setToValue(0.2);
-                ft.setCycleCount(8);
-                ft.setAutoReverse(false);
+                FadeTransition ft = new FadeTransition(Duration.millis(1000), imageView);
+                ft.setFromValue(0.0);
+                ft.setToValue(1.0);
+                ft.setCycleCount(1);
+                ft.setAutoReverse(true);
                 ft.setOnFinished(event -> {
+                    imageView.setVisible(false);
                     ft.stop();
                 });
                 ft.play();
                 break;
-
             }
+            case "pause":
+                // play the pause animation
+                PauseTransition pt = new PauseTransition(Duration.millis(3000));
+                pt.setOnFinished(event -> {
+                    pt.stop();
+                });
+                pt.play();
+                break;
         }
     }
 

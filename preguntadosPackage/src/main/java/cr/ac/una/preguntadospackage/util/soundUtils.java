@@ -46,16 +46,26 @@ public class soundUtils {
         switch (effect) {
             case "correct":
                 // play the correct sound
+                URL url5 = getClass().getResource("/cr/ac/una/preguntadospackage/resources/correct.mp3");
+                assert url5 != null;
+                Media media5 = new Media(url5.toString());
+                MediaPlayer mediaPlayer5 = new MediaPlayer(media5);
+                mediaPlayer5.play();
                 break;
             case "incorrect":
                 // play the incorrect sound
-                break;
-            case "click":
-            //case "green": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnGreen.png").toString());
-                URL url = getClass().getResource("/cr/ac/una/preguntadospackage/resources/mini_click.wav");
+                URL url = getClass().getResource("/cr/ac/una/preguntadospackage/resources/incorrect.mp3");
+                assert url != null;
                 Media media = new Media(url.toString());
                 MediaPlayer mediaPlayer = new MediaPlayer(media);
                 mediaPlayer.play();
+                break;
+            case "click":
+            //case "green": return new Image(getClass().getResource("/cr/ac/una/preguntadospackage/resources/PawnGreen.png").toString());
+                URL url2 = getClass().getResource("/cr/ac/una/preguntadospackage/resources/mini_click.wav");
+                Media media2 = new Media(url2.toString());
+                MediaPlayer mediaPlayer2 = new MediaPlayer(media2);
+                mediaPlayer2.play();
                 break;
             case "roulleteClick":
                 // play the roullete click sound
@@ -74,25 +84,28 @@ public class soundUtils {
             case "question":
                 // play the question sound
 
-                URL url2 = getClass().getResource("/cr/ac/una/preguntadospackage/resources/question_pop.wav");
-                Media media2 = new Media(url2.toString());
-                MediaPlayer mediaPlayer2 = new MediaPlayer(media2);
-                mediaPlayer2.play();
+                URL url3 = getClass().getResource("/cr/ac/una/preguntadospackage/resources/question_pop.wav");
+                Media media3 = new Media(url3.toString());
+                MediaPlayer mediaPlayer3 = new MediaPlayer(media3);
+                mediaPlayer3.play();
 
 
                 break;
             case "select":
                 // play the help sound
 
-                URL url3 = getClass().getResource("/cr/ac/una/preguntadospackage/resources/select.mp3");
-                Media media3 = new Media(url3.toString());
-                MediaPlayer mediaPlayer3 = new MediaPlayer(media3);
-                mediaPlayer3.play();
+                URL url4 = getClass().getResource("/cr/ac/una/preguntadospackage/resources/select.mp3");
+                assert url4 != null;
+                Media media4 = new Media(url4.toString());
+                MediaPlayer mediaPlayer4 = new MediaPlayer(media4);
+                mediaPlayer4.play();
 
                 break;
             case "exit":
                 // play the exit sound
                 break;
+
+
             default:
                 // play the default sound
                 break;
