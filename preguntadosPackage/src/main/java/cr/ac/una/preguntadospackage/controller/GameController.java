@@ -511,24 +511,10 @@ public class GameController extends Controller implements Initializable {
     }
 
     public void playerCorrectAnswer(String category, Boolean isCrowned, Boolean isLastCasilla) {
-        // print the current selecting player's position
-        System.out.println("Player " + currentSelectingPlayer + " has answered correctly");
-        System.out.println(players[currentSelectingPlayer].getPosicionCasilla());
-
-        // this has to go here because the player has to move after answering the question
-        // if the player reaches the last casilla, i would basically ignore the == 4 condition, as the sum happens
-        // after the check
         if(!isLastCasilla && players[currentSelectingPlayer].getPosicionCasilla().intValue() != 4){
             players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() + 1);
         }
-
-        System.out.println(players[currentSelectingPlayer].getPosicionCasilla());
-        // Then the player has reached crown casilla, which means he has to select a category and answer a question
-        // to possibly get a coin
         if(players[currentSelectingPlayer].getPosicionCasilla().intValue() == 4){
-
-            // do the same as we did before but with the crown category
-            System.out.println("Player " + currentSelectingPlayer + " has reached the crown casilla");
             PlayerCategoryCrownSelectionController playerSelectionCrownController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
             playerSelectionCrownController.onLastCasilla = true;
             // move the pawn backward 3 times
@@ -536,14 +522,15 @@ public class GameController extends Controller implements Initializable {
             players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() - 3);
             playerSelectionCrownController.setupCoins();
             FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
-        } else {
+        }
+        else {
             movePawnForward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue());
             FlowController.getInstance().goView("GameView");
         }
-
+        
         if(isCrowned){
             addCoin(category, players[currentSelectingPlayer].getPosicionSector().intValue());
-            giveRandomAyudaToPlayer(); // could cause bugs, should check later!!!!!!!!!!!!!!!!!!!!!
+            giveRandomAyudaToPlayer(); // could cause bugs, should check later!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             // check if the player already has all 6 coins
             if(players[currentSelectingPlayer].getFichaCiencias().equals("A")
