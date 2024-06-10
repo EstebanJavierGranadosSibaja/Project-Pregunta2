@@ -1,5 +1,5 @@
-
 package cr.ac.una.preguntadospackage.controller;
+
 import cr.ac.una.preguntadospackage.model.PregCategoriasDto;
 import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
 import cr.ac.una.preguntadospackage.service.PregPreguntasService;
@@ -62,7 +62,7 @@ public class ListaPreguntasController extends Controller implements Initializabl
     private PregCategoriasDto preguntaCategoria;
     @FXML
     private MFXButton btnAceptar11;
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
@@ -82,11 +82,11 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @Override
     public void initialize() {
     }
-    
+
     @FXML
     private void onActionFiltrar(ActionEvent event) {
-        PregPreguntasService empService = new PregPreguntasService();
-        Respuesta respuesta = empService.getPreguntas(txtId.getText().toUpperCase(), txtEnunciado.getText().toUpperCase(), txtCantidadRespuestas.getText().toUpperCase(), txtCantidadAciertos.getText().toUpperCase(), txtEstado.getText().toUpperCase(), txtCategoria.getText().toUpperCase());
+        PregPreguntasService preguntaService = new PregPreguntasService();
+        Respuesta respuesta = preguntaService.getPreguntas(txtId.getText().toUpperCase(), txtEnunciado.getText().toUpperCase(), txtCantidadRespuestas.getText().toUpperCase(), txtCantidadAciertos.getText().toUpperCase(), txtEstado.getText().toUpperCase(), txtCategoria.getText().toUpperCase());
         if (respuesta.getEstado()) {
             preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
             tbvPreguntas.setItems(preguntasList);
@@ -109,8 +109,12 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-        FlowController.getInstance().goView("MantenimientoPreguntasView");
+        resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
+        getStage().close();
+    }
 
+    public PregPreguntasDto getResultado() {
+        return resultado;
     }
 
 }

@@ -21,6 +21,30 @@ public class PregPreguntasService {
     EntityManager em = EntityManagerHelper.getInstance().getManager();
     private EntityTransaction et;
 
+    public Respuesta getPregunta(Long id) {
+        try {
+            Query qryPregunta = em.createNamedQuery("PregPreguntas.findByPreId", PregPreguntas.class);
+            qryPregunta.setParameter("id", id);
+
+            PregPreguntas pregPreguntas = (PregPreguntas) qryPregunta.getSingleResult();
+            PregPreguntasDto pregPreguntasDto = new PregPreguntasDto(pregPreguntas);
+
+            for (PregRespuestas respuestas : pregPreguntas.getRespuestasList()) {
+                pregPreguntasDto.getPregRespuestasList().add(new PregRespuestasDto(respuestas));
+            }
+
+            return new Respuesta(true, "", "", "PregPregunta", pregPreguntasDto);
+        } catch (NoResultException ex) {
+            return new Respuesta(false, "No existe la pregunta consultado.", "getPregunta NoResultException");
+        } catch (NonUniqueResultException ex) {
+            Logger.getLogger(PregCategoriasService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar la pregunta.", ex);
+            return new Respuesta(false, "Ocurrio un error al consultar la pregunta.", "getPregunta NonUniqueResultException");
+        } catch (Exception ex) {
+            Logger.getLogger(PregCategoriasService.class.getName()).log(Level.SEVERE, "Error obteniendo la pregunta", ex);
+            return new Respuesta(false, "Error obteniendo la pregunta.", "getPregunta " + ex.getMessage());
+        }
+    }
+    
     public Respuesta getPregunta(String id, String textoPregunta, String cantidadRespuestas, String cantidadAciertos) {
         try {
             Query qryPregunta = em.createNamedQuery("PregJugadores.findByJugNombre", PregPreguntas.class);

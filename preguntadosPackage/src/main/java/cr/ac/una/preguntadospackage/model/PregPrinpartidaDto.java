@@ -31,8 +31,8 @@ public class PregPrinpartidaDto implements Serializable {
     private Long sectorActivo;
     private Long version;
     private Boolean modificado;
-    private List<PregPreguntaspartida> pregPreguntaspartidaList;
-    private List<PregJugpartida> pregJugpartidaList;
+    private List<PregPreguntaspartidaDto> pregPreguntaspartidaList;
+    private List<PregJugpartidaDto> pregJugpartidaList;
 
     public PregPrinpartidaDto() {
         this.id = new SimpleStringProperty("");
@@ -151,19 +151,19 @@ public class PregPrinpartidaDto implements Serializable {
         this.version = version;
     }
 
-    public List<PregPreguntaspartida> getPregPreguntaspartidaList() {
+    public List<PregPreguntaspartidaDto> getPregPreguntaspartidaList() {
         return pregPreguntaspartidaList;
     }
 
-    public void setPregPreguntaspartidaList(List<PregPreguntaspartida> pregPreguntaspartidaList) {
+    public void setPregPreguntaspartidaList(List<PregPreguntaspartidaDto> pregPreguntaspartidaList) {
         this.pregPreguntaspartidaList = pregPreguntaspartidaList;
     }
 
-    public List<PregJugpartida> getPregJugpartidaList() {
+    public List<PregJugpartidaDto> getPregJugpartidaList() {
         return pregJugpartidaList;
     }
 
-    public void setPregJugpartidaList(List<PregJugpartida> pregJugpartidaList) {
+    public void setPregJugpartidaList(List<PregJugpartidaDto> pregJugpartidaList) {
         this.pregJugpartidaList = pregJugpartidaList;
     }
 

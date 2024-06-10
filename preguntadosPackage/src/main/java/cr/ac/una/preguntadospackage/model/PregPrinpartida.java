@@ -29,6 +29,7 @@ import java.util.List;
 @Entity
 @Table(name = "PREG_PRINPARTIDA")
 @NamedQueries({
+    @NamedQuery(name = "PregPrinpartida.findByParameters", query = "SELECT p FROM PregPrinpartida p WHERE upper(p.id) LIKE :id AND upper(p.nombrePartida) LIKE :nombrePartida AND upper(p.cantidadRondas) LIKE :cantidadRondas AND upper(p.cantidadJugadores) LIKE :cantidadJugadores AND upper(p.modoJuego) LIKE :modoJuego AND upper(p.modoDuelo) LIKE :modoDuelo AND upper(p.estadoPartida) LIKE :estadoPartida "),
     @NamedQuery(name = "PregPrinpartida.findAll", query = "SELECT p FROM PregPrinpartida p"),
     @NamedQuery(name = "PregPrinpartida.findByPparId", query = "SELECT p FROM PregPrinpartida p WHERE p.id = :id"),
     @NamedQuery(name = "PregPrinpartida.findByPparNombrePartida", query = "SELECT p FROM PregPrinpartida p WHERE p.nombrePartida = :nombrePartida"),

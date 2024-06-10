@@ -90,8 +90,8 @@ public class ListaJugadoresController extends Controller implements Initializabl
 
     @FXML
     private void onActionFiltrar(ActionEvent event) {
-        PregJugadoresService empService = new PregJugadoresService();
-        Respuesta respuesta = empService.getJugadores(txtId.getText().toUpperCase(), txtNombre.getText().toUpperCase(), txtPartidasJugadas.getText().toUpperCase(), txtPartidasGanadas.getText().toUpperCase(), txtPreguntasRespondidas.getText().toUpperCase(), txtPreguntasAcertadas.getText().toUpperCase());
+        PregJugadoresService jugadorService = new PregJugadoresService();
+        Respuesta respuesta = jugadorService.getJugadores(txtId.getText().toUpperCase(), txtNombre.getText().toUpperCase(), txtPartidasJugadas.getText().toUpperCase(), txtPartidasGanadas.getText().toUpperCase(), txtPreguntasRespondidas.getText().toUpperCase(), txtPreguntasAcertadas.getText().toUpperCase());
         if (respuesta.getEstado()) {
             jugadoresList = FXCollections.observableArrayList((List<PregJugadoresDto>) respuesta.getResultado("PregJugadores"));
             tbvJugadores.setItems(jugadoresList);
@@ -108,6 +108,13 @@ public class ListaJugadoresController extends Controller implements Initializabl
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
+        resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
         FlowController.getInstance().goView("EstadisticasDelJugadorView");
     }
+
+    public PregJugadoresDto getResultado(){
+        return resultado;
+    }
+
+    
 }

@@ -12,11 +12,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
-/**
- * FXML Controller class
- *
- * @author Matteo2K24
- */
 public class MenuController extends Controller implements Initializable {
 
     @FXML
@@ -48,7 +43,7 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionMentenimientoPreguntas(ActionEvent event) {
-        FlowController.getInstance().goView("OpcionesDeMantenimientoView");
+        FlowController.getInstance().goView("MantenimientoPreguntasView");
     }
 
     @FXML
