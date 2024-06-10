@@ -531,9 +531,6 @@ public class GameController extends Controller implements Initializable {
             System.out.println("Player " + currentSelectingPlayer + " has reached the crown casilla");
             PlayerCategoryCrownSelectionController playerSelectionCrownController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
             playerSelectionCrownController.onLastCasilla = true;
-
-            // a mid animation goes here between seeing the player category and the question
-
             // move the pawn backward 3 times
             movePawnBackward(players[currentSelectingPlayer].getPosicionSector().intValue(), players[currentSelectingPlayer].getPosicionCasilla().intValue() - 3);
             players[currentSelectingPlayer].setPosicionCasilla(players[currentSelectingPlayer].getPosicionCasilla() - 3);
@@ -560,7 +557,6 @@ public class GameController extends Controller implements Initializable {
             }
 
         }
-        System.out.println(players[currentSelectingPlayer].getPosicionCasilla());
     }
 
     private void processGameEnd() {
