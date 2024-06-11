@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class PlayerCategoryCrownSelectionController extends Controller implements Initializable {
@@ -35,6 +36,30 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
     public void initialize(URL location, ResourceBundle resources) {
     }
 
+    // this method disables or enables coins depending if the player has already has it or not
+    public void setupCoins(){
+
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "U")){
+            imgDisabledGeography.setVisible(true);
+        }
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "U")){
+            imgDisabledSports.setVisible(true);
+        }
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "U")){
+            imgDisabledArt.setVisible(true);
+        }
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "U")){
+            imgDisabledEntertainment.setVisible(true);
+        }
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "U")){
+            imgDisabledScience.setVisible(true);
+        }
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "U")){
+            imgDisabledHistory.setVisible(true);
+        }
+    }
+
     private void resetEverything() {
         imgDisabledGeography.setVisible(false);
         imgDisabledSports.setVisible(false);
@@ -60,14 +85,6 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
         questionController.setCategoryTheme("history", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
         resetEverything();
-
-
-        /*questionController.onLastCasilla = onLastCasilla;
-        questionController.setCategoryTheme("history", true);
-        FlowController.getInstance().goView("QuestionView");
-        resetEverything();
-
-         */
     }
 
     @javafx.fxml.FXML

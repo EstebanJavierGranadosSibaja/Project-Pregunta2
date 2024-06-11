@@ -69,6 +69,8 @@ public class QuestionController extends Controller implements Initializable {
     private ImageView imgDisabledDobleOportunidad;
     @FXML
     private ImageView imgDisabledBomba;
+    @FXML
+    private Label lblCategory1;
 
 
     @Override
@@ -76,7 +78,7 @@ public class QuestionController extends Controller implements Initializable {
 
         //gameController = (GameController) FlowController.getInstance().getController("GameView");
 
-       // initialize the array
+        // initialize the array
         for(int i = 0; i < 4; i++){
             respuestas[i] = new PregRespuestasDto();
         }
@@ -99,17 +101,20 @@ public class QuestionController extends Controller implements Initializable {
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
 
         // enable/disable avaible ayudas
-        for(int i = 0; i < 3 ; i++){
-            if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getDobleAyuda(), "A")){
-                imgDisabledDobleOportunidad.setVisible(true);
-            }
-            if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getPasarAyuda(), "A")){
-                imgDisabledPasar.setVisible(true);
-            }
-            if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getBombaAyuda(), "A")){
-                imgDisabledBomba.setVisible(true);
-            }
+
+        if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getDobleAyuda(), "A")){
+            System.out.println("Doble ayuda inhabilitada");
+            imgDisabledDobleOportunidad.setVisible(true);
         }
+        if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getPasarAyuda(), "A")){
+            System.out.println("Pasar Ayuda inhabilitada");
+            imgDisabledPasar.setVisible(true);
+        }
+        if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getBombaAyuda(), "A")){
+            System.out.println("Bomba Ayuda inhabilitada");
+            imgDisabledBomba.setVisible(true);
+        }
+
 
         this.isCrowned = isCrowned;
 
@@ -162,27 +167,17 @@ public class QuestionController extends Controller implements Initializable {
     }
 
     private void calculateAnswerResult(int questionNumber){
-        // print the current selecting player
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
-        System.out.println("Player " + gameController.currentSelectingPlayer + " selected answer " + questionNumber);
-        System.out.println((questionNumber-1));
-
-
         if(respuestas[(questionNumber - 1)].getEsCorrecta().equals("T")){
-            // print the states of isCrowned and onLastCasilla
-            System.out.println("isCrowned: " + isCrowned);
-            System.out.println("onLastCasilla: " + onLastCasilla);
-
             gameController.playerCorrectAnswer(category, isCrowned, this.onLastCasilla);
             if(onLastCasilla) this.onLastCasilla = false;
             this.isCrowned = false;
             doubleChance = false;
-
-        } else {
+        }
+        else {
             if(doubleChance){
                 doubleChance = false;
-                // remove the button that was selected
-                switch (questionNumber){
+                switch (questionNumber){ // remove the button that was selected
                     case 1: btnRespuesta1.setVisible(false); break;
                     case 2: btnRespuesta2.setVisible(false); break;
                     case 3: btnRespuesta3.setVisible(false); break;
@@ -192,18 +187,12 @@ public class QuestionController extends Controller implements Initializable {
             } else {
                 gameController.currentSelectingPlayer++;
                 if(gameController.currentSelectingPlayer == gameController.partida.getCantidadJugadores().intValue()) gameController.currentSelectingPlayer = 0;
+                gameController.lblCurrentPlayerTurn.setText("Turno de " + gameController.players[gameController.currentSelectingPlayer].getNombreJugador());
                 FlowController.getInstance().goView("GameView");
             }
         }
-        // anyway we need to move to the next player
-
-
-        // debug return to the main menu
-
-
         // play an animation to indicate the current playing sector
-        //animationUtils.getInstance().playAnimation("fade", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
-
+        animationUtils.getInstance().playAnimation("fade", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
         resetCategoryTheme();
     }
 
@@ -254,7 +243,7 @@ public class QuestionController extends Controller implements Initializable {
         imgDisabledDobleOportunidad.setVisible(true);
     }
 
-    @FXML
+    @Deprecated
     public void onActionExit(Event event) {
         FlowController.getInstance().goView("MainMenuView");
     }
