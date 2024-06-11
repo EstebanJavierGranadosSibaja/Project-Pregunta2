@@ -30,11 +30,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 
-/**
- * FXML Controller class
- *
- * @author esteb
- */
 public class MantenimientoPreguntasController extends Controller implements Initializable {
 
     @FXML
@@ -57,14 +52,9 @@ public class MantenimientoPreguntasController extends Controller implements Init
     private MFXButton btnNuevo;
     
     private PregPreguntasDto pregPreguntasDto;
-    
     List<Node> requeridos = new ArrayList<>();
-    
     List<PregRespuestasDto> respuestas = new ArrayList<>();
 
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         txtEnunciadoPregunta.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(250));
@@ -72,7 +62,6 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtRespuesta2.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
         txtRespuesta3.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
         txtRespuesta4.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
-
     }
 
     private void bindPregunta() {
@@ -98,19 +87,16 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnVolver(ActionEvent event) {
-        
         FlowController.getInstance().goView("MenuView");
     }
 
     @FXML
     private void onActionBtnAceptarGuardar(ActionEvent event) {
-        
-        FlowController.getInstance().goView("MenuView");
+        //FlowController.getInstance().goView("MenuView");
     }
 
     @Override
     public void initialize() {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public String validarRequeridos() {
