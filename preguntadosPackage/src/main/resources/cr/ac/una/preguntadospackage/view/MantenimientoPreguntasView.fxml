@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import io.github.palexdev.materialfx.controls.MFXButton?>
+<?import io.github.palexdev.materialfx.controls.MFXComboBox?>
 <?import io.github.palexdev.materialfx.controls.MFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -13,16 +14,22 @@
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <children>
-      <Label alignment="TOP_CENTER" prefHeight="60.0" prefWidth="1294.0" styleClass="mfx-label-tittle" text="MANTENIMIENTO DE PREGUNTAS" />
-      <MFXTextField alignment="CENTER" floatMode="ABOVE" prefHeight="50.0" prefWidth="226.0" promptText="ID DE LA PREGUNTA">
+      <Label alignment="TOP_CENTER" onKeyPressed="#onKeyPressedTxtId" prefHeight="60.0" prefWidth="1294.0" styleClass="mfx-label-tittle" text="MANTENIMIENTO DE PREGUNTAS" />
+      <MFXTextField fx:id="txtId" alignment="CENTER" floatMode="ABOVE" prefHeight="50.0" prefWidth="225.0" promptText="ID DE LA PREGUNTA">
          <styleClass>
             <String fx:value="mfx-textfield" />
             <String fx:value="mfx-label" />
          </styleClass>
       </MFXTextField>
-      <MFXTextField fx:id="txtEnunciadoPregunta" alignment="CENTER" floatMode="ABOVE" prefHeight="311.0" prefWidth="1200.0" promptText="ESCRIBA EL ENUNCIADO DE LA PREGUNTA . . ." VBox.vgrow="ALWAYS">
+      <MFXComboBox fx:id="cbxCategoria" alignment="CENTER" floatMode="ABOVE" prefHeight="59.0" prefWidth="225.0" promptText="CATEGORIA">
          <styleClass>
-            <String fx:value="mfx-label-tittle" />
+            <String fx:value="mfx-label-small" />
+            <String fx:value="mfx-textfield" />
+         </styleClass>
+      </MFXComboBox>
+      <MFXTextField fx:id="txtEnunciadoPregunta" alignment="CENTER" floatMode="ABOVE" prefHeight="225.0" prefWidth="1200.0" promptText="ESCRIBA EL ENUNCIADO DE LA PREGUNTA . . ." VBox.vgrow="ALWAYS">
+         <styleClass>
+            <String fx:value="mfx-label" />
             <String fx:value="mfx-textfield" />
          </styleClass>
       </MFXTextField>
@@ -32,14 +39,14 @@
                <children>
                   <MFXTextField fx:id="txtRespuesta1" alignment="CENTER" floatMode="ABOVE" prefHeight="175.0" prefWidth="575.0" promptText="RESPUESTA NUMERO 1" VBox.vgrow="ALWAYS">
                      <styleClass>
-                        <String fx:value="mfx-label" />
+                        <String fx:value="mfx-label-small" />
                         <String fx:value="mfx-textfield" />
                      </styleClass>
                   </MFXTextField>
                   <MFXTextField fx:id="txtRespuesta3" alignment="CENTER" floatMode="ABOVE" prefHeight="175.0" prefWidth="575.0" promptText="RESPUESTA NUMERO 3" VBox.vgrow="ALWAYS">
                      <styleClass>
                         <String fx:value="mfx-textfield" />
-                        <String fx:value="mfx-label" />
+                        <String fx:value="mfx-label-small" />
                      </styleClass>
                   </MFXTextField>
                </children>
@@ -48,13 +55,13 @@
                <children>
                   <MFXTextField fx:id="txtRespuesta2" alignment="CENTER" floatMode="ABOVE" prefHeight="175.0" prefWidth="575.0" promptText="RESPUESTA NUMERO 2" VBox.vgrow="ALWAYS">
                      <styleClass>
-                        <String fx:value="mfx-label" />
+                        <String fx:value="mfx-label-small" />
                         <String fx:value="mfx-textfield" />
                      </styleClass>
                   </MFXTextField>
                   <MFXTextField fx:id="txtRespuesta4" alignment="CENTER" floatMode="ABOVE" prefHeight="175.0" prefWidth="575.0" promptText="RESPUESTA NUMERO 4" VBox.vgrow="ALWAYS">
                      <styleClass>
-                        <String fx:value="mfx-label" />
+                        <String fx:value="mfx-label-small" />
                         <String fx:value="mfx-textfield" />
                      </styleClass>
                   </MFXTextField>
@@ -72,8 +79,8 @@
                   <MFXButton fx:id="btnVolver" onAction="#onActionBtnVolver" prefHeight="75.0" prefWidth="125.0" styleClass="mfx-button" text="VOLVER" />
                   <MFXButton fx:id="btnBuscar" onAction="#onActionBtnBuscar" prefHeight="75.0" prefWidth="125.0" text="BUSCAR" />
                   <MFXButton fx:id="btnNuevo" onAction="#onActionBtnNuevo" prefHeight="75.0" prefWidth="125.0" text="NUEVO" />
-                  <MFXButton fx:id="btnBuscar" onAction="#onActionBtnEliminar" prefHeight="75.0" prefWidth="125.0" text="ELIMINAR" />
-                  <MFXButton fx:id="btnAceptarGuardar" onAction="#onActionBtnAceptarGuardar" prefHeight="75.0" prefWidth="125.0" styleClass="mfx-button" text="GUARDAR" />
+                  <MFXButton fx:id="btnEliminar" onAction="#onActionBtnEliminar" prefHeight="75.0" prefWidth="125.0" text="ELIMINAR" />
+                  <MFXButton fx:id="btnGuardar" onAction="#onActionBtnGuardar" prefHeight="75.0" prefWidth="125.0" styleClass="mfx-button" text="GUARDAR" />
                </children>
             </HBox>
          </children>

@@ -2,10 +2,13 @@
 package cr.ac.una.preguntadospackage.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class PregPreguntasDto implements Serializable {
 
@@ -19,8 +22,8 @@ public class PregPreguntasDto implements Serializable {
     public SimpleBooleanProperty estado;
     private Long version;
     private Boolean modificado;
-    private List<PregPreguntaspartidaDto> pregPreguntaspartidaList;
-    private List<PregRespuestasDto> pregRespuestasList;
+    private ObservableList<PregPreguntaspartidaDto> pregPreguntaspartidaList;
+    private ObservableList<PregRespuestasDto> pregRespuestasList;
     public PregCategoriasDto catId;
 
     public PregPreguntasDto() {
@@ -30,6 +33,8 @@ public class PregPreguntasDto implements Serializable {
         this.cantidadAciertos = new SimpleStringProperty("");
         this.estado = new SimpleBooleanProperty(true);
         this.modificado = false;
+        pregPreguntaspartidaList = FXCollections.observableArrayList();
+        pregRespuestasList = FXCollections.observableArrayList();
     }
 
     public PregPreguntasDto(PregPreguntas pregPreguntas) {
@@ -94,19 +99,19 @@ public class PregPreguntasDto implements Serializable {
         this.version = version;
     }
 
-    public List<PregPreguntaspartidaDto> getPregPreguntaspartidaList() {
+    public ObservableList<PregPreguntaspartidaDto> getPregPreguntaspartidaList() {
         return pregPreguntaspartidaList;
     }
 
-    public void setPregPreguntaspartidaList(List<PregPreguntaspartidaDto> pregPreguntaspartidaList) {
+    public void setPregPreguntaspartidaList(ObservableList<PregPreguntaspartidaDto> pregPreguntaspartidaList) {
         this.pregPreguntaspartidaList = pregPreguntaspartidaList;
     }
 
-    public List<PregRespuestasDto> getPregRespuestasList() {
+    public ObservableList<PregRespuestasDto> getPregRespuestasList() {
         return pregRespuestasList;
     }
 
-    public void setPregRespuestasList(List<PregRespuestasDto> pregRespuestasList) {
+    public void setPregRespuestasList(ObservableList<PregRespuestasDto> pregRespuestasList) {
         this.pregRespuestasList = pregRespuestasList;
     }
 

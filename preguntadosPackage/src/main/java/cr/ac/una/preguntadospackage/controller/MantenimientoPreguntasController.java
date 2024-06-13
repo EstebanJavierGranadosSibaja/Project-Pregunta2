@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
@@ -29,9 +25,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class MantenimientoPreguntasController extends Controller implements Initializable {
 
+    @FXML
+    private MFXTextField txtId;
     @FXML
     private MFXTextField txtEnunciadoPregunta;
     @FXML
@@ -45,12 +45,16 @@ public class MantenimientoPreguntasController extends Controller implements Init
     @FXML
     private MFXButton btnVolver;
     @FXML
-    private MFXButton btnAceptarGuardar;
-    @FXML
     private MFXButton btnBuscar;
     @FXML
     private MFXButton btnNuevo;
-    
+    @FXML
+    private MFXButton btnEliminar;
+    @FXML
+    private MFXButton btnGuardar;
+    @FXML
+    private MFXComboBox<?> cbxCategoria;
+
     private PregPreguntasDto pregPreguntasDto;
     List<Node> requeridos = new ArrayList<>();
     List<PregRespuestasDto> respuestas = new ArrayList<>();
@@ -62,41 +66,54 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtRespuesta2.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
         txtRespuesta3.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
         txtRespuesta4.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
+        nuevaPregunta();
+        indicarRequeridos();
     }
 
-    private void bindPregunta() {
-        txtEnunciadoPregunta.textProperty().bindBidirectional(pregPreguntasDto.textoPregunta);
+    @Override
+    public void initialize() {
+    }
 
+    private void nuevaPregunta() {
+        unbindPregunta();
+        pregPreguntasDto = new PregPreguntasDto();
+        bindPregunta(true);
+        txtId.clear();
+        txtId.requestFocus();
+        txtRespuesta1.setText("");
+        txtRespuesta2.setText("");
+        txtRespuesta3.setText("");
+        txtRespuesta4.setText("");
+    }
+
+    private void bindPregunta(Boolean nuevo) {
+        if (!nuevo) {
+            txtId.textProperty().bind(pregPreguntasDto.id);
+        }
+
+        txtEnunciadoPregunta.textProperty().bindBidirectional(pregPreguntasDto.textoPregunta);
+    }
+
+    private void unbindPregunta() {
+        txtId.textProperty().unbind();
+        //txtEnunciadoPregunta.textProperty().unbindBidirectional(pregPreguntasDto.textoPregunta);
+    }
+
+    private void bindRespuestas() {
         respuestas = pregPreguntasDto.getPregRespuestasList();
         Collections.shuffle(respuestas);
-
         txtRespuesta1.textProperty().bindBidirectional(respuestas.get(0).textoRespuesta);
         txtRespuesta2.textProperty().bindBidirectional(respuestas.get(1).textoRespuesta);
         txtRespuesta3.textProperty().bindBidirectional(respuestas.get(2).textoRespuesta);
         txtRespuesta4.textProperty().bindBidirectional(respuestas.get(3).textoRespuesta);
     }
 
-    private void unbindPregunta() {
-        //txtEnunciadoPregunta.textProperty().unbindBidirectional(pregPreguntasDto.textoPregunta);
-        txtRespuesta1.textProperty().unbindBidirectional(respuestas.get(0).textoRespuesta);
-        txtRespuesta2.textProperty().unbindBidirectional(respuestas.get(1).textoRespuesta);
-        txtRespuesta3.textProperty().unbindBidirectional(respuestas.get(2).textoRespuesta);
-        txtRespuesta4.textProperty().unbindBidirectional(respuestas.get(3).textoRespuesta);
+    private void unbindRespuestas() {
+        txtRespuesta1.textProperty().unbind();
+        txtRespuesta2.textProperty().unbind();
+        txtRespuesta3.textProperty().unbind();
+        txtRespuesta3.textProperty().unbind();
 
-    }
-
-    @FXML
-    private void onActionBtnVolver(ActionEvent event) {
-        FlowController.getInstance().goView("MenuView");
-    }
-
-    @FXML
-    private void onActionBtnAceptarGuardar(ActionEvent event) {
-        //FlowController.getInstance().goView("MenuView");
-    }
-
-    @Override
-    public void initialize() {
     }
 
     public String validarRequeridos() {
@@ -152,7 +169,10 @@ public class MantenimientoPreguntasController extends Controller implements Init
             if (respuesta.getEstado()) {
                 unbindPregunta();
                 this.pregPreguntasDto = (PregPreguntasDto) respuesta.getResultado("PregPregunta");
-                bindPregunta();
+                bindPregunta(false);
+                bindRespuestas();
+                unbindRespuestas();
+
                 validarRequeridos();
 
             } else {
@@ -180,6 +200,25 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnNuevo(ActionEvent event) {
+        if (new Mensaje().showConfirmation("Limpiar Empleado", getStage(), "¿Esta seguro que desea limpiar el usuraio?")) {
+            unbindRespuestas();
+            nuevaPregunta();
+        }
     }
 
+    @FXML
+    private void onKeyPressedTxtId(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER && !txtId.getText().isBlank()) {
+            cargarPregunta(Long.valueOf(txtId.getText()));
+        }
+    }
+
+    @FXML
+    private void onActionBtnGuardar(ActionEvent event) {
+    }
+
+    @FXML
+    private void onActionBtnVolver(ActionEvent event) {
+        FlowController.getInstance().goView("MenuView");
+    }
 }

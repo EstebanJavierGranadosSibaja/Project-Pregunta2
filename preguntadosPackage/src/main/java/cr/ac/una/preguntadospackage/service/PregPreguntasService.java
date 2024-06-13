@@ -44,7 +44,7 @@ public class PregPreguntasService {
             return new Respuesta(false, "Error obteniendo la pregunta.", "getPregunta " + ex.getMessage());
         }
     }
-    
+
     public Respuesta getPregunta(String id, String textoPregunta, String cantidadRespuestas, String cantidadAciertos) {
         try {
             Query qryPregunta = em.createNamedQuery("PregJugadores.findByJugNombre", PregPreguntas.class);
@@ -86,13 +86,15 @@ public class PregPreguntasService {
             List<PregPreguntas> pregunta = qryJugadores.getResultList();
 
             for (PregPreguntas tempPreguntas : pregunta) {
-                preguntas.add(new PregPreguntasDto(tempPreguntas));
-                for (PregPreguntasDto preguntasDto : preguntas) {
-                    for (PregRespuestas respuestas : tempPreguntas.getRespuestasList()) {
-                        preguntasDto.getPregRespuestasList().add(new PregRespuestasDto(respuestas));
-                    }
+                PregPreguntasDto preguntasDto = new PregPreguntasDto(tempPreguntas);
+                for (PregRespuestas respuestas : tempPreguntas.getRespuestasList()) {
+                    PregRespuestasDto respuestaDto = new PregRespuestasDto(respuestas);
+                    respuestaDto.setPreId(tempPreguntas);
+                    preguntasDto.getPregRespuestasList().add(respuestaDto);
                 }
+                preguntas.add(preguntasDto);
             }
+
             return new Respuesta(true, "", "", "PregPreguntas", preguntas);
         } catch (NoResultException ex) {
             return new Respuesta(false, "No existe ninguna pregunta con los parametros colocados.", "getPreguntas NoResultException");
