@@ -62,7 +62,7 @@ public class PregPreguntasService {
 
             return new Respuesta(true, "", "", "PregPregunta", pregPreguntasDto);
         } catch (NoResultException ex) {
-            return new Respuesta(false, "No existe la pregunta consultado.", "getPregunta NoResultException");
+            return new Respuesta(false, "No existe la pregunta consultada.", "getPregunta NoResultException");
         } catch (NonUniqueResultException ex) {
             Logger.getLogger(PregCategoriasService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar la pregunta.", ex);
             return new Respuesta(false, "Ocurrio un error al consultar la pregunta.", "getPregunta NonUniqueResultException");

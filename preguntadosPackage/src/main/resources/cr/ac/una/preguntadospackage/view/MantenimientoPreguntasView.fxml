@@ -15,7 +15,7 @@
    </padding>
    <children>
       <Label alignment="TOP_CENTER" onKeyPressed="#onKeyPressedTxtId" prefHeight="60.0" prefWidth="1294.0" styleClass="mfx-label-tittle" text="MANTENIMIENTO DE PREGUNTAS" />
-      <MFXTextField fx:id="txtId" alignment="CENTER" floatMode="ABOVE" prefHeight="50.0" prefWidth="225.0" promptText="ID DE LA PREGUNTA">
+      <MFXTextField fx:id="txtId" alignment="CENTER" floatMode="ABOVE" onKeyPressed="#onKeyPressedTxtId" prefHeight="50.0" prefWidth="225.0" promptText="ID DE LA PREGUNTA">
          <styleClass>
             <String fx:value="mfx-textfield" />
             <String fx:value="mfx-label" />

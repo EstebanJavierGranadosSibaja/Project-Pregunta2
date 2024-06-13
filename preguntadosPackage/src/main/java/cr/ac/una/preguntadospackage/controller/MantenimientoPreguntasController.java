@@ -90,13 +90,11 @@ public class MantenimientoPreguntasController extends Controller implements Init
         if (!nuevo) {
             txtId.textProperty().bind(pregPreguntasDto.id);
         }
-
         txtEnunciadoPregunta.textProperty().bindBidirectional(pregPreguntasDto.textoPregunta);
     }
 
     private void unbindPregunta() {
         txtId.textProperty().unbind();
-        //txtEnunciadoPregunta.textProperty().unbindBidirectional(pregPreguntasDto.textoPregunta);
     }
 
     private void bindRespuestas() {
@@ -106,14 +104,6 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtRespuesta2.textProperty().bindBidirectional(respuestas.get(1).textoRespuesta);
         txtRespuesta3.textProperty().bindBidirectional(respuestas.get(2).textoRespuesta);
         txtRespuesta4.textProperty().bindBidirectional(respuestas.get(3).textoRespuesta);
-    }
-
-    private void unbindRespuestas() {
-        txtRespuesta1.textProperty().unbind();
-        txtRespuesta2.textProperty().unbind();
-        txtRespuesta3.textProperty().unbind();
-        txtRespuesta3.textProperty().unbind();
-
     }
 
     public String validarRequeridos() {
@@ -171,8 +161,6 @@ public class MantenimientoPreguntasController extends Controller implements Init
                 this.pregPreguntasDto = (PregPreguntasDto) respuesta.getResultado("PregPregunta");
                 bindPregunta(false);
                 bindRespuestas();
-                unbindRespuestas();
-
                 validarRequeridos();
 
             } else {
@@ -201,7 +189,6 @@ public class MantenimientoPreguntasController extends Controller implements Init
     @FXML
     private void onActionBtnNuevo(ActionEvent event) {
         if (new Mensaje().showConfirmation("Limpiar Empleado", getStage(), "¿Esta seguro que desea limpiar el usuraio?")) {
-            unbindRespuestas();
             nuevaPregunta();
         }
     }
