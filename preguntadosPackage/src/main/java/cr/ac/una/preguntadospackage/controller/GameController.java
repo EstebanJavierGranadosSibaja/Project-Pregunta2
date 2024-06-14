@@ -34,6 +34,8 @@ public class GameController extends Controller implements Initializable {
     private Boolean haveAllPlayersSelectedSectors = false, hasFirstTurnBeenAssigned = false;
     private Boolean hasSpinnerBeenClicked = false;
 
+    private RotateTransition rotateAnimation; // Add this line
+
     // persistence-related variables
     public PregJugpartidaDto[] players;
     PregPrinpartidaDto partida;
@@ -54,7 +56,7 @@ public class GameController extends Controller implements Initializable {
             imgSector2HistoryBlocker, imgGeography, imgSector1EntertainmentBlocker, imgSector2GeographyBlocker, imgSector5GeographyBlocker,
             imgSector6SciencieBlocker, imgSector6EntertainmentBlocker, imgEntertainment, imgSector4SportBlocker, imgSector5HistoryBlocker,
             imgSector1HistoryBlocker, imgSector5ArtBlocker, imgSector5SportBlocker, imgSector1Pawn4, imgSector4Pawn4, imgSector4Pawn3,
-            imgSector6SportBlocker, imgArt, imgSector1Pawn1, imgSector1Pawn2, imgSector1Pawn3, imgCorrect, imgIncorrect;
+            imgSector6SportBlocker, imgArt, imgSector1Pawn1, imgSector1Pawn2, imgSector1Pawn3, imgCorrect, imgIncorrect, imgWinner, imgTiroExtra;
 
     
     @Override
@@ -129,11 +131,10 @@ public class GameController extends Controller implements Initializable {
 
         hideAllPawns();
 
+        lblCurrentPlayerTurn.setText("Turno eligiendo de " + players[currentSelectingPlayer].getNombreJugador());
     }
 
     // ROULLETE LOGIC <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-
-
     @FXML
     public void onActionSpinRoulette(MouseEvent event) {
         // if the spinner has already been clicked or not all players have selected their sectors, return
@@ -145,8 +146,8 @@ public class GameController extends Controller implements Initializable {
         double randomDegrees = Math.random() * 360;
         int numberOfCategory = (int) Math.floor(randomDegrees / 51.4);
 
-        RotateTransition rotateAnimation = new RotateTransition(javafx.util.Duration.seconds(4.5), imgSpinner);
-        rotateAnimation.setByAngle(randomDegrees + 3600); // 3600 is the amount of degrees that the spinner will rotate
+        rotateAnimation = new RotateTransition(javafx.util.Duration.seconds(5.5), imgSpinner);
+        rotateAnimation.setByAngle(randomDegrees + 4320); // 3600 is the amount of degrees that the spinner will rotate
         rotateAnimation.play();
 
         rotateAnimation.setOnFinished(_event -> {
@@ -185,6 +186,12 @@ public class GameController extends Controller implements Initializable {
                     
                     FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
                 } else {
+
+                    // if the player has the ayuda tiroExtra, then he can spin again
+                    if(players[currentSelectingPlayer].getExtraAyuda().equals("A")) {
+                        animationUtils.getInstance().playAnimation("slowPopUp", imgTiroExtra, 0, 0, 0, 0);
+                    }
+
                     playCategoryAnimation(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
                     PauseTransition pause = getPauseTransition(numberOfCategory);
                     playCategoryAnimation(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
@@ -196,7 +203,7 @@ public class GameController extends Controller implements Initializable {
     }
 
     private PauseTransition getPauseTransition(int numberOfCategory) {
-        PauseTransition pause = new PauseTransition(javafx.util.Duration.seconds(2.5));
+        PauseTransition pause = new PauseTransition(javafx.util.Duration.seconds(5));
         pause.setOnFinished(__event -> {
             QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
             questionController.setCategoryTheme(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)), false);
@@ -384,6 +391,7 @@ public class GameController extends Controller implements Initializable {
     }
 
     private void CheckIfAllTheSectorsHaveBeenSelected() {
+
         if (selectedSectors == partida.getCantidadJugadores().intValue()) {
             haveAllPlayersSelectedSectors = true; // this way we can re-use the sector selection panels for signaling the player's turn
             loadPawnPositions();
@@ -422,7 +430,7 @@ public class GameController extends Controller implements Initializable {
             currentSelectingPlayer = 0;
             lblCurrentPlayerTurn.setText("Turno de " + players[currentSelectingPlayer].getNombreJugador());
             animationUtils.getInstance().playAnimation("fade", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
-        }
+        } else lblCurrentPlayerTurn.setText("Turno eligiendo de " + players[currentSelectingPlayer].getNombreJugador());
     }
 
     @FXML
@@ -549,12 +557,12 @@ public class GameController extends Controller implements Initializable {
     private void processGameEnd() {
         // logic of saving to DB goes here
         // >>>
-
+        PauseTransition pause = new PauseTransition(javafx.util.Duration.seconds(2.5));
         // play an animation that indicates the game has ended
-        animationUtils.getInstance().playAnimation("gameEnd", getSectorImageIDbySector(players[currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("slowPopUp", imgWinner, 0, 0, 0, 0);
+        pause.play();
         System.out.println("Game has ended");
         FlowController.getInstance().goView("MenuView");
-
     }
 
     public ImageView getSectorImageIDbySector(int sector){
@@ -676,6 +684,12 @@ public class GameController extends Controller implements Initializable {
                     players[currentSelectingPlayer].setPasarAyuda("A");
                 }
                 break;
+        }
+    }
+    @FXML
+    void onActionTiroExtra(MouseEvent event) {
+        if (rotateAnimation != null) {
+            rotateAnimation.stop();
         }
     }
 }

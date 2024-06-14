@@ -26,13 +26,13 @@
       </padding>
       <VBox alignment="CENTER" fillWidth="false" prefHeight="720.0" prefWidth="526.0" spacing="10.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
          <HBox.margin>
-            <Insets bottom="50.0" top="50.0" />
+            <Insets bottom="10.0" top="10.0" />
          </HBox.margin>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
-         <ImageView fitHeight="100.0" fitWidth="397.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png" />
+         <ImageView fitHeight="159.0" fitWidth="445.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/Spinning.gif" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="42.0" prefWidth="200.0">
             <MFXCircleToggleNode fx:id="toggleEasy" prefHeight="107.0" prefWidth="116.0" selected="true" size="16.0" styleClass="mfx-label-small" text="FACIL">
@@ -43,8 +43,8 @@
             <MFXCircleToggleNode fx:id="toggleMid" prefHeight="107.0" prefWidth="116.0" size="16.0" styleClass="mfx-label-small" text="MEDIO" toggleGroup="$Difficulty" />
             <MFXCircleToggleNode fx:id="toggleHard" prefHeight="86.0" prefWidth="65.0" size="16.0" styleClass="mfx-label-small" text="DIFICIL" toggleGroup="$Difficulty" />
          </HBox>
-         <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png" />
+         <ImageView fitHeight="157.0" fitWidth="264.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/questionWallpaper.jpeg" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="55.0" prefWidth="398.0">
             <MFXCircleToggleNode fx:id="toggleDuelMode" prefHeight="107.0" prefWidth="116.0" size="16.0" styleClass="mfx-label-small" text="DUELO">
@@ -62,8 +62,8 @@
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
          </padding>
-         <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png" />
+         <ImageView fitHeight="161.0" fitWidth="378.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/JumpingFriends.png" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="109.0" prefWidth="398.0">
             <Label alignment="CENTER" prefHeight="50.0" prefWidth="219.0" styleClass="mfx-label-small" text="NUMERO DE JUGADORES" />
@@ -80,8 +80,8 @@
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
          </HBox>
-         <ImageView fitHeight="100.0" fitWidth="402.0" pickOnBounds="true">
-            <Image url="@../resources/placeholder.png" />
+         <ImageView fitHeight="171.0" fitWidth="309.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../resources/PreguntadosWallpaper.jpg" />
          </ImageView>
          <HBox alignment="CENTER" prefHeight="54.0" prefWidth="379.0">
             <Label fx:id="test1" alignment="CENTER" prefHeight="50.0" prefWidth="166.0" styleClass="mfx-label-small" text="TIEMPO LIMITE">

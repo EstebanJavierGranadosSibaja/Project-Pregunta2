@@ -4,6 +4,7 @@ import cr.ac.una.preguntadospackage.util.FlowController;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -122,7 +123,7 @@ public class PlayerSelectionController extends Controller implements Initializab
         imgDisabledBluePawn.setVisible(true);
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void onActionRedPawnSelected(Event event) {
         re_enablePastSelectedPawn();
         currentSelectedColor = "red";
@@ -156,7 +157,7 @@ public class PlayerSelectionController extends Controller implements Initializab
         }
     }
 
-    @javafx.fxml.FXML
+    @FXML
     public void onActionGoBack(ActionEvent actionEvent) {
     }
 }
