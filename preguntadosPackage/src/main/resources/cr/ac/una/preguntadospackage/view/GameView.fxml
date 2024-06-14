@@ -553,6 +553,16 @@
                </effect>
                <Image url="@../resources/PawnPink.png" />
             </ImageView>
+            <ImageView fx:id="imgWinner" fitHeight="473.0" fitWidth="473.0" layoutX="212.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/Winner.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgTiroExtra" fitHeight="285.0" fitWidth="137.0" layoutX="376.0" layoutY="461.0" onMouseClicked="#onActionTiroExtra" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../resources/TiroExtra.png" />
+               </image>
+            </ImageView>
          </AnchorPane>
       </StackPane>
    </HBox>

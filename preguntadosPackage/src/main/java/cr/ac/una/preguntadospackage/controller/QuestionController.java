@@ -14,8 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * FXML Controller class
@@ -211,8 +210,42 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionBomba(Event event) {
+
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+        gameController.players[gameController.currentSelectingPlayer].setBombaAyuda("U");
+
         // two incorrect options (randomly selected) are removed
         System.out.println("Bomba");
+
+        // logic goes here
+        // Identify the incorrect answers
+        List<Integer> incorrectAnswers = new ArrayList<>();
+        for (int i = 0; i < respuestas.length; i++) {
+            if (respuestas[i].getEsCorrecta().equals("F")) {
+                incorrectAnswers.add(i);
+            }
+        }
+
+        // Select two incorrect answers at random
+        Collections.shuffle(incorrectAnswers);
+        List<Integer> selectedAnswers = incorrectAnswers.subList(0, Math.min(2, incorrectAnswers.size()));
+
+        for (int answer : selectedAnswers) {
+            switch (answer) {
+                case 0:
+                    btnRespuesta1.setVisible(false);
+                    break;
+                case 1:
+                    btnRespuesta2.setVisible(false);
+                    break;
+                case 2:
+                    btnRespuesta3.setVisible(false);
+                    break;
+                case 3:
+                    btnRespuesta4.setVisible(false);
+                    break;
+            }
+        }
 
         // show the disabled image
         imgDisabledBomba.setVisible(true);
@@ -220,6 +253,10 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionPasar(Event event) {
+
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+        gameController.players[gameController.currentSelectingPlayer].setPasarAyuda("U");
+
         // the player can select another category
         PlayerCategoryCrownSelectionController playerCategoryCrownSelectionController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
         playerCategoryCrownSelectionController.comesFromAyuda = true;
@@ -235,6 +272,10 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionDobleOportunidad(Event event) {
+
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+        gameController.players[gameController.currentSelectingPlayer].setDobleAyuda("U");
+
         // the player can select two answers
         System.out.println("Doble Oportunidad");
         doubleChance = true; //functions as a bounce shield
