@@ -108,7 +108,7 @@ public class PregPreguntasService {
     }
 
     public Respuesta guardarPregunta(PregPreguntasDto pregPreguntasDto) {
-        try {
+         try {
             et = em.getTransaction();
             et.begin();
             PregPreguntas pregPreguntas;
@@ -118,9 +118,7 @@ public class PregPreguntasService {
                     return new Respuesta(false, "No se encontró la pregunta", "guardarPregunta NoResultException");
                 }
                 pregPreguntas.Actualizar(pregPreguntasDto);
-                for (PregRespuestasDto resp : pregPreguntasDto.getPregRespuestasList()) {
-                    pregPreguntas.getRespuestasList().remove(new PregRespuestas(resp.getId()));
-                }
+                
                 if (!pregPreguntasDto.getPregRespuestasList().isEmpty()) {
                     for (PregRespuestasDto resp : pregPreguntasDto.getPregRespuestasList()) {
                         if (resp.getModificado()) {

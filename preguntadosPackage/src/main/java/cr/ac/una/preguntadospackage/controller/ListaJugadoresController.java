@@ -4,6 +4,7 @@ import cr.ac.una.preguntadospackage.model.PregJugadoresDto;
 import cr.ac.una.preguntadospackage.service.PregJugadoresService;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.Formato;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -15,6 +16,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
@@ -108,13 +110,16 @@ public class ListaJugadoresController extends Controller implements Initializabl
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-        resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
-        FlowController.getInstance().goView("EstadisticasDelJugadorView");
+        if (tbvJugadores.getSelectionModel().getSelectedItem() == null) {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Estadisticas", getStage(), "Tiene que escoger algun jugador.");
+        } else {
+            resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
+            FlowController.getInstance().goView("EstadisticasDelJugadorView");
+        }
     }
 
-    public PregJugadoresDto getResultado(){
+    public PregJugadoresDto getResultado() {
         return resultado;
     }
 
-    
 }

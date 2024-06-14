@@ -29,8 +29,8 @@ public class PregPreguntasDto implements Serializable {
     public PregPreguntasDto() {
         this.id = new SimpleStringProperty("");
         this.textoPregunta = new SimpleStringProperty("");
-        this.cantidadRespuestas = new SimpleStringProperty("");
-        this.cantidadAciertos = new SimpleStringProperty("");
+        this.cantidadRespuestas = new SimpleStringProperty("0");
+        this.cantidadAciertos = new SimpleStringProperty("0");
         this.estado = new SimpleBooleanProperty(true);
         this.modificado = false;
         pregPreguntaspartidaList = FXCollections.observableArrayList();
@@ -72,7 +72,7 @@ public class PregPreguntasDto implements Serializable {
     }
 
     public void setCantidadRespuestas(Long cantidadRespuestas) {
-        this.cantidadRespuestas.set(cantidadRespuestas.toString());;
+        this.cantidadRespuestas.set(cantidadRespuestas.toString());
     }
 
     public Long getCantidadAciertos() {

@@ -184,6 +184,23 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnEliminar(ActionEvent event) {
+         try {
+            if (txtId.getText() == null || txtId.getText().isBlank()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Pregunta", getStage(), "");
+            } else {
+                PregPreguntasService preguntasService = new PregPreguntasService();
+                Respuesta respuesta = preguntasService.eliminarPregunta(Long.valueOf(txtId.getText()));
+                if (respuesta.getEstado()) {
+                    nuevaPregunta();
+                    new Mensaje().showModal(Alert.AlertType.CONFIRMATION, "Validacion Pregunta", getStage(), "SE PUDO ELIMINAR");
+                } else {
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Validacion Pregunta", getStage(), respuesta.getMensaje());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(PregPreguntasService.class.getName()).log(Level.SEVERE, "Error guardadndo la pregunta", ex);
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Pregunta", getStage(), "Ocurrio un error eliminando la pregunta.");
+        }
     }
 
     @FXML
@@ -202,6 +219,25 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnGuardar(ActionEvent event) {
+         try {
+            String invalidos = validarRequeridos();
+            if (!invalidos.isBlank()) {
+                new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Pregunta", getStage(), invalidos);
+            } else {
+                PregPreguntasService preguntasService = new PregPreguntasService();
+                Respuesta respuesta = preguntasService.guardarPregunta(this.pregPreguntasDto);
+                if (respuesta.getEstado()) {
+                    unbindPregunta();
+                    this.pregPreguntasDto = (PregPreguntasDto) respuesta.getResultado("PregPregunta");
+                    bindPregunta(false);
+                } else {
+                    new Mensaje().showModal(Alert.AlertType.ERROR, "Validacion Pregunta", getStage(), respuesta.getMensaje());
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(PregPreguntasService.class.getName()).log(Level.SEVERE, "Error guardadndo la pregunta", ex);
+            new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Pregunta", getStage(), "Ocurrio un error guardando la pregunta.");
+        }
     }
 
     @FXML

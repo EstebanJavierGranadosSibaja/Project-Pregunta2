@@ -22,9 +22,9 @@ public class PregJugadoresDto implements Serializable {
     public PregJugadoresDto() {
         this.id = new SimpleStringProperty("");
         this.nombre = new SimpleStringProperty("");
-        this.partidasJugadas = new SimpleStringProperty("");
-        this.partidasGanadas = new SimpleStringProperty("");
-        this.cantidasRespuestasGeneral = new SimpleStringProperty("");
+        this.partidasJugadas = new SimpleStringProperty("0");
+        this.partidasGanadas = new SimpleStringProperty("0");
+        this.cantidasRespuestasGeneral = new SimpleStringProperty("0");
         this.cantidasAcertadasGeneral = new SimpleStringProperty("");
         this.modificado = false;
     }
