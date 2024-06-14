@@ -62,6 +62,7 @@ public class QuestionController extends Controller implements Initializable {
     Boolean isCrowned;
     Boolean onLastCasilla = false;
     Boolean doubleChance = false;
+    int oponentPlayer = -1;
     @FXML
     private ImageView imgDisabledPasar;
     @FXML

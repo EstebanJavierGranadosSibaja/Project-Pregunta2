@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerDuelSelectionController">
+    <Label alignment="CENTER" prefHeight="98.0" prefWidth="993.0" styleClass="mfx-label-tittle" text="SELECCIONA UN JUGADOR PARA EL DUELO">
+        <font>
+          <Font size="38.0" />
+        </font>
+    </Label>
+    <HBox alignment="CENTER" fillHeight="false" prefHeight="318.0" prefWidth="1230.0" spacing="10.0" styleClass="translucent-brown-vbox">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <StackPane prefHeight="317.0" prefWidth="143.0">
+                <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionPinkPawn" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/PawnPink.png" />
+                </ImageView>
+                <ImageView fx:id="imgDisabledPinkPawn" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/nonAvaiblePawn.png" />
+                </ImageView>
+            </StackPane>
+            <Label fx:id="lblPinkPlayer" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="ENTRETENIMIENTO" />
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <StackPane prefHeight="317.0" prefWidth="143.0">
+                <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionBluePawn" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/PawnBlue.png" />
+                </ImageView>
+                <ImageView fx:id="imgDisabledBluePawn" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/nonAvaiblePawn.png" />
+                </ImageView>
+            </StackPane>
+            <Label fx:id="lblBluePlayer" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="GEOGRAFIA" />
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <StackPane prefHeight="317.0" prefWidth="143.0">
+                <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionGreenPawn" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/PawnGreen.png" />
+                </ImageView>
+                <ImageView fx:id="imgDisabledGreenPawn" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/nonAvaiblePawn.png" />
+                </ImageView>
+            </StackPane>
+            <Label fx:id="lblGreenPlayer" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="CIENCIA" />
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <StackPane prefHeight="317.0" prefWidth="143.0">
+                <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionYellowPawn" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/PawnOrange.png" />
+                </ImageView>
+                <ImageView fx:id="imgDisabledYellowPawn" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/nonAvaiblePawn.png" />
+                </ImageView>
+            </StackPane>
+            <Label fx:id="lblYellowPlaye" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="HISTORIA" />
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <StackPane prefHeight="317.0" prefWidth="143.0">
+                <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionPurplePawn" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/PawnPurple.png" />
+                </ImageView>
+                <ImageView fx:id="imgDisabledPurplePawn" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/nonAvaiblePawn.png" />
+                </ImageView>
+            </StackPane>
+            <Label fx:id="lblPurplePlayer" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="DEPORTES" />
+        </VBox>
+        <VBox prefHeight="200.0" prefWidth="100.0">
+            <StackPane prefHeight="317.0" prefWidth="143.0">
+                <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionRedPawn" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/PawnRed.png" />
+                </ImageView>
+                <ImageView fx:id="imgDisabledRedPawn" fitHeight="195.0" fitWidth="195.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../resources/nonAvaiblePawn.png" />
+                </ImageView>
+            </StackPane>
+            <Label fx:id="lblRedPlayer" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="ARTES" />
+        </VBox>
+    </HBox>
+</VBox>
