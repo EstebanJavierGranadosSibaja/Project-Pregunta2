@@ -17,11 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.chart.PieChart;
 
-/**
- * FXML Controller class
- *
- * @author esteb
- */
 public class EstadisticasDelJugadorController extends Controller implements Initializable {
 
     @FXML
@@ -47,12 +42,12 @@ public class EstadisticasDelJugadorController extends Controller implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        ListaJugadoresController listaJugadoresResultado = (ListaJugadoresController) FlowController.getInstance().getController("ListaJugadoresView");
+        // Obtén la referencia del controlador de ListaJugadoresController solo una vez
+        listaJugadoresResultado = (ListaJugadoresController) FlowController.getInstance().getController("ListaJugadoresView");
+        // Inicializa el dto del jugador
         pregJugadoresDto = new PregJugadoresDto();
-        if (listaJugadoresResultado.getResultado().getId() != null && listaJugadoresResultado.getResultado().getId() > 0) {
-            pregJugadoresDto = listaJugadoresResultado.getResultado();
-        }
-        setPieChartData();
+        // Actualiza los datos del gráfico según el jugador seleccionado
+        updateChartData();
     }
 
     @Override
@@ -60,8 +55,18 @@ public class EstadisticasDelJugadorController extends Controller implements Init
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    private void updateChartData() {
+        // Obtén los datos del jugador seleccionado
+        if (listaJugadoresResultado.getResultado().getId() != null && listaJugadoresResultado.getResultado().getId() > 0) {
+            pregJugadoresDto = listaJugadoresResultado.getResultado();
+        }
+
+        // Actualiza los gráficos con los nuevos datos
+        setPieChartData();
+    }
+
     private void setPieChartData() {
-//        // Datos para el gráfico general
+// Datos para el gráfico general
         ObservableList<PieChart.Data> generalData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getCantidasAcertadasGeneral()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getCantidasRespuestasGeneral())
@@ -113,9 +118,17 @@ public class EstadisticasDelJugadorController extends Controller implements Init
 
     @FXML
     private void onActionBtnVolver(ActionEvent event) {
-        pchGeneral.getData().clear();
-        FlowController.getInstance().goView("ListaJugadoresView");
-        
+        // Limpia los datos del gráfico
+        pchGeneral.setData(FXCollections.observableArrayList());
+        pchCiencias.setData(FXCollections.observableArrayList());
+        pchHistoria.setData(FXCollections.observableArrayList());
+        pchGeografia.setData(FXCollections.observableArrayList());
+        pchArte.setData(FXCollections.observableArrayList());
+        pchEntretenimiento.setData(FXCollections.observableArrayList());
+        pchDeporte.setData(FXCollections.observableArrayList());
+
+        // Vuelve a la vista anterior
+        FlowController.getInstance().goView("ListaJugadoresView");;
     }
 
 }

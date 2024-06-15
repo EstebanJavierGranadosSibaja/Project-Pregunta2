@@ -36,7 +36,7 @@
       <padding>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>
-      <MFXButton fx:id="btnInformacion" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" onAction="#onActionInformacion" prefHeight="49.0" prefWidth="70.0" text="JUGAR">
+      <MFXButton fx:id="btnInformacion" buttonType="RAISED" contentDisplay="TOP" onAction="#onActionInformacion" prefHeight="84.0" prefWidth="80.0" text="INFO">
          <graphic>
             <ImageView fitHeight="38.0" fitWidth="34.0" pickOnBounds="true" preserveRatio="true">
                <Image url="@../resources/Pregunta%20icon.png" />
