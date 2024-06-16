@@ -48,34 +48,29 @@ public class MenuController extends Controller implements Initializable {
     private void onActionMentenimientoPreguntas(ActionEvent event) {
         FlowController.getInstance().goView("MantenimientoPreguntasView");
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Mantenimiento de Preguntas", getStage(), "Bienvenido, este es el mantenimiento de preguntas, acá podras buscar, actualizar, eliminar o guardar preguntas.");
-
     }
 
     @FXML
     private void onActionRankedGlobal(ActionEvent event) {
         FlowController.getInstance().goView("EstadisticasDelJugadorView");
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Ranking de Jugadores", getStage(), "Bienvenido, este es el ranking de jugadores, acá podras buscar jugadores y ver algunas estadisticas interesantes.");
-
     }
 
     @FXML
     private void onActionSobreNosotros(ActionEvent event) {
         FlowController.getInstance().goView("SobreNosotrosView");
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Sobre Nosotros", getStage(), "Bienvenido, esta es la ventana de 'sobre nosotros', acá podras conocer acerca de quienes somos, que no gusta y que hacemos.");
-
     }
 
     @FXML
     private void onActionInformacion(ActionEvent event) {
         FlowController.getInstance().goView("InformacionView");
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Información del Juego", getStage(), "Bienvenido, esta es la información del juego, acá podras conocer como funciona Pregunta2, sus mecanicas y demas.");
-
     }
 
     @FXML
     private void onActionCargarPartida(ActionEvent event) {
         FlowController.getInstance().goView("ListaPartidasGuardasView");
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Cargado de Partidas", getStage(), "Bienvenido, esta es la lista de partidas guardadas, acá podras buscar y cargar partidas previamente guardadas.");
-
     }
 }

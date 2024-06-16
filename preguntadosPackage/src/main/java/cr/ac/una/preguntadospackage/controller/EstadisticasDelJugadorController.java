@@ -49,63 +49,63 @@ public class EstadisticasDelJugadorController extends Controller implements Init
 
     @Override
     public void initialize() {
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        // Initialization method for FXML controller
     }
 
     private void updateChartData(PregJugadoresDto pregJugadoresDto) {
-        // Obtén los datos del jugador seleccionado
+        // Get data of the selected player
         if (pregJugadoresDto.getId() != null && pregJugadoresDto.getId() > 0) {
             this.pregJugadoresDto = pregJugadoresDto;
         }
 
-        // Actualiza los gráficos con los nuevos datos
+        // Update charts with new data
         setPieChartData();
     }
 
     private void setPieChartData() {
-// Datos para el gráfico general
+        // Data for the general chart
         ObservableList<PieChart.Data> generalData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas " + pregJugadoresDto.getCantidasAcertadasGeneral(), pregJugadoresDto.getCantidasAcertadasGeneral()),
                 new PieChart.Data("Incorrectas " + (pregJugadoresDto.getCantidasRespuestasGeneral() - pregJugadoresDto.getCantidasAcertadasGeneral()), pregJugadoresDto.getCantidasRespuestasGeneral() - pregJugadoresDto.getCantidasAcertadasGeneral())
         );
         pchGeneral.setData(generalData);
 
-        // Datos para el gráfico de Ciencias
+        // Data for the Science chart
         ObservableList<PieChart.Data> cienciasData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(2).getCantidadRespuestas()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(2).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchCiencias.setData(cienciasData);
 
-        // Datos para el gráfico de Historia
+        // Data for the History chart
         ObservableList<PieChart.Data> historiaData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(3).getCantidadRespuestas()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(3).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchHistoria.setData(historiaData);
 
-        // Datos para el gráfico de Geografía
+        // Data for the Geography chart
         ObservableList<PieChart.Data> geografiaData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(4).getCantidadRespuestas()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(4).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchGeografia.setData(geografiaData);
 
-        // Datos para el gráfico de Arte
+        // Data for the Art chart
         ObservableList<PieChart.Data> arteData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadRespuestas()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchArte.setData(arteData);
 
-        // Datos para el gráfico de Entretenimiento
+        // Data for the Entertainment chart
         ObservableList<PieChart.Data> entretenimientoData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(5).getCantidadRespuestas()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(5).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchEntretenimiento.setData(entretenimientoData);
 
-        // Datos para el gráfico de Deporte
+        // Data for the Sports chart
         ObservableList<PieChart.Data> deporteData = FXCollections.observableArrayList(
                 new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(1).getCantidadRespuestas()),
                 new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(1).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
@@ -115,7 +115,7 @@ public class EstadisticasDelJugadorController extends Controller implements Init
 
     @FXML
     private void onActionBtnVolver(ActionEvent event) {
-        // Limpia los datos del gráfico
+        // Clear chart data
         pchGeneral.setData(FXCollections.observableArrayList());
         pchCiencias.setData(FXCollections.observableArrayList());
         pchHistoria.setData(FXCollections.observableArrayList());
@@ -124,18 +124,20 @@ public class EstadisticasDelJugadorController extends Controller implements Init
         pchEntretenimiento.setData(FXCollections.observableArrayList());
         pchDeporte.setData(FXCollections.observableArrayList());
 
-        // Vuelve a la vista anterior
+        // Go back to the previous view
         FlowController.getInstance().goView("MenuView");
     }
 
     @FXML
     private void onActionBtnBuscar(ActionEvent event) {
+        // Searc a player in ListaJugadoresController 
         ListaJugadoresController jugadoresListaController = (ListaJugadoresController) FlowController.getInstance().getController("ListaJugadoresView");
         FlowController.getInstance().goViewInWindowModal("ListaJugadoresView", getStage(), Boolean.TRUE);
+        // Get player and use the information for the pie chats
         PregJugadoresDto jugadoresDto = jugadoresListaController.getResultado();
         if (jugadoresDto != null) {
             updateChartData(jugadoresDto);
         }
     }
-
 }
+

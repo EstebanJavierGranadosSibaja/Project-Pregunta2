@@ -65,6 +65,9 @@ public class ListaPreguntasController extends Controller implements Initializabl
     @FXML
     private MFXButton btnAceptar11;
 
+    /**
+     * Initializes the TableView columns and text fields
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
@@ -85,6 +88,10 @@ public class ListaPreguntasController extends Controller implements Initializabl
     public void initialize() {
     }
 
+    /**
+     * Handles the action when the Filter button is clicked. It filters the
+     * questions based on the entered criteria.
+     */
     @FXML
     private void onActionFiltrar(ActionEvent event) {
         PregPreguntasService preguntaService = new PregPreguntasService();
@@ -96,6 +103,10 @@ public class ListaPreguntasController extends Controller implements Initializabl
         }
     }
 
+    /**
+     * Handles mouse click event on the TableView. If the primary button is
+     * pressed twice, it triggers the action to accept the selected item.
+     */
     @FXML
     private void onMousePressedTbvPreguntas(MouseEvent event) {
         if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
@@ -103,12 +114,20 @@ public class ListaPreguntasController extends Controller implements Initializabl
         }
     }
 
+    /**
+     * Handles the action when the "Back" button is clicked. It refreshes the
+     * table view and closes the current view.
+     */
     @FXML
     private void onAcionVolver(ActionEvent event) {
         tbvPreguntas.refresh();
         getStage().close();
     }
 
+    /**
+     * Handles the action when the "Accept" button is clicked. If no question is
+     * selected, it displays a warning message.
+     */
     @FXML
     private void onAcionAceptar(ActionEvent event) {
         if (tbvPreguntas.getSelectionModel().getSelectedItem() == null) {
@@ -119,8 +138,10 @@ public class ListaPreguntasController extends Controller implements Initializabl
         }
     }
 
+    /**
+     * Returns the selected question.
+     */
     public PregPreguntasDto getResultado() {
         return resultado;
     }
-
 }
