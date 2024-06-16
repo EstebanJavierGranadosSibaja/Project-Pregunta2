@@ -108,23 +108,21 @@ public class PregPreguntasService {
     }
 
     public Respuesta guardarPregunta(PregPreguntasDto pregPreguntasDto) {
-         try {
+        try {
             et = em.getTransaction();
             et.begin();
             PregPreguntas pregPreguntas;
             if (pregPreguntasDto.getId() != null && pregPreguntasDto.getId() > 0) {
                 pregPreguntas = em.find(PregPreguntas.class, pregPreguntasDto.getId());
                 if (pregPreguntas == null) {
-                    return new Respuesta(false, "No se encontró la pregunta", "guardarPregunta NoResultException");
+                    return new Respuesta(false, "No se encontró la planilla", "guardarTipoPlanilla NoResultException");
                 }
                 pregPreguntas.Actualizar(pregPreguntasDto);
-                
+
                 if (!pregPreguntasDto.getPregRespuestasList().isEmpty()) {
                     for (PregRespuestasDto resp : pregPreguntasDto.getPregRespuestasList()) {
-                        if (resp.getModificado()) {
-                            PregRespuestas respuesta = em.find(PregRespuestas.class, resp.getId());
-                            pregPreguntas.getRespuestasList().add(respuesta);
-                        }
+                        PregRespuestas respuesta = em.find(PregRespuestas.class, resp.getId());
+                        pregPreguntas.getRespuestasList().add(respuesta);
                     }
                 }
                 pregPreguntas = em.merge(pregPreguntas);
@@ -133,13 +131,14 @@ public class PregPreguntasService {
                 em.persist(pregPreguntas);
             }
             et.commit();
-            return new Respuesta(true, "", "", "PregPregunta", new PregPreguntasDto(pregPreguntas));
+            return new Respuesta(true, "", "", "TipoPlanilla", new PregPreguntasDto(pregPreguntas));
 
         } catch (Exception ex) {
             et.rollback();
-            Logger.getLogger(PregPreguntasService.class.getName()).log(Level.SEVERE, "Error guardando la pregunta", ex);
-            return new Respuesta(false, "Error guardando la pregunta.", "guardarPregunta " + ex.getMessage());
+            Logger.getLogger(PregPreguntasService.class.getName()).log(Level.SEVERE, "Error guardando al tipoPlanllla", ex);
+            return new Respuesta(false, "Error guardando al tipoPlanilla.", "guardarTipoPlanilla " + ex.getMessage());
         }
+
     }
 
     public Respuesta eliminarPregunta(Long id) {

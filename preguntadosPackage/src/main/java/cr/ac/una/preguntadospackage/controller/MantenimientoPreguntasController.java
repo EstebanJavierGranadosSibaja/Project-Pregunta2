@@ -67,9 +67,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
         ObservableList<String> comboData = FXCollections.observableArrayList(
                 "ARTE", "DEPORTE", "CIENCIAS", "HISTORIA", "GEOGRAFIA", "ENTRETENIMIENTO"
         );
-
         cbxCategoria.setItems(comboData);
-
         txtEnunciadoPregunta.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(250));
         txtRespuesta1.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
         txtRespuesta2.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
@@ -134,7 +132,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtRespuesta3.textProperty().bindBidirectional(respuestas.get(2).textoRespuesta);
         txtRespuesta4.textProperty().bindBidirectional(respuestas.get(3).textoRespuesta);
         cbxCategoria.setValue(pregPreguntasDto.getCatId().getCategoria());
-
+        
         if (respuestas.get(0).getEsCorrecta().equals("T")) {
             txtRespuesta1.setStyle("-fx-text-fill: green; " + "-fx-border-color: green;");
         }
@@ -249,7 +247,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
     @FXML
     private void onActionBtnNuevo(ActionEvent event) {
         if (new Mensaje().showConfirmation("Limpiar Pregunta", getStage(), "¿Esta seguro que desea limpiar la pregunta?")) {
-            if(!txtEnunciadoPregunta.getText().isBlank() || !txtEnunciadoPregunta.getText().isEmpty()){
+            if (!txtEnunciadoPregunta.getText().isBlank() || !txtEnunciadoPregunta.getText().isEmpty()) {
                 unbindRespuestas();
             }
             nuevaPregunta();
@@ -276,6 +274,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
                     unbindPregunta();
                     this.pregPreguntasDto = (PregPreguntasDto) respuesta.getResultado("PregPregunta");
                     bindPregunta(false);
+                    bindRespuestas();
                 } else {
                     new Mensaje().showModal(Alert.AlertType.ERROR, "Validacion Pregunta", getStage(), respuesta.getMensaje());
                 }
