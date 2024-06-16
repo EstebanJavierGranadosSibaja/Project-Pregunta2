@@ -13,7 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 /**
- * FXML Controller class
+ * FXML Controller class Controller for the "SobreNosotrosView" (About Us) view.
  *
  * @author Matteo2K24
  */
@@ -23,16 +23,25 @@ public class SobreNosotrosController extends Controller implements Initializable
     private MFXButton btnQuitInfo;
 
     /**
-     * Initializes the controller class.
+     * Initializes the controller class. This method is called when the
+     * controller is initialized.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
+    /**
+     * Initializes the controller. This method is called when the controller is
+     * initialized.
+     */
     @Override
     public void initialize() {
     }
 
+    /**
+     * Handles the action when the user clicks on the "Quit Info" button.
+     * Returns to the main menu view.
+     */
     @FXML
     private void onActionQuitInfo(ActionEvent event) {
         FlowController.getInstance().goView("MenuView");
