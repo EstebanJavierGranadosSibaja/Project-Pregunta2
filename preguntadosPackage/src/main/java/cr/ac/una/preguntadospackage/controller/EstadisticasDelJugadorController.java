@@ -39,15 +39,12 @@ public class EstadisticasDelJugadorController extends Controller implements Init
     private PregJugadoresDto pregJugadoresDto;
 
     private ListaJugadoresController listaJugadoresResultado;
+    @FXML
+    private MFXButton btnBuscar;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Obtén la referencia del controlador de ListaJugadoresController solo una vez
-        listaJugadoresResultado = (ListaJugadoresController) FlowController.getInstance().getController("ListaJugadoresView");
-        // Inicializa el dto del jugador
-        pregJugadoresDto = new PregJugadoresDto();
-        // Actualiza los datos del gráfico según el jugador seleccionado
-        updateChartData();
+        
     }
 
     @Override
@@ -55,10 +52,10 @@ public class EstadisticasDelJugadorController extends Controller implements Init
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    private void updateChartData() {
+    private void updateChartData(PregJugadoresDto pregJugadoresDto) {
         // Obtén los datos del jugador seleccionado
-        if (listaJugadoresResultado.getResultado().getId() != null && listaJugadoresResultado.getResultado().getId() > 0) {
-            pregJugadoresDto = listaJugadoresResultado.getResultado();
+        if (pregJugadoresDto.getId() != null && pregJugadoresDto.getId() > 0) {
+            this.pregJugadoresDto = pregJugadoresDto;
         }
 
         // Actualiza los gráficos con los nuevos datos
@@ -128,7 +125,17 @@ public class EstadisticasDelJugadorController extends Controller implements Init
         pchDeporte.setData(FXCollections.observableArrayList());
 
         // Vuelve a la vista anterior
-        FlowController.getInstance().goView("ListaJugadoresView");;
+        FlowController.getInstance().goView("MenuView");
+    }
+
+    @FXML
+    private void onActionBtnBuscar(ActionEvent event) {
+        ListaJugadoresController jugadoresListaController = (ListaJugadoresController) FlowController.getInstance().getController("ListaJugadoresView");
+        FlowController.getInstance().goViewInWindowModal("ListaJugadoresView", getStage(), Boolean.TRUE);
+        PregJugadoresDto jugadoresDto = jugadoresListaController.getResultado();
+        if (jugadoresDto != null) {
+            updateChartData(jugadoresDto);
+        }
     }
 
 }

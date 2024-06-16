@@ -49,6 +49,11 @@
             </VBox>
          </children>
       </HBox>
-      <MFXButton fx:id="btnVolver" onAction="#onActionBtnVolver" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="VOLVER" />
+      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="1308.0" spacing="250.0" VBox.vgrow="ALWAYS">
+         <children>
+            <MFXButton fx:id="btnVolver" onAction="#onActionBtnVolver" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="VOLVER" />
+            <MFXButton fx:id="btnBuscar" layoutX="549.0" layoutY="10.0" onAction="#onActionBtnBuscar" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="BUSCAR" />
+         </children>
+      </HBox>
    </children>
 </VBox>

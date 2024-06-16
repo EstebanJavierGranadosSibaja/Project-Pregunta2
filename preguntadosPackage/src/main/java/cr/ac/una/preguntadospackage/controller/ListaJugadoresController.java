@@ -105,7 +105,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
     @FXML
     private void onAcionVolver(ActionEvent event) {
         tbvJugadores.refresh();
-        FlowController.getInstance().goView("MenuView");
+        FlowController.getInstance().goView("EstadisticasDelJugadorView");
     }
 
     @FXML
@@ -114,7 +114,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
             new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Estadisticas", getStage(), "Tiene que escoger algun jugador primero.");
         } else {
             resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
-            FlowController.getInstance().goView("EstadisticasDelJugadorView");
+            getStage().close();
         }
     }
 

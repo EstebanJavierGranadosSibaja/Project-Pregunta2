@@ -53,7 +53,7 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionRankedGlobal(ActionEvent event) {
-        FlowController.getInstance().goView("ListaJugadoresView");
+        FlowController.getInstance().goView("EstadisticasDelJugadorView");
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "Ranking de Jugadores", getStage(), "Bienvenido, este es el ranking de jugadores, acá podras buscar jugadores y ver algunas estadisticas interesantes.");
 
     }
