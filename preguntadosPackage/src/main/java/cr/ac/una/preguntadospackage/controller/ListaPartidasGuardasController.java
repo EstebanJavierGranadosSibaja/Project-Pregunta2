@@ -10,6 +10,7 @@ import cr.ac.una.preguntadospackage.model.PregPrinpartidaDto;
 import cr.ac.una.preguntadospackage.service.PregPrinpartidaService;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.Formato;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -21,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -118,6 +120,9 @@ public class ListaPartidasGuardasController extends Controller implements Initia
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
+        if (tbvPartidas.getSelectionModel().getSelectedItem() == null) {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Partida", getStage(), "Tiene que escoger alguna partida primero.");
+        } else {}
     }
 
     @Override

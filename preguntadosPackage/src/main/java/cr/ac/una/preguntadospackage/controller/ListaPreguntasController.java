@@ -5,6 +5,7 @@ import cr.ac.una.preguntadospackage.model.PregPreguntasDto;
 import cr.ac.una.preguntadospackage.service.PregPreguntasService;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.Formato;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -16,6 +17,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.KeyCode;
@@ -109,8 +111,12 @@ public class ListaPreguntasController extends Controller implements Initializabl
 
     @FXML
     private void onAcionAceptar(ActionEvent event) {
-        resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
-        getStage().close();
+        if (tbvPreguntas.getSelectionModel().getSelectedItem() == null) {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Pregunta", getStage(), "Tiene que escoger alguna pregunta primero.");
+        } else {
+            resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
+            getStage().close();
+        }
     }
 
     public PregPreguntasDto getResultado() {

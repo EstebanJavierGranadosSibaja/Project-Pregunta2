@@ -111,7 +111,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
     @FXML
     private void onAcionAceptar(ActionEvent event) {
         if (tbvJugadores.getSelectionModel().getSelectedItem() == null) {
-            new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Estadisticas", getStage(), "Tiene que escoger algun jugador.");
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Estadisticas", getStage(), "Tiene que escoger algun jugador primero.");
         } else {
             resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
             FlowController.getInstance().goView("EstadisticasDelJugadorView");
