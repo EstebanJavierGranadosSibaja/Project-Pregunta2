@@ -83,6 +83,7 @@ public class PlayerDuelSelectionController extends Controller implements Initial
         for(int i = 0; i < gameController.partida.getCantidadJugadores(); i++){
             if(Objects.equals(gameController.players[i].getColorPeon(), color)){
                 questionController.oponentPlayer = i;
+
                 FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
             }
         }

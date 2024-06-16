@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.Flow;
 
 /**
  * FXML Controller class
@@ -187,8 +188,16 @@ public class QuestionController extends Controller implements Initializable {
             } else {
                 gameController.currentSelectingPlayer++;
                 if(gameController.currentSelectingPlayer == gameController.partida.getCantidadJugadores().intValue()) gameController.currentSelectingPlayer = 0;
-                gameController.lblCurrentPlayerTurn.setText("Turno de " + gameController.players[gameController.currentSelectingPlayer].getNombreJugador());
-                FlowController.getInstance().goView("GameView");
+                if(oponentPlayer != -1){
+                    gameController.currentSelectingPlayer = oponentPlayer;
+                    resetCategoryTheme();
+                    System.out.println("The other player should be choosing now");
+                    FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
+                    oponentPlayer = -1;
+                } else{
+                    gameController.lblCurrentPlayerTurn.setText("Turno de " + gameController.players[gameController.currentSelectingPlayer].getNombreJugador());
+                    FlowController.getInstance().goView("GameView");
+                }
             }
         }
         // play an animation to indicate the current playing sector
@@ -255,6 +264,10 @@ public class QuestionController extends Controller implements Initializable {
     @FXML
     public void onActionPasar(Event event) {
 
+
+        // reset the category theme
+        resetCategoryTheme();
+
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         gameController.players[gameController.currentSelectingPlayer].setPasarAyuda("U");
 
@@ -264,8 +277,7 @@ public class QuestionController extends Controller implements Initializable {
         FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
         System.out.println("Pasar");
 
-        // reset the category theme
-        resetCategoryTheme();
+
 
         // show the disabled image
         imgDisabledPasar.setVisible(true);

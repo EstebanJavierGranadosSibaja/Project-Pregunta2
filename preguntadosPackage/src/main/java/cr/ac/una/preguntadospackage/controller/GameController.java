@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import java.util.ResourceBundle;
@@ -75,6 +76,12 @@ public class GameController extends Controller implements Initializable {
         for (int i = 0; i < playerCount; i++) {
             players[i].setColorPeon(playerColors[i]);
             players[i].setNombreJugador(playerIDs[i]);
+            players[i].setFichaArte("I");
+            players[i].setFichaCiencias("I");
+            players[i].setFichaDeporte("I");
+            players[i].setFichaEntretenimiento("I");
+            players[i].setFichaGeografia("I");
+            players[i].setFichaHistoria("I");
         }
 
         // DEBUG
@@ -113,7 +120,7 @@ public class GameController extends Controller implements Initializable {
         }
 
         // convert the give time limit in minutes to a LocalDate object
-        //partida.setTiempoTotal(LocalDate.now().plusMinutes(timeLimitInMinutes));
+        // TODO
 
         partida.setNombrePartida("Partida de prueba");
         partida.setModoJuego(modoJuego);// TODO: depend on the parameters selected by the user
@@ -126,8 +133,8 @@ public class GameController extends Controller implements Initializable {
         partida.setSectorActivo(1L);// TODO: depends on the game state
         partida.setVersion(1L);// TODO: depends on the game state
         partida.setModificado(true);// TODO: depends on the game state
-        //partida.setPregJugpartidaList(List.of(players));// TODO: depends on the game state
-        //partida.setPregPreguntaspartidaList(List.of());// TODO: depends on the game state
+        partida.setPregJugpartidaList(List.of(players));// TODO: depends on the game state
+        partida.setPregPreguntaspartidaList(List.of());// TODO: depends on the game state
 
         hideAllPawns();
 
@@ -178,21 +185,26 @@ public class GameController extends Controller implements Initializable {
             } 
             else { // then the roulette is being used to select the category
                 if(numberOfCategory == 2){
-                    QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
-                    questionController.onLastCasilla = false;
-                    
-                    PlayerCategoryCrownSelectionController playerCategoryCrownSelectionController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
-                    playerCategoryCrownSelectionController.setupCoins();
-                    
-                    FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
+                    if(Objects.equals(partida.getModoDuelo(), "A")){
+                        QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
+                        questionController.onLastCasilla = false;
+                        questionController.isCrowned = true;
+                        FlowController.getInstance().goView("PlayerDuelSelectionView");
+                    } else {
+                        QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
+                        questionController.onLastCasilla = false;
+
+                        PlayerCategoryCrownSelectionController playerCategoryCrownSelectionController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
+                        playerCategoryCrownSelectionController.setupCoins();
+
+                        FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
+                    }
                 } else {
 
                     // if the player has the ayuda tiroExtra, then he can spin again
                     if(players[currentSelectingPlayer].getExtraAyuda().equals("A")) {
                         animationUtils.getInstance().playAnimation("slowPopUp", imgTiroExtra, 0, 0, 0, 0);
                     }
-
-                    playCategoryAnimation(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
                     PauseTransition pause = getPauseTransition(numberOfCategory);
                     playCategoryAnimation(Objects.requireNonNull(getCategoryNameByNumber(numberOfCategory)));
                     pause.play();
@@ -391,7 +403,6 @@ public class GameController extends Controller implements Initializable {
     }
 
     private void CheckIfAllTheSectorsHaveBeenSelected() {
-
         if (selectedSectors == partida.getCantidadJugadores().intValue()) {
             haveAllPlayersSelectedSectors = true; // this way we can re-use the sector selection panels for signaling the player's turn
             loadPawnPositions();
