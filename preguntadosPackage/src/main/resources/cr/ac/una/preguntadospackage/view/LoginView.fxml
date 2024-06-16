@@ -9,25 +9,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/21"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.LoginController">
-   <VBox alignment="CENTER" fillWidth="false" layoutX="243.0" layoutY="128.0" prefHeight="452.0" prefWidth="176.0"
-         AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-         AnchorPane.topAnchor="0.0">
+<AnchorPane id="AnchorPane" prefHeight="580.0" prefWidth="500.0" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.LoginController">
+   <VBox alignment="CENTER" fillWidth="false" layoutX="243.0" layoutY="128.0" prefHeight="452.0" prefWidth="176.0" styleClass="h" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <VBox alignment="CENTER" prefHeight="480.0" prefWidth="327.0" spacing="25.0">
          <VBox.margin>
-            <Insets/>
+            <Insets />
          </VBox.margin>
          <ImageView fitHeight="249.0" fitWidth="249.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../resources/Questionmark.png"/>
+            <Image url="@../resources/Questionmark.png" />
          </ImageView>
-         <MFXTextField fx:id="txtTag" prefHeight="49.0" prefWidth="211.0" promptText="TAG DE USUARIO"/>
-         <MFXTextField fx:id="txtPassword" prefHeight="49.0" prefWidth="205.0" promptText="CLAVE"/>
+         <MFXTextField fx:id="txtTag" prefHeight="49.0" prefWidth="211.0" promptText="TAG DE USUARIO" />
          <HBox alignment="CENTER" prefHeight="58.0" prefWidth="344.0" spacing="15.0">
-            <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="64.0"
-                       prefWidth="122.0" text="INICIAR SESION"/>
-            <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="58.0"
-                       prefWidth="141.0" text="SALIR"/>
+            <MFXButton fx:id="btnLogin" buttonType="RAISED" onAction="#onActionLogin" prefHeight="58.0" prefWidth="166.0" text="INICIAR SESION" />
+            <MFXButton fx:id="btnHelp" buttonType="RAISED" onAction="#onActionHelp" prefHeight="58.0" prefWidth="141.0" text="SALIR" />
          </HBox>
       </VBox>
    </VBox>

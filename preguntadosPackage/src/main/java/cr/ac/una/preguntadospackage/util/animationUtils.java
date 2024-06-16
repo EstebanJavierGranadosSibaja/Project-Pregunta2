@@ -95,7 +95,7 @@ public class animationUtils {
             case "slowPopUp": {
                 // play a pause animation to show the slow pop up
                 imageView.setVisible(true);
-                FadeTransition ft = new FadeTransition(Duration.millis(2000), imageView);
+                FadeTransition ft = new FadeTransition(Duration.millis(3000), imageView);
                 ft.setFromValue(0.0);
                 ft.setToValue(1.0);
                 ft.setCycleCount(1);

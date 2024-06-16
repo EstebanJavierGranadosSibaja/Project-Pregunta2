@@ -25,8 +25,6 @@ public class LoginController extends Controller implements Initializable {
     @FXML
     private MFXTextField txtTag;
     @FXML
-    private MFXTextField txtPassword;
-    @FXML
     private MFXButton btnLogin;
     @FXML
     private MFXButton btnHelp;

@@ -1,38 +1,39 @@
-*{
-    -mfx-purple:-fx-base-color-focus;
-    -mfx-main: -fx-base-color-focus;
+/* Variables principales */
+{
+    -mfx-purple: #7EC8E3; /* Celeste claro */
+    -mfx-main: #7EC8E3;   /* Celeste claro */
 }
 
 .root {
-    -fx-background-image: url("../resources/Pregunta2_FONDO.jpg"); /* Ruta de la imagen de fondo */
+    -fx-background-image: url("../resources/questionMarkWallpaper.png"); /* Ruta de la imagen de fondo */
     -fx-background-size: cover; /* Ajustar la imagen para cubrir el área */
     -fx-background-position: center center; /* Centrar la imagen */
 }
 
-.mfx-button{
+.mfx-button {
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 16px;
     -fx-font-weight: bold;
-    -fx-text-fill: #B3821A; /* Texto negro */
-    -fx-background-color: FFD54F; /* Color amarillo similar al de Preguntados */
+    -fx-text-fill: #007BA7; /* Texto celeste más oscuro */
+    -fx-background-color: #A7D4E7; /* Fondo celeste claro */
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
     -fx-padding: 10 20 10 20;
 }
 
 .mfx-button:hover {
-    -fx-background-color: #E5AE25  ; /* Color amarillo más claro al pasar el ratón */
+    -fx-background-color: #B8E0F1; /* Fondo celeste más claro al pasar el ratón */
     -fx-background-radius: 15px;
     -fx-border-radius: 15px;
     -fx-padding: 10 20 10 20;
 }
 
 .translucent-brown-vbox {
-    -fx-background-color: rgba(243, 203, 102, 0.5); /* Color verde pastel cálido translúcido */
+    -fx-background-color: rgba(174, 216, 230, 0.5); /* Fondo celeste claro translúcido */
     -fx-background-radius: 10px;
     -fx-padding: 15px;
     -fx-border-radius: 10px;
-    -fx-border-color: rgba(179, 130, 26, 0.8); /* Color de borde verde pastel más oscuro */
+    -fx-border-color: rgba(126, 200, 227, 0.8); /* Borde celeste más oscuro */
     -fx-border-width: 5px;
 }
 
@@ -51,31 +52,29 @@
 .mfx-label {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
-    -fx-text-fill: #B3821A; /* Color del texto */
+    -fx-text-fill: #007BA7; /* Color del texto celeste oscuro */
     -fx-padding: 0px; /* Ajustar según sea necesario */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 20px;
     -fx-font-weight: bold;
     -fx-text-fiil-position: center center; /* Centrar la imagen */
-
 }
 
 .mfx-label-tittle {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
-    -fx-text-fill: #B3821A; /* Color del texto */
+    -fx-text-fill: #007BA7; /* Color del texto celeste oscuro */
     -fx-padding: 0px; /* Ajustar según sea necesario */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 40px;
     -fx-font-weight: bold;
     -fx-text-fiil-position: center center; /* Centrar la imagen */
-
 }
 
 .mfx-label-small {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
-    -fx-text-fill: #B3821A; /* Color del texto */
+    -fx-text-fill: #007BA7; /* Color del texto celeste oscuro */
     -fx-padding: 0px; /* Ajustar según sea necesario */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 15px;
@@ -84,7 +83,7 @@
 }
 
 .mfx-transparent-textarea {
-    -fx-text-fill: #B3821A; /* Color del texto */
+    -fx-text-fill: #007BA7; /* Color del texto celeste oscuro */
     -fx-font-family: 'Bree Serif';
     -fx-font-size: 15px;
     -fx-font-weight: bold;
@@ -94,29 +93,39 @@
 }
 
 .mfx-textfield {
-    -fx-background-color: #FFFDE7; /* Fondo blanco */
-    -fx-border-color: white; /* Color del borde */
+    -fx-background-color: #E0F7FA; /* Fondo celeste muy claro */
+    -fx-border-color: #B2EBF2; /* Color del borde celeste claro */
     -fx-border-width: 3px; /* Ancho del borde */
     -fx-border-radius: 7px; /* Radio de borde */
     -fx-padding: 5px; /* Relleno interno */
     -fx-font-family: 'Bree Serif'; /* Fuente */
     -fx-font-size: 16px; /* Tamaño de fuente */
-    -fx-text-fill: #333333; /* Color del texto */
+    -fx-text-fill: #005F6B; /* Color del texto celeste oscuro */
 }
 
 .mfx-textfield:focused {
-    -fx-background-color: #FFFACD; /* Fondo amarillo claro cuando está enfocado */
-    -fx-border-color: #FFD700; /* Color del borde cuando está enfocado */
+    -fx-background-color: #B2EBF2; /* Fondo celeste claro cuando está enfocado */
+    -fx-border-color: #00ACC1; /* Color del borde cuando está enfocado */
 }
 
 .mfx-textfield:hover {
-    -fx-border-color: #B3821A; /* Color del borde cuando se pasa el ratón por encima */
+    -fx-border-color: #007BA7; /* Color del borde cuando se pasa el ratón por encima */
 }
 
 .cycle-toggle-node {
-    -fx-background-color: #cccccc;
-    -fx-border-color: #333333;
-    -fx-border-width: 2;
+    -fx-background-color: #E0F7FA; /* Fondo celeste claro */
+    -fx-border-color: #007BA7; /* Borde celeste oscuro */
+    -fx-border-width: 2px;
+    -fx-padding: 10px;
+    -fx-background-radius: 5px;
+    -fx-border-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.mfx-cycle-toggle-node {
+    -fx-background-color: #B3E5FC; /* Fondo celeste muy claro */
+    -fx-border-color: #007BA7; /* Borde celeste oscuro */
+    -fx-border-width: 2px;
     -fx-padding: 10px;
     -fx-background-radius: 5px;
     -fx-border-radius: 5px;
@@ -124,9 +133,9 @@
 }
 
 .cycle-toggle-node[state="state1"] {
-    -fx-background-color: #ff0000; /* Rojo */
+    -fx-background-color: #81D4FA; /* Celeste vivo */
 }
 
 .cycle-toggle-node[state="state2"] {
-    -fx-background-color: #00ff00; /* Verde */
+    -fx-background-color: #4FC3F7; /* Celeste más vivo */
 }

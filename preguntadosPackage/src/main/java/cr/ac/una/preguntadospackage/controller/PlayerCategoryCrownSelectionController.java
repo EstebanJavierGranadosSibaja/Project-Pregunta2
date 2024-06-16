@@ -41,32 +41,32 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "U")){
-            imgDisabledGeography.setVisible(true);
+            imgDisabledGeography.setVisible(false);
         }
         if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "U")){
-            imgDisabledSports.setVisible(true);
+            imgDisabledSports.setVisible(false);
         }
         if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "U")){
-            imgDisabledArt.setVisible(true);
+            imgDisabledArt.setVisible(false);
         }
         if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "U")){
-            imgDisabledEntertainment.setVisible(true);
+            imgDisabledEntertainment.setVisible(false);
         }
         if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "U")){
-            imgDisabledScience.setVisible(true);
+            imgDisabledScience.setVisible(false);
         }
         if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "U")){
-            imgDisabledHistory.setVisible(true);
+            imgDisabledHistory.setVisible(false);
         }
     }
 
     private void resetEverything() {
-        imgDisabledGeography.setVisible(false);
-        imgDisabledSports.setVisible(false);
-        imgDisabledArt.setVisible(false);
-        imgDisabledEntertainment.setVisible(false);
-        imgDisabledScience.setVisible(false);
-        imgDisabledHistory.setVisible(false);
+        imgDisabledGeography.setVisible(true);
+        imgDisabledSports.setVisible(true);
+        imgDisabledArt.setVisible(true);
+        imgDisabledEntertainment.setVisible(true);
+        imgDisabledScience.setVisible(true);
+        imgDisabledHistory.setVisible(true);
         comesFromAyuda = false;
         onLastCasilla = false;
     }
