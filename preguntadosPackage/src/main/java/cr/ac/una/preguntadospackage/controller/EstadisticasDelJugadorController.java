@@ -44,7 +44,7 @@ public class EstadisticasDelJugadorController extends Controller implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
     @Override
@@ -65,50 +65,50 @@ public class EstadisticasDelJugadorController extends Controller implements Init
     private void setPieChartData() {
 // Datos para el gráfico general
         ObservableList<PieChart.Data> generalData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", pregJugadoresDto.getCantidasAcertadasGeneral()),
-                new PieChart.Data("Incorrectas", pregJugadoresDto.getCantidasRespuestasGeneral())
+                new PieChart.Data("Correctas " + pregJugadoresDto.getCantidasAcertadasGeneral(), pregJugadoresDto.getCantidasAcertadasGeneral()),
+                new PieChart.Data("Incorrectas " + (pregJugadoresDto.getCantidasRespuestasGeneral() - pregJugadoresDto.getCantidasAcertadasGeneral()), pregJugadoresDto.getCantidasRespuestasGeneral() - pregJugadoresDto.getCantidasAcertadasGeneral())
         );
         pchGeneral.setData(generalData);
 
         // Datos para el gráfico de Ciencias
         ObservableList<PieChart.Data> cienciasData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", 60),
-                new PieChart.Data("Incorrectas", 40)
+                new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(2).getCantidadRespuestas()),
+                new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(2).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchCiencias.setData(cienciasData);
 
         // Datos para el gráfico de Historia
         ObservableList<PieChart.Data> historiaData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", 50),
-                new PieChart.Data("Incorrectas", 50)
+                new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(3).getCantidadRespuestas()),
+                new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(3).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchHistoria.setData(historiaData);
 
         // Datos para el gráfico de Geografía
         ObservableList<PieChart.Data> geografiaData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", 75),
-                new PieChart.Data("Incorrectas", 25)
+                new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(4).getCantidadRespuestas()),
+                new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(4).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchGeografia.setData(geografiaData);
 
         // Datos para el gráfico de Arte
         ObservableList<PieChart.Data> arteData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", 65),
-                new PieChart.Data("Incorrectas", 35)
+                new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadRespuestas()),
+                new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchArte.setData(arteData);
 
         // Datos para el gráfico de Entretenimiento
         ObservableList<PieChart.Data> entretenimientoData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", 55),
-                new PieChart.Data("Incorrectas", 45)
+                new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(5).getCantidadRespuestas()),
+                new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(5).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchEntretenimiento.setData(entretenimientoData);
 
         // Datos para el gráfico de Deporte
         ObservableList<PieChart.Data> deporteData = FXCollections.observableArrayList(
-                new PieChart.Data("Correctas", 80),
-                new PieChart.Data("Incorrectas", 20)
+                new PieChart.Data("Correctas", pregJugadoresDto.getPregCategoriasjugadorList().get(1).getCantidadRespuestas()),
+                new PieChart.Data("Incorrectas", pregJugadoresDto.getPregCategoriasjugadorList().get(1).getCantidadRespuestas() - pregJugadoresDto.getPregCategoriasjugadorList().get(0).getCantidadAcertada())
         );
         pchDeporte.setData(deporteData);
     }

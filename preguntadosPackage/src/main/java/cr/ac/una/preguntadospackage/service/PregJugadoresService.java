@@ -1,9 +1,13 @@
-
 package cr.ac.una.preguntadospackage.service;
 
+import cr.ac.una.preguntadospackage.model.PregCategoriasjugador;
+import cr.ac.una.preguntadospackage.model.PregCategoriasjugadorDto;
 import cr.ac.una.preguntadospackage.util.EntityManagerHelper;
 import cr.ac.una.preguntadospackage.model.PregJugadores;
 import cr.ac.una.preguntadospackage.model.PregJugadoresDto;
+import cr.ac.una.preguntadospackage.model.PregJugpartida;
+import cr.ac.una.preguntadospackage.model.PregJugpartidaDto;
+import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -57,9 +61,22 @@ public class PregJugadoresService {
 
             List<PregJugadoresDto> jugadores = new ArrayList<>();
             List<PregJugadores> jugador = qryJugadores.getResultList();
+
             for (PregJugadores tempJugadores : jugador) {
-                jugadores.add(new PregJugadoresDto(tempJugadores));
+                PregJugadoresDto jugadoresDto = new PregJugadoresDto(tempJugadores);
+                for (PregCategoriasjugador jugcategoria : tempJugadores.getCategoriasjugadorList()) {
+                    PregCategoriasjugadorDto jugcategoriaDto = new PregCategoriasjugadorDto(jugcategoria);
+                    jugcategoriaDto.setCajuIdjug(tempJugadores);
+                    jugadoresDto.getPregCategoriasjugadorList().add(jugcategoriaDto);
+                }
+                for (PregJugpartida jugpartida : tempJugadores.getJugpartidaList()) {
+                    PregJugpartidaDto jugpartidaDto = new PregJugpartidaDto(jugpartida);
+                    jugpartidaDto.setJugId(tempJugadores);
+                    jugadoresDto.getPregJugpartidaList().add(jugpartidaDto);
+                }
+                jugadores.add(jugadoresDto);
             }
+
             return new Respuesta(true, "", "", "PregJugadores", jugadores);
         } catch (NoResultException ex) {
             return new Respuesta(false, "No existe ningun jugador con los parametros colocados.", "getJugadores NoResultException");
@@ -97,7 +114,8 @@ public class PregJugadoresService {
             return new Respuesta(false, "Error guardadndo al jugador.", "guardarJugador " + ex.getMessage());
         }
     }
-  public Respuesta guardarJugadores(List<PregJugadoresDto> jugadores) {
+
+    public Respuesta guardarJugadores(List<PregJugadoresDto> jugadores) {
         try {
             for (PregJugadoresDto tempJugadores : jugadores) {
                 et = em.getTransaction();
@@ -124,7 +142,7 @@ public class PregJugadoresService {
             return new Respuesta(false, "Error guardando los jugadores.", "guardarJugadores " + ex.getMessage());
         }
     }
-    
+
     public Respuesta eliminarJugador(String nombre) {
         try {
             et = em.getTransaction();
@@ -147,7 +165,7 @@ public class PregJugadoresService {
             return new Respuesta(false, "Error eliminando al jugador.", "eliminarJugador " + ex.getMessage());
         }
     }
-    
+
     public Respuesta eliminarJugador(Long id) {
         try {
             et = em.getTransaction();

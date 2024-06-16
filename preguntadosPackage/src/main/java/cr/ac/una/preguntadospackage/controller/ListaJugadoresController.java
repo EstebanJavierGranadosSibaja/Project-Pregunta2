@@ -105,7 +105,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
     @FXML
     private void onAcionVolver(ActionEvent event) {
         tbvJugadores.refresh();
-        FlowController.getInstance().goView("EstadisticasDelJugadorView");
+        getStage().close();
     }
 
     @FXML

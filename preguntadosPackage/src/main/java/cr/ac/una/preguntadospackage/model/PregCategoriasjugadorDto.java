@@ -15,8 +15,8 @@ public class PregCategoriasjugadorDto implements Serializable {
     private Boolean modificado;
     
     public PregCategoriasjugadorDto() {
-        this.cantidadRespuestas = new SimpleStringProperty("");
-        this.cantidadAcertada = new SimpleStringProperty("");
+        this.cantidadRespuestas = new SimpleStringProperty("0");
+        this.cantidadAcertada = new SimpleStringProperty("0");
         this.modificado = false;
     }
 
