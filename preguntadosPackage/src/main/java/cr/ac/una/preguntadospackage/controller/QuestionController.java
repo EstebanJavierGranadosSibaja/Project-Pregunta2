@@ -133,14 +133,14 @@ public class QuestionController extends Controller implements Initializable {
         switch (category) {
             case "sciencie":
                 imgScienceChar.setVisible(true);
-                respuesta = preguntasService.getPreguntas("CIENCIA");
+                respuesta = preguntasService.getPreguntas("CIENCIAS");
                 preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
                 Collections.shuffle(preguntasList);
                 pregPreguntaDto = preguntasList.get(0);
                 break;
             case "geography":
                 imgGeographyChar.setVisible(true);
-                respuesta = preguntasService.getPreguntas("GREOGRAFIA");
+                respuesta = preguntasService.getPreguntas("GEOGRAFIA");
                 preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
                 Collections.shuffle(preguntasList);
                 pregPreguntaDto = preguntasList.get(0);
@@ -219,7 +219,7 @@ public class QuestionController extends Controller implements Initializable {
     private void calculateAnswerResult(int questionNumber) {
         soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
-        if (respuestas[(questionNumber - 1)].getEsCorrecta().equals("T")) {
+        if (respuestasList.get(questionNumber).getEsCorrecta().equals("T")) {
             gameController.playerCorrectAnswer(category, isCrowned, this.onLastCasilla);
             if (onLastCasilla) {
                 this.onLastCasilla = false;
@@ -229,7 +229,7 @@ public class QuestionController extends Controller implements Initializable {
         } else {
             if (doubleChance) {
                 doubleChance = false;
-                switch (questionNumber) { // remove the button that was selected
+                switch (questionNumber+1) { // remove the button that was selected
                     case 1:
                         btnRespuesta1.setVisible(false);
                         break;
@@ -268,22 +268,22 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionRespuesta1(ActionEvent actionEvent) {
-        calculateAnswerResult(1);
+        calculateAnswerResult(0);
     }
 
     @FXML
     public void onActionRespuesta2(ActionEvent actionEvent) {
-        calculateAnswerResult(2);
+        calculateAnswerResult(1);
     }
 
     @FXML
     public void onActionRespuesta3(ActionEvent actionEvent) {
-        calculateAnswerResult(3);
+        calculateAnswerResult(2);
     }
 
     @FXML
     public void onActionRespuesta4(ActionEvent actionEvent) {
-        calculateAnswerResult(4);
+        calculateAnswerResult(3);
     }
 
     @FXML

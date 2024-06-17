@@ -68,7 +68,7 @@ public class GameController extends Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         gameParametrer = new GameParametersController();
-        lblPlayName.setText("HOLA MUNDO");
+        lblPlayName.setText(gameParametrer.getNombrePartida());
     }
 
     @Override
