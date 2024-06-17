@@ -13,14 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: A7D4E7;" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
+<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.GameController">
    <HBox alignment="CENTER" prefHeight="687.0" prefWidth="1260.0" stylesheets="@GeneralCSS.css">
       <VBox.margin>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </VBox.margin>
-      <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="687.0" prefWidth="426.0">
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="687.0" prefWidth="426.0" spacing="25.0">
          <children>
-            <Label fx:id="lblCurrentPlayerTurn" prefHeight="60.0" prefWidth="359.0" text="turno" textAlignment="CENTER">
+            <Label fx:id="lblCurrentPlayerTurn" alignment="CENTER" prefHeight="60.0" prefWidth="359.0" styleClass="mfx-label-tittle" text="Turno" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="23.0" />
                </font></Label>
