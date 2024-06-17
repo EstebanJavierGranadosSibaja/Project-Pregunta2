@@ -8,6 +8,7 @@ import cr.ac.una.preguntadospackage.util.Formato;
 import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
+import io.github.palexdev.materialfx.controls.MFXCheckbox;
 import io.github.palexdev.materialfx.controls.MFXComboBox;
 import io.github.palexdev.materialfx.controls.MFXDatePicker;
 import io.github.palexdev.materialfx.controls.MFXPasswordField;
@@ -56,6 +57,8 @@ public class MantenimientoPreguntasController extends Controller implements Init
     private MFXButton btnGuardar; // Button to save
     @FXML
     private MFXComboBox<String> cbxCategoria; // Combo box for category selection
+    @FXML
+    private MFXCheckbox chbActiva;
 
     private PregPreguntasDto pregPreguntasDto; // DTO for question
     List<Node> requeridos = new ArrayList<>(); // List of required fields
@@ -105,6 +108,8 @@ public class MantenimientoPreguntasController extends Controller implements Init
         if (!nuevo) {
             txtId.textProperty().bind(pregPreguntasDto.id);
         }
+        
+        chbActiva.selectedProperty().bindBidirectional(pregPreguntasDto.estado);
         txtEnunciadoPregunta.textProperty().bindBidirectional(pregPreguntasDto.textoPregunta);
     }
 
@@ -155,6 +160,20 @@ public class MantenimientoPreguntasController extends Controller implements Init
         }
     }
 
+//    private void validarAdministrador() {
+//        if (chbActiva.isSelected()) {
+//            requeridos.addAll(Arrays.asList(txtUsuario, txtClave));
+//            txtUsuario.setDisable(false);
+//            txtClave.setDisable(false);
+//        } else {
+//            requeridos.removeAll(Arrays.asList(txtUsuario, txtClave));
+//            txtUsuario.clear();
+//            txtUsuario.setDisable(true);
+//            txtClave.clear();
+//            txtClave.setDisable(true);
+//        }
+//    }
+    
     public String validarRequeridos() {
         Boolean validos = true;
         String invalidos = "";
@@ -309,6 +328,10 @@ public class MantenimientoPreguntasController extends Controller implements Init
     private void onActionBtnVolver(ActionEvent event) {
         // Returns to the main menu
         FlowController.getInstance().goView("MenuView");
+    }
+
+    @FXML
+    private void onActionChbActiva(ActionEvent event) {
     }
 
 }

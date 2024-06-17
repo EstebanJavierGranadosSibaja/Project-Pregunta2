@@ -68,6 +68,7 @@ public class PregRespuestas implements Serializable {
         this.textoRespuesta = pregRespuestasDto.getTextoRespuesta();
         this.esCorrecta = pregRespuestasDto.getEsCorrecta();
         this.cantidadSelecionada = pregRespuestasDto.getCantidadSelecionada();
+        this.respIdpre = pregRespuestasDto.getPreId();
         this.version = pregRespuestasDto.getVersion();
     }
     

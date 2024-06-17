@@ -10,8 +10,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="BOTTOM_CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.QuestionController">
-   <HBox alignment="CENTER" fillHeight="false" prefHeight="88.0" prefWidth="1280.0" spacing="105.0">
+<VBox alignment="BOTTOM_CENTER" fillWidth="false" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.QuestionController">
+   <HBox alignment="CENTER" fillHeight="false" prefHeight="88.0" prefWidth="1280.0" spacing="105.0" styleClass="translucent-brown-vbox">
       <Label alignment="CENTER" prefHeight="100.0" prefWidth="232.0" styleClass="mfx-label" text="PUNTOS" />
       <Label alignment="CENTER" prefHeight="100.0" prefWidth="232.0" styleClass="mfx-label" text="VALOR" />
       <Label alignment="CENTER" prefHeight="100.0" prefWidth="232.0" styleClass="mfx-label" text="OTRO DATO" />
@@ -20,7 +20,7 @@
       </padding>
    </HBox>
    <HBox alignment="CENTER" fillHeight="false" prefHeight="329.0" prefWidth="1240.0" spacing="10.0" styleClass="translucent-brown-vbox" VBox.vgrow="ALWAYS">
-      <Label fx:id="lblPregunta" alignment="CENTER" prefHeight="168.0" prefWidth="547.0" styleClass="mfx-label" text="PREGUNTA" />
+      <Label fx:id="lblPregunta" alignment="CENTER" prefHeight="336.0" prefWidth="533.0" styleClass="mfx-label" text="PREGUNTA" wrapText="true" />
       <VBox alignment="CENTER" prefHeight="309.0" prefWidth="333.0" spacing="20.0" HBox.hgrow="ALWAYS">
          <MFXButton fx:id="btnRespuesta1" onAction="#onActionRespuesta1" prefHeight="81.0" prefWidth="323.0" text="RESPUESTA 1" />
          <MFXButton fx:id="btnRespuesta3" onAction="#onActionRespuesta3" prefHeight="81.0" prefWidth="321.0" text="RESPUESTA 3" />
@@ -39,33 +39,27 @@
    <HBox alignment="CENTER" fillHeight="false" prefHeight="226.0" prefWidth="1280.0" spacing="15.0" VBox.vgrow="ALWAYS">
       <HBox prefHeight="223.0" prefWidth="614.0" spacing="20.0" styleClass="translucent-brown-vbox">
          <StackPane prefHeight="149.0" prefWidth="200.0">
-            <ImageView fitHeight="271.0" fitWidth="197.0" onMouseClicked="#onActionDobleOportunidad"
-                       pickOnBounds="true" preserveRatio="true">
-               <Image url="@../resources/DobleOportunidad.png"/>
+            <ImageView fitHeight="271.0" fitWidth="197.0" onMouseClicked="#onActionDobleOportunidad" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/DobleOportunidad.png" />
             </ImageView>
-            <ImageView fx:id="imgDisabledDobleOportunidad" fitHeight="271.0" fitWidth="197.0" pickOnBounds="true"
-                       preserveRatio="true" visible="false">
-               <Image url="@../resources/DisabledDobleOportunidad.png"/>
+            <ImageView fx:id="imgDisabledDobleOportunidad" fitHeight="271.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <Image url="@../resources/DisabledDobleOportunidad.png" />
             </ImageView>
          </StackPane>
          <StackPane prefHeight="149.0" prefWidth="200.0">
-            <ImageView fitHeight="271.0" fitWidth="197.0" onMouseClicked="#onActionPasar" pickOnBounds="true"
-                       preserveRatio="true">
-               <Image url="@../resources/Pasar.png"/>
+            <ImageView fitHeight="271.0" fitWidth="197.0" onMouseClicked="#onActionPasar" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/Pasar.png" />
             </ImageView>
-            <ImageView fx:id="imgDisabledPasar" fitHeight="271.0" fitWidth="197.0" pickOnBounds="true"
-                       preserveRatio="true" visible="false">
-               <Image url="@../resources/DisabledPasar.png"/>
+            <ImageView fx:id="imgDisabledPasar" fitHeight="271.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <Image url="@../resources/DisabledPasar.png" />
             </ImageView>
          </StackPane>
          <StackPane prefHeight="149.0" prefWidth="200.0">
-            <ImageView fitHeight="271.0" fitWidth="197.0" onMouseClicked="#onActionBomba" pickOnBounds="true"
-                       preserveRatio="true">
-               <Image url="@../resources/Bomba.png"/>
+            <ImageView fitHeight="271.0" fitWidth="197.0" onMouseClicked="#onActionBomba" pickOnBounds="true" preserveRatio="true">
+               <Image url="@../resources/Bomba.png" />
             </ImageView>
-            <ImageView fx:id="imgDisabledBomba" fitHeight="271.0" fitWidth="197.0" pickOnBounds="true"
-                       preserveRatio="true" visible="false">
-               <Image url="@../resources/DisabledBomba.png"/>
+            <ImageView fx:id="imgDisabledBomba" fitHeight="271.0" fitWidth="197.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <Image url="@../resources/DisabledBomba.png" />
             </ImageView>
          </StackPane>
       </HBox>

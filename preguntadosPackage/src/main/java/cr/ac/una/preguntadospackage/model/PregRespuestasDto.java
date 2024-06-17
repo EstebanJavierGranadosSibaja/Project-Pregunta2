@@ -20,7 +20,7 @@ public class PregRespuestasDto implements Serializable {
         this.id = new SimpleStringProperty("");
         this.textoRespuesta = new SimpleStringProperty("");
         this.esCorrecta = new SimpleBooleanProperty(true);
-        this.cantidadSelecionada = new SimpleStringProperty("");
+        this.cantidadSelecionada = new SimpleStringProperty("0");
         this.modificado = false;
     }
 

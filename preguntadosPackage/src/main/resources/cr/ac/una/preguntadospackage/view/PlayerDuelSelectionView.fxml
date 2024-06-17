@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerDuelSelectionController">
+<VBox alignment="CENTER" fillWidth="false" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" spacing="10.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.PlayerDuelSelectionController">
     <Label alignment="CENTER" prefHeight="98.0" prefWidth="993.0" styleClass="mfx-label-tittle" text="SELECCIONA UN JUGADOR PARA EL DUELO">
         <font>
           <Font size="38.0" />
         </font>
     </Label>
-    <HBox alignment="CENTER" fillHeight="false" prefHeight="318.0" prefWidth="1230.0" spacing="10.0" styleClass="translucent-brown-vbox">
+    <HBox alignment="CENTER" fillHeight="false" prefHeight="318.0" prefWidth="1230.0" spacing="20.0" styleClass="translucent-brown-vbox">
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
             <StackPane prefHeight="317.0" prefWidth="143.0">
                 <ImageView fitHeight="195.0" fitWidth="195.0" onMouseClicked="#onActionPinkPawn" pickOnBounds="true" preserveRatio="true">
@@ -24,7 +24,7 @@
                     <Image url="@../resources/nonAvaiblePawn.png" />
                 </ImageView>
             </StackPane>
-            <Label fx:id="lblPinkPlayer" alignment="CENTER" prefHeight="72.0" prefWidth="195.0" styleClass="mfx-label" text="ENTRETENIMIENTO" />
+            <Label fx:id="lblPinkPlayer" alignment="CENTER" prefHeight="32.0" prefWidth="149.0" styleClass="mfx-label" text="ENTRETENIMIENTO" />
         </VBox>
         <VBox prefHeight="200.0" prefWidth="100.0">
             <StackPane prefHeight="317.0" prefWidth="143.0">
