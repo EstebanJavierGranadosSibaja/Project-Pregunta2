@@ -36,6 +36,8 @@ public class PregJugpartidaDto implements Serializable {
     private PregPrinpartida pparId;
 
     public PregJugpartidaDto() {
+        this.cantidadAyudasTotal = Long.valueOf(0);
+        this.cantidadAyudasUsadas = Long.valueOf(0);
         this.modificado = false;
     }
 

@@ -5,7 +5,6 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
-import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCircleToggleNode;
 import io.github.palexdev.materialfx.controls.MFXSlider;
@@ -67,7 +66,6 @@ public class GameParametersController extends Controller implements Initializabl
 
     @FXML
     private void onActionStart(ActionEvent event) {
-        soundUtils.getInstance().playSound("click");
         String gamemode;
         // get the selected game mode
         if(toggleEasy.isSelected()) gamemode = "F";
@@ -84,15 +82,7 @@ public class GameParametersController extends Controller implements Initializabl
 
     @FXML
     private void onActionCancel(ActionEvent event) {
-        soundUtils.getInstance().playSound("click");
-        // reset all the selectors and values
-        nonMFXspinner.getValueFactory().setValue(2);
-        toggleEasy.setSelected(true);
-        sldrGameTime.setValue(5);
-        toggleDuelMode.setSelected(false);
-        toggleHard.setSelected(false);
-        toggleMid.setSelected(false);
-
+        // TODO: reset all the data
         FlowController.getInstance().goView("MenuView");
     }
 

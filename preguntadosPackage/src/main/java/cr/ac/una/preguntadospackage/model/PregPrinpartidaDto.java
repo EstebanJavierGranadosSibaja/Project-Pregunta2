@@ -8,11 +8,13 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 
 public class PregPrinpartidaDto implements Serializable {
 
@@ -43,6 +45,8 @@ public class PregPrinpartidaDto implements Serializable {
         this.cantidadJugadores = new SimpleStringProperty("");
         this.estadoPartida = new SimpleStringProperty("");
         this.modificado = false;
+        pregPreguntaspartidaList = new ArrayList();
+        pregJugpartidaList = new ArrayList();
     }
 
     public PregPrinpartidaDto(PregPrinpartida pregPrinpartida) {

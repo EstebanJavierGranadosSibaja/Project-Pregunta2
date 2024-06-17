@@ -3,6 +3,8 @@ package cr.ac.una.preguntadospackage.model;
 import java.io.Serializable;
 import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class PregJugadoresDto implements Serializable {
 
@@ -16,8 +18,8 @@ public class PregJugadoresDto implements Serializable {
     public SimpleStringProperty cantidasAcertadasGeneral;
     private Long version;
     private Boolean modificado;
-    private List<PregCategoriasjugador> pregCategoriasjugadorList;
-    private List<PregJugpartida> pregJugpartidaList;
+    private ObservableList<PregCategoriasjugadorDto> pregCategoriasjugadorList;
+    private ObservableList<PregJugpartidaDto> pregJugpartidaList;
 
     public PregJugadoresDto() {
         this.id = new SimpleStringProperty("");
@@ -27,6 +29,8 @@ public class PregJugadoresDto implements Serializable {
         this.cantidasRespuestasGeneral = new SimpleStringProperty("0");
         this.cantidasAcertadasGeneral = new SimpleStringProperty("");
         this.modificado = false;
+        pregCategoriasjugadorList = FXCollections.observableArrayList();
+        pregJugpartidaList = FXCollections.observableArrayList();
     }
 
     public PregJugadoresDto(PregJugadores pregJugadores) {
@@ -99,19 +103,19 @@ public class PregJugadoresDto implements Serializable {
         this.version = version;
     }
 
-    public List<PregCategoriasjugador> getPregCategoriasjugadorList() {
+    public ObservableList<PregCategoriasjugadorDto> getPregCategoriasjugadorList() {
         return pregCategoriasjugadorList;
     }
 
-    public void setPregCategoriasjugadorList(List<PregCategoriasjugador> pregCategoriasjugadorList) {
+    public void setPregCategoriasjugadorList(ObservableList<PregCategoriasjugadorDto> pregCategoriasjugadorList) {
         this.pregCategoriasjugadorList = pregCategoriasjugadorList;
     }
 
-    public List<PregJugpartida> getPregJugpartidaList() {
+    public ObservableList<PregJugpartidaDto> getPregJugpartidaList() {
         return pregJugpartidaList;
     }
 
-    public void setPregJugpartidaList(List<PregJugpartida> pregJugpartidaList) {
+    public void setPregJugpartidaList(ObservableList<PregJugpartidaDto> pregJugpartidaList) {
         this.pregJugpartidaList = pregJugpartidaList;
     }
 

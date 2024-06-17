@@ -15,40 +15,43 @@
       <Label alignment="CENTER" prefHeight="118.0" prefWidth="729.0" styleClass="mfx-label-tittle" text="ESTADISTICAS DEL JUGADOR" />
       <HBox alignment="CENTER" prefHeight="649.0" prefWidth="1250.0" spacing="10.0">
          <children>
-            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="606.0" prefWidth="95.0" spacing="10.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="562.0" prefWidth="219.0" spacing="10.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
                <children>
-                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="647.0" styleClass="mfx-label" text="PORCENTAJE DE ACIERTOS GENERAL" VBox.vgrow="ALWAYS" />
-                  <PieChart fx:id="pchGeneral" prefHeight="450.0" prefWidth="450.0" VBox.vgrow="ALWAYS" />
+                  <PieChart fx:id="pchGeneral" prefHeight="450.0" prefWidth="450.0" styleClass="mfx-label-small" title="GENERAL" VBox.vgrow="ALWAYS" />
                </children>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </VBox>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="606.0" prefWidth="254.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" prefHeight="562.0" prefWidth="494.0" styleClass="translucent-brown-vbox" HBox.hgrow="ALWAYS">
                <children>
-                  <Label alignment="CENTER" prefHeight="100.0" prefWidth="578.0" styleClass="mfx-label" text="PORCENTAJE DE ACIERTOS POR CATEGORIA" VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="100.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="158.0" prefWidth="854.0" spacing="75.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <PieChart fx:id="pchCiencias" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-small" title="CIENCIAS" />
-                        <PieChart fx:id="pchHistoria" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-small" title="HISTORIA" />
+                        <PieChart fx:id="pchCiencias" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-circles" title="CIENCIAS" />
+                        <PieChart fx:id="pchHistoria" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-circles" title="HISTORIA" />
                      </children>
                   </HBox>
-                  <HBox alignment="CENTER" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="100.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="170.0" prefWidth="726.0" spacing="75.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <PieChart fx:id="pchGeografia" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-small" title="GEOGRAFIA" />
-                        <PieChart fx:id="pchArte" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-small" title="ARTE" />
+                        <PieChart fx:id="pchGeografia" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-circles" title="GEOGRAFIA" />
+                        <PieChart fx:id="pchArte" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-circles" title="ARTE" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="100.0" VBox.vgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="184.0" prefWidth="852.0" spacing="75.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <PieChart fx:id="pchEntretenimiento" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-small" title="ENTRETENIMIENTO" />
-                        <PieChart fx:id="pchDeporte" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-small" title="DEPORTE" />
+                        <PieChart fx:id="pchEntretenimiento" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-circles" title="ENTRETENIMIENTO" />
+                        <PieChart fx:id="pchDeporte" prefHeight="100.0" prefWidth="100.0" styleClass="mfx-label-circles" title="DEPORTE" />
                      </children>
                   </HBox>
                </children>
             </VBox>
          </children>
       </HBox>
-      <MFXButton fx:id="btnVolver" onAction="#onActionBtnVolver" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="VOLVER" />
+      <HBox alignment="CENTER" prefHeight="46.0" prefWidth="1308.0" spacing="250.0" VBox.vgrow="ALWAYS">
+         <children>
+            <MFXButton fx:id="btnVolver" onAction="#onActionBtnVolver" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="VOLVER" />
+            <MFXButton fx:id="btnBuscar" layoutX="549.0" layoutY="10.0" onAction="#onActionBtnBuscar" prefHeight="60.0" prefWidth="171.0" styleClass="mfx-button" text="BUSCAR" />
+         </children>
+      </HBox>
    </children>
 </VBox>

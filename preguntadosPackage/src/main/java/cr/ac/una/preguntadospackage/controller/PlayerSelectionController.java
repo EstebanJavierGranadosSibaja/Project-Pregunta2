@@ -1,7 +1,6 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
-import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -91,7 +90,6 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @javafx.fxml.FXML
     public void onActionGreenPawnSelected(Event event) {
-        soundUtils.getInstance().playSound("click");
         re_enablePastSelectedPawn();
         currentSelectedColor = "green";
         imgDisabledGreenPawn.setVisible(true);
@@ -99,7 +97,6 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @javafx.fxml.FXML
     public void onActionOrangePawnSelected(Event event) {
-        soundUtils.getInstance().playSound("click");
         re_enablePastSelectedPawn();
         currentSelectedColor = "orange";
         imgDisabledOrangePawn.setVisible(true);
@@ -107,7 +104,6 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @javafx.fxml.FXML
     public void onActionPinkPawnSelected(Event event) {
-        soundUtils.getInstance().playSound("click");
         re_enablePastSelectedPawn();
         currentSelectedColor = "pink";
         imgDisabledPinkPawn.setVisible(true);
@@ -115,7 +111,6 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @javafx.fxml.FXML
     public void onActionPurplePawnSelected(Event event) {
-        soundUtils.getInstance().playSound("click");
         re_enablePastSelectedPawn();
         currentSelectedColor = "purple";
         imgDisabledPurplePawn.setVisible(true);
@@ -123,7 +118,6 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @javafx.fxml.FXML
     public void onActionBluePawnSelected(Event event) {
-        soundUtils.getInstance().playSound("click");
         re_enablePastSelectedPawn();
         currentSelectedColor = "blue";
         imgDisabledBluePawn.setVisible(true);
@@ -131,7 +125,6 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @FXML
     public void onActionRedPawnSelected(Event event) {
-        soundUtils.getInstance().playSound("click");
         re_enablePastSelectedPawn();
         currentSelectedColor = "red";
         imgDisabledRedPawn.setVisible(true);
@@ -140,7 +133,6 @@ public class PlayerSelectionController extends Controller implements Initializab
     // BUTTONS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @javafx.fxml.FXML
     public void onActionConfirmar(ActionEvent actionEvent) {
-        soundUtils.getInstance().playSound("click");
         if(!txtPlayerName.getText().isBlank() && !currentSelectedColor.isBlank()){
 
             // save the player name and color

@@ -20,6 +20,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,7 +55,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
     @FXML
     private MFXButton btnGuardar;
     @FXML
-    private MFXComboBox<?> cbxCategoria;
+    private MFXComboBox<String> cbxCategoria;
 
     private PregPreguntasDto pregPreguntasDto;
     List<Node> requeridos = new ArrayList<>();
@@ -61,6 +63,11 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        ObservableList<String> comboData = FXCollections.observableArrayList(
+                "ARTE", "DEPORTE", "CIENCIAS", "HISTORIA", "GEOGRAFIA", "ENTRETENIMIENTO"
+        );
+        cbxCategoria.setItems(comboData);
         txtEnunciadoPregunta.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(250));
         txtRespuesta1.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
         txtRespuesta2.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50));
@@ -80,10 +87,16 @@ public class MantenimientoPreguntasController extends Controller implements Init
         bindPregunta(true);
         txtId.clear();
         txtId.requestFocus();
+        cbxCategoria.setValue("");
+        cbxCategoria.requestFocus();
         txtRespuesta1.setText("");
         txtRespuesta2.setText("");
         txtRespuesta3.setText("");
         txtRespuesta4.setText("");
+        txtRespuesta1.requestFocus();
+        txtRespuesta2.requestFocus();
+        txtRespuesta3.requestFocus();
+        txtRespuesta4.requestFocus();
     }
 
     private void bindPregunta(Boolean nuevo) {
@@ -97,13 +110,41 @@ public class MantenimientoPreguntasController extends Controller implements Init
         txtId.textProperty().unbind();
     }
 
+    private void unbindRespuestas() {
+        if (respuestas.get(0).getEsCorrecta().equals("T")) {
+            txtRespuesta1.setStyle("mfx-textfield; " + "mfx-textfield:focused;" + "mfx-textfield:hover;" + "mfx-label-small;");
+        }
+        if (respuestas.get(1).getEsCorrecta().equals("T")) {
+            txtRespuesta2.setStyle("mfx-textfield; " + "mfx-textfield:focused;" + "mfx-textfield:hover;" + "mfx-label-small;");
+        }
+        if (respuestas.get(2).getEsCorrecta().equals("T")) {
+            txtRespuesta3.setStyle("mfx-textfield; " + "mfx-textfield:focused;" + "mfx-textfield:hover;" + "mfx-label-small;");
+        }
+        if (respuestas.get(3).getEsCorrecta().equals("T")) {
+            txtRespuesta4.setStyle("mfx-textfield; " + "mfx-textfield:focused;" + "mfx-textfield:hover;" + "mfx-label-small;");
+        }
+    }
+
     private void bindRespuestas() {
         respuestas = pregPreguntasDto.getPregRespuestasList();
-        Collections.shuffle(respuestas);
         txtRespuesta1.textProperty().bindBidirectional(respuestas.get(0).textoRespuesta);
         txtRespuesta2.textProperty().bindBidirectional(respuestas.get(1).textoRespuesta);
         txtRespuesta3.textProperty().bindBidirectional(respuestas.get(2).textoRespuesta);
         txtRespuesta4.textProperty().bindBidirectional(respuestas.get(3).textoRespuesta);
+        cbxCategoria.setValue(pregPreguntasDto.getCatId().getCategoria());
+        
+        if (respuestas.get(0).getEsCorrecta().equals("T")) {
+            txtRespuesta1.setStyle("-fx-text-fill: green; " + "-fx-border-color: green;");
+        }
+        if (respuestas.get(1).getEsCorrecta().equals("T")) {
+            txtRespuesta2.setStyle("-fx-text-fill: green; " + "-fx-border-color: green;");
+        }
+        if (respuestas.get(2).getEsCorrecta().equals("T")) {
+            txtRespuesta3.setStyle("-fx-text-fill: green; " + "-fx-border-color: green;");
+        }
+        if (respuestas.get(3).getEsCorrecta().equals("T")) {
+            txtRespuesta4.setStyle("-fx-text-fill: green; " + "-fx-border-color: green;");
+        }
     }
 
     public String validarRequeridos() {
@@ -149,7 +190,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     private void indicarRequeridos() {
         requeridos.clear();
-        requeridos.addAll(Arrays.asList(txtEnunciadoPregunta, txtRespuesta1, txtRespuesta2, txtRespuesta3, txtRespuesta4));
+        requeridos.addAll(Arrays.asList(txtEnunciadoPregunta, txtRespuesta1, txtRespuesta2, txtRespuesta3, txtRespuesta4, cbxCategoria));
     }
 
     private void cargarPregunta(Long id) {
@@ -184,7 +225,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnEliminar(ActionEvent event) {
-         try {
+        try {
             if (txtId.getText() == null || txtId.getText().isBlank()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Eliminar Pregunta", getStage(), "");
             } else {
@@ -205,7 +246,10 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnNuevo(ActionEvent event) {
-        if (new Mensaje().showConfirmation("Limpiar Empleado", getStage(), "¿Esta seguro que desea limpiar el usuraio?")) {
+        if (new Mensaje().showConfirmation("Limpiar Pregunta", getStage(), "¿Esta seguro que desea limpiar la pregunta?")) {
+            if (!txtEnunciadoPregunta.getText().isBlank() || !txtEnunciadoPregunta.getText().isEmpty()) {
+                unbindRespuestas();
+            }
             nuevaPregunta();
         }
     }
@@ -219,7 +263,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
 
     @FXML
     private void onActionBtnGuardar(ActionEvent event) {
-         try {
+        try {
             String invalidos = validarRequeridos();
             if (!invalidos.isBlank()) {
                 new Mensaje().showModal(Alert.AlertType.ERROR, "Guardar Pregunta", getStage(), invalidos);
@@ -230,6 +274,7 @@ public class MantenimientoPreguntasController extends Controller implements Init
                     unbindPregunta();
                     this.pregPreguntasDto = (PregPreguntasDto) respuesta.getResultado("PregPregunta");
                     bindPregunta(false);
+                    bindRespuestas();
                 } else {
                     new Mensaje().showModal(Alert.AlertType.ERROR, "Validacion Pregunta", getStage(), respuesta.getMensaje());
                 }

@@ -10,6 +10,7 @@ import cr.ac.una.preguntadospackage.model.PregPrinpartidaDto;
 import cr.ac.una.preguntadospackage.service.PregPrinpartidaService;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.Formato;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.Respuesta;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXTextField;
@@ -21,6 +22,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
@@ -68,11 +70,14 @@ public class ListaPartidasGuardasController extends Controller implements Initia
     private MFXButton btnVolver;
     @FXML
     private MFXButton btnAceptar11;
-    
-     private ObservableList<PregPrinpartidaDto> partidasList;
+
+    private ObservableList<PregPrinpartidaDto> partidasList;
 
     private PregJugadoresDto resultado;
 
+    /**
+     * Initializes the TableView columns and text fields
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         tbcId.setCellValueFactory(cd -> cd.getValue().id);
@@ -91,6 +96,10 @@ public class ListaPartidasGuardasController extends Controller implements Initia
         txtEstadoPartida.delegateSetTextFormatter(Formato.getInstance().letrasFormat(1));
     }
 
+    /**
+     * Handles the action when the Filter button is clicked. It filters the
+     * saved games based on the entered criteria.
+     */
     @FXML
     private void onActionFiltrar(ActionEvent event) {
         PregPrinpartidaService partidaService = new PregPrinpartidaService();
@@ -103,23 +112,42 @@ public class ListaPartidasGuardasController extends Controller implements Initia
         }
     }
 
+    /**
+     * Handles mouse click event on the TableView. If the primary button is
+     * pressed twice, it triggers the action to accept the selected item.
+     */
     @FXML
     private void onMousePressedTbvPartidas(MouseEvent event) {
-         if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
+        if (event.isPrimaryButtonDown() && event.getClickCount() == 2) {
             onAcionAceptar(null);
         }
     }
 
+    /**
+     * Handles the action when the "Back" button is clicked. It refreshes the
+     * table view and goes back to the main menu view.
+     */
     @FXML
     private void onAcionVolver(ActionEvent event) {
         tbvPartidas.refresh();
         FlowController.getInstance().goView("MenuView");
     }
 
+    /**
+     * Handles the action when the "Accept" button is clicked. If no saved game
+     * is selected, it displays a warning message.
+     */
     @FXML
     private void onAcionAceptar(ActionEvent event) {
+        if (tbvPartidas.getSelectionModel().getSelectedItem() == null) {
+            new Mensaje().showModal(Alert.AlertType.WARNING, "Cargar Partida", getStage(), "Tiene que escoger alguna partida primero.");
+        } else {
+        }
     }
 
+    /**
+     * Initializes the controller.
+     */
     @Override
     public void initialize() {
     }

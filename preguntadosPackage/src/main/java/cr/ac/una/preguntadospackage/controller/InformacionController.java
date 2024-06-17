@@ -35,6 +35,7 @@ public class InformacionController extends Controller implements Initializable {
 
     @FXML
     private void onActionQuitSettings(ActionEvent event) {
+        // Go back to the menu
         FlowController.getInstance().goView("MenuView");
     }
 

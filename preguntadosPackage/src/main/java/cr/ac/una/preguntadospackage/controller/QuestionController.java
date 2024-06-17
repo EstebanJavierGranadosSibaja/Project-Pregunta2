@@ -170,6 +170,7 @@ public class QuestionController extends Controller implements Initializable {
 
     private void calculateAnswerResult(int questionNumber){
         soundUtils.getInstance().playSound("click");
+        soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         if(respuestas[(questionNumber - 1)].getEsCorrecta().equals("T")){
             gameController.playerCorrectAnswer(category, isCrowned, this.onLastCasilla);

@@ -37,6 +37,18 @@
     -fx-border-width: 5px;
 }
 
+.mfx-label-circles {
+    -fx-background-color: transparent; /* Color de fondo transparente */
+    -fx-border-color: transparent; /* Color del borde transparente */
+    -fx-text-fill: #B3821A; /* Color del texto */
+    -fx-padding: 0px; /* Ajustar según sea necesario */
+    -fx-font-family: 'Bree Serif';
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+    -fx-text-fiil-position: center center; /* Centrar la imagen */
+
+}
+
 .mfx-label {
     -fx-background-color: transparent; /* Color de fondo transparente */
     -fx-border-color: transparent; /* Color del borde transparente */
