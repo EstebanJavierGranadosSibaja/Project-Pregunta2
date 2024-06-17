@@ -55,6 +55,7 @@ public class LoginController extends Controller implements Initializable {
 
     @FXML
     private void onActionHelp(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
     }
 
     

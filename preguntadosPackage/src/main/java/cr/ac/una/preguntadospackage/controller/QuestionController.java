@@ -5,6 +5,7 @@ package cr.ac.una.preguntadospackage.controller;
 import cr.ac.una.preguntadospackage.model.PregRespuestasDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
 import cr.ac.una.preguntadospackage.util.animationUtils;
+import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -168,6 +169,7 @@ public class QuestionController extends Controller implements Initializable {
     }
 
     private void calculateAnswerResult(int questionNumber){
+        soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         if(respuestas[(questionNumber - 1)].getEsCorrecta().equals("T")){
             gameController.playerCorrectAnswer(category, isCrowned, this.onLastCasilla);
@@ -220,7 +222,7 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionBomba(Event event) {
-
+        soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         gameController.players[gameController.currentSelectingPlayer].setBombaAyuda("U");
 
@@ -263,8 +265,7 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionPasar(Event event) {
-
-
+        soundUtils.getInstance().playSound("click");
         // reset the category theme
         resetCategoryTheme();
 
@@ -285,7 +286,7 @@ public class QuestionController extends Controller implements Initializable {
 
     @FXML
     public void onActionDobleOportunidad(Event event) {
-
+        soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         gameController.players[gameController.currentSelectingPlayer].setDobleAyuda("U");
 
@@ -299,6 +300,7 @@ public class QuestionController extends Controller implements Initializable {
 
     @Deprecated
     public void onActionExit(Event event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("MainMenuView");
     }
 }

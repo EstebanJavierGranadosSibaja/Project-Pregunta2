@@ -5,6 +5,7 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -38,31 +39,37 @@ public class MenuController extends Controller implements Initializable {
 
     @FXML
     private void onActionPlayMultiplayer(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("GameParametersView");
     }
 
     @FXML
     private void onActionMentenimientoPreguntas(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("MantenimientoPreguntasView");
     }
 
     @FXML
     private void onActionRankedGlobal(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("ListaJugadoresView");
     }
 
     @FXML
     private void onActionSobreNosotros(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("SobreNosotrosView");
     }
 
     @FXML
     private void onActionInformacion(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("InformacionView");
     }
 
     @FXML
     private void onActionCargarPartida(ActionEvent event) {
+        soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("ListaPartidasGuardasView");
     }
 }
