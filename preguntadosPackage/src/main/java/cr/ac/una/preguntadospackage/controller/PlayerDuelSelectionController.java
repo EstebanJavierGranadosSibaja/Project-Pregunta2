@@ -2,6 +2,7 @@ package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.model.PregJugpartidaDto;
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.soundUtils;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -78,12 +79,12 @@ public class PlayerDuelSelectionController extends Controller implements Initial
     }
 
     private void playerHasBeenSelected(String color){
+        soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         QuestionController questionController = (QuestionController) FlowController.getInstance().getController("QuestionView");
         for(int i = 0; i < gameController.partida.getCantidadJugadores(); i++){
             if(Objects.equals(gameController.players[i].getColorPeon(), color)){
                 questionController.oponentPlayer = i;
-
                 FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
             }
         }

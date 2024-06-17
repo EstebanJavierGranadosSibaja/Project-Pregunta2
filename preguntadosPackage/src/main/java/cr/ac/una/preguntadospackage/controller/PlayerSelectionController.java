@@ -77,34 +77,6 @@ public class PlayerSelectionController extends Controller implements Initializab
         this.timeLimitInMinutes = timeLimitInMinutes;
     }
 
-    // IMAGES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    // if the player clicks a pawn, but then changes his mind and clicks another one, the previous pawn should be re-enabled
-    // but we have to take into consideration the other already selected pawns
-    private void re_enablePastSelectedPawn() {
-        switch (currentSelectedColor) {
-            case "pink":
-                imgDisabledPinkPawn.setVisible(false);
-                break;
-            case "green":
-                imgDisabledGreenPawn.setVisible(false);
-                break;
-            case "orange":
-                imgDisabledOrangePawn.setVisible(false);
-                break;
-            case "purple":
-                imgDisabledPurplePawn.setVisible(false);
-                break;
-            case "blue":
-                imgDisabledBluePawn.setVisible(false);
-                break;
-            case "red":
-                imgDisabledRedPawn.setVisible(false);
-                break;
-            default:
-                System.out.println("No pawn was selected before");
-        }
-    }
-
     @javafx.fxml.FXML
     public void onActionGreenPawnSelected(Event event) {
         soundUtils.getInstance().playSound("click");
@@ -163,7 +135,6 @@ public class PlayerSelectionController extends Controller implements Initializab
             playerNames[currentPlayer] = txtPlayerName.getText();
             playerColors[currentPlayer] = currentSelectedColor;
 
-            // String[] playerColors, String[] playerNames, int amountOfPlayers, String gameMode, String duelMode, int timeLimitInMinutes
             if (currentPlayer == amountOfPlayers - 1) {
                 // if all players have been selected, go to the game view
                 gameController.recieveParameters(playerColors, playerNames, amountOfPlayers, gameMode, duelMode, timeLimitInMinutes);
@@ -178,11 +149,41 @@ public class PlayerSelectionController extends Controller implements Initializab
                 currentSelectedColor = "";
                 txtPlayerName.requestFocus();
             }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Por favor, seleccione un color y un nombre para el jugador");
+            alert.setHeaderText("SELECCION DE PERSONAJE INCOMPLETA");
+            alert.show();
         }
     }
 
     @FXML
     public void onActionGoBack(ActionEvent actionEvent) {
         soundUtils.getInstance().playSound("click");
+        FlowController.getInstance().goView("GameParametersView");
+    }
+
+    private void re_enablePastSelectedPawn() {
+        switch (currentSelectedColor) {
+            case "pink":
+                imgDisabledPinkPawn.setVisible(false);
+                break;
+            case "green":
+                imgDisabledGreenPawn.setVisible(false);
+                break;
+            case "orange":
+                imgDisabledOrangePawn.setVisible(false);
+                break;
+            case "purple":
+                imgDisabledPurplePawn.setVisible(false);
+                break;
+            case "blue":
+                imgDisabledBluePawn.setVisible(false);
+                break;
+            case "red":
+                imgDisabledRedPawn.setVisible(false);
+                break;
+            default:
+                System.out.println("No pawn was selected before");
+        }
     }
 }

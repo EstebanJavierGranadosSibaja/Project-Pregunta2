@@ -18,28 +18,23 @@
       <VBox.margin>
          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
       </VBox.margin>
-      <VBox alignment="CENTER" fillWidth="false" prefHeight="687.0" prefWidth="426.0" spacing="25.0">
-         <children>
-            <Label fx:id="lblCurrentPlayerTurn" alignment="CENTER" prefHeight="60.0" prefWidth="359.0" styleClass="mfx-label-tittle" text="Turno" textAlignment="CENTER">
-               <font>
-                  <Font name="System Bold" size="23.0" />
-               </font></Label>
-            <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="315.0" spacing="40.0" styleClass="translucent-brown-vbox">
-               <children>
-                  <MFXButton buttonType="RAISED" minHeight="17.0" onAction="#onActionExit" prefHeight="50.0" prefWidth="100.0" styleClass="mfx-button" text="SALIR" />
-                  <MFXButton buttonType="RAISED" minWidth="53.0" onAction="#onActionHelp" prefHeight="50.0" prefWidth="100.0" styleClass="mfx-button" text="AYUDA" />
-               </children>
-            </VBox>
-         </children>
+      <VBox alignment="CENTER" fillWidth="false" prefHeight="687.0" prefWidth="426.0" spacing="25.0" styleClass="translucent-brown-vbox">
+         <Label fx:id="lblCurrentPlayerTurn" alignment="CENTER" prefHeight="60.0" prefWidth="359.0" styleClass="mfx-label-tittle" text="Turno" textAlignment="CENTER">
+            <font>
+               <Font name="System Bold" size="23.0" />
+            </font>
+         </Label>
+         <VBox alignment="CENTER" fillWidth="false" prefHeight="200.0" prefWidth="315.0" spacing="40.0" styleClass="translucent-brown-vbox">
+            <MFXButton buttonType="RAISED" minHeight="17.0" onAction="#onActionExit" prefHeight="50.0" prefWidth="100.0" styleClass="mfx-button" text="SALIR" />
+            <MFXButton buttonType="RAISED" minWidth="53.0" onAction="#onActionHelp" prefHeight="50.0" prefWidth="100.0" styleClass="mfx-button" text="AYUDA" />
+         </VBox>
       </VBox>
       <StackPane minHeight="668.0" minWidth="888.0" prefHeight="668.0" prefWidth="893.0">
          <HBox.margin>
             <Insets />
          </HBox.margin>
          <ImageView fx:id="imgGoldenHalo" fitHeight="671.0" fitWidth="671.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../resources/LuzDorada.png" />
-            </image>
+            <Image url="@../resources/LuzDorada.png" />
          </ImageView>
          <ImageView fitHeight="607.0" fitWidth="607.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../resources/PlayingBorder.png" />
@@ -48,9 +43,7 @@
             <Image url="@../resources/path1-5-1-9.png" />
          </ImageView>
          <ImageView fx:id="imgSpinner" fitHeight="312.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-               <Image url="@../resources/Roullete.png" />
-            </image>
+            <Image url="@../resources/Roullete.png" />
          </ImageView>
          <AnchorPane prefHeight="702.0" prefWidth="888.0">
             <Separator layoutX="90.0" layoutY="90.0" prefWidth="200.0" visible="false" />
@@ -119,49 +112,31 @@
                <Image url="@../resources/Spinner.png" />
             </ImageView>
             <ImageView fx:id="imgCorrect" fitHeight="230.0" fitWidth="258.0" layoutX="344.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/correct.png" />
-               </image>
+               <Image url="@../resources/correct.png" />
             </ImageView>
             <ImageView fx:id="imgIncorrect" fitHeight="230.0" fitWidth="258.0" layoutX="347.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/incorrect.png" />
-               </image>
+               <Image url="@../resources/incorrect.png" />
             </ImageView>
             <ImageView fx:id="imgEntertainment" fitHeight="352.0" fitWidth="324.0" layoutX="282.0" layoutY="182.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpEntertainment.png" />
-               </image>
+               <Image url="@../resources/popUpEntertainment.png" />
             </ImageView>
             <ImageView fx:id="imgScience" fitHeight="352.0" fitWidth="324.0" layoutX="284.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpScience.png" />
-               </image>
+               <Image url="@../resources/popUpScience.png" />
             </ImageView>
             <ImageView fx:id="imgHistory" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpHistory.png" />
-               </image>
+               <Image url="@../resources/popUpHistory.png" />
             </ImageView>
             <ImageView fx:id="imgSport" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpSports.png" />
-               </image>
+               <Image url="@../resources/popUpSports.png" />
             </ImageView>
             <ImageView fx:id="imgCrown" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpCrown.png" />
-               </image>
+               <Image url="@../resources/popUpCrown.png" />
             </ImageView>
             <ImageView fx:id="imgGeography" fitHeight="352.0" fitWidth="324.0" layoutX="294.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpGeography.png" />
-               </image>
+               <Image url="@../resources/popUpGeography.png" />
             </ImageView>
             <ImageView fx:id="imgArt" fitHeight="352.0" fitWidth="324.0" layoutX="304.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/popUpArt.png" />
-               </image>
+               <Image url="@../resources/popUpArt.png" />
             </ImageView>
             <Separator layoutX="40.0" layoutY="40.0" prefWidth="200.0" visible="false" />
             <Separator layoutX="50.0" layoutY="50.0" prefWidth="200.0" visible="false" />
@@ -558,14 +533,10 @@
                <Image url="@../resources/PawnPink.png" />
             </ImageView>
             <ImageView fx:id="imgWinner" fitHeight="473.0" fitWidth="473.0" layoutX="212.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/Winner.png" />
-               </image>
+               <Image url="@../resources/Winner.png" />
             </ImageView>
-            <ImageView fx:id="imgTiroExtra" fitHeight="285.0" fitWidth="137.0" layoutX="376.0" layoutY="461.0" onMouseClicked="#onActionTiroExtra" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../resources/TiroExtra.png" />
-               </image>
+            <ImageView fx:id="imgTiroExtra" fitHeight="285.0" fitWidth="137.0" layoutX="22.0" layoutY="464.0" onMouseClicked="#onActionTiroExtra" pickOnBounds="true" preserveRatio="true" visible="false">
+               <Image url="@../resources/TiroExtra.png" />
             </ImageView>
          </AnchorPane>
       </StackPane>

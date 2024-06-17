@@ -16,7 +16,6 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.Flow;
 
 /**
  * FXML Controller class
@@ -99,11 +98,8 @@ public class QuestionController extends Controller implements Initializable {
     }
 
     public void setCategoryTheme(String category, Boolean isCrowned) {
-
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
-
         // enable/disable avaible ayudas
-
         if(!Objects.equals(gameController.players[gameController.currentSelectingPlayer].getDobleAyuda(), "A")){
             System.out.println("Doble ayuda inhabilitada");
             imgDisabledDobleOportunidad.setVisible(true);
@@ -119,8 +115,8 @@ public class QuestionController extends Controller implements Initializable {
 
 
         this.isCrowned = isCrowned;
-
         this.category = category;
+
         lblCategory.setText(category.toUpperCase());
         switch(category) {
             case "sciencie":
@@ -170,7 +166,6 @@ public class QuestionController extends Controller implements Initializable {
 
     private void calculateAnswerResult(int questionNumber){
         soundUtils.getInstance().playSound("click");
-        soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
         if(respuestas[(questionNumber - 1)].getEsCorrecta().equals("T")){
             gameController.playerCorrectAnswer(category, isCrowned, this.onLastCasilla);
@@ -194,7 +189,6 @@ public class QuestionController extends Controller implements Initializable {
                 if(oponentPlayer != -1){
                     gameController.currentSelectingPlayer = oponentPlayer;
                     resetCategoryTheme();
-                    System.out.println("The other player should be choosing now");
                     FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
                     oponentPlayer = -1;
                 } else{
@@ -204,7 +198,7 @@ public class QuestionController extends Controller implements Initializable {
             }
         }
         // play an animation to indicate the current playing sector
-        animationUtils.getInstance().playAnimation("fade", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("fade", gameController.getSectorImageByID(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
         resetCategoryTheme();
     }
 
@@ -265,27 +259,6 @@ public class QuestionController extends Controller implements Initializable {
     }
 
     @FXML
-    public void onActionPasar(Event event) {
-        soundUtils.getInstance().playSound("click");
-        // reset the category theme
-        resetCategoryTheme();
-
-        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
-        gameController.players[gameController.currentSelectingPlayer].setPasarAyuda("U");
-
-        // the player can select another category
-        PlayerCategoryCrownSelectionController playerCategoryCrownSelectionController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
-        playerCategoryCrownSelectionController.comesFromAyuda = true;
-        FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
-        System.out.println("Pasar");
-
-
-
-        // show the disabled image
-        imgDisabledPasar.setVisible(true);
-    }
-
-    @FXML
     public void onActionDobleOportunidad(Event event) {
         soundUtils.getInstance().playSound("click");
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
@@ -303,5 +276,24 @@ public class QuestionController extends Controller implements Initializable {
     public void onActionExit(Event event) {
         soundUtils.getInstance().playSound("click");
         FlowController.getInstance().goView("MainMenuView");
+    }
+
+    @FXML
+    public void onActionPasar(Event event) {
+        soundUtils.getInstance().playSound("click");
+        // reset the category theme
+        resetCategoryTheme();
+
+        GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
+        gameController.players[gameController.currentSelectingPlayer].setPasarAyuda("U");
+
+        // the player can select another category
+        PlayerCategoryCrownSelectionController playerCategoryCrownSelectionController = (PlayerCategoryCrownSelectionController) FlowController.getInstance().getController("PlayerCategoryCrownSelectionView");
+        playerCategoryCrownSelectionController.comesFromAyuda = true;
+        FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
+        System.out.println("Pasar");
+
+        // show the disabled image
+        imgDisabledPasar.setVisible(true);
     }
 }
