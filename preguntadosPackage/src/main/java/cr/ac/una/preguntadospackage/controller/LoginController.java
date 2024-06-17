@@ -5,6 +5,7 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 
 import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
@@ -14,6 +15,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -49,6 +51,7 @@ public class LoginController extends Controller implements Initializable {
         FlowController.getInstance().goMain();
         FlowController.getInstance().goView("MenuView");
         getStage().close();
+        new Mensaje().showModal(Alert.AlertType.INFORMATION, "¡¡¡ BIENVENIDO JUGADOR !!!", getStage(), "Bienvenido a Pregunta2, un juego de azar para pasarlo bomba con tus amigos. ¡¡¡ DISFRUTA Y PASALO BIEN !!!");
     }
     
 

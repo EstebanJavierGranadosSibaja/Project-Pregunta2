@@ -135,6 +135,7 @@ public class ListaJugadoresController extends Controller implements Initializabl
         } else {
             resultado = (PregJugadoresDto) tbvJugadores.getSelectionModel().getSelectedItem();
             getStage().close();
+            new Mensaje().showModal(Alert.AlertType.WARNING, "¡¡¡ JUGADOR CARGADO !!!", getStage(), "El jugador se cargo correctamente.");
         }
     }
 

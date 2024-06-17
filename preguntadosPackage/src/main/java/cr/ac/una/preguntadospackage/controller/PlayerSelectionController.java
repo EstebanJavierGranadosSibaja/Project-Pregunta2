@@ -1,6 +1,7 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
@@ -12,8 +13,10 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
 
 public class PlayerSelectionController extends Controller implements Initializable {
+
     @javafx.fxml.FXML
     private ImageView imgBluePawnSelection;
     @javafx.fxml.FXML
@@ -60,12 +63,13 @@ public class PlayerSelectionController extends Controller implements Initializab
     public void initialize() {
 
     }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lblPlayerNumber.setText("Jugador " + (currentPlayer + 1));
     }
 
-    public void recieveParametersFromParametersView(int amountOfPlayers, String gameMode, String duelMode, int timeLimitInMinutes){
+    public void recieveParametersFromParametersView(int amountOfPlayers, String gameMode, String duelMode, int timeLimitInMinutes) {
         // save up this variables (they are just going to be passed to the game view) like saving something in your pocket
         this.amountOfPlayers = amountOfPlayers;
         this.gameMode = gameMode;
@@ -74,18 +78,30 @@ public class PlayerSelectionController extends Controller implements Initializab
     }
 
     // IMAGES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
     // if the player clicks a pawn, but then changes his mind and clicks another one, the previous pawn should be re-enabled
     // but we have to take into consideration the other already selected pawns
-    private void re_enablePastSelectedPawn(){
-        switch (currentSelectedColor){
-            case "pink": imgDisabledPinkPawn.setVisible(false); break;
-            case "green": imgDisabledGreenPawn.setVisible(false); break;
-            case "orange": imgDisabledOrangePawn.setVisible(false); break;
-            case "purple": imgDisabledPurplePawn.setVisible(false); break;
-            case "blue": imgDisabledBluePawn.setVisible(false); break;
-            case "red": imgDisabledRedPawn.setVisible(false); break;
-            default: System.out.println("No pawn was selected before");
+    private void re_enablePastSelectedPawn() {
+        switch (currentSelectedColor) {
+            case "pink":
+                imgDisabledPinkPawn.setVisible(false);
+                break;
+            case "green":
+                imgDisabledGreenPawn.setVisible(false);
+                break;
+            case "orange":
+                imgDisabledOrangePawn.setVisible(false);
+                break;
+            case "purple":
+                imgDisabledPurplePawn.setVisible(false);
+                break;
+            case "blue":
+                imgDisabledBluePawn.setVisible(false);
+                break;
+            case "red":
+                imgDisabledRedPawn.setVisible(false);
+                break;
+            default:
+                System.out.println("No pawn was selected before");
         }
     }
 
@@ -141,18 +157,18 @@ public class PlayerSelectionController extends Controller implements Initializab
     @javafx.fxml.FXML
     public void onActionConfirmar(ActionEvent actionEvent) {
         soundUtils.getInstance().playSound("click");
-        if(!txtPlayerName.getText().isBlank() && !currentSelectedColor.isBlank()){
+        if (!txtPlayerName.getText().isBlank() && !currentSelectedColor.isBlank()) {
 
             // save the player name and color
             playerNames[currentPlayer] = txtPlayerName.getText();
             playerColors[currentPlayer] = currentSelectedColor;
 
             // String[] playerColors, String[] playerNames, int amountOfPlayers, String gameMode, String duelMode, int timeLimitInMinutes
-
-            if(currentPlayer == amountOfPlayers - 1){
+            if (currentPlayer == amountOfPlayers - 1) {
                 // if all players have been selected, go to the game view
                 gameController.recieveParameters(playerColors, playerNames, amountOfPlayers, gameMode, duelMode, timeLimitInMinutes);
                 FlowController.getInstance().goView("GameView");
+                new Mensaje().showModal(Alert.AlertType.INFORMATION, "¡¡¡ ES HORA DE JUGAR !!!", getStage(), "Es ahora o nunca, el momento de jugar a llegado. ¡¡¡SOLO UNO PUEDE GANAR!!!");
 
             } else {
                 // if there are still players to select, go to the next player

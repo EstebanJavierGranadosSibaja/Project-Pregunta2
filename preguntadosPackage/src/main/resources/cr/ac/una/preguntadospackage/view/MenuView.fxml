@@ -9,30 +9,30 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" minHeight="600.0" minWidth="1000.0" prefHeight="720.0" prefWidth="1280.0" styleClass="root" stylesheets="@GeneralCSS.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cr.ac.una.preguntadospackage.controller.MenuController">
-   <StackPane prefHeight="653.0" prefWidth="1280.0">
-      <VBox alignment="TOP_CENTER" prefHeight="547.0" prefWidth="1280.0">
+   <StackPane prefHeight="667.0" prefWidth="1280.0">
+      <VBox alignment="TOP_CENTER" fillWidth="false" prefHeight="558.0" prefWidth="1280.0">
          <StackPane.margin>
             <Insets bottom="50.0" top="50.0" />
          </StackPane.margin>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
-         <ImageView fitHeight="231.0" fitWidth="477.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="217.0" fitWidth="463.0" pickOnBounds="true" preserveRatio="true">
             <Image url="@../resources/Title.png" />
          </ImageView>
-         <VBox alignment="CENTER" prefHeight="322.0" prefWidth="1259.0" spacing="10.0">
+         <VBox alignment="CENTER" prefHeight="314.0" prefWidth="344.0" spacing="10.0" styleClass="translucent-brown-vbox">
             <padding>
                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
             </padding>
             <MFXButton fx:id="btnPlayMultiplayer" layoutX="489.0" layoutY="90.0" onAction="#onActionPlayMultiplayer" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" stylesheets="@GeneralCSS.css" text="NUEVA PARTIDA" />
             <MFXButton fx:id="btnCargarPartida" layoutX="489.0" layoutY="20.0" onAction="#onActionCargarPartida" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" stylesheets="@GeneralCSS.css" text="CARGAR PARTIDA" />
             <MFXButton fx:id="btnRankedGlobal" onAction="#onActionRankedGlobal" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="RANKING DE JUGADORES" />
-            <MFXButton fx:id="btnMantenimientoPreguntas" layoutX="500.0" layoutY="78.0" onAction="#onActionMentenimientoPreguntas" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="MANTENIIENTO DE PREGUNTAS" />
+            <MFXButton fx:id="btnMantenimientoPreguntas" layoutX="500.0" layoutY="78.0" onAction="#onActionMentenimientoPreguntas" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="MANTENIMIENTO PREGUNTAS" />
             <MFXButton fx:id="btnSobreNosotros" onAction="#onActionSobreNosotros" prefHeight="75.0" prefWidth="300.0" styleClass="mfx-button" text="SOBRE NOSTROS" />
          </VBox>
       </VBox>
    </StackPane>
-   <HBox alignment="CENTER_RIGHT" prefHeight="195.0" prefWidth="1280.0">
+   <HBox alignment="CENTER_RIGHT" prefHeight="81.0" prefWidth="1280.0">
       <padding>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </padding>

@@ -5,6 +5,7 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.Mensaje;
 import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCircleToggleNode;
@@ -19,6 +20,7 @@ import javafx.scene.control.ToggleGroup;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.control.Alert;
 
 /**
  * FXML Controller class
@@ -80,6 +82,8 @@ public class GameParametersController extends Controller implements Initializabl
         PlayerSelectionController playerSelectionController = (PlayerSelectionController) FlowController.getInstance().getController("PlayerSelectionView");
         playerSelectionController.recieveParametersFromParametersView(playerCount, gamemode, "D", (int) sldrGameTime.getValue());
         FlowController.getInstance().goView("PlayerSelectionView");
+        new Mensaje().showModal(Alert.AlertType.INFORMATION, "Seleccion del Jugador y su Peon", getStage(), "Acá podras escoger el nombre de los jugadores y sus peones correspondientes.");
+
     }
 
     @FXML

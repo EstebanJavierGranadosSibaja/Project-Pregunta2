@@ -143,10 +143,8 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        // LOGO <><><><><><><><><><><><><><><><><><><><><>
-        //stage.getIcons().add(new Image("cr/ac/una/preguntadospackage/resources/LogoUNArojo"));
+        //stage.getIcons().add(new Image("../resources/cr/ac/una/preguntadospackage/resources/AppIcon.png"));
         stage.setTitle(controller.getNombreVista());
-
         stage.setOnHidden((WindowEvent event) -> {
             controller.getStage().getScene().setRoot(new Pane());
             controller.setStage(null);
@@ -165,13 +163,7 @@ public class FlowController {
         Controller controller = loader.getController();
         controller.initialize();
         Stage stage = new Stage();
-        // LOGO <><><><><><><><><><><><><><><><><><><><><>
-        //stage.getIcons().add(new Image("cr/ac/una/preguntadospackage/resources/LogoUNArojo"));
-
-        // Disable the window resizing
-        stage.setResizable(resizable);
-
-
+        //stage.getIcons().add(new Image("../resources/cr/ac/una/preguntadospackage/resources/AppIcon.png"));
         stage.setTitle(controller.getNombreVista());
         stage.setResizable(resizable);
         stage.setOnHidden((WindowEvent event) -> {
