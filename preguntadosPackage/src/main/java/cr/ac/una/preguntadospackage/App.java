@@ -6,26 +6,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/*
-    Dev notes:
-
-    - Cats:
-        * 6
-
-    - Graphics:
-        * Max screen res: 1280x720
-
-    ----------------------------------------------------------------------------
-    
-    - User information
-        * Max user tag lenght: 15 letters
-
- */
-
 public class App extends Application {
-    
-    
-    
+
     @Override
     public void start(Stage stage) throws IOException {
         FlowController.getInstance().InitializeFlow(stage, null);

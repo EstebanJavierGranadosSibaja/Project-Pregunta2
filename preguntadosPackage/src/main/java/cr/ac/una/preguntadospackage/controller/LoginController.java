@@ -53,13 +53,9 @@ public class LoginController extends Controller implements Initializable {
         getStage().close();
         new Mensaje().showModal(Alert.AlertType.INFORMATION, "¡¡¡ BIENVENIDO JUGADOR !!!", getStage(), "Bienvenido a Pregunta2, un juego de azar para pasarlo bomba con tus amigos. ¡¡¡ DISFRUTA Y PASALO BIEN !!!");
     }
-    
-
 
     @FXML
     private void onActionHelp(ActionEvent event) {
         soundUtils.getInstance().playSound("click");
     }
-
-    
 }

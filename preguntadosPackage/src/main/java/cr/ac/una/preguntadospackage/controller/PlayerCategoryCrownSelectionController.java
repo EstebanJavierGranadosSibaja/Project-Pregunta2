@@ -40,23 +40,32 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
     // this method disables or enables coins depending if the player has already has it or not
     public void setupCoins(){
 
+        // DEBUG PRINT ALL THE COINS FOR THE PLAYER STATE
+
+
         GameController gameController = (GameController) FlowController.getInstance().getController("GameView");
-        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "U")){
+        System.out.println("Entretenimiento:" + gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento());
+        System.out.println("Historia:" + gameController.players[gameController.currentSelectingPlayer].getFichaHistoria());
+        System.out.println("Arte:" + gameController.players[gameController.currentSelectingPlayer].getFichaArte());
+        System.out.println("Deporte:" + gameController.players[gameController.currentSelectingPlayer].getFichaDeporte());
+        System.out.println("Ciencias:" + gameController.players[gameController.currentSelectingPlayer].getFichaCiencias());
+        System.out.println("Geografia:" + gameController.players[gameController.currentSelectingPlayer].getFichaGeografia());
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaArte(), "I")){
             imgDisabledGeography.setVisible(false);
         }
-        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "U")){
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaDeporte(), "I")){
             imgDisabledSports.setVisible(false);
         }
-        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "U")){
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaHistoria(), "I")){
             imgDisabledArt.setVisible(false);
         }
-        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "U")){
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaEntretenimiento(), "I")){
             imgDisabledEntertainment.setVisible(false);
         }
-        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "U")){
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaCiencias(), "I")){
             imgDisabledScience.setVisible(false);
         }
-        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "I") || Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "U")){
+        if(Objects.equals(gameController.players[gameController.currentSelectingPlayer].getFichaGeografia(), "I")){
             imgDisabledHistory.setVisible(false);
         }
     }

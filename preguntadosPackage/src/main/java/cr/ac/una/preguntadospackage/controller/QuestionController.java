@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 
 import java.net.URL;
 import java.util.*;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -75,7 +76,7 @@ public class QuestionController extends Controller implements Initializable {
     private Label lblCategory1;
 
     private ObservableList<PregPreguntasDto> preguntasList;
-    
+
     private ObservableList<PregRespuestasDto> respuestasList;
 
     private PregPreguntasDto pregPreguntaDto;
@@ -90,11 +91,12 @@ public class QuestionController extends Controller implements Initializable {
         }
 
         // for now configure it so the first one is correct always TODO:
-// this should be replaced with the actual question and answers coming from the database
+        // this should be replaced with the actual question and answers coming from the database
         respuestas[0].setEsCorrecta("T");
         respuestas[1].setEsCorrecta("F");
         respuestas[2].setEsCorrecta("F");
         respuestas[3].setEsCorrecta("F");
+
     }
 
     @Override
@@ -124,13 +126,14 @@ public class QuestionController extends Controller implements Initializable {
         }
 
         this.isCrowned = isCrowned;
-
+        this.isCrowned = isCrowned;
         this.category = category;
+
         lblCategory.setText(category.toUpperCase());
         switch (category) {
             case "sciencie":
                 imgScienceChar.setVisible(true);
-                 respuesta = preguntasService.getPreguntas("CIENCIA");
+                respuesta = preguntasService.getPreguntas("CIENCIA");
                 preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
                 Collections.shuffle(preguntasList);
                 pregPreguntaDto = preguntasList.get(0);
@@ -144,14 +147,14 @@ public class QuestionController extends Controller implements Initializable {
                 break;
             case "entertainment":
                 imgEntertainmentChar.setVisible(true);
-                 respuesta = preguntasService.getPreguntas("ENTRETENIMIENTO");
+                respuesta = preguntasService.getPreguntas("ENTRETENIMIENTO");
                 preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
                 Collections.shuffle(preguntasList);
                 pregPreguntaDto = preguntasList.get(0);
                 break;
             case "art":
                 imgArtChar.setVisible(true);
-                 respuesta = preguntasService.getPreguntas("ARTE");
+                respuesta = preguntasService.getPreguntas("ARTE");
                 preguntasList = FXCollections.observableArrayList((List<PregPreguntasDto>) respuesta.getResultado("PregPreguntas"));
                 Collections.shuffle(preguntasList);
                 pregPreguntaDto = preguntasList.get(0);
@@ -177,7 +180,7 @@ public class QuestionController extends Controller implements Initializable {
     private void setText() {
         respuestasList = pregPreguntaDto.getPregRespuestasList();
         Collections.shuffle(respuestasList);
-        
+
         lblPregunta.setText(pregPreguntaDto.getTextoPregunta());
         btnRespuesta1.setText(respuestasList.get(0).getTextoRespuesta());
         btnRespuesta2.setText(respuestasList.get(1).getTextoRespuesta());
@@ -249,7 +252,7 @@ public class QuestionController extends Controller implements Initializable {
                 }
                 if (oponentPlayer != -1) {
                     gameController.currentSelectingPlayer = oponentPlayer;
-                    resetCategoryTheme();
+                    //resetCategoryTheme();
                     System.out.println("The other player should be choosing now");
                     FlowController.getInstance().goView("PlayerCategoryCrownSelectionView");
                     oponentPlayer = -1;
@@ -260,7 +263,7 @@ public class QuestionController extends Controller implements Initializable {
             }
         }
         // play an animation to indicate the current playing sector
-        animationUtils.getInstance().playAnimation("fade", gameController.getSectorImageIDbySector(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
+        animationUtils.getInstance().playAnimation("fade", gameController.getSectorImageByID(gameController.players[gameController.currentSelectingPlayer].getPosicionSector().intValue()), 0, 0, 0, 0);
         resetCategoryTheme();
     }
 
