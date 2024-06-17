@@ -36,6 +36,8 @@ public class GameController extends Controller implements Initializable {
     private Boolean haveAllPlayersSelectedSectors = false, hasFirstTurnBeenAssigned = false, isStoppedManually = false, hasSpinnerBeenClicked = false;
 
     private RotateTransition rotateAnimation; // Add this line
+    
+    private GameParametersController gameParametrer;
 
     // persistence-related variables
     public PregJugpartidaDto[] players;
@@ -58,13 +60,20 @@ public class GameController extends Controller implements Initializable {
             imgSector6SciencieBlocker, imgSector6EntertainmentBlocker, imgEntertainment, imgSector4SportBlocker, imgSector5HistoryBlocker,
             imgSector1HistoryBlocker, imgSector5ArtBlocker, imgSector5SportBlocker, imgSector1Pawn4, imgSector4Pawn4, imgSector4Pawn3,
             imgSector6SportBlocker, imgArt, imgSector1Pawn1, imgSector1Pawn2, imgSector1Pawn3, imgCorrect, imgIncorrect, imgWinner, imgTiroExtra;
+    @FXML
+    private ImageView imgGoldenHalo;
+    @FXML
+    private Label lblPlayName;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        gameParametrer = new GameParametersController();
+        lblPlayName.setText("HOLA MUNDO");
     }
 
     @Override
-    public void initialize() {}
+    public void initialize() {
+    }
 
     public void setUpGameEnvironment(int playerCount, String[] playerColors, String[] playerIDs, String modoJuego, String modoDuelo, int timeLimitInMinutes) {
         // initialize the players array

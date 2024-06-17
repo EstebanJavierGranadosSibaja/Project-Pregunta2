@@ -10,6 +10,7 @@ import cr.ac.una.preguntadospackage.util.soundUtils;
 import io.github.palexdev.materialfx.controls.MFXButton;
 import io.github.palexdev.materialfx.controls.MFXCircleToggleNode;
 import io.github.palexdev.materialfx.controls.MFXSlider;
+import io.github.palexdev.materialfx.controls.MFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -53,16 +54,20 @@ public class GameParametersController extends Controller implements Initializabl
     private Label test1;
     @FXML
     private MFXCircleToggleNode toggleDuelMode;
+    @FXML
+    private MFXTextField txtNombrePartida;
+    
+    private String nombrePartida;
 
     /**
      * Initializes the controller class.
      */
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // start the spinner with 1 player
         nonMFXspinner.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(2, 6, 2));
     }
+
     @Override
     public void initialize() {
     }
@@ -72,10 +77,16 @@ public class GameParametersController extends Controller implements Initializabl
         soundUtils.getInstance().playSound("click");
         String gamemode;
         // get the selected game mode
-        if(toggleEasy.isSelected()) gamemode = "F";
-        else if(toggleMid.isSelected())gamemode = "M";
-        else gamemode = "D";
+        if (toggleEasy.isSelected()) {
+            gamemode = "F";
+        } else if (toggleMid.isSelected()) {
+            gamemode = "M";
+        } else {
+            gamemode = "D";
+        }
 
+        nombrePartida = txtNombrePartida.getText();
+        
         // get the selected player count
         int playerCount = (int) nonMFXspinner.getValue();
 
@@ -99,5 +110,12 @@ public class GameParametersController extends Controller implements Initializabl
         FlowController.getInstance().goView("MenuView");
     }
 
-    
+    @FXML
+    private void onActionTxtNombrePartida(ActionEvent event) {
+    }
+
+    public String getNombrePartida() {
+        return nombrePartida;
+    }
+
 }
