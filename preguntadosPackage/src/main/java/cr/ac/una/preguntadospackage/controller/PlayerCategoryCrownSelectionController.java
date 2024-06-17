@@ -1,6 +1,7 @@
 package cr.ac.una.preguntadospackage.controller;
 
 import cr.ac.una.preguntadospackage.util.FlowController;
+import cr.ac.una.preguntadospackage.util.soundUtils;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
@@ -73,6 +74,7 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @javafx.fxml.FXML
     public void onActionEntertainment(Event event) {
+        soundUtils.getInstance().playSound("click");
         questionController.onLastCasilla = onLastCasilla;
         questionController.setCategoryTheme("entertainment", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
@@ -81,6 +83,7 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @javafx.fxml.FXML
     public void onActionHistory(Event event) {
+        soundUtils.getInstance().playSound("click");
         questionController.onLastCasilla = onLastCasilla;
         questionController.setCategoryTheme("history", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
@@ -89,6 +92,7 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @javafx.fxml.FXML
     public void onActionArt(Event event) {
+        soundUtils.getInstance().playSound("click");
         questionController.onLastCasilla = onLastCasilla;
         questionController.setCategoryTheme("art", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
@@ -97,6 +101,7 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @javafx.fxml.FXML
     public void onActionGeography(Event event) {
+        soundUtils.getInstance().playSound("click");
         questionController.onLastCasilla = onLastCasilla;
         questionController.setCategoryTheme("geography", true);
         FlowController.getInstance().goView("QuestionView");
@@ -105,6 +110,7 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @javafx.fxml.FXML
     public void onActionSports(Event event) {
+        soundUtils.getInstance().playSound("click");
         questionController.onLastCasilla = onLastCasilla;
         questionController.setCategoryTheme("sports", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");
@@ -113,6 +119,7 @@ public class PlayerCategoryCrownSelectionController extends Controller implement
 
     @javafx.fxml.FXML
     public void onActionScience(Event event) {
+        soundUtils.getInstance().playSound("click");
         questionController.onLastCasilla = onLastCasilla;
         questionController.setCategoryTheme("sciencie", !comesFromAyuda);
         FlowController.getInstance().goView("QuestionView");

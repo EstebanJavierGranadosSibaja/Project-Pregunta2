@@ -403,6 +403,7 @@ public class GameController extends Controller implements Initializable {
     }
 
     private void CheckIfAllTheSectorsHaveBeenSelected() {
+        soundUtils.getInstance().playSound("click");
         if (selectedSectors == partida.getCantidadJugadores().intValue()) {
             haveAllPlayersSelectedSectors = true; // this way we can re-use the sector selection panels for signaling the player's turn
             loadPawnPositions();
