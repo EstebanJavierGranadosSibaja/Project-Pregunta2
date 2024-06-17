@@ -34,7 +34,9 @@ import java.util.List;
     @NamedQuery(name = "PregPreguntas.findByPreCantidadRespuestas", query = "SELECT p FROM PregPreguntas p WHERE p.cantidadRespuestas = :cantidadRespuestas"),
     @NamedQuery(name = "PregPreguntas.findByPreCantidadAciertos", query = "SELECT p FROM PregPreguntas p WHERE p.cantidadAciertos = :cantidadAciertos"),
     @NamedQuery(name = "PregPreguntas.findByPreEstado", query = "SELECT p FROM PregPreguntas p WHERE p.estado = :estado"),
-    @NamedQuery(name = "PregPreguntas.findByPreVersion", query = "SELECT p FROM PregPreguntas p WHERE p.version = :version")})
+    @NamedQuery(name = "PregPreguntas.findByPreVersion", query = "SELECT p FROM PregPreguntas p WHERE p.version = :version"),
+    @NamedQuery(name = "PregPreguntas.findByCatCategoria", query = "SELECT p FROM PregPreguntas p WHERE upper(p.preIdcat.categoria) LIKE :categoria")
+})
 public class PregPreguntas implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -183,6 +183,7 @@ public class PlayerSelectionController extends Controller implements Initializab
 
     @FXML
     public void onActionGoBack(ActionEvent actionEvent) {
+        FlowController.getInstance().goView("GameParametersView");
         soundUtils.getInstance().playSound("click");
     }
 }

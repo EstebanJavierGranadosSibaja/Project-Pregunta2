@@ -106,6 +106,36 @@ public class PregPreguntasService {
             return new Respuesta(false, "Error obteniendo las preguntas.", "getPreguntas " + ex.getMessage());
         }
     }
+    
+    public Respuesta getPreguntas(String categoria) {
+        try {
+            Query qryJugadores = em.createNamedQuery("PregPreguntas.findByCatCategoria", PregPreguntas.class);
+            qryJugadores.setParameter("categoria", "%" + categoria + "%");
+
+            List<PregPreguntasDto> preguntas = new ArrayList<>();
+            List<PregPreguntas> pregunta = qryJugadores.getResultList();
+
+            for (PregPreguntas tempPreguntas : pregunta) {
+                PregPreguntasDto preguntasDto = new PregPreguntasDto(tempPreguntas);
+                for (PregRespuestas respuestas : tempPreguntas.getRespuestasList()) {
+                    PregRespuestasDto respuestaDto = new PregRespuestasDto(respuestas);
+                    respuestaDto.setPreId(tempPreguntas);
+                    preguntasDto.getPregRespuestasList().add(respuestaDto);
+                }
+                preguntas.add(preguntasDto);
+            }
+
+            return new Respuesta(true, "", "", "PregPreguntas", preguntas);
+        } catch (NoResultException ex) {
+            return new Respuesta(false, "No existe ninguna pregunta con los parametros colocados.", "getPreguntas NoResultException");
+        } catch (NonUniqueResultException ex) {
+            Logger.getLogger(PregPreguntasService.class.getName()).log(Level.SEVERE, "Ocurrio un error al consultar la pregunta.", ex);
+            return new Respuesta(false, "Ocurrio un error al consultar las preguntas.", "getPreguntas NonUniqueResultException");
+        } catch (Exception ex) {
+            Logger.getLogger(PregPreguntasService.class.getName()).log(Level.SEVERE, "Error obteniendo las preguntas", ex);
+            return new Respuesta(false, "Error obteniendo las preguntas.", "getPreguntas " + ex.getMessage());
+        }
+    }
 
     public Respuesta guardarPregunta(PregPreguntasDto pregPreguntasDto) {
         try {

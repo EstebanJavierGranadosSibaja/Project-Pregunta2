@@ -68,11 +68,11 @@ public class MantenimientoPreguntasController extends Controller implements Init
                 "ARTE", "DEPORTE", "CIENCIAS", "HISTORIA", "GEOGRAFIA", "ENTRETENIMIENTO"
         );
         cbxCategoria.setItems(comboData); // Setting data to the category combo box
-        txtEnunciadoPregunta.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(250)); // Setting text format for question statement
-        txtRespuesta1.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 1
-        txtRespuesta2.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 2
-        txtRespuesta3.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 3
-        txtRespuesta4.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 4
+//        txtEnunciadoPregunta.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(250)); // Setting text format for question statement
+//        txtRespuesta1.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 1
+//        txtRespuesta2.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 2
+//        txtRespuesta3.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 3
+//        txtRespuesta4.delegateSetTextFormatter(Formato.getInstance().cedulaFormat(50)); // Setting text format for answer 4
         nuevaPregunta(); // Creating a new question
         indicarRequeridos(); // Indicating required fields
     }
