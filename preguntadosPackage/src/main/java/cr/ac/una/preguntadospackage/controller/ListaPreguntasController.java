@@ -135,6 +135,8 @@ public class ListaPreguntasController extends Controller implements Initializabl
         } else {
             resultado = (PregPreguntasDto) tbvPreguntas.getSelectionModel().getSelectedItem();
             getStage().close();
+            new Mensaje().showModal(Alert.AlertType.INFORMATION, "¡¡¡ PREGUNTA CARGADA !!!", getStage(), "La pregunta se cargo correctamente.");
+
         }
     }
 
